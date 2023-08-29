@@ -1,0 +1,69 @@
+module.exports = {
+  title: 'Javelin',
+  tagline: 'Enterprise Scale LLM AI Gateway',
+  url: 'https://getjavelin.io', // Your website URL
+  baseUrl: '/', 
+  onBrokenLinks: 'throw',
+  favicon: 'img/favicon.ico',
+  organizationName: 'javelin', // GitHub org/user name.
+  projectName: 'getjavelin', // GitHub repo name.
+  themeConfig: {
+    navbar: {
+      title: '',
+      logo: {
+        alt: 'Javelin Logo',
+        src: 'img/javelinlogo.png',
+      },
+      items: [
+        {
+          type: 'doc',
+          docId: 'javelin-core/overview', 
+          position: 'left',
+          label: 'Getting Started',
+        },
+        {
+          type: 'doc',
+          docId: 'javelin-python/quickstart',
+          position: 'left',
+          label: 'Python API Reference',
+        },
+        {
+          type: 'doc',
+          docId: 'javelin-js/quickstart',
+          position: 'left',
+          label: 'Typescript API Reference',
+        },
+        // Add other links or dropdowns as you like...
+        {
+          href: 'https://github.com/getjavelin/javelin',
+          label: 'GitHub',
+          position: 'right',
+        },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      copyright: `Copyright © ${new Date().getFullYear()} Javelin.`,
+    },
+    prism: {
+      theme: require('prism-react-renderer/themes/github'),
+      darkTheme: require('prism-react-renderer/themes/dracula'),
+    },
+  },
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      {
+        docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
+          // Please change this to your repo.
+          editUrl:
+            'https://github.com/getjavelin/documentation',
+        },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
+      },
+    ],
+  ],
+};
