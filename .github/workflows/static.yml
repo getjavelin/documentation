@@ -21,25 +21,28 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    
     steps:
+      # Checkout the repository content
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         
+      # Setup Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' # or another version if you prefer
+          node-version: '20' # Updated Node version to 20 as per your request
 
+      # Install dependencies and perform a build
       - name: Install dependencies and build
         run: |
           yarn install
           yarn build
 
-      # If you only want to deploy the 'build' folder (common for Docusaurus), adjust the path below
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/gh-pages@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          repository_name: ${{ github.repository }}
-          publish_dir: ./build # This assumes the output directory of Docusaurus is 'build'
+          publish_dir: ./build # Assumes the output directory of Docusaurus is 'build'
