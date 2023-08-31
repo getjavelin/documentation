@@ -1,0 +1,48 @@
+# Simple workflow for deploying Docusaurus content to GitHub Pages
+name: Deploy Docusaurus to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checkout the repository content
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      # Setup Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # Updated Node version to 20 as per your request
+
+      # Install dependencies and perform a build
+      - name: Install dependencies and build
+        run: |
+          yarn install
+          yarn build
+
+      # Deploy to GitHub Pages using peaceiris/actions-gh-pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_PAGES_PAT }}
+          publish_dir: ./build # Assumes the output directory of Docusaurus is 'build'
