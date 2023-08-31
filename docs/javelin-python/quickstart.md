@@ -7,7 +7,7 @@ The Javelin client is a Python library for interacting with the Javelin API. Thi
 To install the Javelin client, use pip:
 
 ```python
-pip install javelin-client
+pip install javelin_sdk
 ```
 
 ## 2. Setup
@@ -16,7 +16,7 @@ Before making any API calls, initialize the client:
 
 **Setting up the Python Client**
 ```python
-from javelin import JavelinClient
+from javelin_sdk import JavelinClient
 
     try:
         url = JAVELIN_ENDPOINT # set actual javelin endpoint adress & port

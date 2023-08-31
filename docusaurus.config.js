@@ -5,8 +5,9 @@ module.exports = {
   baseUrl: '/', 
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'javelin', // GitHub org/user name.
-  projectName: 'getjavelin', // GitHub repo name.
+  organizationName: 'getjavelin', // GitHub org/user name.
+  projectName: 'documentation', // GitHub repo name.
+  trailingSlash: false,
   themeConfig: {
     navbar: {
       title: '',
@@ -58,7 +59,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/getjavelin/documentation',
+            'https://github.com/getjavelin/documentation/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
