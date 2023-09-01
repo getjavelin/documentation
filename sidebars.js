@@ -13,8 +13,18 @@ module.exports = {
   someSidebar: {
     'Getting Started': [
       'javelin-core/overview', 
-      'javelin-core/quickstart',
+      'javelin-core/quickstart', 
       'javelin-core/supported-llms',
+    ],
+    'Advanced': [
+      'javelin-core/retries',
+      'javelin-core/ratelimits',
+      'javelin-core/loadbalancing',
+      'javelin-core/automaticllm',
+      'javelin-core/caching',
+      'javelin-core/auditarchive',
+      'javelin-core/hallucination',
+      'javelin-core/privacyredaction'
     ],
     'Python API Reference': [
       'javelin-python/quickstart',      
@@ -23,10 +33,6 @@ module.exports = {
     'Typescript API Reference': [
       'javelin-js/quickstart',
       'javelin-js/api-reference'
-    ],
-    'Advanced': [
-      'javelin-core/advanced',
-      'javelin-core/ratelimits'
     ],
     'Changelog': [
       'changelog'
