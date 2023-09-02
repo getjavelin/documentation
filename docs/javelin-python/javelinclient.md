@@ -1,15 +1,87 @@
-# API Reference
-## Overview
-This API allows users to manage and query routes. Below you'll find both synchronous and asynchronous methods detailed separately.
+# JavelinClient
 
+JavelinClient class is designed to support both synchronous and asynchronous context managers. This means you can use the JavelinClient within a with statement to ensure resources are properly managed.  
+
+The JavelinClient instance can be used as either a synchronous or asynchronous context manager. When entering a with block, it returns the client itself and when finished, it cleans up resources (like closing any open connections) when exiting a 'with' or 'async with' block respectively.
+
+**Synchronous Client Example:**
+```python
+with JavelinClient(base_url="localhost:8000") as client:
+    # use the client for synchronous operations
+    ...
+```
+
+**Asynchronous Client Example:**
+```python
+async with JavelinClient(base_url="localhost:8000") as client:
+    # use the client for asynchronous operations
+    ...
+```
 ---
-
-## class JavelinClient:
 
 ### **Synchronous Methods**
 
+#### `__init__(self, base_url: str, api_key: Optional[str] = None) -> None` {#init}
+**Description**:  
+Initializes the JavelinClient.
+
+**Parameters**:  
+- `base_url`: Base URL for the Javelin API.
+- `api_key` (optional): API key for authorization (if required).
+
+**Returns**:  
+None.
+
+---
+
+#### `client`
+**Description**:  
+Property that returns an HTTP client for synchronous operations. If the client does not exist, it creates and initializes one.
+
+**Returns**:  
+An instance of `httpx.Client` initialized with the base URL, headers, and a specific timeout.
+
+---
+
+#### `aclient`
+**Description**:  
+Property that returns an HTTP client for asynchronous operations. If the client does not exist, it creates and initializes one.
+
+**Returns**:  
+An instance of `httpx.AsyncClient` initialized with the base URL, headers, and a specific timeout.
+
+---
+
+#### `__enter__(self) -> "JavelinClient"`
+**Description**:  
+Enter the runtime context for the synchronous client and returns itself.
+
+**Returns**:  
+The instance of the JavelinClient.
+
+---
+
+#### `__exit__(self, exc_type, exc_val, exc_tb) -> None`
+**Description**:  
+Exit the runtime context for the synchronous client.
+
+**Parameters**:  
+- `exc_type`: The type of exception.
+- `exc_val`: The exception instance.
+- `exc_tb`: The traceback object.
+
+**Returns**:  
+None.
+
+---
+
 #### `close(self)`
-**Description**: Closes the connection or resources associated with the object.  
+**Description**:  
+Closes the synchronous client if it exists.
+
+**Returns**:  
+None.
+
 
 ---
 
@@ -65,8 +137,16 @@ This API allows users to manage and query routes. Below you'll find both synchro
 
 ### **Asynchronous Methods**
 
-#### `aclose(self)`
-**Description**: Asynchronously closes the connection or resources associated with the object.
+#### `__init__(self, base_url: str, api_key: Optional[str] = None) -> None`
+**Description**:  
+Initializes the client with the provided base URL and an optional API key.
+
+**Parameters**:  
+- `base_url`: The base URL of the service or API endpoint.
+- `api_key` (optional): The authentication key used to access the service. If not provided, the client may operate in an unauthenticated mode or utilize other means of authentication.
+
+**Returns**:  
+None. This method initializes the client instance.
 
 ---
 
@@ -131,104 +211,3 @@ This API allows users to manage and query routes. Below you'll find both synchro
 
 
 ---
-### JavelinClientError
-
-A base exception class for the Javelin client.
-
-#### `__init__(self, message: str, response: Optional[Response] = None) -> None`
-**Parameters:**
-- `message`: A string containing the error message.
-- `response` (Optional): A `Response` object that may contain additional information about the error.
-
-#### `__str__(self)`
-**Return type:** `str`
-Returns a string representation of the error.
-
-### Derived Exceptions
-
-#### `NetworkError`
-
-Indicates a network-related error while communicating with the Javelin service.
-
-#### `RouteNotFoundError`
-
-Indicates that a specified route was not found in the Javelin service.
-
-#### `RateLimitExceededError`
-
-Indicates that the rate limit for the Javelin service has been exceeded.
-
-#### `RouteAlreadyExistsError`
-
-Indicates that an attempt was made to create a route that already exists in the Javelin service.
-
-#### `InternalServerError`
-
-Indicates that the Javelin service encountered an internal server error.
-
-#### `MethodNotAllowedError`
-
-Indicates that an attempted method is not allowed on the specified route or resource.
-
-#### `UnauthorizedError`
-
-Indicates that the client is not authorized to perform the attempted action on the Javelin service.
-
-#### `ValidationError`
-
-Indicates that there was a validation error with the provided data or request.
-
-models.py
-class RouteConfig(BaseModel):
-Fields:
-
-    rate_limit
-    owner
-    organization
-    archive
-    retries
-    budget
-
-class Model(BaseModel):
-Fields:
-
-    name
-    provider
-    suffix
-
-class Route(BaseModel):
-Fields:
-
-    name
-    model
-    config
-
-class Routes(BaseModel):
-Fields:
-
-    routes
-
-class Message(BaseModel):
-Fields:
-
-    role
-    content
-
-class ResponseMetaData(BaseModel):
-Fields:
-
-    route_name
-    model
-    archive_enabled
-    input_tokens
-    output_tokens
-    total_tokens
-    usage
-    retries
-    throttled
-
-class QueryResponse(BaseModel):
-Fields:
-
-    llm_response
-    metadata

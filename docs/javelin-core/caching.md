@@ -1,10 +1,19 @@
-# Caching
+# Semantic Caching
 
-Javelin provides an optional semantic cache that allows Applications to slash your LLM costs by 10x and boost speed by 100x. 
+In the realm of AI-driven applications, ensuring efficient cost structures and swift responses is vital. Javelin’s innovative semantic cache offers a balanced solution that significantly reduces costs while dramatically enhancing performance. Unlike traditional caches that rely on exact data matches, the semantic cache understands the underlying meaning of a request. This means even if a user’s query isn't an exact match to a previously stored query, the cache can recognize its semantic similarity and fetch the relevant response.
 
-ChatGPT and many other large language models (LLMs) are impressively versatile, facilitating the creation of diverse applications. Yet, as applications gains traction and sees more traffic, the costs associated with LLM API usage can mount significantly. Moreover, LLM services can sometimes lag in response, especially during high demand periods.
+### Significant Cost Savings
+With Javelin's cache, LLM-related expenses can be drastically minimized:
 
-To address these concerns, Javelin cache can be enabled on a route. Enabling caching will force Javelin to lookup the cache for answers to previously queried requests and present the answer if present in the cache. If there is a cache miss, the LLM will be queried. 
+**10x Cost Reduction:** By reducing the need to repeatedly query the LLM for familiar requests, Javelin's cache can diminish associated costs by up to tenfold. For applications that field frequently repeated or semantically similar queries, the savings can be substantial.
 
+### Improved Response Time
+Speed is paramount in the user experience:
 
+**100x Faster Responses:** By serving answers directly from the cache, response times can be accelerated by up to a hundredfold, ensuring users receive answers almost instantaneously.
+
+### Consistent Performance
+LLMs can occasionally experience delays during peak times:
+
+**High Availability:** By relying on the cache, applications can maintain consistent performance levels, even during times when LLMs face high demand. This ensures a uniform user experience regardless of external factors.
 

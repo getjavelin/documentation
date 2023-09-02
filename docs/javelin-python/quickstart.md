@@ -28,8 +28,6 @@ from javelin_sdk import JavelinClient
         return
 ```
 
-Replace YOUR_API_KEY with your actual Javelin API key.
-
 ## 3. Making Requests
 With the client set up, you can make requests to the Javelin API:
 ```python
