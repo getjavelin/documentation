@@ -24,17 +24,22 @@ module.exports = {
         },
         {
           type: 'doc',
+          docId: 'javelin-core/retries',
+          position: 'left',
+          label: 'Features',
+        },
+        {
+          type: 'doc',
           docId: 'javelin-python/quickstart',
           position: 'left',
           label: 'Python API Reference',
         },
         {
           type: 'doc',
-          docId: 'javelin-js/quickstart',
+          docId: 'javelin-langchain-python/quickstart',
           position: 'left',
-          label: 'Typescript API Reference',
-        },
-        // Add other links or dropdowns as you like...
+          label: 'Langchain',
+        },        // Add other links or dropdowns as you like...
         {
           href: 'https://github.com/getjavelin/javelin',
           label: 'GitHub',

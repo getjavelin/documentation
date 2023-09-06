@@ -4,7 +4,7 @@ module.exports = {
       'javelin-core/overview', 
       'javelin-core/supported-llms',
     ],
-    'Advanced': [
+    'Features': [
       'javelin-core/retries',
       'javelin-core/ratelimits',
       'javelin-core/loadbalancing',
@@ -26,9 +26,8 @@ module.exports = {
         ]
       }
     ],
-    'Typescript API Reference': [
-      'javelin-js/quickstart',
-      'javelin-js/api-reference'
+    'Langchain': [
+      'javelin-langchain-python/quickstart',
     ],
     'Changelog': [
       'changelog'
