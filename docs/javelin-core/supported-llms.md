@@ -6,12 +6,12 @@ Javelin Gateway is committed to integrating and supporting the most popular mode
 Our platform's adaptability allows users to leverage the unique strengths of each model, ensuring optimal results for diverse applications. Javelin Gateway harmoniously brings together the world of popular LLMs, simplifying and amplifying their capabilities for our users.
 
 ## Supported Model Providers  
-**OpenAI**,   
-**Azure OpenAI**  
-**Anthropic**  
-**Cohere**  
-**Llama2**  
-**HuggingFace**  
-**Stanford Alpaca**  
+**OpenAI**,
+**Azure OpenAI**,
+**Anthropic**,
+**Cohere**,
+**Llama2**,
+**HuggingFace**,
+**Stanford Alpaca**
 
 
