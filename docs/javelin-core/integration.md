@@ -9,7 +9,7 @@ Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually
 
 See [Python SDK](../javelin-python/quickstart) for details on how you can easily embed this within your AI Apps. 
 
-See [Javelin Configuration](configuration) section, for details on how to setup routes on the gateway to different models and providers. 
+See [Javelin Configuration](settinguproutes) section, for details on how to setup routes on the gateway to different models and providers. 
 
 ## Querying an LLM
 Javelin may send a request to one or more models based on the configured policies and route configurations and return back a response.
