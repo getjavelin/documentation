@@ -1,4 +1,5 @@
 # Website
+[![pages-build-deployment](https://github.com/getjavelin/documentation/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/getjavelin/documentation/actions/workflows/pages/pages-build-deployment)  
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
