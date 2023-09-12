@@ -3,6 +3,14 @@
 Javelin provides organizations with state-of-the-art archiving capabilities, catering to diverse requirements ranging from compliance to model optimization.
 Note: Archiving incurs separate storage costs
 
+- **Fine Grained Control:** Archives are enabled or disabled on a per-route basis, enabling fine grained control over what application requests to LLMs need archiving.  
+    - For example, for applications querying LLMs during the development cycle, archiving may not be enabled while on the other hand, applications in production may have archiving enabled for compliance, audits etc., 
+
+- **Semantic Search Enabled:** Archives are automatically embedded and stored by Javelin, this allows fast, relevant, semantic searches on archives. 
+    - Audit searches, forensic analysis or human-in-the-loop analysis of archives are always fast, returning semantically relevant results
+
+- **Secure:** Archives are stored in crytographically encrypted Enterprise grade storage repositories for safe & compliant storage & retrieval. 
+
 ## Use Cases
 
 ### Audit & Compliance
