@@ -4,6 +4,23 @@ module.exports = {
       'javelin-core/overview', 
       'javelin-core/supported-llms',
     ],
+    'Administration': [
+      {
+        type: 'category',
+        label: 'Setting Up Routes',
+        items: [
+          'javelin-core/administration/listroutes',
+          'javelin-core/administration/getroute',
+          'javelin-core/administration/createroute',
+          'javelin-core/administration/updateroute',
+          'javelin-core/administration/deleteroute',
+        ]
+      },
+      'javelin-core/routeconfiguration',
+    ],
+    'Integration': [
+      'javelin-core/integration',
+    ],
     'Features': [
       'javelin-core/retries',
       'javelin-core/ratelimits',
