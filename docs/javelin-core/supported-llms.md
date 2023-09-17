@@ -14,4 +14,51 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 **HuggingFace**,
 **Stanford Alpaca**
 
+## Provider Configuration 
+```yaml
+providers:
+  - name: openai
+    type: closedsource
+    config:
+      api_key: ${OPENAI_API_KEY}
+      api_base: https://api.openai.com/v1
+      api_version: v1
+      organization: default
+  
+  - name: cohere
+    type: closedsource
+    config:
+      api_key: ${COHERE_API_KEY}
+      api_base: https://api.cohere.ai/v1
+      api_version: v1
+      organization: default
+  
+  - name: anthropic
+    type: opensource
+    config:
+      api_key: ${ANTHROPIC_API_KEY}
+      api_base: https://api.anthropic.ai
+      api_version: v1
+      organization: default
+  
+  - name: azure_openai
+    type: closedsource
+    config:
+      api_key: ${AZURE_OPENAI_API_KEY}
+      api_type: azure
+      api_base: https://api.cognitive.microsoft.com
+      api_version: v1
+      deployment_name: default
+      organization: default
+      
+  - name: ai21
+    type: opensource
+    config:
+      api_key: ${AI21_API_KEY}
+      api_base: https://api.ai21.com/studio/v1
+      api_version: v1
+      deployment_name: default
+      organization: default
 
+      ...
+```
