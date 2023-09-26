@@ -24,7 +24,7 @@ route_data = {
             "models": [
                 {
                     "model": {
-                        "name": "gpt-4-32k",
+                        "name": "gpt-3.5-turbo",
                         "provider": "openai",
                         "suffix": "/chat/completions",
                         "weight": 0.7,
@@ -35,12 +35,12 @@ route_data = {
                 },
                 {
                     "model": {
-                        "name": "gpt-4-32k",
+                        "name": "gpt-4",
                         "provider": "openai",
                         "suffix": "/chat/completions",
                         "weight": 0.3,
                         "config": {
-                            "rate_limit": 7
+                            "rate_limit": 1
                         }
                     }
                 }
