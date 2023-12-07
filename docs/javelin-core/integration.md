@@ -35,7 +35,7 @@ curl -X POST \
     ],
     "temperature":0.8
 }' \
-"http://localhost:9000/api/v1/routes/test_route_1/query"
+"https://api.javelin.live/v1/admin/routes/test_route_1/query"
 ```
 
 </TabItem>
@@ -47,8 +47,19 @@ curl -X POST \
         Route
     )
 
+    import os
+
+    # Retrieve environment variables
+    javelin_api_key = os.getenv('JAVELIN_API_KEY')
+    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
+    llm_api_key = os.getenv('LLM_API_KEY')
+
     # create javelin client
-    client = JavelinClient(base_url="http://localhost:9000") # replace this with your javelin URL
+    client = JavelinClient(base_url="https://api.javelin.live",
+                        javelin_api_key=javelin_api_key,
+                        javelin_virtualapikey=javelin_virtualapikey,
+                        llm_api_key=llm_api_key
+    )
 
     # route name to get is "eng_dept"
     route_name = "eng_dept"
@@ -101,53 +112,27 @@ For example, a request to OpenAI would look like the following:
 And, the response from the model through the gateway would look like the following:
 ```shell
 {
-    "llm_response": {
-        "choices": [
-            {
-                "finish_reason": "stop",
-                "index": 0,
-                "message": {
-                    "content": "The winner of the 2009 World Cup Soccer was Spain. They defeated the Netherlands in the final match held on July 11, 2009, with a score of 1-0 after extra time.",
-                    "role": "assistant"
-                }
-            }
-        ],
-        "created": 1694391463,
-        "id": "chatcmpl-7xOuVOzYrGMBUIroHejJyKHpcwSzx",
-        "model": "gpt-3.5-turbo-0613",
-        "object": "chat.completion",
-        "usage": {
-            "completion_tokens": 43,
-            "prompt_tokens": 31,
-            "total_tokens": 74
-        }
-    },
-    "metadata": {
-        "route_name": "myusers",
-        "input_tokens": 31,
-        "output_tokens": 43,
-        "total_tokens": 74,
-        "model": "gpt-3.5-turbo",
-        "usage": 939,
-        "archive_enabled": true,
-        "retries": 0,
-        "throttled": false
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Sugar, commonly known as table sugar or sucrose, has the chemical formula C12H22O11. It is composed of carbon (C), hydrogen (H), and oxygen (O) atoms.",
+        "role": "assistant"
+      }
     }
+  ],
+  "created": 1701927969,
+  "id": "chatcmpl-8T1V3dUI2jXbaiaAbBWDR0NQmuhYS",
+  "model": "gpt-3.5-turbo-0613",
+  "object": "chat.completion",
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 41,
+    "prompt_tokens": 24,
+    "total_tokens": 65
+  }
 }
 ```
 
-## Metadata Fields
-| Field | Description | 
-| --------------- | --------------- | 
-| `route_name`    | Name of the Route on the Gateway, through which the request was sent to the LLM    | 
-| `input_tokens`    | Number of input tokens used in the prompt    | 
-| `output_tokens`    | Number of output tokens in the llm response    | 
-| `total_tokens`    | Number of tokens in the request + response      | 
-| `output_tokens`    | Number of output tokens in the llm response    | 
-| `model`    | Name(s) of Model used to query the LLM    | 
-| `usage`    | Total tokens used historically on this specific Route    | 
-| `archive_enabled`    | true if Archiving was enabled on this Route, false otherwise    | 
-| `archive_enabled`    | true if Archiving was enabled on this Route, false otherwise    | 
-| `retries`    | Number of times that gateway retried the request towards the LLM (when the LLM responds with a 429)    | 
-| `throttled`    | true if too many requests were sent by the applications and the request was throttled    | 
 
