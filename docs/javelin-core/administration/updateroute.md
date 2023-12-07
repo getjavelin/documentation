@@ -21,7 +21,7 @@ curl -X PUT \
             "retries": 5
         }
 }' \
-"http://localhost:9000/api/v1/routes/test_route_1"
+"https://api.javelin.live/v1/admin/routes/test_route_1"
 
 ```
 
@@ -34,8 +34,19 @@ curl -X PUT \
         Route
     )
 
+    import os
+
+    # Retrieve environment variables
+    javelin_api_key = os.getenv('JAVELIN_API_KEY')
+    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
+    llm_api_key = os.getenv('LLM_API_KEY')
+
     # create javelin client
-    client = JavelinClient(base_url="http://localhost:9000") # replace this with your javelin URL
+    client = JavelinClient(base_url="https://api.javelin.live",
+                        javelin_api_key=javelin_api_key,
+                        javelin_virtualapikey=javelin_virtualapikey,
+                        llm_api_key=llm_api_key
+    ) 
 
     # get the route (to see what we need to change)
     route_name = "test_route_1"

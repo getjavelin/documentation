@@ -19,10 +19,13 @@ route_data = {
         {
         "name": "eng_dept",
         "type": "chat",
-        "model": {
-         "name": "gpt-4-32k",
-         "provider": "openai",
-         "suffix": "/chat/completions"
+        "models": [ 
+            {
+                "name": "gpt-4-32k",
+                "provider": "openai",
+                "suffix": "/chat/completions"
+            }
+        ]
         "config": {
             "retries": 3,  # setting retries to 3
         },

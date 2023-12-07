@@ -10,11 +10,13 @@ When represented as json, the route object has the following structure:
   {
     "name": "name of the route",
     "type": "this could be `chat`, `completions`, `embeddings` etc.,",
-    "model": {
-      "name": "name of the model to use, like text-davinci-003",
-      "provider": "name of the llm provider - openai",
-      "suffix": "/chat/completions"
-    },
+    "models": [ 
+        {
+          "name": "name of the model to use, like text-davinci-003",
+          "provider": "name of the llm provider - openai",
+          "suffix": "/chat/completions"
+        } 
+    ],
     "config": {
       "rate_limit": 3,
       "archive": true,

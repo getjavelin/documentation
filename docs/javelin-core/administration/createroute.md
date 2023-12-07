@@ -11,18 +11,32 @@ curl -X POST \
 -d '{
         "name": "test_route_1",
         "type": "chat",
-        "model": {
-            "name": "text-davinci-003",
-            "provider": "openai",
-            "suffix": "/chat/completions"
-        },
+        "enabled": true,
+        "models": [ 
+            {
+                "name": "gpt-3.5-turbo",
+                "provider": "openai",
+                "suffix": "/chat/completions"
+            }
+        ],
         "config": {
             "rate_limit": 3,
+            "retries": 3,
             "archive": true,
-            "retries": 3
+            "retention": 7,
+            "budget": {
+                "enabled": true,
+                "annual": 100000,
+                "currency": "USD",
+            },
+            "dlp": {
+                "enabled": true, 
+                "strategy": "Inspect", 
+                "action": "notify"
+            },
         }
 }' \
-"http://localhost:9000/api/v1/routes/test_route_1"
+"https://api.javelin.live/v1/admin/routes/test_route_1"
 
 ```
 
@@ -35,22 +49,44 @@ curl -X POST \
         Route
     )
 
+    import os
+    
+    # Retrieve environment variables
+    javelin_api_key = os.getenv('JAVELIN_API_KEY')
+    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
+    llm_api_key = os.getenv('LLM_API_KEY')
+
     # create javelin client
-    client = JavelinClient(base_url="http://localhost:9000") # replace this with your javelin URL
+    client = JavelinClient(base_url="https://api.javelin.live",
+                        javelin_api_key=javelin_api_key,
+                        javelin_virtualapikey=javelin_virtualapikey,
+                        llm_api_key=llm_api_key
+    ) 
 
     route_data = {
             "name": "test_route_1",
             "type": "chat",
+            "enabled": True,
             "model": {
                 "name": "gpt-3.5-turbo",
                 "provider": "openai",
                 "suffix": "/chat/completions",
             },
             "config": {
-                "archive": True,
-                "organization": "myusers",
-                "retries": 3,
                 "rate_limit": 7,
+                "retries": 3,
+                "archive": True,
+                "retention": 7,
+                "budget": {
+                    "enabled": True,
+                    "annual": 100000,
+                    "currency": "USD",
+                },
+                "dlp": {
+                    "enabled": True, 
+                    "strategy": "Inspect", 
+                    "action": "notify"
+                },
             },
         }
 
