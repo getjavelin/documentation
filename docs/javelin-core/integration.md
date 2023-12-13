@@ -2,9 +2,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Applications
-Its easy to integration the applications that leverage LLMs with Javelin. 
+Its easy to integration the applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with zero code change.
 
-## Leveraging the Gateway
+## Leveraging the Javelin Platform
 Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, BARD etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent. 
 
 See [Python SDK](../javelin-python/quickstart) for details on how you can easily embed this within your AI Apps. 
@@ -35,7 +35,7 @@ curl -X POST \
     ],
     "temperature":0.8
 }' \
-"https://api.javelin.live/v1/admin/routes/test_route_1/query"
+"https://api.javelin.live/v1/query/{routename}"
 ```
 
 </TabItem>
@@ -82,7 +82,7 @@ curl -X POST \
 </Tabs>
 
 ## LLM Response
-All responses from Javelin are encapsulated in an `llm_response` structure with additional `metadata`. 
+All responses from Javelin are encapsulated in OpenAI response format. 
 
 For example, a request to OpenAI would look like the following:
 

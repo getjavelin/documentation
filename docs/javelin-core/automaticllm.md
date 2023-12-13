@@ -28,3 +28,5 @@ By automating model selection, Javelin removes the complexities involved in manu
 **Dynamic Adjustments:** As tasks evolve and demands change, Javelin can dynamically adjust its model selection criteria, ensuring sustained optimal performance.
 
 **User Preferences:** If a user has a specific preference or requirement, they can guide Javelin’s selection process by defining certain parameters or setting priorities.
+
+Please contact: support@getjavelin.io if you would like to use this feature. 

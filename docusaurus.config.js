@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Javelin',
-  tagline: 'Enterprise Scale LLM AI Gateway',
+  tagline: 'Enterprise Data Security for Safe, Responsible AI Use',
   url: 'https://getjavelin.io', // Your website URL
   baseUrl: '/', 
   onBrokenLinks: 'throw',
@@ -40,11 +40,6 @@ module.exports = {
           position: 'left',
           label: 'Langchain',
         },        // Add other links or dropdowns as you like...
-        {
-          href: 'https://github.com/getjavelin/javelin',
-          label: 'GitHub',
-          position: 'right',
-        },
       ],
     },
     footer: {

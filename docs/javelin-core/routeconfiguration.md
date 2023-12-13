@@ -1,8 +1,8 @@
-# Route Configuration
+# Integration Overview
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Javelin offers a variety of configuration options to setup policies, cost guardrails and traffic shaping. 
+Javelin offers a variety of configuration options to setup policies, cost guardrails and traffic shaping. You can easily connect your applications to route all LLM traffic through Javelin. 
 
 # Route Object
 When represented as json, the route object has the following structure:

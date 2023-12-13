@@ -1,13 +1,11 @@
-# Data Loss Prevention (DLP)
-
-Coming soon...
+# Data Protection
 
 ### Real-time Monitoring
 
-Javelin's DLP monitors data in real-time, providing instant alerts for any suspicious activity or potential data breaches.
+Javelin's Data Protection Engine monitors data in real-time, providing instant alerts for any suspicious activity or potential data breaches.
 
 ### Customizable Protection Policies
-Administrators can define specific data protection policies based on the organization's unique needs. This includes setting up rules for what constitutes sensitive data and determining the appropriate protective actions.
+Administrators can define specific data protection policies based on the organization's unique needs. This includes setting up rules for what constitutes sensitive data and determining the appropriate protective actions based on a large catalog of supported infotype classifiers. 
 
 ### Automated Response Actions
 Upon detecting a potential breach, Javelin's DLP can take automated actions, such as blocking data transfers, encrypting sensitive data, or notifying administrators.

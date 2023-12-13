@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('../../static/img/secure.png').default,
     description: (
       <>
-      Built with the latest security standards in mind, our platform ensures that your data remains protected, minimizing vulnerabilities and shielding against potential threats.      </>
+      Built with the latest security standards and advanced content filtering, Javelin ensures that your data remains protected, minimizing data leaks and shielding against threats & vulnerabilities.      </>
     ),
   },
   {
