@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <Layout
       title={`Welcome to ${siteConfig.title}`}
-      description="Javelin is an Enterprise AI Security Platform for safe, responsible LLM use. Dive in to learn more.">  {/* Adjust the description to something more relevant */}
+      description="Javelin is an Enterprise AI Platform for rapid, responsible LLM use. Dive in to learn more.">  {/* Adjust the description to something more relevant */}
       <HomepageHeader />
       <main>
         <HomepageFeatures />

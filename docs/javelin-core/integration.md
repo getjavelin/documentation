@@ -50,15 +50,18 @@ curl -X POST \
     import os
 
     # Retrieve environment variables
+    # You can find the Javelin API Key under Account->Developer settings 
     javelin_api_key = os.getenv('JAVELIN_API_KEY')
-    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
-    llm_api_key = os.getenv('LLM_API_KEY')
 
+    # If you are using Javelin's Secret Key Vault - you can setup the keys and use the virtual api key
+    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
+
+    # If you are not using Javelin's Secret Key Vault - you will need to provide the LLM Provider's key
+    # For OpenAI, you need to pass it in the Authentication Header Bearer Token
+    
     # create javelin client
-    client = JavelinClient(base_url="https://api.javelin.live",
-                        javelin_api_key=javelin_api_key,
-                        javelin_virtualapikey=javelin_virtualapikey,
-                        llm_api_key=llm_api_key
+    client = JavelinClient(javelin_api_key=javelin_api_key,
+                          javelin_virtualapikey=javelin_virtualapikey
     )
 
     # route name to get is "eng_dept"

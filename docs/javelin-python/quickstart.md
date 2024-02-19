@@ -19,9 +19,11 @@ Before making any API calls, initialize the client:
 from javelin_sdk import JavelinClient
 
     try:
-        url = JAVELIN_ENDPOINT # set actual javelin endpoint adress & port
+        javelin_api_key = os.getenv('JAVELIN_API_KEY')
+        javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
 
-        client = JavelinClient(base_url=url)
+        client = JavelinClient(javelin_api_key=javelin_api_key,
+                            javelin_virtualapikey=javelin_virtualapikey)
 
     except NetworkError as e:
         print("Failed to create client: Network Error")

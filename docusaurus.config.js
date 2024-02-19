@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Javelin',
-  tagline: 'Enterprise Data Security for Safe, Responsible AI Use',
+  tagline: 'Enterprise AI Platform for Rapid, Responsible AI Adoption',
   url: 'https://getjavelin.io', // Your website URL
   baseUrl: '/', 
   onBrokenLinks: 'throw',
