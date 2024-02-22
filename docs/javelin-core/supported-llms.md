@@ -11,8 +11,14 @@ We are always adding support for new models, supported models include those from
 **Google Gemini**,  
 **Mistral**,  
 **Anthropic**,  
+**Amazon Bedrock**,  
+**NVidia**,  
 **Cohere**,  
 **Llama2**,  
+**Meta**,  
+**Perplexity**,  
+**AnyScale**,  
+**TogetherAI**,  
 **HuggingFace**,  
 **Stanford Alpaca**  
 **and more...**

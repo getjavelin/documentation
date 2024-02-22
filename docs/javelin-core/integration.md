@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 Its easy to integration the applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with zero code change.
 
 ## Leveraging the Javelin Platform
-Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, BARD etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent. 
+Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, Gemini etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent. 
 
 See [Python SDK](../javelin-python/quickstart) for details on how you can easily embed this within your AI Apps. 
 
@@ -21,19 +21,20 @@ Javelin may send a request to one or more models based on the configured policie
 ```shell
 curl -X POST \
 -H "Content-Type: application/json" \
+-H "x-api-key: $JAVELIN_API_KEY" \
+-H "Authorization : Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-3.5-turbo",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a helpful assistant. Tell me who won the 2009 World Cup Soccer?"
-      },
-      {
-        "role": "user",
-        "content": "Hello!"
-      }
-    ],
-    "temperature":0.8
+  "messages": [
+    {
+      "role": "system",
+      "content": "Hello, you are a helpful scientific assistant"
+    },
+    {
+      "role": "user",
+      "content": "What is the chemical composition of sugar?"
+    }
+  ],
+  "temperature": 0.8
 }' \
 "https://api.javelin.live/v1/query/{routename}"
 ```
@@ -41,43 +42,45 @@ curl -X POST \
 </TabItem>
 <TabItem value="py" label="Python">
 
+```shell
+  $ pip install javelin-sdk
+```
+
 ```py
-    from javelin_sdk import (
-        JavelinClient,
-        Route
-    )
+from javelin_sdk import (
+    JavelinClient,
+    Route
+)
 
-    import os
+import os
 
-    # Retrieve environment variables
-    # You can find the Javelin API Key under Account->Developer settings 
-    javelin_api_key = os.getenv('JAVELIN_API_KEY')
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
+llm_api_key = os.getenv("OPENAI_API_KEY")
 
-    # If you are using Javelin's Secret Key Vault - you can setup the keys and use the virtual api key
-    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
+# create javelin client
+client = JavelinClient(javelin_api_key=javelin_api_key, 
+            llm_api_key=llm_api_key,
+            )
 
-    # If you are not using Javelin's Secret Key Vault - you will need to provide the LLM Provider's key
-    # For OpenAI, you need to pass it in the Authentication Header Bearer Token
-    
-    # create javelin client
-    client = JavelinClient(javelin_api_key=javelin_api_key,
-                          javelin_virtualapikey=javelin_virtualapikey
-    )
+# route name to get is {routename} e.g., sampleroute1
+query_data = {
+    "messages": [ 
+        {
+            "role": "system",
+            "content": "Hello, you are a helpful scientific assistant"
+        },
+        {
+            "role": "user",
+            "content": "What is the chemical composition of sugar?"
+        }
+    ],
+    "temperature": 0.8,
+}
 
-    # route name to get is "eng_dept"
-    route_name = "eng_dept"
 
-    query_data = {
-        "model": "gpt-3.5-turbo",
-        "messages": [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "Hello!"},
-        ],
-        "temperature": 0.8,
-    }
-
-    # now query the route, for async use `await client.aquery_route("test_route_1", query_data)`
-    response = client.query_route("test_route_1", query_data)
+# now query the route, for async use `await client.aquery_route("sampleroute1", query_data)`
+response = client.query_route("sampleroute1", query_data)
+print(response)
 
 ```
 
@@ -85,55 +88,29 @@ curl -X POST \
 </Tabs>
 
 ## LLM Response
-All responses from Javelin are encapsulated in OpenAI response format. 
-
-For example, a request to OpenAI would look like the following:
-
-<Tabs>
-<TabItem value="py" label="Python">
+All responses from Javelin are encapsulated in OpenAI response format. For example, a request to OpenAI would look like the following:
 
 ```shell
 {
-    "model": "gpt-3.5-turbo",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a helpful assistant. Tell me who won the 2009 World Cup Soccer?"
-      },
-      {
-        "role": "user",
-        "content": "Hello!"
-      }
-    ],
-    "temperature":0.8
-}
-```
-
-</TabItem>
-</Tabs>
-
-And, the response from the model through the gateway would look like the following:
-```shell
-{
-  "choices": [
+  "choices":[
     {
-      "finish_reason": "stop",
-      "index": 0,
-      "message": {
-        "content": "Sugar, commonly known as table sugar or sucrose, has the chemical formula C12H22O11. It is composed of carbon (C), hydrogen (H), and oxygen (O) atoms.",
-        "role": "assistant"
+      "finish_reason":"stop",
+      "index":0,
+      "logprobs":null,
+      "message":{
+        "content":"Sugar, also known as sucrose, has a chemical composition of C12H22O11. This means that each molecule of sucrose contains 12 carbon atoms, 22 hydrogen atoms, and 11 oxygen atoms.","role":"assistant"
       }
     }
   ],
-  "created": 1701927969,
-  "id": "chatcmpl-8T1V3dUI2jXbaiaAbBWDR0NQmuhYS",
-  "model": "gpt-3.5-turbo-0613",
-  "object": "chat.completion",
-  "system_fingerprint": null,
-  "usage": {
-    "completion_tokens": 41,
-    "prompt_tokens": 24,
-    "total_tokens": 65
+  "created":1708638149,
+  "id":"chatcmpl-8vB7lwjUgoJoWxkMSpvmikxrpzIrZ",
+  "model":"gpt-3.5-turbo-0125",
+  "object":"chat.completion",
+  "system_fingerprint":"fp_cbdb91ce3f",
+  "usage":{
+    "completion_tokens":45,
+    "prompt_tokens":27,
+    "total_tokens":72
   }
 }
 ```

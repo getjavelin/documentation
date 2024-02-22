@@ -10,6 +10,13 @@ module.exports = {
     'Features': [
       {
         type: 'category',
+        label: 'Secrets Vault',
+        items: [
+          'javelin-core/secretsvault/virtualkeys',
+        ]
+      },
+      {
+        type: 'category',
         label: 'Model Reliability',
         items: [
           'javelin-core/retries',
@@ -55,6 +62,18 @@ module.exports = {
           'javelin-core/auditarchive',      
         ]
       },
+    ],
+    'Playground': [
+      'javelin-core/playground/playground',
+    ],
+    'Processors': [
+      'javelin-processors/overview',
+    ],           
+    'Javelin GPTs': [
+      'javelin-gpt/overview',
+      'javelin-gpt/javelingpt',
+      'javelin-gpt/opengpt',
+      'javelin-gpt/vercelaisdk'
     ],
     'Python API Reference': [
       'javelin-python/quickstart',
