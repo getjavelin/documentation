@@ -45,9 +45,9 @@ module.exports = {
       'javelin-core/playground/overview',
       'javelin-core/playground/playground',
     ],
-    'Processors': [
+    'Guardrails Processors': [
       'javelin-processors/overview',
-      'javelin-processors/hallucination',
+      'javelin-processors/promptinjection',
       {
         type: 'category',
         label: 'Sensitive Data Protection',
@@ -58,18 +58,21 @@ module.exports = {
       },            
       {
         type: 'category',
+        label: 'Trust & Safety',
+        items: [
+          'javelin-processors/trustsafety',      
+          'javelin-processors/contentmoderation',
+          'javelin-processors/malware'
+        ]
+      },
+      {
+        type: 'category',
         label: 'Content Filtering',
         items: [
           'javelin-processors/keywordfilter',      
         ]
       },
-      {
-        type: 'category',
-        label: 'Trust & Safety',
-        items: [
-          'javelin-processors/trustsafety',      
-        ]
-      },
+      'javelin-processors/hallucination',
     ],           
     'Javelin GPTs': [
       'javelin-gpt/overview',

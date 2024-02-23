@@ -1,4 +1,4 @@
-# Trust & Safety
+# Overview
 
 Trust & Safety is a critical aspect of online platforms, focusing on creating and maintaining a secure and positive environment for users. This domain encompasses a range of strategies, policies, and tools designed to protect users and ensure a respectful, inclusive, and law-abiding online community.
 
