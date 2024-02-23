@@ -22,3 +22,9 @@ We are always adding support for new models, supported models include those from
 **HuggingFace**,  
 **Stanford Alpaca**  
 **and more...**
+
+
+- [LMSYS Chatbot Arena Leaderboard](https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard)
+- [Massive Text Embedding Benchmark (MTEB) Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
+- [HELM Leaderboard](https://crfm.stanford.edu/helm/lite/latest/#/leaderboard)
+- [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard)
