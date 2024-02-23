@@ -24,7 +24,7 @@ module.exports = {
         },
         {
           type: 'doc',
-          docId: 'javelin-core/retries',
+          docId: 'javelin-core/features/retries',
           position: 'left',
           label: 'Features',
         },

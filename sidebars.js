@@ -12,6 +12,7 @@ module.exports = {
         type: 'category',
         label: 'Secrets Vault',
         items: [
+          'javelin-core/secretsvault/overview',
           'javelin-core/secretsvault/virtualkeys',
         ]
       },
@@ -19,55 +20,56 @@ module.exports = {
         type: 'category',
         label: 'Model Reliability',
         items: [
-          'javelin-core/retries',
-          'javelin-core/ratelimits',
-          'javelin-core/loadbalancing',
-          'javelin-core/caching',
-          'javelin-core/hallucination',
+          'javelin-core/features/retries',
+          'javelin-core/features/ratelimits',
+          'javelin-core/features/loadbalancing',
+          'javelin-core/features/caching',
         ]
       },      
       {
         type: 'category',
-        label: 'Sensitive Data Protection',
-        items: [
-          'javelin-core/privacyredaction',
-          'javelin-core/infotypes',
-        ]
-      },            
-      {
-        type: 'category',
-        label: 'Content Filtering',
-        items: [
-          'javelin-core/keywordfilter',      
-        ]
-      },
-      {
-        type: 'category',
-        label: 'Trust & Safety',
-        items: [
-          'javelin-core/trustsafety',      
-        ]
-      },
-      {
-        type: 'category',
         label: 'Model Routing',
         items: [
-          'javelin-core/automaticllm',
+          'javelin-core/features/automaticllm',
         ]
       },                  
       {
         type: 'category',
         label: 'Compliance',
         items: [
-          'javelin-core/auditarchive',      
+          'javelin-core/features/auditarchive',      
         ]
       },
     ],
     'Playground': [
+      'javelin-core/playground/overview',
       'javelin-core/playground/playground',
     ],
     'Processors': [
       'javelin-processors/overview',
+      'javelin-processors/hallucination',
+      {
+        type: 'category',
+        label: 'Sensitive Data Protection',
+        items: [
+          'javelin-processors/privacyredaction',
+          'javelin-processors/infotypes',
+        ]
+      },            
+      {
+        type: 'category',
+        label: 'Content Filtering',
+        items: [
+          'javelin-processors/keywordfilter',      
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Trust & Safety',
+        items: [
+          'javelin-processors/trustsafety',      
+        ]
+      },
     ],           
     'Javelin GPTs': [
       'javelin-gpt/overview',
