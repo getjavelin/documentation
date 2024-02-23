@@ -30,4 +30,9 @@ Open GPT is an effort to democratize access to customizable AI models, similar t
 
 ## Conclusion
 
-An "Open GPT" initiative represents an ambitious step towards democratizing AI, focusing on openness, community, and accessibility. While it faces challenges, especially in terms of resources and sustainability, its potential for fostering innovation and inclusivity in AI is significant. By leveraging the collective expertise and resources of the global community, such initiatives could accelerate the development of ethical, transparent, and customizable AI tools that serve a wide array of personal, educational, and commercial purposes.
+The Javelin Open GPT initiative, with its focus on open standards, transparency, and accessibility, represents an important step towards democratizing AI technology. By leveraging and contributing to open-source projects, the initiative can facilitate the development of AI tools and applications that are more inclusive, ethical, and innovative. Such efforts are vital in ensuring that the benefits of AI are widely distributed and that the technology is developed in a manner that serves the broader interests of society.
+
+Here are a few projects we are excited about:
+
+- [Hugging Face's Chat UI](https://github.com/huggingface/chat-ui)  
+- [Hugging Face's Chat Assistants](https://huggingface.co/chat/assistants)
