@@ -43,6 +43,6 @@ Hate rather than this category).
 Javelin processors may also be used to easily intergate with external content moderation endpoints from providers such as:
 - [OpenAI Content Moderation](https://platform.openai.com/docs/guides/moderation), 
 - [Azure AI Content Safety](https://azure.microsoft.com/en-us/products/ai-services/ai-content-safety/) or 
-- [Lakera Content Moderation](www.lakera.ai) etc., 
+- [Lakera Content Moderation](https://www.lakera.ai) etc., 
 
 These services can be used to provide a comprehensive suite of tools for detecting and preventing harmful content. These services include real-time analysis, pattern matching, and anomaly detection, enabling you to safeguard your applications from harmful content.
