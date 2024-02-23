@@ -1,17 +1,17 @@
 # Javelin GPT 
 
-Javelin GPT is designed to execute queries across a spectrum of models, providing you with their outputs for analysis. Here's what I can do for you:
+Javelin GPT is designed to execute queries across a spectrum of models, providing you with their outputs for analysis. Here's a summary of what I can do:
 
-**Present a Catalog of Routes:** Upon request, I can show you a list of available routes or models you can query. This allows you to select 
-the most appropriate model for your specific needs.
+1. **Catalog of Routes:** I can present a catalog of routes or endpoints available for querying. This includes a range of fields and topics you might be interested in exploring.
 
-**Execute Queries Across Models:** I can run queries through various models to fetch insights on a wide range of topics. This can include generating text, analyzing data, providing explanations, and more.
+2. **Execute Queries Across Models:** I can run queries through various language models, delivering their outputs in their original form. This allows you to analyze the responses from different models side by side.
 
-**Deliver Outputs in Original Form:** When I provide results from different models, I present them without alteration. This includes any metrics related to faithfulness, relevancy, and context precision when available, allowing for transparent and unbiased analysis.
+3. **Direct Engagement with Model Outputs:** I showcase the results from queries unaltered, including metrics like faithfulness, relevancy, and context precision when available. This transparency lets you interpret these diverse insights independently.
 
-**Facilitate Direct Engagement with Model Outputs:** My role is to help you interact directly with the outputs from various models, enabling you to independently discern and interpret diverse insights.
+4. **Python Execution:** I can execute Python code in a stateful Jupyter notebook environment. This allows for data analysis, visualization, and any computation you might need assistance with.
 
-**Support with Browsing, Python, and Image Generation:** I can assist with internet searches, execute Python code for data analysis or manipulation, and generate images based on textual descriptions you provide.
+5. **Image Generation:** I have the ability to generate images based on text descriptions you provide. This can be used to visualize concepts, ideas, or scenarios.
 
-The goal is to empower you to navigate through and analyze insights from different models, enhancing your ability to make informed decisions based on a broad spectrum of AI-generated information.
+6. **API Interaction:** I can interact with external API endpoints to fetch or send data, enabling a broader range of functionalities and access to real-time information.
 
+The goal is to facilitate direct engagement with various model outputs, empowering you to discern and interpret insights independently, supported by my browsing, Python, and image generation skills.
