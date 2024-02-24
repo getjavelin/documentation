@@ -34,6 +34,10 @@ The Javelin Open GPT initiative, with its focus on open standards, transparency,
 
 Here are a few projects we are excited about:
 
-- [Hugging Face's Chat UI](https://github.com/huggingface/chat-ui)  
-- [Hugging Face's Chat Assistants](https://huggingface.co/chat/assistants)
-- [Open source implementation of the OpenAI 'data analysis mode' (aka ChatGPT + Python execution) based on Mistral-7B](https://github.com/xingyaoww/code-act) / [Hugging Face for Chat UI, ProjectJupyter for code executor](https://chat.xwang.dev)
+Hugging Face
+  - [Hugging Face's Chat UI](https://github.com/huggingface/chat-ui)  
+  - [Hugging Face's Chat Assistants](https://huggingface.co/chat/assistants)
+  - [Open source implementation of the OpenAI 'data analysis mode' (aka ChatGPT + Python execution) based on Mistral-7B](https://github.com/xingyaoww/code-act) / [Hugging Face for Chat UI, ProjectJupyter for code executor](https://chat.xwang.dev)
+
+LangChain
+  - [OpenGPTs](https://github.com/langchain-ai/opengpts)
