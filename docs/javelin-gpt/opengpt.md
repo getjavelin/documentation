@@ -35,10 +35,18 @@ The Javelin Open GPT initiative, with its focus on open standards, transparency,
 Here are a few projects we are excited about:
 
 **Hugging Face**
-  - [Hugging Face's Chat UI](https://github.com/huggingface/chat-ui)  
-  - [Hugging Face's Chat Assistants](https://huggingface.co/chat/assistants)
-  - [Open source implementation of the OpenAI 'data analysis mode' (aka ChatGPT + Python execution) based on Mistral-7B](https://github.com/xingyaoww/code-act) / [Hugging Face for Chat UI, ProjectJupyter for code executor](https://chat.xwang.dev)
-  - [Tokenizer Playground - How different models tokenize text](https://huggingface.co/spaces/Xenova/the-tokenizer-playground)  
+- [Hugging Face's Chat UI](https://github.com/huggingface/chat-ui)  
+- [Hugging Face's Chat Assistants](https://huggingface.co/chat/assistants)
+- [Open source implementation of the OpenAI 'data analysis mode' (aka ChatGPT + Python execution) based on Mistral-7B](https://github.com/xingyaoww/code-act) / [Hugging Face for Chat UI, ProjectJupyter for code executor](https://chat.xwang.dev)
+- [Tokenizer Playground - How different models tokenize text](https://huggingface.co/spaces/Xenova/the-tokenizer-playground)  
 
 **LangChain**
-  - [OpenGPTs](https://github.com/langchain-ai/opengpts)
+- [OpenGPTs](https://github.com/langchain-ai/opengpts)
+
+**Evals**
+- [Yet Another Applied LLM Benchmark](https://github.com/carlini/yet-another-applied-llm-benchmark)
+- [Evaluate-Iterate-Improve](https://github.com/uptrain-ai/uptrain)
+- [Open-Source Evaluation for GenAI Application Pipelines](https://github.com/relari-ai/continuous-eval)  
+
+**Standards**
+- [Establishing industry wide AI best practices and standards for AI Engineers](https://github.com/AI-Engineer-Foundation)

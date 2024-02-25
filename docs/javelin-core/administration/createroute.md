@@ -82,9 +82,7 @@ curl -X POST \
                     "currency": "USD",
                 },
                 "dlp": {
-                    "enabled": True, 
-                    "strategy": "Inspect", 
-                    "action": "notify"
+                    "enabled": False,
                 },
             },
         }
