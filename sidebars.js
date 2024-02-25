@@ -78,7 +78,7 @@ module.exports = {
       'javelin-gpt/overview',
       'javelin-gpt/javelingpt',
       // 'javelin-gpt/opengpt',
-      'javelin-gpt/vercelaisdk'
+      // 'javelin-gpt/vercelaisdk'
     ],
     'Python API Reference': [
       'javelin-python/quickstart',
