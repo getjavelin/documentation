@@ -98,7 +98,8 @@ All responses from Javelin are encapsulated in OpenAI response format. For examp
       "index":0,
       "logprobs":null,
       "message":{
-        "content":"Sugar, also known as sucrose, has a chemical composition of C12H22O11. This means that each molecule of sucrose contains 12 carbon atoms, 22 hydrogen atoms, and 11 oxygen atoms.","role":"assistant"
+        "content":"Sugar, also known as sucrose, has a chemical composition of C12H22O11. This means that each molecule of sucrose contains 12 carbon atoms, 22 hydrogen atoms, and 11 oxygen atoms.",
+        "role":"assistant"
       }
     }
   ],

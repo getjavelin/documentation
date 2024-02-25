@@ -77,7 +77,7 @@ module.exports = {
     'Javelin GPTs': [
       'javelin-gpt/overview',
       'javelin-gpt/javelingpt',
-      'javelin-gpt/opengpt',
+      // 'javelin-gpt/opengpt',
       'javelin-gpt/vercelaisdk'
     ],
     'Python API Reference': [
