@@ -43,7 +43,7 @@ curl -X POST \
 <TabItem value="py" label="Python">
 
 ```shell
-  $ pip install javelin-sdk
+pip install javelin-sdk
 ```
 
 ```py
