@@ -59,8 +59,7 @@ llm_api_key = os.getenv("OPENAI_API_KEY")
 
 # create javelin client
 client = JavelinClient(javelin_api_key=javelin_api_key, 
-            llm_api_key=llm_api_key,
-            )
+                       llm_api_key=llm_api_key)
 
 # route name to get is {routename} e.g., sampleroute1
 query_data = {

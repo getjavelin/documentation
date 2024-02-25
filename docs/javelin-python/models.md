@@ -5,12 +5,14 @@ A base model class for the Javelin client.
 
 **Fields**:
 
-- `rate_limit`: Maximum number of requests allowed for this route in a given time period.
-- `owner`: The individual or entity responsible for this route.
 - `organization`: The organizational unit or company associated with this route.
-- `archive`: Boolean indicating whether route data should be archived.
+- `owner`: The individual or entity responsible for this route.
+- `rate_limit`: Maximum number of requests allowed for this route in a given time period.
 - `retries`: Number of times the request should be retried in case of failures.
+- `archive`: Boolean indicating whether route data should be archived.
+- `retention`: Data retention period.
 - `budget`: Monetary or computational budget allocated for the operations of this route.
+- `dlp`: DLP configuration.
 ---
 
 
@@ -20,6 +22,7 @@ A base model class for the Javelin client.
 - `name`: The name of the LLM model.
 - `provider`: Entity or service providing this LLM model.
 - `suffix`: Additional descriptive or versioning information for the LLM model.
+- `weight`: Weight of the model.
 
 ---
 
@@ -27,8 +30,10 @@ A base model class for the Javelin client.
 **Fields**:
 
 - `name`: The unique identifier for this route.
-- `model`: Associated model for processing or handling requests on this route.
-- `config`: Configuration settings, like rate limits, associated with this route.
+- `type`: The type `chat`, `completions`, `embeddings` of this route.
+- `enabled`: Enable/Disable this route.
+- `models`: Associated models for processing or handling requests on this route.
+- `config`: Configuration settings, like rate limits, archive, budget associated with this route.
 
 ---
 

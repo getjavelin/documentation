@@ -25,10 +25,10 @@ import os
 
 try:
     javelin_api_key = os.getenv('JAVELIN_API_KEY')
-    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
+    llm_api_key = os.getenv("OPENAI_API_KEY")
 
     client = JavelinClient(javelin_api_key=javelin_api_key,
-                           javelin_virtualapikey=javelin_virtualapikey)
+                           llm_api_key=llm_api_key)
 
 except NetworkError as e:
     print("Failed to create client: Network Error")
@@ -46,6 +46,7 @@ route_data = {
     "models": [
         {
             "name": "gpt-3.5-turbo",
+            "enabled": True,
             "provider": "openai",
             "suffix": "/v1/chat/completions",
         }
@@ -87,7 +88,6 @@ Once Javelin has been setup, its easy to route your LLM calls through Javelin. J
 
 # create the object for the LLM request 
 query_data = {
-    "model": "gpt-3.5-turbo",
     "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Hello!"},
@@ -98,7 +98,7 @@ query_data = {
 # query the LLM through the gateway
 try:
     response = client.query_route("test_route_1", query_data)
-    pretty_print(response)
+    print(response)
 except UnauthorizedError as e:
     print("Failed to query route: Unauthorized")
 except NetworkError as e:
