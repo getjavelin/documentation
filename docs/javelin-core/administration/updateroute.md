@@ -8,6 +8,7 @@ import TabItem from '@theme/TabItem';
 ```shell
 curl -X PUT \
 -H "Content-Type: application/json" \
+-H "x-api-key: $JAVELIN_API_KEY" \
 -d '{
         "name": "test_route_1",
         "type": "chat",

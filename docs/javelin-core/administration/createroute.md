@@ -8,6 +8,7 @@ import TabItem from '@theme/TabItem';
 ```shell
 curl -X POST \
 -H "Content-Type: application/json" \
+-H "x-api-key: $JAVELIN_API_KEY" \
 -d '{
         "name": "test_route_1",
         "type": "chat",
@@ -27,13 +28,11 @@ curl -X POST \
             "budget": {
                 "enabled": true,
                 "annual": 100000,
-                "currency": "USD",
+                "currency": "USD"
             },
             "dlp": {
-                "enabled": true, 
-                "strategy": "Inspect", 
-                "action": "notify"
-            },
+                "enabled": false 
+            }
         }
 }' \
 "https://api.javelin.live/v1/admin/routes/test_route_1"
