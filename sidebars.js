@@ -73,13 +73,15 @@ module.exports = {
         ]
       },
       'javelin-processors/hallucination',
-    ],           
+    ],   
+    /*        
     'Javelin GPTs': [
-      'javelin-gpt/overview',
-      'javelin-gpt/javelingpt',
+      // 'javelin-gpt/overview',
+      // 'javelin-gpt/javelingpt',
       // 'javelin-gpt/opengpt',
       // 'javelin-gpt/vercelaisdk'
     ],
+    */
     'Python API Reference': [
       'javelin-python/quickstart',
       {
