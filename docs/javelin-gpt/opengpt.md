@@ -50,3 +50,4 @@ Here are a few projects we are excited about:
 
 **Standards**
 - [Establishing industry wide AI best practices and standards for AI Engineers](https://github.com/AI-Engineer-Foundation)
+- [The Data Provenance Initiative](https://github.com/Data-Provenance-Initiative/Data-Provenance-Collection)
