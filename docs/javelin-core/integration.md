@@ -16,7 +16,7 @@ Javelin may send a request to one or more models based on the configured policie
 
 
 <Tabs>
-<TabItem value="shell" label="cURL">
+<TabItem value="shell" label="curl">
 
 ```shell
 curl -X POST \
