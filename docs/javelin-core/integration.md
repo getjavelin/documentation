@@ -40,7 +40,51 @@ curl -X POST \
 ```
 
 </TabItem>
-<TabItem value="py" label="Python">
+
+<TabItem value="py1" label="OpenAI">
+
+```shell
+pip install openai
+```
+
+```py
+from openai import OpenAI
+
+'''
+# With OpenAI
+client = OpenAI(api_key=openai_key)
+'''
+
+import os
+
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
+llm_api_key = os.getenv("OPENAI_API_KEY")
+
+# With Javelin
+client = OpenAI(api_key=openai_key,
+                base_url="https://api.javelin.live/v1/query",
+                default_headers= {
+                  "x-javelin-route": f"sampleroute1", # route name 
+                  "x-api-key": javelin_api_key, 
+                }
+          )
+
+completion = client.chat.completions.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "system", "content": "Hello, you are a helpful scientific assistant"},
+    {"role": "user", "content": "What is the chemical composition of sugar?"}
+  ]
+)
+
+print(completion.choices[0].message)
+
+
+```
+
+</TabItem>
+
+<TabItem value="py2" label="JavelinSDK">
 
 ```shell
 pip install javelin-sdk
