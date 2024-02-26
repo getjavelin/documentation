@@ -15,7 +15,6 @@ A base model class for the Javelin client.
 - `dlp`: DLP configuration.
 ---
 
-
 ### `Model`
 **Fields**:
 
@@ -23,6 +22,14 @@ A base model class for the Javelin client.
 - `provider`: Entity or service providing this LLM model.
 - `suffix`: Additional descriptive or versioning information for the LLM model.
 - `weight`: Weight of the model.
+
+---
+
+### `Dlp`
+**Fields**:
+
+- `enabled`: Enable/Disable Data Loss Prevention(DLP).
+- `strategy`: Data Loss Prevention strategy inspect or de-identify.
 
 ---
 
@@ -52,23 +59,14 @@ A base model class for the Javelin client.
 
 ---
 
-### `ResponseMetaData`
-**Fields**:
-
-- `route_name`: Name of the route that produced this response.
-- `model`: Model associated with the response.
-- `archive_enabled`: Indicates if the archiving feature is enabled for this route.
-- `input_tokens`: Number of tokens in the input message or request.
-- `output_tokens`: Number of tokens in the output message or response.
-- `total_tokens`: Total tokens consumed in the processing.
-- `usage`: Metrics or data about the computational resources used.
-- `retries`: Number of retries attempted for producing this response.
-- `throttled`: Indicates if the request was throttled due to rate limits or other reasons.
-
----
-
 ### `QueryResponse`
 **Fields**:
 
-- `llm_response`: The main response or result data.
-- `metadata`: Additional metadata about the response, such as processing times and associated models.
+- `choices`: List of choices.
+- `created`: Creation timestamp.
+- `id`: Unique identifier of the response.
+- `model`: Model associated with the response.
+- `object`: Object type like chat.completion.
+- `system_fingerprint`: System fingerprint if available.
+- `usage`: Metrics or data about the computational resources used.
+- `javelin`: Processing data & metrics.
