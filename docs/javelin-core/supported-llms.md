@@ -12,7 +12,7 @@ We are always adding support for new models, supported models include those from
 [Amazon Bedrock](https://aws.amazon.com/bedrock)  
 [Google Gemini](https://ai.google.dev/models)  
 [HuggingFace](https://huggingface.co/models)  
-[Mistral](https://docs.mistral.ai/models/)  
+[Mistral](https://docs.mistral.ai/guides/model-selection/)  
 [Anthropic](https://www.anthropic.com/product)   
 [Cohere](https://cohere.com/)       
 [Llama2](https://llama.meta.com/llama2/)     
