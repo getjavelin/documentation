@@ -87,7 +87,7 @@ stream = client.chat.completions.create(
       {"role": "user", "content": "What is the chemical composition of sugar?"}
     ],
     stream=True,
-)1
+)
 
 for chunk in stream:
     print(chunk.choices[0].delta.content or "", end="")
