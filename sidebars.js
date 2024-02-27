@@ -98,6 +98,13 @@ module.exports = {
       },
       {
         type: 'category',
+        label: 'Setting Up Providers',
+        items: [
+          'javelin-core/providerconfiguration',
+        ]
+      },
+      {
+        type: 'category',
         label: 'Setting Up Routes',
         items: [
           'javelin-core/routeconfiguration',
@@ -107,7 +114,21 @@ module.exports = {
           'javelin-core/administration/updateroute',
           'javelin-core/administration/deleteroute',
         ]
-      }
+      },
+      {
+        type: 'category',
+        label: 'Setting Up Data Protection',
+        items: [
+          'javelin-core/dataprotectionconfiguration',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Setting Up Secrets',
+        items: [
+          'javelin-core/secretsconfiguration',
+        ]
+      },
     ],
     'Changelog': [
       'changelog'
