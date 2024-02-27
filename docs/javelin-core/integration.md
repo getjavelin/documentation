@@ -79,7 +79,7 @@ query_data = {
 
 # now query the route, for async use `await client.aquery_route("sampleroute1", query_data)`
 response = client.query_route("sampleroute1", query_data)
-print(response)
+print(response.model_dump_json(indent=2))
 
 ```
 
@@ -103,6 +103,7 @@ client = OpenAI(api_key=openai_key)
 # With Javelin
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["OPENAI_API_KEY"]
+
 javelin_headers = {
                     "x-javelin-route": "sampleroute1", # route name configured for OpenAI
                     "x-api-key": javelin_api_key       # virtual API Key for LLM provider keys
@@ -110,17 +111,16 @@ javelin_headers = {
 
 client = OpenAI(api_key=llm_api_key,
                 base_url="https://api.javelin.live/v1/query",
-                default_headers=javelin_headers
-          )
+                default_headers=javelin_headers)
+
 completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
     {"role": "system", "content": "Hello, you are a helpful scientific assistant"},
     {"role": "user", "content": "What is the chemical composition of sugar?"}
-  ]
-)
+  ])
 
-print(completion.choices[0].message)
+print(completion.model_dump_json(indent=2))
 
 '''
 # Streaming Responses
@@ -165,6 +165,7 @@ client = AzureOpenAI(
 # With Javelin
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["AZURE_OPENAI_API_KEY"]
+
 javelin_headers = {
                     "x-javelin-route": "sampleroute1", # route name configured for OpenAI
                     "x-api-key": javelin_api_key       # virtual API Key for LLM provider keys
@@ -172,16 +173,18 @@ javelin_headers = {
 
 client = AzureOpenAI(api_key=llm_api_key,
                      base_url="https://api.javelin.live/v1/query",
-                     default_headers=javelin_headers
-          )
+                     default_headers=javelin_headers,
+                     api_version="2023-07-01-preview")
+
 completion = client.chat.completions.create(
+  model="gpt-3.5-turbo",
   messages=[
     {"role": "system", "content": "Hello, you are a helpful scientific assistant"},
     {"role": "user", "content": "What is the chemical composition of sugar?"}
   ]
 )
 
-print(completion.choices[0].message)
+print(completion.model_dump_json(indent=2))
 
 '''
 # Streaming Responses
