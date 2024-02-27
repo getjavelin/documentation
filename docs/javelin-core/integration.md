@@ -78,6 +78,21 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message)
 
+'''
+# Streaming Responses
+stream = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "What is the chemical composition of sugar?"}
+    ],
+    stream=True,
+)1
+
+for chunk in stream:
+    print(chunk.choices[0].delta.content or "", end="")
+'''
+
 ```
 
 </TabItem>
