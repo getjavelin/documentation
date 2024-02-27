@@ -171,6 +171,8 @@ print(response)
 </TabItem>
 </Tabs>
 
+<!--
+
 ## LLM Response
 All responses from Javelin are encapsulated in OpenAI response format. For example, a request to OpenAI would look like the following:
 
@@ -199,5 +201,7 @@ All responses from Javelin are encapsulated in OpenAI response format. For examp
   }
 }
 ```
+
+-->
 
 
