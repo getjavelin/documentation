@@ -59,6 +59,7 @@ client = OpenAI(api_key=openai_key)
 # With Javelin
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["OPENAI_API_KEY"]
+
 client = OpenAI(api_key=llm_api_key,
                 base_url="https://api.javelin.live/v1/query",
                 default_headers= {
@@ -102,6 +103,7 @@ client = MistralClient(api_key=api_key)
 # With Javelin (Mistral SDK does not currently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py)
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["MISTRAL_API_KEY"]
+
 client = MistralClient(api_key=llm_api_key,
                        endpoint="https://api.javelin.live/v1/query",
                        headers= { 
@@ -159,7 +161,6 @@ query_data = {
     ],
     "temperature": 0.8,
 }
-
 
 # now query the route, for async use `await client.aquery_route("sampleroute1", query_data)`
 response = client.query_route("sampleroute1", query_data)
