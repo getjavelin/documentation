@@ -6,4 +6,4 @@ The Prompt Playground is designed to be a versatile and user-friendly environmen
 While using the Prompt Playground, you can either use configured Javelin Virtual Keys or use the Authorization header with bearer token to authenticate with the model provider. 
 
 ## GPTs
-Javelin also developed OpenAI GPT and OpenGPTs that may be used as alternative interfaces for crafting and testing prompts. Please contact: support@getjavelin.io if you would like to use this feature.
+Javelin also developed [OpenAI GPT](https://chat.openai.com/g/g-7kq4uSfJ4-javelin) and OpenGPTs that may be used as alternative interfaces for crafting and testing prompts. Please contact: support@getjavelin.io if you would like to use this feature.
