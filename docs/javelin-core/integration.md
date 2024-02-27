@@ -41,7 +41,51 @@ curl -X POST \
 
 </TabItem>
 
-<TabItem value="py1" label="OpenAI">
+<TabItem value="py1" label="JavelinSDK">
+
+```shell
+pip install javelin-sdk
+```
+
+```py
+from javelin_sdk import (
+    JavelinClient,
+    Route
+)
+
+import os
+
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
+llm_api_key = os.getenv("OPENAI_API_KEY")
+
+# create javelin client
+client = JavelinClient(javelin_api_key=javelin_api_key, 
+                       llm_api_key=llm_api_key)
+
+# route name to get is {routename} e.g., sampleroute1
+query_data = {
+    "messages": [ 
+        {
+            "role": "system",
+            "content": "Hello, you are a helpful scientific assistant"
+        },
+        {
+            "role": "user",
+            "content": "What is the chemical composition of sugar?"
+        }
+    ],
+    "temperature": 0.8,
+}
+
+# now query the route, for async use `await client.aquery_route("sampleroute1", query_data)`
+response = client.query_route("sampleroute1", query_data)
+print(response)
+
+```
+
+</TabItem>
+
+<TabItem value="py2" label="OpenAI">
 
 ```shell
 pip install openai
@@ -97,7 +141,68 @@ for chunk in stream:
 
 </TabItem>
 
-<TabItem value="py2" label="Mistral">
+<TabItem value="py3" label="Azure OpenAI">
+
+```shell
+pip install openai
+```
+
+```py
+from openai import AzureOpenAI
+import os
+
+'''
+# With Microsoft Azure OpenAI
+# gets the API Key from environment variable AZURE_OPENAI_API_KEY
+client = AzureOpenAI(
+    # https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#rest-api-versioning
+    api_version="2023-07-01-preview",
+    # https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/create-resource?pivots=web-portal#create-a-resource
+    azure_endpoint="https://example-endpoint.openai.azure.com",
+)
+'''
+
+# With Javelin
+javelin_api_key = os.environ['JAVELIN_API_KEY']
+llm_api_key = os.environ["AZURE_OPENAI_API_KEY"]
+javelin_headers = {
+                    "x-javelin-route": "sampleroute1", # route name configured for OpenAI
+                    "x-api-key": javelin_api_key       # virtual API Key for LLM provider keys
+                  }
+
+client = AzureOpenAI(api_key=llm_api_key,
+                     base_url="https://api.javelin.live/v1/query",
+                     default_headers=javelin_headers
+          )
+completion = client.chat.completions.create(
+  messages=[
+    {"role": "system", "content": "Hello, you are a helpful scientific assistant"},
+    {"role": "user", "content": "What is the chemical composition of sugar?"}
+  ]
+)
+
+print(completion.choices[0].message)
+
+'''
+# Streaming Responses
+stream = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "What is the chemical composition of sugar?"}
+    ],
+    stream=True,
+)
+
+for chunk in stream:
+    print(chunk.choices[0].delta.content or "", end="")
+'''
+
+```
+
+</TabItem>
+
+<TabItem value="py4" label="Mistral">
 
 ```shell
 pip install mistralai
@@ -120,7 +225,7 @@ client = MistralClient(api_key=api_key)
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["MISTRAL_API_KEY"]
 
-# Mistral SDK does not currently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py
+# SDK does not currently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py
 javelin_headers= { 
                     "x-javelin-route": "sampleroute2", # route name configured for Mistral
                      "x-api-key": javelin_api_key,     # virtual API Key for LLM provider keys
@@ -145,49 +250,6 @@ print(chat_response.choices[0].message)
 
 </TabItem>
 
-<TabItem value="py3" label="JavelinSDK">
-
-```shell
-pip install javelin-sdk
-```
-
-```py
-from javelin_sdk import (
-    JavelinClient,
-    Route
-)
-
-import os
-
-javelin_api_key = os.getenv('JAVELIN_API_KEY')
-llm_api_key = os.getenv("OPENAI_API_KEY")
-
-# create javelin client
-client = JavelinClient(javelin_api_key=javelin_api_key, 
-                       llm_api_key=llm_api_key)
-
-# route name to get is {routename} e.g., sampleroute1
-query_data = {
-    "messages": [ 
-        {
-            "role": "system",
-            "content": "Hello, you are a helpful scientific assistant"
-        },
-        {
-            "role": "user",
-            "content": "What is the chemical composition of sugar?"
-        }
-    ],
-    "temperature": 0.8,
-}
-
-# now query the route, for async use `await client.aquery_route("sampleroute1", query_data)`
-response = client.query_route("sampleroute1", query_data)
-print(response)
-
-```
-
-</TabItem>
 </Tabs>
 
 <!--
