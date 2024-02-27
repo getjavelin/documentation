@@ -56,10 +56,9 @@ import os
 client = OpenAI(api_key=openai_key)
 '''
 
+# With Javelin
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["OPENAI_API_KEY"]
-
-# With Javelin
 client = OpenAI(api_key=llm_api_key,
                 base_url="https://api.javelin.live/v1/query",
                 default_headers= {
@@ -67,7 +66,6 @@ client = OpenAI(api_key=llm_api_key,
                   "x-api-key": javelin_api_key, 
                 }
           )
-
 completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
@@ -77,7 +75,6 @@ completion = client.chat.completions.create(
 )
 
 print(completion.choices[0].message)
-
 
 ```
 
@@ -102,10 +99,9 @@ client = MistralClient(api_key=api_key)
 '''
 
 '''
+# With Javelin (Mistral SDK does not currently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py)
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["MISTRAL_API_KEY"]
-
-# With Javelin (Mistral SDK does not cureently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py)
 client = MistralClient(api_key=llm_api_key,
                        endpoint="https://api.javelin.live/v1/query",
                        headers= { 
@@ -113,7 +109,6 @@ client = MistralClient(api_key=llm_api_key,
                          "x-api-key": javelin_api_key, 
                        }
          )
-
 chat_response = client.chat(
   model="mistral-large-latest",
   messages=[
