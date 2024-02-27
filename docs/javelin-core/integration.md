@@ -59,13 +59,14 @@ client = OpenAI(api_key=openai_key)
 # With Javelin
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["OPENAI_API_KEY"]
+javelin_headers = {
+                    "x-javelin-route": f"sampleroute1", # route name configured for OpenAI
+                    "x-api-key": javelin_api_key
+                  }
 
 client = OpenAI(api_key=llm_api_key,
                 base_url="https://api.javelin.live/v1/query",
-                default_headers= {
-                  "x-javelin-route": f"sampleroute1", # route name configured for OpenAI
-                  "x-api-key": javelin_api_key, 
-                }
+                default_headers=javelin_headers
           )
 completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
@@ -100,16 +101,19 @@ client = MistralClient(api_key=api_key)
 '''
 
 '''
-# With Javelin (Mistral SDK does not currently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py)
+# With Javelin 
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["MISTRAL_API_KEY"]
 
+# Mistral SDK does not currently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py
+javelin_headers= { 
+                    "x-javelin-route": f"sampleroute2", # route name configured for Mistral
+                     "x-api-key": javelin_api_key, 
+                  }
+
 client = MistralClient(api_key=llm_api_key,
                        endpoint="https://api.javelin.live/v1/query",
-                       headers= { 
-                         "x-javelin-route": f"sampleroute2", # route name configured for Mistral
-                         "x-api-key": javelin_api_key, 
-                       }
+                       headers=javelin_headers
          )
 chat_response = client.chat(
   model="mistral-large-latest",
