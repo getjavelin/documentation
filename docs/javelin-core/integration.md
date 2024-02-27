@@ -49,16 +49,15 @@ pip install openai
 
 ```py
 from openai import OpenAI
+import os
 
 '''
 # With OpenAI
 client = OpenAI(api_key=openai_key)
 '''
 
-import os
-
-javelin_api_key = os.getenv('JAVELIN_API_KEY')
-llm_api_key = os.getenv("OPENAI_API_KEY")
+javelin_api_key = os.environ['JAVELIN_API_KEY']
+llm_api_key = os.environ["OPENAI_API_KEY"]
 
 # With Javelin
 client = OpenAI(api_key=llm_api_key,
@@ -93,6 +92,7 @@ pip install mistralai
 ```py
 from mistralai.client import MistralClient
 from mistralai.models.chat_completion import ChatMessage
+import os
 
 '''
 # With Mistral
@@ -101,15 +101,14 @@ model = "mistral-large-latest"
 client = MistralClient(api_key=api_key)
 '''
 
-import os
+'''
+javelin_api_key = os.environ['JAVELIN_API_KEY']
+llm_api_key = os.environ["MISTRAL_API_KEY"]
 
-javelin_api_key = os.environ('JAVELIN_API_KEY')
-llm_api_key = os.environ("MISTRAL_API_KEY")
-
-# With Javelin
+# With Javelin (Mistral SDK does not cureently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py)
 client = MistralClient(api_key=llm_api_key,
-                       base_url="https://api.javelin.live/v1/query",
-                       default_headers= {
+                       endpoint="https://api.javelin.live/v1/query",
+                       headers= { 
                          "x-javelin-route": f"sampleroute2", # route name configured for Mistral
                          "x-api-key": javelin_api_key, 
                        }
@@ -124,7 +123,7 @@ chat_response = client.chat(
 )
 
 print(chat_response.choices[0].message)
-
+'''
 
 ```
 
