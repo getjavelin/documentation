@@ -143,24 +143,13 @@ for chunk in stream:
 
 <TabItem value="py3" label="Azure OpenAI">
 
-```shell
+```shell<!--
 pip install openai
 ```
 
 ```py
 from openai import AzureOpenAI
 import os
-
-'''
-# With Microsoft Azure OpenAI
-# gets the API Key from environment variable AZURE_OPENAI_API_KEY
-client = AzureOpenAI(
-    # https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#rest-api-versioning
-    api_version="2023-07-01-preview",
-    # https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/create-resource?pivots=web-portal#create-a-resource
-    azure_endpoint="https://example-endpoint.openai.azure.com",
-)
-'''
 
 # With Javelin
 javelin_api_key = os.environ['JAVELIN_API_KEY']
@@ -199,54 +188,6 @@ stream = client.chat.completions.create(
 
 for chunk in stream:
     print(chunk.choices[0].delta.content or "", end="")
-'''
-
-```
-
-</TabItem>
-
-<TabItem value="py4" label="Mistral">
-
-```shell
-pip install mistralai
-```
-
-```py
-from mistralai.client import MistralClient
-from mistralai.models.chat_completion import ChatMessage
-import os
-
-'''
-# With Mistral
-api_key = os.environ["MISTRAL_API_KEY"]
-model = "mistral-large-latest"
-client = MistralClient(api_key=api_key)
-'''
-
-'''
-# With Javelin 
-javelin_api_key = os.environ['JAVELIN_API_KEY']
-llm_api_key = os.environ["MISTRAL_API_KEY"]
-
-# SDK does not currently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py
-javelin_headers= { 
-                    "x-javelin-route": "sampleroute2", # route name configured for Mistral
-                     "x-api-key": javelin_api_key,     # virtual API Key for LLM provider keys
-                  }
-
-client = MistralClient(api_key=llm_api_key,
-                       endpoint="https://api.javelin.live/v1/query",
-                       headers=javelin_headers
-         )
-chat_response = client.chat(
-  model="mistral-large-latest",
-  messages=[
-    {"role": "system", "content": "Hello, you are a helpful scientific assistant"},
-    {"role": "user", "content": "What is the chemical composition of sugar?"}
-  ]
-)
-
-print(chat_response.choices[0].message)
 '''
 
 ```
