@@ -61,7 +61,7 @@ javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["OPENAI_API_KEY"]
 javelin_headers = {
                     "x-javelin-route": "sampleroute1", # route name configured for OpenAI
-                    "x-api-key": javelin_api_key       # virtual API Key for provider keys
+                    "x-api-key": javelin_api_key       # virtual API Key for LLM provider keys
                   }
 
 client = OpenAI(api_key=llm_api_key,
@@ -108,7 +108,7 @@ llm_api_key = os.environ["MISTRAL_API_KEY"]
 # Mistral SDK does not currently support setting headers https://github.com/mistralai/client-python/blob/main/src/mistralai/client.py
 javelin_headers= { 
                     "x-javelin-route": "sampleroute2", # route name configured for Mistral
-                     "x-api-key": javelin_api_key,     # virtual API Key for provider keys
+                     "x-api-key": javelin_api_key,     # virtual API Key for LLM provider keys
                   }
 
 client = MistralClient(api_key=llm_api_key,
