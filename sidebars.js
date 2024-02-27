@@ -7,6 +7,13 @@ module.exports = {
     'Integrating Applications': [
       'javelin-core/integration',
     ],
+    'Langchain': [
+      'javelin-langchain-python/chain',
+    ],
+    'Playground': [
+      'javelin-core/playground/overview',
+      'javelin-core/playground/playground',
+    ],
     'Features': [
       {
         type: 'category',
@@ -40,10 +47,6 @@ module.exports = {
           'javelin-core/features/auditarchive',      
         ]
       },
-    ],
-    'Playground': [
-      'javelin-core/playground/overview',
-      'javelin-core/playground/playground',
     ],
     'Guardrails Processors': [
       'javelin-processors/overview',
@@ -105,9 +108,6 @@ module.exports = {
           'javelin-core/administration/deleteroute',
         ]
       }
-    ],
-    'Langchain': [
-      'javelin-langchain-python/chain',
     ],
     'Changelog': [
       'changelog'
