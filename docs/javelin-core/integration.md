@@ -95,24 +95,21 @@ pip install openai
 from openai import OpenAI
 import os
 
-'''
-# With OpenAI
-client = OpenAI(api_key=openai_key)
-'''
-
-# With Javelin
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["OPENAI_API_KEY"]
 
+# Javelin Headers
 javelin_headers = {
                     "x-javelin-route": "sampleroute1", # route name configured for OpenAI
                     "x-api-key": javelin_api_key       # virtual API Key for LLM provider keys
                   }
 
+# Create OpenAI Client
 client = OpenAI(api_key=llm_api_key,
                 base_url="https://api.javelin.live/v1/query",
                 default_headers=javelin_headers)
 
+# Query the model
 completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
@@ -122,7 +119,6 @@ completion = client.chat.completions.create(
 
 print(completion.model_dump_json(indent=2))
 
-'''
 # Streaming Responses
 stream = client.chat.completions.create(
     model="gpt-3.5-turbo",
@@ -135,7 +131,6 @@ stream = client.chat.completions.create(
 
 for chunk in stream:
     print(chunk.choices[0].delta.content or "", end="")
-'''
 
 ```
 
@@ -151,7 +146,7 @@ pip install openai
 from openai import AzureOpenAI
 import os
 
-# With Javelin
+# Javelin Headers
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["AZURE_OPENAI_API_KEY"]
 
@@ -175,7 +170,6 @@ completion = client.chat.completions.create(
 
 print(completion.model_dump_json(indent=2))
 
-'''
 # Streaming Responses
 stream = client.chat.completions.create(
     model="gpt-3.5-turbo",
@@ -189,10 +183,38 @@ stream = client.chat.completions.create(
 for chunk in stream:
   if chunk.choices:
     print(chunk.choices[0].delta.content or "", end="")
-'''
 
 ```
 
+</TabItem>
+
+<TabItem value="py4" label="Langchain">
+
+```py
+#  Option 1
+openai.api_base = "https://api.javelin.live/v1/query"
+llm = ChatOpenAI(
+    openai_api_key=os.environ['OPENAI_API_KEY'],
+    model_kwargs={
+      "extra_headers":{
+        "x-api-key": f"{JAVELIN_API_KEY}", # Javelin API key from admin
+        "x-javelin-route": "sample_route1" # Javelin route to use
+      }
+    }
+)
+
+# Option 2
+llm = ChatOpenAI(
+    openai_api_key=os.environ['OPENAI_API_KEY'],
+    model_kwargs={
+      "extra_headers":{
+        "x-api-key": f"{JAVELIN_API_KEY}"
+        "x-javelin-route": "sample_route1" # Javelin route to use
+      }
+    },
+    openai_api_base="https://api.javelin.live/v1/query",
+)
+```
 </TabItem>
 
 </Tabs>

@@ -8,6 +8,7 @@ module.exports = {
       'javelin-core/integration',
     ],
     'Langchain': [
+      'javelin-langchain-python/quickstart',
       'javelin-langchain-python/chain',
     ],
     'Playground': [

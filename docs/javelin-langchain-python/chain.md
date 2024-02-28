@@ -1,5 +1,7 @@
 # Chain Integration 
-Javelin is fully integrated into Langchain to support Apps already built on Langchain to rapidly use the Gateway to leverage all the features & capabilities of Javelin. 
+Javelin is fully integrated into Langchain to support Apps already built on Langchain to rapidly use the Gateway to leverage all the features & capabilities of Javelin.  
+
+**DEPRECATION NOTE:** Chain integration is currently **deprecated** and will be removed in the future.
 
 ## Installation and Setup
 Install `javelin_sdk` to interact with Javelin AI Gateway:
