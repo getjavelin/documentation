@@ -27,7 +27,7 @@ curl -X POST \
   "messages": [
     {
       "role": "system",
-      "content": "Hello, you are a helpful scientific assistant"
+      "content": "Hello, you are a helpful scientific assistant."
     },
     {
       "role": "user",
@@ -67,7 +67,7 @@ query_data = {
     "messages": [ 
         {
             "role": "system",
-            "content": "Hello, you are a helpful scientific assistant"
+            "content": "Hello, you are a helpful scientific assistant."
         },
         {
             "role": "user",
@@ -123,7 +123,7 @@ print(completion.model_dump_json(indent=2))
 stream = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
-      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "system", "content": "Hello, you are a helpful scientific assistant."},
       {"role": "user", "content": "What is the chemical composition of sugar?"}
     ],
     stream=True,
@@ -163,7 +163,7 @@ client = AzureOpenAI(api_key=llm_api_key,
 completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
-    {"role": "system", "content": "Hello, you are a helpful scientific assistant"},
+    {"role": "system", "content": "Hello, you are a helpful scientific assistant."},
     {"role": "user", "content": "What is the chemical composition of sugar?"}
   ]
 )
@@ -174,7 +174,7 @@ print(completion.model_dump_json(indent=2))
 stream = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
-      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "system", "content": "Hello, you are a helpful scientific assistant."},
       {"role": "user", "content": "What is the chemical composition of sugar?"}
     ],
     stream=True,
@@ -214,7 +214,7 @@ llm = ChatOpenAI(
 )
 
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful assistant."),
+    ("system", "Hello, you are a helpful scientific assistant."),
     ("user", "{input}")
 ])
 
