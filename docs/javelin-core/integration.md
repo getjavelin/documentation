@@ -100,8 +100,8 @@ llm_api_key = os.environ["OPENAI_API_KEY"]
 
 # Javelin Headers
 javelin_headers = {
-                    "x-javelin-route": "sampleroute1", # route name configured for OpenAI
-                    "x-api-key": javelin_api_key       # virtual API Key for LLM provider keys
+                    "x-api-key": javelin_api_key,       # Javelin API key from admin
+                     "x-javelin-route": "sampleroute1"  # Javelin route to use
                   }
 
 # Create OpenAI Client
@@ -151,8 +151,8 @@ javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["AZURE_OPENAI_API_KEY"]
 
 javelin_headers = {
-                    "x-javelin-route": "sampleroute1", # route name configured for OpenAI
-                    "x-api-key": javelin_api_key       # virtual API Key for LLM provider keys
+                    "x-api-key": javelin_api_key,     # Javelin API key from admin
+                    "x-javelin-route": "sampleroute1" # Javelin route to use
                   }
 
 client = AzureOpenAI(api_key=llm_api_key,
@@ -201,8 +201,8 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 llm_api_key = os.getenv("OPENAI_API_KEY")
 javelin_headers = {
-                    "x-api-key": javelin_api_key,
-                    "x-javelin-route": "openai", # route name configured for OpenAI
+                    "x-api-key": javelin_api_key,      # Javelin API key from admin
+                    "x-javelin-route": "sample_route1" # Javelin route to use
                   }
 
 llm = ChatOpenAI(
