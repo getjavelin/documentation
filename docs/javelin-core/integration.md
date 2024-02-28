@@ -191,29 +191,38 @@ for chunk in stream:
 <TabItem value="py4" label="LangChain">
 
 ```py
-#  Option 1
-openai.api_base = "https://api.javelin.live/v1/query"
-llm = ChatOpenAI(
-    openai_api_key=os.environ['OPENAI_API_KEY'],
-    model_kwargs={
-      "extra_headers":{
-        "x-api-key": f"{JAVELIN_API_KEY}", # Javelin API key from admin
-        "x-javelin-route": "sample_route1" # Javelin route to use
-      }
-    }
-)
+from openai import OpenAI
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 
-# Option 2
+import os
+
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
+llm_api_key = os.getenv("OPENAI_API_KEY")
+javelin_headers = {
+                    "x-api-key": javelin_api_key,
+                    "x-javelin-route": "openai", # route name configured for OpenAI
+                  }
+
 llm = ChatOpenAI(
-    openai_api_key=os.environ['OPENAI_API_KEY'],
+    openai_api_key=llm_api_key,
     model_kwargs={
-      "extra_headers":{
-        "x-api-key": f"{JAVELIN_API_KEY}"
-        "x-javelin-route": "sample_route1" # Javelin route to use
-      }
+      "extra_headers": javelin_headers
     },
     openai_api_base="https://api.javelin.live/v1/query",
 )
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant."),
+    ("user", "{input}")
+])
+
+output_parser = StrOutputParser()
+
+chain = prompt | llm | output_parser
+
+print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 ```
 </TabItem>
 
