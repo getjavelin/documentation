@@ -7,7 +7,7 @@ module.exports = {
     'Integrating Applications': [
       'javelin-core/integration',
     ],
-    'Langchain': [
+    'LangChain': [
       'javelin-langchain-python/quickstart',
       'javelin-langchain-python/chain',
     ],

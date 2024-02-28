@@ -188,7 +188,7 @@ for chunk in stream:
 
 </TabItem>
 
-<TabItem value="py4" label="Langchain">
+<TabItem value="py4" label="LangChain">
 
 ```py
 #  Option 1

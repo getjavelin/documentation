@@ -38,7 +38,7 @@ module.exports = {
           type: 'doc',
           docId: 'javelin-langchain-python/quickstart',
           position: 'left',
-          label: 'Langchain',
+          label: 'LangChain',
         },        // Add other links or dropdowns as you like...
       ],
     },
