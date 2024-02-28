@@ -10,7 +10,7 @@ Routes can be administered easily and quickly using the following operations:
 ### List Routes
 
 <Tabs>
-<TabItem value="shell" label="cURL">
+<TabItem value="shell" label="curl">
 
 ```js
 function helloWorld() {
@@ -41,7 +41,7 @@ function helloWorld() {
 ### Get Route
 
 <Tabs>
-<TabItem value="python" label="cURL">
+<TabItem value="python" label="curl">
 
 ```js
 function helloWorld() {
@@ -63,7 +63,7 @@ def hello_world():
 ### Create Route
 
 <Tabs>
-<TabItem value="python" label="cURL">
+<TabItem value="python" label="curl">
 
 ```js
 function helloWorld() {
@@ -107,7 +107,7 @@ def hello_world():
 ### Delete Route
 
 <Tabs>
-<TabItem value="python" label="cURL">
+<TabItem value="python" label="curl">
 
 ```js
 function helloWorld() {
@@ -129,7 +129,7 @@ def hello_world():
 ### Get Route
 
 <Tabs>
-<TabItem value="python" label="cURL">
+<TabItem value="python" label="curl">
 
 ```js
 function helloWorld() {
