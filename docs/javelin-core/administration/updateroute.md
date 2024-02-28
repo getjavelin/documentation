@@ -12,11 +12,13 @@ curl -X PUT \
 -d '{
         "name": "test_route_1",
         "type": "chat",
-        "model": {
-            "name": "gpt-4",
-            "provider": "openai",
-            "suffix": "/chat/completions"
-        },
+        "models": [
+            {
+                "name": "gpt-4",
+                "provider": "openai",
+                "suffix": "/chat/completions"
+            }
+        ],
         "config": {
             "rate_limit": 3,
             "retries": 5
@@ -30,36 +32,32 @@ curl -X PUT \
 <TabItem value="py" label="Python">
 
 ```py
-    from javelin_sdk import (
-        JavelinClient,
-        Route
-    )
+from javelin_sdk import (
+    JavelinClient,
+    Route
+)
 
-    import os
+import os
 
-    # Retrieve environment variables
-    javelin_api_key = os.getenv('JAVELIN_API_KEY')
-    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
-    llm_api_key = os.getenv('LLM_API_KEY')
+# Retrieve environment variables
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
-    # create javelin client
-    client = JavelinClient(base_url="https://api.javelin.live",
-                        javelin_api_key=javelin_api_key,
-                        javelin_virtualapikey=javelin_virtualapikey,
-                        llm_api_key=llm_api_key
-    ) 
+# create javelin client
+client = JavelinClient(base_url="https://api.javelin.live",
+                       javelin_api_key=javelin_api_key,
+) 
 
-    # get the route (to see what we need to change)
-    route_name = "test_route_1"
-    route = client.get_route(route_name)
+# get the route (to see what we need to change)
+route_name = "test_route_1"
+route = client.get_route(route_name)
 
-    # make the necessary route changes
-    route.model.name = "gpt-4"    
-    route.config.retries = 5      
-    route.config.rate_limit = 3   
+# make the necessary route changes
+route.models[0].name = "gpt-4"    
+route.config.retries = 5      
+route.config.rate_limit = 3   
 
-    # update the route, for async use `await client.aupdate_route(route)`
-    client.update_route(route)
+# update the route, for async use `await client.aupdate_route(route)`
+client.update_route(route)
 
 ```
 

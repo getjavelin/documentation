@@ -22,7 +22,7 @@ Javelin may send a request to one or more models based on the configured policie
 curl -X POST \
 -H "Content-Type: application/json" \
 -H "x-api-key: $JAVELIN_API_KEY" \
--H "Authorization : Bearer $OPENAI_API_KEY" \
+-H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
   "messages": [
     {
