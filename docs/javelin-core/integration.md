@@ -206,11 +206,11 @@ javelin_headers = {
                   }
 
 llm = ChatOpenAI(
+    openai_api_base="https://api.javelin.live/v1/query",
     openai_api_key=llm_api_key,
     model_kwargs={
       "extra_headers": javelin_headers
     },
-    openai_api_base="https://api.javelin.live/v1/query",
 )
 
 prompt = ChatPromptTemplate.from_messages([
