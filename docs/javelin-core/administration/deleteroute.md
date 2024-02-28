@@ -13,29 +13,25 @@ curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/adm
 <TabItem value="py" label="Python">
 
 ```py
-    from javelin_sdk import (
-        JavelinClient,
-        Route
-    )
-    import os
+from javelin_sdk import (
+    JavelinClient,
+    Route
+)
+import os
  
-    # Retrieve environment variables
-    javelin_api_key = os.getenv('JAVELIN_API_KEY')
-    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
-    llm_api_key = os.getenv('LLM_API_KEY')
+# Retrieve environment variables
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
-    # create javelin client
-    client = JavelinClient(base_url="https://api.javelin.live",
-                    javelin_api_key=javelin_api_key,
-                    javelin_virtualapikey=javelin_virtualapikey,
-                    llm_api_key=llm_api_key
-    )
+# create javelin client
+client = JavelinClient(base_url="https://api.javelin.live",
+                       javelin_api_key=javelin_api_key,
+)
 
-    # route name to delete is "eng_dept"
-    route_name = "eng_dept"
+# route name to delete is "test_route_1"
+route_name = "test_route_1"
 
-    # delete the route, for async use `await client.adelete_route(route_name)`
-    client.delete_route(route_name) 
+# delete the route, for async use `await client.adelete_route(route_name)`
+client.delete_route(route_name) 
 
 ```
 
