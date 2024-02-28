@@ -188,10 +188,14 @@ for chunk in stream:
 
 </TabItem>
 
-<TabItem value="py4" label="LangChain">
+<TabItem value="py4" label="LangChain(OpenAI)">
+
+```shell<!--
+pip install langchain
+pip install langchain-openai
+```
 
 ```py
-from openai import OpenAI
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser

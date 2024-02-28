@@ -2,8 +2,12 @@
 
 With your LangChain environment, you can use Javelin by changing the API base and adding Javelin headers
 
+```shell<!--
+pip install langchain
+pip install langchain-openai
+```
+
 ```python
-from openai import OpenAI
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
