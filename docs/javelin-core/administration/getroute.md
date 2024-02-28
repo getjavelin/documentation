@@ -13,30 +13,26 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/
 <TabItem value="py" label="Python">
 
 ```py
-    from javelin_sdk import (
-        JavelinClient,
-        Route
-    )
+from javelin_sdk import (
+    JavelinClient,
+    Route
+)
 
-    import os
+import os
 
-    # Retrieve environment variables
-    javelin_api_key = os.getenv('JAVELIN_API_KEY')
-    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
-    llm_api_key = os.getenv('LLM_API_KEY')
-
-    # create javelin client
-    client = JavelinClient(base_url="https://api.javelin.live",
+# Retrieve environment variables
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
+   
+# create javelin client
+client = JavelinClient(base_url="https://api.javelin.live",
                         javelin_api_key=javelin_api_key,
-                        javelin_virtualapikey=javelin_virtualapikey,
-                        llm_api_key=llm_api_key
-    ) 
+) 
 
-    # route name to get is "eng_dept"
-    route_name = "eng_dept"
+# route name to get is "test_route_1"
+route_name = "test_route_1"
 
-    # get the route, for async use `await client.aget_route(route_name)`
-    print(client.get_route(route_name))
+# get the route, for async use `await client.aget_route(route_name)`
+print(client.get_route(route_name))
 ```
 
 </TabItem>
