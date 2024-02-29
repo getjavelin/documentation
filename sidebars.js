@@ -103,6 +103,9 @@ module.exports = {
         items: [
           'javelin-core/providerconfiguration',
           'javelin-core/administration/createprovider',
+          'javelin-core/administration/getprovider',
+          'javelin-core/administration/listproviders',
+          'javelin-core/administration/updateprovider',
           'javelin-core/administration/deleteprovider',
         ]
       },
