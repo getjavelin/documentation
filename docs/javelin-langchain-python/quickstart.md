@@ -9,22 +9,10 @@ pip install langchain-openai
 
 ```python
 # Code snippet
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
-
-import os
-
-javelin_api_key = os.getenv('JAVELIN_API_KEY')
-llm_api_key = os.getenv("OPENAI_API_KEY")
-javelin_headers = {
-                    "x-api-key": javelin_api_key,      # Javelin API key from admin
-                    "x-javelin-route": "sample_route1" # Javelin route to use
-                  }
 
 llm = ChatOpenAI(
     openai_api_base="https://api.javelin.live/v1/query",
-    openai_api_key=llm_api_key,
+    openai_api_key=openai_api_key, # OpenAI API key
     model_kwargs={
       "extra_headers":{
         "x-api-key": f"{JAVELIN_API_KEY}", # Javelin API key from admin
@@ -52,7 +40,7 @@ model = ChatOpenAI(
     model_kwargs={
         "extra_headers":{
         "x-api-key": f"{os.getenv('JAVELIN_API_KEY')}",
-        "x-javelin-route": "myusers",
+        "x-javelin-route": "sample_route1", # Javelin route to use
         }
     }
 )
