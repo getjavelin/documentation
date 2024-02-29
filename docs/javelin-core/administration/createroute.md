@@ -1,4 +1,4 @@
-# Creating Routes
+# Creating Route
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

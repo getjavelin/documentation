@@ -1,4 +1,4 @@
-# Creating Providers
+# Creating Provider
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

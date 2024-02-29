@@ -1,4 +1,4 @@
-# Updating Routes
+# Updating Route
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

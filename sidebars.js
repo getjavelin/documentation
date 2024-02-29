@@ -126,6 +126,11 @@ module.exports = {
         label: 'Setting Up Data Protection',
         items: [
           'javelin-core/dataprotectionconfiguration',
+          'javelin-core/administration/createtemplate',
+          'javelin-core/administration/gettemplate',
+          'javelin-core/administration/listtemplates',
+          'javelin-core/administration/updatetemplate',
+          'javelin-core/administration/deletetemplate',
         ]
       },
       {
@@ -133,6 +138,11 @@ module.exports = {
         label: 'Setting Up Secrets',
         items: [
           'javelin-core/secretsconfiguration',
+          'javelin-core/administration/createvkey',
+          'javelin-core/administration/getvkey',
+          'javelin-core/administration/listvkeys',
+          'javelin-core/administration/updatevkey',
+          'javelin-core/administration/deletevkey',
         ]
       },
     ],
