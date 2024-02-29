@@ -1,4 +1,4 @@
-# Deleting Route
+# Getting Provider
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -6,34 +6,39 @@ import TabItem from '@theme/TabItem';
 <TabItem value="shell" label="curl">
 
 ```shell
-curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/routes/test_route_1"  
+curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/providers/openai"  
 ```
 
 </TabItem>
+
+<!--
 <TabItem value="py" label="Python">
 
 ```py
 from javelin_sdk import (
     JavelinClient,
-    Route
+    Provider
 )
+
 import os
- 
+
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
-
+   
 # create javelin client
 client = JavelinClient(base_url="https://api.javelin.live",
                        javelin_api_key=javelin_api_key,
-)
+) 
 
-# route name to delete is "test_route_1"
-route_name = "test_route_1"
+# provider name to get is "openai"
+provider_name = "openai"
 
-# delete the route, for async use `await client.adelete_route(route_name)`
-client.delete_route(route_name) 
-
+# get the route, for async use `await client.aget_provider(provider_name)`
+print(client.get_provider(provider_name))
 ```
 
 </TabItem>
+
+-->
+
 </Tabs>

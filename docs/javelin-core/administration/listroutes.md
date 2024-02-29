@@ -3,7 +3,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-<TabItem value="shell" label="cURL">
+<TabItem value="shell" label="curl">
 
 ```shell
 curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/routes"
@@ -13,27 +13,23 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/
 <TabItem value="py" label="Python">
 
 ```py
-    from javelin_sdk import (
-        JavelinClient,
-        Route
-    )
+from javelin_sdk import (
+    JavelinClient,
+    Route
+)
 
-    import os
+import os
 
-    # Retrieve environment variables
-    javelin_api_key = os.getenv('JAVELIN_API_KEY')
-    javelin_virtualapikey = os.getenv('JAVELIN_VIRTUALAPIKEY')
-    llm_api_key = os.getenv('LLM_API_KEY')
+# Retrieve environment variables
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
-    # create javelin client
-    client = JavelinClient(base_url="https://api.javelin.live",
-                        javelin_api_key=javelin_api_key,
-                        javelin_virtualapikey=javelin_virtualapikey,
-                        llm_api_key=llm_api_key
-    ) 
+# create javelin client
+client = JavelinClient(base_url="https://api.javelin.live",
+                       javelin_api_key=javelin_api_key,
+) 
 
-    # print out the list of routes, for async use `await client.alist_routes()`
-    print(client.list_routes())
+# print out the list of routes, for async use `await client.alist_routes()`
+print(client.list_routes())
 
 ```
 

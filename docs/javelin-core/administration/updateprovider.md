@@ -10,31 +10,30 @@ curl -X PUT \
 -H "Content-Type: application/json" \
 -H "x-api-key: $JAVELIN_API_KEY" \
 -d '{
-        "name": "test_route_1",
-        "type": "chat",
-        "models": [
-            {
-                "name": "gpt-4",
-                "provider": "openai",
-                "suffix": "/chat/completions"
-            }
-        ],
+        "name": "openai",
+        "type": "closedsource",
         "config": {
-            "rate_limit": 3,
-            "retries": 5
+            "api_base": "https://api.openai.com",
+            "api_type": "",
+            "api_version": "v1",
+            "organization": "sales",
+            "deployment_name": ""
         }
 }' \
-"https://api.javelin.live/v1/admin/routes/test_route_1"
+"https://api.javelin.live/v1/admin/providers/openai"
 
 ```
 
 </TabItem>
+
+<!--
+
 <TabItem value="py" label="Python">
 
 ```py
 from javelin_sdk import (
     JavelinClient,
-    Route
+    Provider
 )
 
 import os
@@ -47,19 +46,22 @@ client = JavelinClient(base_url="https://api.javelin.live",
                        javelin_api_key=javelin_api_key,
 ) 
 
-# get the route (to see what we need to change)
-route_name = "test_route_1"
-route = client.get_route(route_name)
+# get the provider (to see what we need to change)
+provider_name = "openai"
+provider = client.get_provider(provider_name)
 
 # make the necessary route changes
-route.models[0].name = "gpt-4"    
-route.config.retries = 5      
-route.config.rate_limit = 3   
+provider.name = "openai"
+provider.type = "closedsource"
+provider.enabled = True
 
-# update the route, for async use `await client.aupdate_route(route)`
-client.update_route(route)
+# update the provider, for async use `await client.aupdate_provider(provider)`
+client.update_provider(provider)
 
 ```
 
 </TabItem>
+
+-->
+
 </Tabs>
