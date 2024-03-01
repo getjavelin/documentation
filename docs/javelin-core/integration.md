@@ -14,9 +14,9 @@ See [Javelin Configuration](routeconfiguration) section, for details on how to s
 ## Querying an LLM
 Javelin may send a request to one or more models based on the configured policies and route configurations and return back a response.
 
-
+### REST API
 <Tabs>
-<TabItem value="shell" label="curl">
+<TabItem value="shell" label="cURL">
 
 ```shell
 curl -X POST \
@@ -40,8 +40,11 @@ curl -X POST \
 ```
 
 </TabItem>
+</Tabs>
 
-<TabItem value="py1" label="JavelinSDK">
+### Python
+<Tabs>
+<TabItem value="py1" label="Javelin SDK">
 
 ```shell
 pip install javelin-sdk
@@ -229,40 +232,38 @@ chain = prompt | llm | output_parser
 print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 ```
 </TabItem>
-
 </Tabs>
 
-<!--
+### Javascript/Typescript
 
-## LLM Response
-All responses from Javelin are encapsulated in OpenAI response format. For example, a request to OpenAI would look like the following:
+<Tabs>
+<TabItem value="js1" label="OpenAI(JS)">
 
 ```shell
-{
-  "choices":[
-    {
-      "finish_reason":"stop",
-      "index":0,
-      "logprobs":null,
-      "message":{
-        "content":"Sugar, also known as sucrose, has a chemical composition of C12H22O11. This means that each molecule of sucrose contains 12 carbon atoms, 22 hydrogen atoms, and 11 oxygen atoms.",
-        "role":"assistant"
-      }
-    }
-  ],
-  "created":1708638149,
-  "id":"chatcmpl-8vB7lwjUgoJoWxkMSpvmikxrpzIrZ",
-  "model":"gpt-3.5-turbo-0125",
-  "object":"chat.completion",
-  "system_fingerprint":"fp_cbdb91ce3f",
-  "usage":{
-    "completion_tokens":45,
-    "prompt_tokens":27,
-    "total_tokens":72
-  }
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+  baseURL: "https://api.javelin.live/v1/query",
+  defaultHeaders: {
+    "x-api-key": `${process.env.JAVELIN_API_KEY}`,
+    "x-javelin-route": "myusers",
+  },
+});
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "system", content: "You are a helpful assistant." }],
+    model: "gpt-3.5-turbo",
+  });
+
+  console.log(completion.choices[0]);
 }
+
+main();
+
 ```
 
--->
-
+</TabItem>
+</Tabs>
 
