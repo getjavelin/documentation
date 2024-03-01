@@ -2,7 +2,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Applications
-Its easy to integration the applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with zero code change.
+Its easy to integration the applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with 3 lines of code change.
 
 ## Leveraging the Javelin Platform
 Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, Gemini etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent. 
@@ -239,6 +239,10 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 <Tabs>
 <TabItem value="js1" label="OpenAI">
 
+```shell
+npm install openai
+```
+
 ```js
 import OpenAI from "openai";
 
@@ -267,6 +271,10 @@ main();
 </TabItem>
 
 <TabItem value="js2" label="Langchain">
+
+```shell
+npm install @langchain/openai
+```
 
 ```js
 
