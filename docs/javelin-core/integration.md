@@ -237,9 +237,9 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 ### Javascript/Typescript
 
 <Tabs>
-<TabItem value="js1" label="OpenAI(JS)">
+<TabItem value="js1" label="OpenAI">
 
-```shell
+```js
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -247,7 +247,7 @@ const openai = new OpenAI({
   baseURL: "https://api.javelin.live/v1/query",
   defaultHeaders: {
     "x-api-key": `${process.env.JAVELIN_API_KEY}`,
-    "x-javelin-route": "myusers",
+    "x-javelin-route": "sample_route1",
   },
 });
 
@@ -265,5 +265,33 @@ main();
 ```
 
 </TabItem>
+
+<TabItem value="js2" label="Langchain">
+
+```js
+
+import { ChatOpenAI } from '@langchain/openai';
+
+const llm = new ChatOpenAI({
+    openAIApiKey: process.env.OPENAI_API_KEY,
+    configuration: {
+        basePath: "https://api.javelin.live/v1/query",
+        defaultHeaders: {
+          "x-api-key": `${process.env.JAVELIN_API_KEY}`,
+          "x-javelin-route": "sample_route1",
+        },
+    },
+});
+
+async function main() {
+  const response = await llm.invoke("tell me a joke?");
+  console.log(response);
+}
+
+main();
+
+``` 
+</TabItem>
+
 </Tabs>
 
