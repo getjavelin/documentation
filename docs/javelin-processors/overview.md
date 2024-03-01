@@ -1,8 +1,10 @@
 # Overview
 
-Javelin's core foundation is built around the notion of bounded functional units. Each function within the platform is encapsulated into independent processing units, referred to as processors. 
+Javelin's core foundation is built around the notion of bounded functional units. Each function within the platform is encapsulated into independent processing units, referred to as `Processors`. 
 
 These processors are chained together to form Directed Acyclic Graphs (DAGs) — creating structured execution pathways known as processor chains. The structure of these DAGs allows for precise control over the execution flow within the platform, enabling a highly customizable and efficient processing environment.
+
+In Javelin, you can implement Guardrails and build custom extensions and integrations as `Processors`.
 
 ## Processor Execution Framework
 The processors in Javelin can operate in two distinct modes: asynchronous or synchronous. This operational model is selected during the initialization phase of each processor.
