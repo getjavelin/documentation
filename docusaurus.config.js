@@ -24,9 +24,9 @@ module.exports = {
         },
         {
           type: 'doc',
-          docId: 'javelin-core/features/retries',
+          docId: 'javelin-processors/overview',
           position: 'left',
-          label: 'Features',
+          label: 'Guardrails',
         },
         {
           type: 'doc',
