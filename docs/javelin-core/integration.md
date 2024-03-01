@@ -191,7 +191,7 @@ for chunk in stream:
 
 </TabItem>
 
-<TabItem value="py4" label="LangChain(OpenAI)">
+<TabItem value="py4" label="LangChain">
 
 ```shell<!--
 pip install langchain
