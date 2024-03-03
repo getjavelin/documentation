@@ -38,5 +38,6 @@ These configuration settings are all defined per `provider`, they are not global
 | `deployment_name`   | In scenarios where an API is deployed across different environments (development, testing, production) or configurations, this field specifies the name of the particular deployment you are interacting with. It helps in managing different stages of development and deployment cycles, allowing for targeted API calls to the appropriate environment. This is particularly useful for testing new features or updates in a controlled manner before they are rolled out to the production environment. | 
 
 ## "open" models
+- [Llama](https://llama.meta.com/)
 - [Gemma](https://opensource.googleblog.com/2024/02/building-open-models-responsibly-gemini-era.html)
 - 
