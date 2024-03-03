@@ -26,12 +26,12 @@ These configuration settings are all defined per `secret`, they are not global a
 
 | Field | Description | 
 | --------------- | --------------- | 
-| `api_key` | Unique Key for the Secret | 
-| `api_key_secret_name` | Name for the Secret | 
-| `api_key_secret_key` | API Key for the Secret | 
-| `api_key_secret_key_javelin` | Virtual API Key for the Secret | 
-| `provider_name` | Provider Name for the Secret | 
-| `query_param_key` | Query Param Key for the Secret | 
-| `header_key` | Header Key for the Secret | 
-| `group` | Group for the Secret | 
-| `enabled` | Whether the secret is enabled | 
+| `api_key` | A unique identifier assigned to the API secret. This key is used to reference the secret within your system or codebase, ensuring that the actual sensitive values are not exposed | 
+| `api_key_secret_name` | The descriptive name given to the secret. This name helps users and administrators identify the purpose or association of the secret, such as which service or API it is used for | 
+| `api_key_secret_key` | The actual secret key or token provided by the provider. This is the sensitive piece of information that grants access to the API and should be protected accordingly | 
+| `api_key_secret_key_javelin` | A virtual API key that represents the original secret within a secure environment like Javelin. This abstraction layer enhances security by minimizing direct exposure of the actual secret key | 
+| `provider_name` | Identifies the provider or platform to which the secret pertains. This clarifies the context in which the secret is used, aiding in its management and application | 
+| `query_param_key` | The key name for passing the secret as a query parameter in API requests. This is relevant for APIs that authenticate requests through parameters rather than headers | 
+| `header_key` | The key name for sending the secret within the request header. Many APIs prefer header-based authentication as it keeps the secret out of the URL | 
+| `group` | A categorization tool that groups related secrets together. This can be used to organize secrets by team, project, environment, or any other logical grouping, facilitating easier management and access control | 
+| `enabled` | Indicates whether the secret is currently active and can be used for API access. This boolean field allows for the quick enabling or disabling of secrets without removing their configuration, useful for managing temporary access or rotating keys | 
