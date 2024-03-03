@@ -36,14 +36,14 @@ These configuration settings are all defined per `route`, they are not global an
 ### Model 
 | Field | Description | 
 | --------------- | --------------- | 
-| `name`    | Name of the model to be used | 
-| `provider`    | Number of llm provider, `openai`, `cohere`, `anthropic`, `huggingface` etc., | 
-| `suffix`    | Customize model URL endpoint, useful for custom models on huggingface| 
+| `name`     | Name of the model to be used | 
+| `provider` | Number of llm provider, `openai`, `cohere`, `anthropic`, `huggingface` etc., | 
+| `suffix`   | Customize model URL endpoint, useful for custom models on huggingface| 
 
 ### Config
 | Field | Description | 
 | --------------- | --------------- | 
-| `rate_limit`    | number of requests per second allowed, any more will be throttled | 
+| `rate_limit` | number of requests per second allowed, any more will be throttled | 
 | `archive`    | true if you want to archive all messages to and from LLMs on this route | 
 | `retries`    | Number of times the gateway will attempt to retry the request, when an LLM responds with a 503 | 
 
