@@ -1,8 +1,6 @@
 # Data Model
 
 ### `RouteConfig`
-A base model class for the Javelin client.
-
 **Fields**:
 
 - `organization`: The organizational unit or company associated with this route.
@@ -15,21 +13,32 @@ A base model class for the Javelin client.
 - `dlp`: DLP configuration.
 ---
 
-### `Model`
+### `budget`
+**Fields**:
+
+- `enabled`: Enable/Disable Data Loss Prevention(DLP).
+- `annual`: Annual budget limit.
+- `monthly`: Monthly budget limit.
+- `weekly`: Weekly budget limit.
+- `currency`: Currency for the budget.
+
+---
+
+### `dlp`
+**Fields**:
+
+- `enabled`: Enable/Disable Data Loss Prevention(DLP).
+- `strategy`: Data Loss Prevention strategy inspect or de-identify.
+
+---
+
+### `model`
 **Fields**:
 
 - `name`: The name of the LLM model.
 - `provider`: Entity or service providing this LLM model.
 - `suffix`: Additional descriptive or versioning information for the LLM model.
 - `weight`: Weight of the model.
-
----
-
-### `Dlp`
-**Fields**:
-
-- `enabled`: Enable/Disable Data Loss Prevention(DLP).
-- `strategy`: Data Loss Prevention strategy inspect or de-identify.
 
 ---
 
@@ -51,6 +60,113 @@ A base model class for the Javelin client.
 
 ---
 
+### `ProviderConfig`
+**Fields**:
+
+- `api_base`: Base URL of the API.
+- `api_type`: Type of the API.
+- `api_version`: Version of the API.
+- `deployment_name`: Name of the deployment.
+- `organization`: Name of the organization.
+
+---
+
+### `Provider`
+**Fields**:
+
+- `name`: The unique identifier for this provider.
+- `type`: Type of the Provider.
+- `enabled`: Whether the provider is enabled.
+- `vault_enabled`: Whether the secrets vault is enabled.
+- `config`: Configuration for the provider.
+
+---
+
+### `Providers`
+**Fields**:
+
+- `providers`: List of provider objects.
+
+---
+
+### `TemplateConfig`
+**Fields**:
+
+- `infoTypes`: List of infoTypes.
+- `transformation`: Transformation to be used.
+- `notify`: Whether to notify.
+- `reject`: Whether to reject.
+- `likelihood`: Indicate how likely it is that a piece of data matches infoTypes.
+- `routePrompt`: Prompt to be used for the route.
+
+---
+
+### `infoType`
+**Fields**:
+
+- `name`: Name of the infoType.
+- `description`: Description of the infoType.
+- `regex`: Regex of the infoType.
+- `category`: Category of the infoType.
+
+---
+
+### `Transformation`
+**Fields**:
+
+- `method`: Method of the transformation Mask, Redact, Replace, etc.
+
+---
+
+### `Template`
+**Fields**:
+
+- `name`: The unique identifier for this template.
+- `description`: Description for this template.
+- `type`: Type of the Template.
+- `enabled`: Whether the template is enabled.
+- `config`: Configuration for the template.
+
+---
+
+### `Templates`
+**Fields**:
+
+- `templates`: List of template objects.
+
+---
+
+### `Secret`
+**Fields**:
+
+- `api_key`: Key of the Secret.
+- `api_key_secret_name`: Name of the Secret.
+- `api_key_secret_key`: API Key of the Secret.
+- `api_key_secret_key_javelin`: Virtual API Key of the Secret.
+- `provider_name`: Provider Name of the Secret.
+- `query_param_key`: Query Param Key of the Secret.
+- `header_key`: Header Key of the Secret.
+- `group`: Group of the Secret.
+- `enabled`: Whether the secret is enabled.
+
+---
+
+### `Secrets`
+**Fields**:
+
+- `secrets`: List of secret objects.
+
+---
+
+### `Usage`
+**Fields**:
+
+- `completion_tokens`: Number of tokens used in the completion.
+- `prompt_tokens`: Number of tokens used in the prompt.
+- `total_tokens`: Total number of tokens used.
+
+---
+
 ### `Message`
 **Fields**:
 
@@ -59,10 +175,19 @@ A base model class for the Javelin client.
 
 ---
 
+### `Choice`
+**Fields**:
+
+- `finish_reason`: Reason for the completion finish.
+- `index`: Index of the choice.
+- `message`: Message details.
+
+---
+
 ### `QueryResponse`
 **Fields**:
 
-- `choices`: List of choices.
+- `choices`: List of choice.
 - `created`: Creation timestamp.
 - `id`: Unique identifier of the response.
 - `model`: Model associated with the response.
