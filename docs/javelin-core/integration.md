@@ -238,6 +238,9 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 ```shell<!--
 pip install dspy-ai
 ```
+
+[Creating a Custom Local Model (LM) Client](https://dspy-docs.vercel.app/docs/deep-dive/language_model_clients/custom-lm-client)
+
 ```py
 import dspy
 
