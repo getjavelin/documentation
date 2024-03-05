@@ -232,6 +232,21 @@ chain = prompt | llm | output_parser
 print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 ```
 </TabItem>
+
+<TabItem value="py5" label="DSPy">
+
+```shell<!--
+pip install dspy-ai
+```
+```py
+import dspy
+
+gpt3_turbo = dspy.OpenAI(model='gpt-3.5-turbo-1106', max_tokens=300)
+dspy.configure(lm=gpt3_turbo)
+
+```
+
+</TabItem>
 </Tabs>
 
 ### JavaScript/TypeScript
