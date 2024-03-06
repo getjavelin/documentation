@@ -317,7 +317,6 @@ print(response)
 ```
 
 </TabItem>
-
 </Tabs>
 
 ### JavaScript/TypeScript
