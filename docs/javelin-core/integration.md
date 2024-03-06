@@ -313,7 +313,7 @@ dspy.configure(lm=javelin)
 # Define a module (ChainOfThought) and assign it a signature (return an answer, given a question).
 qa = dspy.ChainOfThought('question -> answer')
 response = qa(question="You have 3 baskets. The first basket has twice as many apples as the second basket. The third basket has 3 fewer apples than the first basket. If you have a total of 27 apples, how many apples are in each basket?")
-print(response.answer)
+print(response)
 ```
 
 </TabItem>
