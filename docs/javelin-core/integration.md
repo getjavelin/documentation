@@ -239,17 +239,85 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 pip install dspy-ai
 ```
 
-[Creating a Custom Local Model (LM) Client](https://dspy-docs.vercel.app/docs/deep-dive/language_model_clients/custom-lm-client)
-
 ```py
 import dspy
+from dsp import LM
+import os
+import requests
 
-gpt3_turbo = dspy.OpenAI(model='gpt-3.5-turbo-1106', max_tokens=300)
-dspy.configure(lm=gpt3_turbo)
+# Assuming the environment variables are set correctly
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
+llm_api_key = os.getenv("OPENAI_API_KEY")
 
+class Javelin(LM):
+    def __init__(self, model, api_key):
+        self.model = model
+        self.api_key = api_key
+        self.provider = "default"
+        self.kwargs = { 
+                    "temperature": 1.0, 
+                    "max_tokens": 500, 
+                    "top_p": 1.0, 
+                    "frequency_penalty": 0.0, 
+                    "presence_penalty": 0.0, 
+                    "stop": None, 
+                    "n": 1, 
+                    "logprobs": None, 
+                    "logit_bias": None,
+                    "stream": False
+        }
+
+        self.base_url = "https://api.javelin.live/v1/query/"
+        self.javelin_headers = {
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer { api_key }",
+                    "x-javelin-route": "openai", # route name configured for OpenAI
+                    "x-api-key": javelin_api_key,
+        }
+
+        self.history = []
+
+    def basic_request(self, prompt: str, **kwargs):
+        headers = self.javelin_headers
+
+        data = {
+            **kwargs,
+            "model": self.model,
+            "messages": [
+                {"role": "user", "content": prompt}
+            ]
+        }
+
+        response = requests.post(self.base_url, headers=headers, json=data)
+        response = response.json()
+
+        self.history.append({
+            "prompt": prompt,
+            "response": response,
+            "kwargs": kwargs,
+        })
+        return response
+
+    def __call__(self, prompt, only_completed=True, return_sorted=False, **kwargs):
+        response = self.request(prompt, **kwargs)
+        if 'choices' in response and len(response['choices']) > 0:
+            first_choice_content = response['choices'][0]['message']['content']
+            completions = [first_choice_content]
+            return completions
+        else:
+            return ["No response found."]
+
+javelin = Javelin(model="gpt-4-1106-preview", api_key=llm_api_key)
+dspy.configure(lm=javelin)
+
+# Define a module (ChainOfThought) and assign it a signature (return an answer, given a question).
+qa = dspy.ChainOfThought('question -> answer')
+response = qa(question="You have 3 baskets. The first basket has twice as many apples as the second basket. The third basket has 3 fewer apples than the first basket. If you have a total of 27 apples, how many apples are in each basket?")
+print(response.answer)
 ```
 
 </TabItem>
+
 </Tabs>
 
 ### JavaScript/TypeScript
