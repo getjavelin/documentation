@@ -318,7 +318,7 @@ print(response)
 
 </TabItem>
 
-<TabItem value="py6" label="More Libraries & Frameworks...">
+<TabItem value="py6" label="...">
 
 - [DataStax RAGStack](https://docs.datastax.com/en/ragstack/docs/index.html)
 
@@ -396,7 +396,7 @@ main();
 ``` 
 </TabItem>
 
-<TabItem value="js3" label="More Libraries & Frameworks...">
+<TabItem value="js3" label="...">
 
 - [Vercel AI SDK](https://sdk.vercel.ai/docs)
    - [AI Integrations on Vercel](https://vercel.com/blog/ai-integrations)
