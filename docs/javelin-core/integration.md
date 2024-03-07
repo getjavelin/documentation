@@ -399,9 +399,9 @@ main();
 <TabItem value="js3" label="More Libraries & Frameworks...">
 
 - [Vercel AI SDK](https://sdk.vercel.ai/docs)
+   - [AI Integrations on Vercel](https://vercel.com/blog/ai-integrations)
 
-
-- [HuggingFace ChatUI](https://github.com/huggingface/chat-ui)
+- [Hugging Face ChatUI](https://github.com/huggingface/chat-ui)
 
 </TabItem>
 
