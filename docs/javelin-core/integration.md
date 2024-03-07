@@ -317,6 +317,14 @@ print(response)
 ```
 
 </TabItem>
+
+<TabItem value="py6" label="More Frameworks">
+
+- [Instructor, Generating Structure from LLMs](https://jxnl.github.io/instructor/)
+- [DataStax RAGStack](https://docs.datastax.com/en/ragstack/docs/index.html)
+
+
+</TabItem>
 </Tabs>
 
 ### JavaScript/TypeScript
