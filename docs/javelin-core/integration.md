@@ -318,13 +318,13 @@ print(response)
 
 </TabItem>
 
-<TabItem value="py6" label="More Frameworks">
+<TabItem value="py6" label="More Libraries & Frameworks...">
 
 - [Instructor, Generating Structure from LLMs](https://jxnl.github.io/instructor/)
 - [DataStax RAGStack](https://docs.datastax.com/en/ragstack/docs/index.html)
 
-
 </TabItem>
+
 </Tabs>
 
 ### JavaScript/TypeScript
@@ -392,6 +392,13 @@ async function main() {
 main();
 
 ``` 
+</TabItem>
+
+<TabItem value="js3" label="More Libraries & Frameworks...">
+
+- [Vercel AI SDK](https://sdk.vercel.ai/docs)
+- [HuggingFace ChatUI](https://github.com/huggingface/chat-ui)
+
 </TabItem>
 
 </Tabs>
