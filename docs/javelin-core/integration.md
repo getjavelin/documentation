@@ -320,8 +320,10 @@ print(response)
 
 <TabItem value="py6" label="More Libraries & Frameworks...">
 
-- [Instructor, Generating Structure from LLMs](https://jxnl.github.io/instructor/)
 - [DataStax RAGStack](https://docs.datastax.com/en/ragstack/docs/index.html)
+
+
+- [Instructor, Generating Structure from LLMs](https://jxnl.github.io/instructor/)
 
 </TabItem>
 
@@ -397,6 +399,8 @@ main();
 <TabItem value="js3" label="More Libraries & Frameworks...">
 
 - [Vercel AI SDK](https://sdk.vercel.ai/docs)
+
+
 - [HuggingFace ChatUI](https://github.com/huggingface/chat-ui)
 
 </TabItem>
