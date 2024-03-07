@@ -402,6 +402,7 @@ main();
    - [AI Integrations on Vercel](https://vercel.com/blog/ai-integrations)
 
 - [Hugging Face ChatUI](https://github.com/huggingface/chat-ui)
+   - [Running using a custom endpoint](https://github.com/huggingface/chat-ui?tab=readme-ov-file#running-your-own-models-using-a-custom-endpoint)
 
 </TabItem>
 
