@@ -235,7 +235,7 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 
 <TabItem value="py5" label="DSPy">
 
-An [Intro to DSPy](https://towardsdatascience.com/intro-to-dspy-goodbye-prompting-hello-programming-4ca1c6ce3eb9)
+An [Intro to DSPy: Goodbye Prompting, Hello Programming!](https://towardsdatascience.com/intro-to-dspy-goodbye-prompting-hello-programming-4ca1c6ce3eb9)
 
 ```shell<!--
 pip install dspy-ai
