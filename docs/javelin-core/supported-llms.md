@@ -8,7 +8,7 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 We are always adding support for new models, supported models include those from:  
 [OpenAI](https://platform.openai.com/docs/models)     
 [Mistral](https://docs.mistral.ai/guides/model-selection/)  
-[Anthropic](https://www.anthropic.com/product)  
+[Anthropic](https://docs.anthropic.com/claude/docs/models-overview)  
 [Google Gemini](https://ai.google.dev/models)  
 [Inflection](https://inflection.ai/inflection-2-5)  
 [Llama2](https://llama.meta.com/llama2/)   
