@@ -325,8 +325,9 @@ print(response)
 
 - [DataStax RAGStack](https://docs.datastax.com/en/ragstack/docs/index.html)
 
-
 - [Instructor, Generating Structure from LLMs](https://jxnl.github.io/instructor/)
+
+- [Microsoft Prompt flow](https://microsoft.github.io/promptflow/index.html#)
 
 </TabItem>
 
