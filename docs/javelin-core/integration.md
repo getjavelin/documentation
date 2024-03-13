@@ -11,6 +11,8 @@ See [Python SDK](../javelin-python/quickstart) for details on how you can easily
 
 See [Javelin Configuration](routeconfiguration) section, for details on how to setup routes on the gateway to different models and providers. 
 
+See [Gateway API](https://gateway-api.sigs.k8s.io/) for details on Concepts & Glossary. We are building Javelin to provide a robust framework for managing these interactions seamlessly for new AI-driven applications or integrating AI capabilities into existing solutions.
+
 ## Querying an LLM
 Javelin may send a request to one or more models based on the configured policies and route configurations and return back a response.
 
