@@ -10,3 +10,7 @@ Javelin also developed [OpenAI GPT](https://chat.openai.com/g/g-7kq4uSfJ4-javeli
 
 ## Chatbot Arena
 Consider using lmsys.org [chatbot arena](https://chat.lmsys.org/) for your queries. Many models are now pretty good and it let you see where they differ while contributing to the public ranking.
+
+## Vercel 
+Another option is to use Vercel AI SDK [prompt](https://sdk.vercel.ai/prompt) playground
+
