@@ -325,6 +325,8 @@ print(response)
 
 <TabItem value="py6" label="...">
 
+- [LlamaIndex](https://www.llamaindex.ai/open-source)
+
 - [DataStax RAGStack](https://docs.datastax.com/en/ragstack/docs/index.html)
 
 - [Instructor, Generating Structure from LLMs](https://jxnl.github.io/instructor/)
