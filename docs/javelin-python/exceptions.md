@@ -15,21 +15,49 @@ Returns a string representation of the error.
 
 ### Derived Exceptions
 
-#### `NetworkError`
-
-Indicates a network-related error while communicating with the Javelin service.
-
 #### `RouteNotFoundError`
 
 Indicates that a specified route was not found in the Javelin service.
 
-#### `RateLimitExceededError`
-
-Indicates that the rate limit for the Javelin service has been exceeded.
-
 #### `RouteAlreadyExistsError`
 
 Indicates that an attempt was made to create a route that already exists in the Javelin service.
+
+#### `ProviderNotFoundError`
+
+Indicates that a specified provider was not found in the Javelin service.
+
+#### `ProviderAlreadyExistsError`
+
+Indicates that an attempt was made to create a provider that already exists in the Javelin service.
+
+#### `TemplateNotFoundError`
+
+Indicates that a specified template was not found in the Javelin service.
+
+#### `TemplateAlreadyExistsError`
+
+Indicates that an attempt was made to create a template that already exists in the Javelin service.
+
+#### `SecretNotFoundError`
+
+Indicates that a specified secret was not found in the Javelin service.
+
+#### `SecretAlreadyExistsError`
+
+Indicates that an attempt was made to create a secter that already exists in the Javelin service.
+
+#### `NetworkError`
+
+Indicates a network-related error while communicating with the Javelin service.
+
+#### `BadRequest`
+
+Indicates that the Javelin service cannot process request due to invalid syntax or corrupted data.
+
+#### `RateLimitExceededError`
+
+Indicates that the rate limit for the Javelin service has been exceeded.
 
 #### `InternalServerError`
 
