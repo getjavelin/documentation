@@ -108,3 +108,164 @@ Custom guardrails can be implemented in any language and are ideally expected to
 
 The `Evaluate` method should take a `GuardrailRequest` as input and return a `GuardrailResponse` as output.
 
+## Building a Custom Guardrail
+You will first need to decide what language you plan to write your custom guardrail in. The custom guardrail can be written in any language that supports GRPC.
+
+### Golang
+To build a custom guardrail in Golang, you will need to install the following dependencies:
+
+#### Step1: Install the dependencies
+```bash
+    go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
+
+#### Step2: Generate the stubs from the `.proto` file
+Next, you will need to generate the Golang code from the `.proto` file. You can use the following command to generate the Golang code:
+
+```bash
+    protoc --go_out=. --go-grpc_out=. javelin_custom_guardrails.proto
+```
+
+#### Step 3: Implement the server
+```go
+    package main
+
+    import (
+        "context"
+        "log"
+        "net"
+
+        "google.golang.org/grpc"
+        pb "path/to/your/generated/package" // Use the correct package path
+    )
+
+    type server struct {
+        pb.UnimplementedGuardrailServer
+    }
+
+    func (s *server) Evaluate(ctx context.Context, in *pb.GuardrailRequest) (*pb.GuardrailResponse, error) {
+        response := &pb.GuardrailResponse{
+            TransformedBody: map[string]string{"message": "Processed: " + in.GetInputBody()["data"]},
+        }
+        return response, nil
+    }
+
+    func main() {
+        lis, err := net.Listen("tcp", ":50051")
+        if err != nil {
+            log.Fatalf("failed to listen: %v", err)
+        }
+        s := grpc.NewServer()
+        pb.RegisterGuardrailServer(s, &server{})
+        log.Printf("Server listening at %v", lis.Addr())
+        if err := s.Serve(lis); err != nil {
+            log.Fatalf("failed to serve: %v", err)
+        }
+    }
+```
+
+
+### Python
+To build a custom guardrail in Python, you will need to install the following dependencies:
+
+#### Step1: Install the dependencies
+```bash
+    pip install grpcio grpcio-tools
+```
+
+#### Step2: Generate the stubs from the `.proto` file
+Next, you will need to generate the Python code from the `.proto` file. You can use the following command to generate the Python code:
+
+```bash
+    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. test_guardrail.proto
+```
+
+#### Step3: Implement the server
+Sample python grpc guardrail server:
+```python
+    import grpc
+    from concurrent import futures
+    import time
+    import test_guardrail_pb2
+    import test_guardrail_pb2_grpc
+
+    class GuardrailServicer(test_guardrail_pb2_grpc.GuardrailServicer):
+        def Evaluate(self, request, context):
+            print("Received request: ", request)
+            response = test_guardrail_pb2.GuardrailResponse()
+            response.transformed_body["output"] = "Hello from Python"
+            return response
+
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    test_guardrail_pb2_grpc.add_GuardrailServicer_to_server(GuardrailServicer(), server)
+    server.add_insecure_port('[::]:50051')
+    server.start()
+    print("Server started")
+    try:
+        while True:
+            time.sleep(86400)
+    except KeyboardInterrupt:
+        server.stop(0)
+```
+
+### TypeScript
+To build a custom guardrail in TypeScript, you will need to install the following dependencies:
+
+#### Step1: Install the dependencies
+```bash
+    npm install @grpc/grpc-js @grpc/proto-loader
+```
+
+#### Step2: Generate the stubs from the `.proto` file
+Next, you will need to generate the TypeScript code from the `.proto` file. You can use the following command to generate the 
+TypeScript code:
+```bash
+    npm install -g grpc-tools
+    grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./output \
+        --grpc_out=grpc_js:./output \
+        --ts_out=grpc_js:./output \
+        -I ./proto path/to/your/file.proto
+```    
+
+#### Step3: Implement the server
+Sample TypeScript grpc guardrail server:
+```typescript
+    import * as grpc from '@grpc/grpc-js';
+    import * as protoLoader from '@grpc/proto-loader';
+    import { ProtoGrpcType } from './proto/test_plugin'; // Adjust the import according to your generated file
+
+    const packageDefinition = protoLoader.loadSync('path/to/your/file.proto', {
+        keepCase: true,
+        longs: String,
+        enums: String,
+        defaults: true,
+        oneofs: true
+    });
+
+    const protoDescriptor = grpc.loadPackageDefinition(packageDefinition) as unknown as ProtoGrpcType;
+    const testPlugin = protoDescriptor.test_plugin;
+
+    function evaluate(call: grpc.ServerUnaryCall<pb.GuardrailRequest, pb.GuardrailResponse>, callback: grpc.sendUnaryData<pb.GuardrailResponse>) {
+        const response: pb.GuardrailResponse = {
+            transformedBody: { message: 'Processed: ' + call.request.inputBody['data'] }
+        };
+        callback(null, response);
+    }
+
+    function getServer() {
+        const server = new grpc.Server();
+        server.addService(testPlugin.Guardrail.service, { evaluate: evaluate });
+        return server;
+    }
+
+    const server = getServer();
+    server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), (err, port) => {
+        if (err) {
+            console.error(`Server error: ${err.message}`);
+        } else {
+            console.log(`Server listening on ${port}`);
+            server.start();
+        }
+    });
+```
