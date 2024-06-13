@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = {  
   someSidebar: {
     'Getting Started': [
       'javelin-core/overview', 
@@ -71,21 +71,20 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'Content Filtering',
+        label: 'Content Filtering', 
         items: [
           'javelin-processors/keywordfilter',      
         ]
-      },
+      },      
       'javelin-processors/hallucination',
+      {
+        type: 'category',
+        label: 'Custom Guardrails',
+        items: [
+          'javelin-processors/custom',      
+        ]
+      },
     ],   
-    /*        
-    'Javelin GPTs': [
-      // 'javelin-gpt/overview',
-      // 'javelin-gpt/javelingpt',
-      // 'javelin-gpt/opengpt',
-      // 'javelin-gpt/vercelaisdk'
-    ],
-    */
     'Python API Reference': [
       'javelin-python/quickstart',
       {

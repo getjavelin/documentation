@@ -2,7 +2,8 @@
 
 Javelin supports a large library of infotype classifiers. They are further consolidated across the following categories. 
 
-### Personally Identifiable Information (PII)
+## Personally Identifiable Information (PII)
+
 PERSON_NAME  
 FIRST_NAME  
 LAST_NAME  
@@ -22,7 +23,8 @@ COUNTRY_DEMOGRAPHIC
 HTTP_COOKIE  
 ADVERTISING_ID  
 
-### Protected Health Information (PHI)
+## Protected Health Information (PHI)
+
 MEDICAL_RECORD_NUMBER  
 US_MEDICARE_BENEFICIARY_ID_NUMBER  
 US_HEALTHCARE_NPI  
@@ -32,14 +34,16 @@ US_DEA_NUMBER
 ICD9_CODE  
 ICD10_CODE  
 
-### Financial Information
+## Financial Information
+
 SWIFT_CODE  
 AMERICAN_BANKERS_CUSIP_ID  
 US_BANK_ROUTING_MICR  
 US_INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER  
 IBAN_CODE  
 
-### Secrets & Credentials
+## Secrets & Credentials
+
 AUTH_TOKEN  
 AWS_CREDENTIALS  
 AZURE_AUTH_TOKEN  
