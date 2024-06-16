@@ -40,7 +40,7 @@ The extension_processor provides a convenient and flexible GRPC interface that a
 
 ## Custom Processor Interface
 
-The GRPC interface consists of the following methods (.proto):
+The GRPC interface consists of the following methods (`javelin_guardrail_intf.proto`):
 
 ```go
     // Sample interface (for most recent interface please refer to the latest .proto file)
@@ -124,7 +124,7 @@ To build a custom guardrail in Golang, you will need to install the following de
 Next, you will need to generate the Golang code from the `.proto` file. You can use the following command to generate the Golang code:
 
 ```bash
-    protoc --go_out=. --go-grpc_out=. javelin_custom_guardrails.proto
+    protoc --go_out=. --go-grpc_out=. javelin_guardrail_intf.proto
 ```
 
 #### Step 3: Implement the server
@@ -178,7 +178,7 @@ To build a custom guardrail in Python, you will need to install the following de
 Next, you will need to generate the Python code from the `.proto` file. You can use the following command to generate the Python code:
 
 ```bash
-    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. test_guardrail.proto
+    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. javelin_guardrail_intf.proto
 ```
 
 #### Step3: Implement the server
@@ -225,7 +225,7 @@ TypeScript code:
     grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./output \
         --grpc_out=grpc_js:./output \
         --ts_out=grpc_js:./output \
-        -I ./proto path/to/your/file.proto
+        -I ./proto path/to/your/javelin_guardrail_intf.proto
 ```    
 
 #### Step3: Implement the server
@@ -233,9 +233,9 @@ Sample TypeScript grpc guardrail server:
 ```typescript
     import * as grpc from '@grpc/grpc-js';
     import * as protoLoader from '@grpc/proto-loader';
-    import { ProtoGrpcType } from './proto/test_plugin'; // Adjust the import according to your generated file
+    import { ProtoGrpcType } from './proto/test_guardrail'; // Adjust the import according to your generated file
 
-    const packageDefinition = protoLoader.loadSync('path/to/your/file.proto', {
+    const packageDefinition = protoLoader.loadSync('path/to/your/javelin_guardrail_intf.proto', {
         keepCase: true,
         longs: String,
         enums: String,
@@ -246,7 +246,8 @@ Sample TypeScript grpc guardrail server:
     const protoDescriptor = grpc.loadPackageDefinition(packageDefinition) as unknown as ProtoGrpcType;
     const testPlugin = protoDescriptor.test_plugin;
 
-    function evaluate(call: grpc.ServerUnaryCall<pb.GuardrailRequest, pb.GuardrailResponse>, callback: grpc.sendUnaryData<pb.GuardrailResponse>) {
+    function evaluate(call: grpc.ServerUnaryCall<pb.GuardrailRequest, pb.GuardrailResponse>, 
+    callback: grpc.sendUnaryData<pb.GuardrailResponse>) {
         const response: pb.GuardrailResponse = {
             transformedBody: { message: 'Processed: ' + call.request.inputBody['data'] }
         };
