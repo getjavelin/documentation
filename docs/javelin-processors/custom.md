@@ -43,10 +43,9 @@ The extension_processor provides a convenient and flexible GRPC interface that a
 The GRPC interface consists of the following methods (`javelin_guardrail_intf.proto`):
 
 ```go
-    // Sample interface (for most recent interface please refer to the latest .proto file)
     syntax = "proto3";
 
-    package test_plugin;
+    package api;
 
     // Specify the Go package where the generated files should reside
     option go_package = "javelin-core/pkg/chainprocessor/processor-sdk/api";
@@ -74,7 +73,7 @@ The GRPC interface consists of the following methods (`javelin_guardrail_intf.pr
         ContentType content_type = 1;
 
         // Dictionary of body entries
-        map<string, string> input_body = 2;
+        string input_body = 2;
 
         // Dictionary of configuration entries
         map<string, string> config = 3;
@@ -90,7 +89,7 @@ The GRPC interface consists of the following methods (`javelin_guardrail_intf.pr
     // body, response metadata, instructions, and media data.
     message GuardrailResponse {
         // Dictionary of transformed body entries
-        map<string, string> transformed_body = 1;
+        string transformed_body = 1;
 
         // Dictionary of response metadata
         map<string, string> response_metadata = 2;
@@ -101,7 +100,6 @@ The GRPC interface consists of the following methods (`javelin_guardrail_intf.pr
         // Transformed binary data for images or videos
         bytes transformed_media = 4;
     }
-
 ```
 
 Custom guardrails can be implemented in any language and are ideally expected to be hosted/deployed in the same cluster that is running Javelin for low latency access. The custom processor should implement the `Guardrail` service defined in the `.proto` file. 
@@ -269,4 +267,22 @@ Sample TypeScript grpc guardrail server:
             server.start();
         }
     });
+```
+
+## Enabling the Custom Guardrail in Javelin
+
+To enable the custom guardrail in Javelin, you will need to configure the extension_processor in the Javelin configuration file. The extension_processor should be configured to call the custom guardrail service over GRPC.
+
+Add the following snippet in either the Request Chain or Response Chain configurations.
+
+```json
+    {
+    "name": "Extension Processor",
+    "reference": "extension",
+    "will_block": true,
+    "config": {
+        "remote_url": "http://localhost:8080/customguard" // URL of the custom guardrail 
+        }
+    },
+
 ```
