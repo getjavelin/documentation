@@ -281,7 +281,7 @@ Add the following snippet in either the Request Chain or Response Chain configur
     "reference": "extension",
     "will_block": true,
     "config": {
-        "remote_url": "http://localhost:8080/customguard" // URL of the custom guardrail 
+        "remote_url": "localhost:55001" // URL of the custom guardrail 
         }
     },
 
