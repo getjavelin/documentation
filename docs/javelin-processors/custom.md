@@ -280,8 +280,8 @@ Add the following snippet in either the Request Chain or Response Chain configur
     "name": "Extension Processor",
     "reference": "extension",
     "will_block": true,
-    "config": {
-        "remote_url": "localhost:55001" // URL of the custom guardrail 
+    "inputs": {
+        "remote_url": "localhost:50051" // URL of the custom guardrail 
         }
     },
 
