@@ -15,13 +15,16 @@ pip install javelin_sdk
 Before making any API calls, initialize the client:
 
 **Setting up the Python Client**
+
 ```python
+from javelin_sdk
 from javelin_sdk import (
     JavelinClient,
-    Route
+    Route,
+    NetworkError
 )
 
-import os
+import os, sys
 
 try:
     javelin_api_key = os.getenv('JAVELIN_API_KEY')
@@ -30,13 +33,17 @@ try:
     client = JavelinClient(javelin_api_key=javelin_api_key,
                            llm_api_key=llm_api_key)
 
+    print('sucessfully connected to Javelin Client')
+
 except NetworkError as e:
     print("Failed to create client: Network Error")
     sys.exit()
 ```
 
 ## 3. Making Requests
+
 With the client set up, you can make requests to the Javelin API:
+
 ```python
 
 # Create a route object
@@ -70,9 +77,11 @@ except NetworkError as e:
 ```
 
 ### Fetching Data:
+
 You can get configurations and other settings from Javelin through the SDK:
 
 **Fetching configurations from Javelin**
+
 ```python
 try:
     client.get_route(route.name)
@@ -80,13 +89,15 @@ except RouteNotFoundError as e:
     print("Failed to get route: Route Not Found")
 ```
 
-### Making an LLM Request: 
-Once Javelin has been setup, its easy to route your LLM calls through Javelin. Javelin supports both streaming and non-streaming responses to requests to popular LLMs. 
+### Making an LLM Request:
+
+Once Javelin has been setup, its easy to route your LLM calls through Javelin. Javelin supports both streaming and non-streaming responses to requests to popular LLMs.
 
 **Making a request to an LLM through Javelin**
+
 ```python
 
-# create the object for the LLM request 
+# create the object for the LLM request
 query_data = {
     "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
@@ -109,9 +120,11 @@ except RouteNotFoundError as e:
 ```
 
 ## 4. Error Handling
+
 With the python SDK, handling errors is as easy as catching the appropriate exception. There are a number of helpful exceptions that the SDK throws for catching different error scenarios for robust client-side error handling. For example:
 
 **Creating a Route with Error Handling**
+
 ```python
 
 try:

@@ -1,6 +1,27 @@
 # Data Model
 
+### `Routes`
+
+**Fields**:
+
+- `routes`: List of [route](./models.md#route) objects.
+
+---
+
+### `Route`
+
+**Fields**:
+
+- `name`: The unique identifier for this route.
+- `type`: The type `chat`, `completions`, `embeddings` of this route.
+- `enabled`: Enable/Disable this route.
+- `models`: Associated models for processing or handling requests on this route.
+- `config`: [Configuration](./models.md#routeconfig) settings, like rate limits, archive, budget associated with this route.
+
+---
+
 ### `RouteConfig`
+
 **Fields**:
 
 - `organization`: The organizational unit or company associated with this route.
@@ -9,11 +30,13 @@
 - `retries`: Number of times the request should be retried in case of failures.
 - `archive`: Boolean indicating whether route data should be archived.
 - `retention`: Data retention period.
-- `budget`: Monetary or computational budget allocated for the operations of this route.
-- `dlp`: DLP configuration.
+- `budget`: Monetary or computational [budget](./models.md#budget) allocated for the operations of this route.
+- `dlp`: [DLP](./models.md#dlp) configuration.
+
 ---
 
 ### `budget`
+
 **Fields**:
 
 - `enabled`: Enable/Disable Data Loss Prevention(DLP).
@@ -25,6 +48,7 @@
 ---
 
 ### `dlp`
+
 **Fields**:
 
 - `enabled`: Enable/Disable Data Loss Prevention(DLP).
@@ -32,35 +56,28 @@
 
 ---
 
-### `model`
+### `Providers`
+
 **Fields**:
 
-- `name`: The name of the LLM model.
-- `provider`: Entity or service providing this LLM model.
-- `suffix`: Additional descriptive or versioning information for the LLM model.
-- `weight`: Weight of the model.
+- `providers`: List of [provider](./models.md#provider) objects.
 
 ---
 
-### `Route`
+### `Provider`
+
 **Fields**:
 
-- `name`: The unique identifier for this route.
-- `type`: The type `chat`, `completions`, `embeddings` of this route.
-- `enabled`: Enable/Disable this route.
-- `models`: Associated models for processing or handling requests on this route.
-- `config`: Configuration settings, like rate limits, archive, budget associated with this route.
-
----
-
-### `Routes`
-**Fields**:
-
-- `routes`: List of route objects.
+- `name`: The unique identifier for this provider.
+- `type`: Type of the Provider.
+- `enabled`: Whether the provider is enabled.
+- `vault_enabled`: Whether the secrets vault is enabled.
+- `config`: [Configuration](./models.md#providerconfig) for the provider.
 
 ---
 
 ### `ProviderConfig`
+
 **Fields**:
 
 - `api_base`: Base URL of the API.
@@ -71,28 +88,31 @@
 
 ---
 
-### `Provider`
+### `Templates`
+
 **Fields**:
 
-- `name`: The unique identifier for this provider.
-- `type`: Type of the Provider.
-- `enabled`: Whether the provider is enabled.
-- `vault_enabled`: Whether the secrets vault is enabled.
-- `config`: Configuration for the provider.
+- `templates`: List of [template](./models.md#template) objects.
 
 ---
 
-### `Providers`
+### `Template`
+
 **Fields**:
 
-- `providers`: List of provider objects.
+- `name`: The unique identifier for this template.
+- `description`: Description for this template.
+- `type`: Type of the Template.
+- `enabled`: Whether the template is enabled.
+- `config`: [Configuration](./models.md#templateconfig) for the template.
 
 ---
 
 ### `TemplateConfig`
+
 **Fields**:
 
-- `infoTypes`: List of infoTypes.
+- `infoTypes`: List of [infoTypes](./models.md#infotype).
 - `transformation`: Transformation to be used.
 - `notify`: Whether to notify.
 - `reject`: Whether to reject.
@@ -102,6 +122,7 @@
 ---
 
 ### `infoType`
+
 **Fields**:
 
 - `name`: Name of the infoType.
@@ -112,31 +133,23 @@
 ---
 
 ### `Transformation`
+
 **Fields**:
 
 - `method`: Method of the transformation Mask, Redact, Replace, etc.
 
 ---
 
-### `Template`
+### `Secrets`
+
 **Fields**:
 
-- `name`: The unique identifier for this template.
-- `description`: Description for this template.
-- `type`: Type of the Template.
-- `enabled`: Whether the template is enabled.
-- `config`: Configuration for the template.
-
----
-
-### `Templates`
-**Fields**:
-
-- `templates`: List of template objects.
+- `secrets`: List of [secret](./models.md#secret) objects.
 
 ---
 
 ### `Secret`
+
 **Fields**:
 
 - `api_key`: Key of the Secret.
@@ -151,31 +164,23 @@
 
 ---
 
-### `Secrets`
+### `QueryResponse`
+
 **Fields**:
 
-- `secrets`: List of secret objects.
-
----
-
-### `Usage`
-**Fields**:
-
-- `completion_tokens`: Number of tokens used in the completion.
-- `prompt_tokens`: Number of tokens used in the prompt.
-- `total_tokens`: Total number of tokens used.
-
----
-
-### `Message`
-**Fields**:
-
-- `role`: Role or purpose of the message, e.g., 'error', 'info', 'warning'.
-- `content`: The actual content or body of the message.
+- `choices`: List of [choice](./models.md#choice).
+- `created`: Creation timestamp.
+- `id`: Unique identifier of the response.
+- `model`: Model associated with the response.
+- `object`: Object type like chat.completion.
+- `system_fingerprint`: System fingerprint if available.
+- `usage`: [Metrics](./models.md#usage) or data about the computational resources used.
+- `javelin`: Processing data & metrics.
 
 ---
 
 ### `Choice`
+
 **Fields**:
 
 - `finish_reason`: Reason for the completion finish.
@@ -184,14 +189,30 @@
 
 ---
 
-### `QueryResponse`
+### `Message`
+
 **Fields**:
 
-- `choices`: List of choice.
-- `created`: Creation timestamp.
-- `id`: Unique identifier of the response.
-- `model`: Model associated with the response.
-- `object`: Object type like chat.completion.
-- `system_fingerprint`: System fingerprint if available.
-- `usage`: Metrics or data about the computational resources used.
-- `javelin`: Processing data & metrics.
+- `role`: Role or purpose of the message, e.g., 'error', 'info', 'warning'.
+- `content`: The actual content or body of the message.
+
+---
+
+### `model`
+
+**Fields**:
+
+- `name`: The name of the LLM model.
+- `provider`: Entity or service providing this LLM model.
+- `suffix`: Additional descriptive or versioning information for the LLM model.
+- `weight`: Weight of the model.
+
+---
+
+### `Usage`
+
+**Fields**:
+
+- `completion_tokens`: Number of tokens used in the completion.
+- `prompt_tokens`: Number of tokens used in the prompt.
+- `total_tokens`: Total number of tokens used.
