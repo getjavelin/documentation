@@ -20,7 +20,7 @@ curl -X PUT \
             "deployment_name": ""
         }
 }' \
-"https://api.javelin.live/v1/admin/providers/openai"
+"https://api-dev.javelin.live/v1/admin/providers/openai"
 
 ```
 
@@ -42,7 +42,7 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api.javelin.live",
+client = JavelinClient(base_url="https://api-dev.javelin.live",
                        javelin_api_key=javelin_api_key,
 ) 
 
