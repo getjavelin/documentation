@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.4.0">
 <title data-rh="true">Applications | Javelin</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://getjavelin.io/docs/javelin-core/integration"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Applications | Javelin"><meta data-rh="true" name="description" content="Its easy to integrate applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with 3 lines of code change."><meta data-rh="true" property="og:description" content="Its easy to integrate applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with 3 lines of code change."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://getjavelin.io/docs/javelin-core/integration"><link data-rh="true" rel="alternate" href="https://getjavelin.io/docs/javelin-core/integration" hreflang="en"><link data-rh="true" rel="alternate" href="https://getjavelin.io/docs/javelin-core/integration" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.49909974.css">
-<script src="/assets/js/runtime~main.00237f0a.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b517699a.js" defer="defer"></script>
 <script src="/assets/js/main.e7b27162.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -14,7 +14,6 @@
 <p>Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually &amp; directly point to the LLM Vendor &amp; Model (like OpenAI, Gemini etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the <a href="supported-llms">latest models and providers</a>, so you don&#x27;t have to make any changes to your application or how requests to models are sent.</p>
 <p>See <a href="../javelin-python/quickstart">Python SDK</a> for details on how you can easily embed this within your AI Apps.</p>
 <p>See <a href="routeconfiguration">Javelin Configuration</a> section, for details on how to setup routes on the gateway to different models and providers.</p>
-<p>As cloud computing advances, those involved with Kubernetes should pay attention to the evolving Gateway API. Check out <a href="https://gateway-api.sigs.k8s.io/">Gateway API</a> for detailed insights into its concepts and explore various <a href="https://gateway-api.sigs.k8s.io/#use-cases">Use Cases</a>. We are building Javelin to provide a robust framework for managing these interactions seamlessly for new AI-driven applications or integrating AI capabilities into existing solutions.</p>
 <h2 id="querying-an-llm">Querying an LLM</h2>
 <p>Javelin may send a request to one or more models based on the configured policies and route configurations and return back a response.</p>
 <h3 id="rest-api">REST API</h3>
@@ -35,7 +34,7 @@
   ],
   &quot;temperature&quot;: 0.8
 }&#x27; \
-&quot;https://api.javelin.live/v1/query/{routename}&quot;
+&quot;https://api-dev.javelin.live/v1/query/{routename}&quot;
 </code></pre></div></div></div>
 <h3 id="python">Python</h3>
 <div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">Javelin SDK</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">OpenAI</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Azure OpenAI</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">LangChain</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">DSPy</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">...</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><pre><code class="language-shell">pip install javelin-sdk
@@ -217,7 +216,7 @@ class Javelin(LM):
                     &quot;stream&quot;: False
         }
 
-        self.base_url = &quot;https://api.javelin.live/v1/query/&quot;
+        self.base_url = &quot;https://api-dev.javelin.live/v1/query/&quot;
         self.javelin_headers = {
                     &quot;Content-Type&quot;: &quot;application/json&quot;,
                     &quot;Authorization&quot;: f&quot;Bearer { api_key }&quot;,
@@ -284,7 +283,7 @@ print(response)
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: &quot;https://api.javelin.live/v1/query&quot;,
+  baseURL: &quot;https://api-dev.javelin.live/v1/query&quot;,
   defaultHeaders: {
     &quot;x-api-key&quot;: `${process.env.JAVELIN_API_KEY}`,
     &quot;x-javelin-route&quot;: &quot;sample_route1&quot;,
@@ -309,7 +308,7 @@ import { ChatOpenAI } from &#x27;@langchain/openai&#x27;;
 const llm = new ChatOpenAI({
     openAIApiKey: process.env.OPENAI_API_KEY,
     configuration: {
-        basePath: &quot;https://api.javelin.live/v1/query&quot;,
+        basePath: &quot;https://api-dev.javelin.live/v1/query&quot;,
         defaultHeaders: {
           &quot;x-api-key&quot;: `${process.env.JAVELIN_API_KEY}`,
           &quot;x-javelin-route&quot;: &quot;sample_route1&quot;,
