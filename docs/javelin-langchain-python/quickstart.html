@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.4.0">
 <title data-rh="true">Quickstart | Javelin</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://getjavelin.io/docs/javelin-langchain-python/quickstart"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Quickstart | Javelin"><meta data-rh="true" name="description" content="With your LangChain environment, you can use Javelin by changing the API base and adding Javelin headers"><meta data-rh="true" property="og:description" content="With your LangChain environment, you can use Javelin by changing the API base and adding Javelin headers"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://getjavelin.io/docs/javelin-langchain-python/quickstart"><link data-rh="true" rel="alternate" href="https://getjavelin.io/docs/javelin-langchain-python/quickstart" hreflang="en"><link data-rh="true" rel="alternate" href="https://getjavelin.io/docs/javelin-langchain-python/quickstart" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.49909974.css">
-<script src="/assets/js/runtime~main.b517699a.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.d465acb9.js" defer="defer"></script>
 <script src="/assets/js/main.e7b27162.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -16,7 +16,7 @@ pip install langchain-openai
 <pre><code class="language-python"># Code snippet
 
 llm = ChatOpenAI(
-    openai_api_base=&quot;https://api.javelin.live/v1/query&quot;,
+    openai_api_base=&quot;https://api-dev.javelin.live/v1/query&quot;,
     openai_api_key=openai_api_key, # OpenAI API key
     model_kwargs={
       &quot;extra_headers&quot;:{
@@ -24,7 +24,7 @@ llm = ChatOpenAI(
         &quot;x-javelin-route&quot;: &quot;sample_route1&quot; # Javelin route to use
       }
     },
-    openai_api_base=&quot;https://api.javelin.live/v1/query&quot;,
+    openai_api_base=&quot;https://api-dev.javelin.live/v1/query&quot;,
 )
 </code></pre>
 <p>Below is a sample code to use Javelin with LangChain:</p>
@@ -39,7 +39,7 @@ prompt = ChatPromptTemplate.from_template(&quot;tell me a short joke about {topi
 # model = ChatOpenAI(model=&quot;gpt-4&quot;)
 model = ChatOpenAI(
     openai_api_key=os.getenv(&quot;OPENAI_API_KEY&quot;),
-    openai_api_base=&quot;https://api.javelin.live/v1/query&quot;,
+    openai_api_base=&quot;https://api-dev.javelin.live/v1/query&quot;,
     model_kwargs={
         &quot;extra_headers&quot;:{
         &quot;x-api-key&quot;: f&quot;{os.getenv(&#x27;JAVELIN_API_KEY&#x27;)}&quot;,
