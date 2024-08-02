@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="shell" label="curl">
 
 ```shell
-curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/providers/openai/keyvault/openai-vkey1"  
+curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1/admin/providers/openai/keyvault/openai-vkey1"  
 ```
 
 </TabItem>
