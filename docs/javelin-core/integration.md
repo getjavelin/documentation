@@ -11,8 +11,6 @@ See [Python SDK](../javelin-python/quickstart) for details on how you can easily
 
 See [Javelin Configuration](routeconfiguration) section, for details on how to setup routes on the gateway to different models and providers. 
 
-As cloud computing advances, those involved with Kubernetes should pay attention to the evolving Gateway API. Check out [Gateway API](https://gateway-api.sigs.k8s.io/) for detailed insights into its concepts and explore various [Use Cases](https://gateway-api.sigs.k8s.io/#use-cases). We are building Javelin to provide a robust framework for managing these interactions seamlessly for new AI-driven applications or integrating AI capabilities into existing solutions.
-
 ## Querying an LLM
 Javelin may send a request to one or more models based on the configured policies and route configurations and return back a response.
 
@@ -38,7 +36,7 @@ curl -X POST \
   ],
   "temperature": 0.8
 }' \
-"https://api.javelin.live/v1/query/{routename}"
+"https://api-dev.javelin.live/v1/query/{routename}"
 ```
 
 </TabItem>
@@ -272,7 +270,7 @@ class Javelin(LM):
                     "stream": False
         }
 
-        self.base_url = "https://api.javelin.live/v1/query/"
+        self.base_url = "https://api-dev.javelin.live/v1/query/"
         self.javelin_headers = {
                     "Content-Type": "application/json",
                     "Authorization": f"Bearer { api_key }",
@@ -351,7 +349,7 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: "https://api.javelin.live/v1/query",
+  baseURL: "https://api-dev.javelin.live/v1/query",
   defaultHeaders: {
     "x-api-key": `${process.env.JAVELIN_API_KEY}`,
     "x-javelin-route": "sample_route1",
@@ -386,7 +384,7 @@ import { ChatOpenAI } from '@langchain/openai';
 const llm = new ChatOpenAI({
     openAIApiKey: process.env.OPENAI_API_KEY,
     configuration: {
-        basePath: "https://api.javelin.live/v1/query",
+        basePath: "https://api-dev.javelin.live/v1/query",
         defaultHeaders: {
           "x-api-key": `${process.env.JAVELIN_API_KEY}`,
           "x-javelin-route": "sample_route1",
