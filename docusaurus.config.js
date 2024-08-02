@@ -1,12 +1,12 @@
 module.exports = {
   title: 'Javelin',
   tagline: 'Enterprise AI Platform for Rapid, Responsible AI Adoption',
-  url: 'https://getjavelin.io', // Your website URL
-  baseUrl: '/', 
+  url: 'https://getjavelin.io',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'getjavelin', // GitHub org/user name.
-  projectName: 'documentation', // GitHub repo name.
+  organizationName: 'getjavelin',
+  projectName: 'documentation',
   trailingSlash: false,
   themeConfig: {
     navbar: {
@@ -16,30 +16,11 @@ module.exports = {
         src: 'img/javelinlogo.png',
       },
       items: [
-        {
-          type: 'doc',
-          docId: 'javelin-core/overview', 
-          position: 'left',
-          label: 'Getting Started',
-        },
-        {
-          type: 'doc',
-          docId: 'javelin-processors/overview',
-          position: 'left',
-          label: 'Guardrails',
-        },
-        {
-          type: 'doc',
-          docId: 'javelin-python/quickstart',
-          position: 'left',
-          label: 'Python API Reference',
-        },
-        {
-          type: 'doc',
-          docId: 'javelin-langchain-python/quickstart',
-          position: 'left',
-          label: 'LangChain',
-        },        // Add other links or dropdowns as you like...
+        { type: 'doc', docId: 'javelin-core/overview', position: 'left', label: 'Getting Started' },
+        { type: 'doc', docId: 'javelin-processors/overview', position: 'left', label: 'Guardrails' },
+        { type: 'doc', docId: 'javelin-python/quickstart', position: 'left', label: 'Python SDK' },
+        { to: 'api', label: 'API Reference', position: 'left' },
+        { type: 'doc', docId: 'javelin-langchain-python/quickstart', position: 'left', label: 'LangChain' },
       ],
     },
     footer: {
@@ -57,14 +38,21 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/getjavelin/documentation/tree/main/',
+          editUrl: 'https://github.com/getjavelin/documentation/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       },
+    ],
+    [
+      'redocusaurus',
+      {
+        specs: [{
+          route: '/api',
+          spec: 'api/openapi.yaml',
+        }],
+      }
     ],
   ],
 };
