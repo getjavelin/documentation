@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.4.0">
 <title data-rh="true">Creating Route | Javelin</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://getjavelin.io/docs/javelin-core/administration/createroute"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Creating Route | Javelin"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://getjavelin.io/docs/javelin-core/administration/createroute"><link data-rh="true" rel="alternate" href="https://getjavelin.io/docs/javelin-core/administration/createroute" hreflang="en"><link data-rh="true" rel="alternate" href="https://getjavelin.io/docs/javelin-core/administration/createroute" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.49909974.css">
-<script src="/assets/js/runtime~main.675f9421.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.a7ab88d0.js" defer="defer"></script>
 <script src="/assets/js/main.e7b27162.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -39,7 +39,7 @@
             }
         }
 }&#x27; \
-&quot;https://api.javelin.live/v1/admin/routes/test_route_1&quot;
+&quot;https://api-dev.javelin.live/v1/admin/routes/test_route_1&quot;
 
 </code></pre></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><pre><code class="language-py">from javelin_sdk import (
     JavelinClient,
@@ -52,7 +52,7 @@ import os
 javelin_api_key = os.getenv(&#x27;JAVELIN_API_KEY&#x27;)
 
 # create javelin client
-client = JavelinClient(base_url=&quot;https://api.javelin.live&quot;,
+client = JavelinClient(base_url=&quot;https://api-dev.javelin.live&quot;,
                        javelin_api_key=javelin_api_key,
 ) 
 
