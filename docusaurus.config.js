@@ -18,8 +18,8 @@ module.exports = {
       items: [
         { type: 'doc', docId: 'javelin-core/overview', position: 'left', label: 'Getting Started' },
         { type: 'doc', docId: 'javelin-processors/overview', position: 'left', label: 'Guardrails' },
-        { type: 'doc', docId: 'javelin-python/quickstart', position: 'left', label: 'Python SDK' },
         { to: 'api', label: 'API Reference', position: 'left' },
+        { type: 'doc', docId: 'javelin-python/quickstart', position: 'left', label: 'Python SDK' },
         { type: 'doc', docId: 'javelin-langchain-python/quickstart', position: 'left', label: 'LangChain' },
       ],
     },
