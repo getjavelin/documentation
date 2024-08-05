@@ -3,14 +3,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-<TabItem value="shell" label="curl">
+<TabItem value="shell" label="Using the API:">
 
 ```shell
 curl -X POST \
 -H "Content-Type: application/json" \
 -H "x-api-key: $JAVELIN_API_KEY" \
 -d '{
-        "api_key": "openapi-vkey1",
+        "api_key": "openai-vkey1",
         "api_key_secret_name": "name for the secret key",
         "api_key_secret_key": "secret key",
         "provider_name": "openai",
@@ -25,7 +25,7 @@ curl -X POST \
 
 </TabItem>
 
-<TabItem value="py" label="Python">
+<TabItem value="py" label="In Python:">
 
 ```py
 from javelin_sdk import (

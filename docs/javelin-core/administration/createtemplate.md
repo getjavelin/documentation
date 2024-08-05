@@ -3,7 +3,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-<TabItem value="shell" label="curl">
+<TabItem value="shell" label="Using the API:">
 
 ```shell
 curl -X POST \
@@ -153,7 +153,7 @@ curl -X POST \
 
 </TabItem>
 
-<TabItem value="py" label="Python">
+<TabItem value="py" label="In Python:">
 
 ```py
 from javelin_sdk import (
