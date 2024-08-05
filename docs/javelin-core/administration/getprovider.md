@@ -11,7 +11,6 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1/ad
 
 </TabItem>
 
-<!--
 <TabItem value="py" label="Python">
 
 ```py
@@ -38,7 +37,5 @@ print(client.get_provider(provider_name))
 ```
 
 </TabItem>
-
--->
 
 </Tabs>

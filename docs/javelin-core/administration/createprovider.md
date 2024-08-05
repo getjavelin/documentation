@@ -11,61 +11,22 @@ curl -X POST \
 -H "Content-Type: application/json" \
 -H "x-api-key: $JAVELIN_API_KEY" \
 -d '{
-        "name": "InspectPII",
-        "description": "Inspect sensitive data",
-        "type": "inspect",
+        "name": "openai",
+        "type": "closed",
         "enabled": true,
-        "models": [
-            {
-                "name": "Sensitive Data Protection",
-                "provider": "Google Cloud",
-                "suffix": "",
-                "weight": 0
-            }
-        ],
         "config": {
-            "notify": true,
-            "reject": false,
-            "infoTypes": [
-                {
-                    "name": "EMAIL_ADDRESS"
-                },
-                {
-                    "name": "STREET_ADDRESS"
-                },
-                {
-                    "name": "MEDICAL_TERM"
-                },
-                {
-                    "name": "US_MEDICARE_BENEFICIARY_ID_NUMBER"
-                },
-                {
-                    "name": "US_HEALTHCARE_NPI"
-                },
-                {
-                    "name": "AUTH_TOKEN"
-                },
-                {
-                    "name": "ENCRYPTION_KEY"
-                },
-                {
-                    "name": "OAUTH_CLIENT_SECRET"
-                },
-                {
-                    "name": "PASSWORD"
-                }
-            ],
-            "likelihood": "Likely"
+            "api_base": "https://api.openai.com",
+            "api_type": "",
+            "api_version": "v1",
+            "organization": "",
+            "deployment_name": ""
         }
-}
-' \
+}' \
 "https://api-dev.javelin.live/v1/admin/providers/openai"
 
 ```
 
 </TabItem>
-
-<!--
 
 <TabItem value="py" label="Python">
 
@@ -107,7 +68,5 @@ client.create_route(provider)
 ```
 
 </TabItem>
-
--->
 
 </Tabs>
