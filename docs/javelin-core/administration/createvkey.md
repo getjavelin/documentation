@@ -25,8 +25,6 @@ curl -X POST \
 
 </TabItem>
 
-<!--
-
 <TabItem value="py" label="Python">
 
 ```py
@@ -58,7 +56,5 @@ client.create_secret(secret)
 ```
 
 </TabItem>
-
--->
 
 </Tabs>

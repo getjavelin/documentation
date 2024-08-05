@@ -11,8 +11,6 @@ curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1
 
 </TabItem>
 
-<!--
-
 <TabItem value="py" label="Python">
 
 ```py
@@ -39,7 +37,5 @@ client.delete_template(template_name)
 ```
 
 </TabItem>
-
--->
 
 </Tabs>

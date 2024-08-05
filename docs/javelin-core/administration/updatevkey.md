@@ -23,8 +23,6 @@ curl -X PUT \
 
 </TabItem>
 
-<!--
-
 <TabItem value="py" label="Python">
 
 ```py
@@ -55,7 +53,5 @@ client.update_secret(secret)
 ```
 
 </TabItem>
-
--->
 
 </Tabs>

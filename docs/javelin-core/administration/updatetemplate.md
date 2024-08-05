@@ -39,8 +39,6 @@ curl -X PUT \
 
 </TabItem>
 
-<!--
-
 <TabItem value="py" label="Python">
 
 ```py
@@ -71,7 +69,5 @@ client.update_template(template)
 ```
 
 </TabItem>
-
--->
 
 </Tabs>
