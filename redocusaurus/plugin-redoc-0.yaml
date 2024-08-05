@@ -547,9 +547,6 @@ paths:
       summary: Count archives
       tags:
         - archives
-  /v1/admin/dashboards:
-    post:
-      responses: {}
   /v1/admin/gateways:
     get:
       description: List all gateways
