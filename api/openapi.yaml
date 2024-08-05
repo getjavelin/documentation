@@ -77,7 +77,7 @@ definitions:
         type: string
       log:
         allOf:
-          - $ref: "#/definitions/model.Archive"
+        - $ref: '#/definitions/model.Archive'
         description: Archive to be created
     type: object
   model.Dashboard:
@@ -268,7 +268,7 @@ definitions:
       models:
         description: Models associated with the route
         items:
-          $ref: "#/definitions/model.ModelConfig"
+          $ref: '#/definitions/model.ModelConfig'
         type: array
       modified_at:
         description: Modification timestamp
@@ -301,15 +301,14 @@ definitions:
       models:
         description: Models from spaCy, Cloud DLP etc.
         items:
-          $ref: "#/definitions/model.ModelConfig"
+          $ref: '#/definitions/model.ModelConfig'
         type: array
       modified_at:
         type: string
       modified_by:
         type: string
       name:
-        description:
-          Short Name for the Template like "inspect", "deidentify", "reidentify"
+        description: Short Name for the Template like "inspect", "deidentify", "reidentify"
           etc.
         type: string
       type:
@@ -321,7 +320,7 @@ definitions:
       account_id:
         type: string
       archive:
-        $ref: "#/definitions/model.Archive"
+        $ref: '#/definitions/model.Archive'
       gateway_id:
         type: string
       uuid:
@@ -333,35 +332,30 @@ paths:
   /v1/admin/archives:
     get:
       consumes:
-        - application/json
+      - application/json
       description: List all archives
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Page number
-          in: query
-          name: page
-          type: integer
-        - description: Limit of archives to retrieve
-          in: query
-          name: limit
-          type: integer
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Limit of archives to retrieve
+        in: query
+        name: limit
+        type: integer
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.Archive"
+              $ref: '#/definitions/model.Archive'
             type: array
         "400":
           description: Bad Request
@@ -377,30 +371,25 @@ paths:
             type: string
       summary: List archives
       tags:
-        - archives
+      - archives
     post:
       consumes:
-        - application/json
+      - application/json
       description: Create a new archive with the given details
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: New Archive Content
-          in: body
-          name: archive
-          required: true
-          schema:
-            $ref: "#/definitions/model.CreateArchiveRequest"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: New Archive Content
+        in: body
+        name: archive
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateArchiveRequest'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Archive created successfully
@@ -416,36 +405,31 @@ paths:
             type: string
       summary: Create a new archive
       tags:
-        - archives
+      - archives
   /v1/admin/archives/{archive_uuid}:
     put:
       consumes:
-        - application/json
+      - application/json
       description: Update archive with the given details
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Archive UUID
-          in: path
-          name: archive_uuid
-          required: true
-          type: string
-        - description: Updated Archive Content
-          in: body
-          name: archive
-          required: true
-          schema:
-            $ref: "#/definitions/model.UpdateArchiveRequest"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Archive UUID
+        in: path
+        name: archive_uuid
+        required: true
+        type: string
+      - description: Updated Archive Content
+        in: body
+        name: archive
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateArchiveRequest'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Archive updated successfully
@@ -461,48 +445,43 @@ paths:
             type: string
       summary: Update archive
       tags:
-        - archives
+      - archives
   /v1/admin/archives/{routename}:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Get archives filtered by route name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Route Name
-          in: path
-          name: routename
-          required: true
-          type: string
-        - description: Filter by marked for review
-          in: query
-          name: marked_for_review
-          type: boolean
-        - description: Page number
-          in: query
-          name: page
-          type: integer
-        - description: Limit of archives to retrieve
-          in: query
-          name: limit
-          type: integer
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Route Name
+        in: path
+        name: routename
+        required: true
+        type: string
+      - description: Filter by marked for review
+        in: query
+        name: marked_for_review
+        type: boolean
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Limit of archives to retrieve
+        in: query
+        name: limit
+        type: integer
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.Archive"
+              $ref: '#/definitions/model.Archive'
             type: array
         "400":
           description: Bad Request
@@ -518,35 +497,30 @@ paths:
             type: string
       summary: Get archives by route
       tags:
-        - archives
+      - archives
   /v1/admin/archives/{routename}/count:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Count all archives by route
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Route Name
-          in: path
-          name: routename
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Route Name
+        in: path
+        name: routename
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Archive Counts by Route
           schema:
-            $ref: "#/definitions/model.CountResponse"
+            $ref: '#/definitions/model.CountResponse'
         "400":
           description: Bad Request
           schema:
@@ -557,30 +531,25 @@ paths:
             type: string
       summary: Count archives by route
       tags:
-        - archives
+      - archives
   /v1/admin/archives/count:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Count all archives
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Archive Counts
           schema:
-            $ref: "#/definitions/model.CountResponse"
+            $ref: '#/definitions/model.CountResponse'
         "400":
           description: Bad Request
           schema:
@@ -591,31 +560,26 @@ paths:
             type: string
       summary: Count archives
       tags:
-        - archives
+      - archives
   /v1/admin/dashboards:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Get a list of all dashboard
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.Dashboard"
+              $ref: '#/definitions/model.Dashboard'
             type: array
         "400":
           description: Bad Request
@@ -631,30 +595,25 @@ paths:
             type: string
       summary: List all dashboard
       tags:
-        - dashboards
+      - dashboards
     post:
       consumes:
-        - application/json
+      - application/json
       description: Add a new dashboard with the specified details
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Dashboard details
-          in: body
-          name: dashboard
-          required: true
-          schema:
-            $ref: "#/definitions/model.Dashboard"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Dashboard details
+        in: body
+        name: dashboard
+        required: true
+        schema:
+          $ref: '#/definitions/model.Dashboard'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Dashboard created successfully
@@ -670,30 +629,25 @@ paths:
             type: string
       summary: Create a new dashboard
       tags:
-        - dashboards
+      - dashboards
   /v1/admin/dashboards/{dashboardname}:
     delete:
       consumes:
-        - application/json
+      - application/json
       description: Remove a dashboard by name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Dashboard Name
-          in: path
-          name: dashboardname
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Dashboard Name
+        in: path
+        name: dashboardname
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Dashboard deleted successfully
@@ -713,34 +667,29 @@ paths:
             type: string
       summary: Delete a dashboard
       tags:
-        - dashboards
+      - dashboards
     get:
       consumes:
-        - application/json
+      - application/json
       description: Retrieve a specific dashboard by slug
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Dashboard Name
-          in: path
-          name: dashboard
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Dashboard Name
+        in: path
+        name: dashboard
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.Dashboard"
+            $ref: '#/definitions/model.Dashboard'
         "400":
           description: Bad Request
           schema:
@@ -755,35 +704,30 @@ paths:
             type: string
       summary: Get a specific dashboard
       tags:
-        - dashboards
+      - dashboards
     put:
       consumes:
-        - application/json
+      - application/json
       description: Update an existing dashboard
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Dashboard Name
-          in: path
-          name: dashboard
-          required: true
-          type: string
-        - description: Dashboard details
-          in: body
-          name: Dashboard
-          required: true
-          schema:
-            $ref: "#/definitions/model.Dashboard"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Dashboard Name
+        in: path
+        name: dashboard
+        required: true
+        type: string
+      - description: Dashboard details
+        in: body
+        name: Dashboard
+        required: true
+        schema:
+          $ref: '#/definitions/model.Dashboard'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Dashboard updated successfully
@@ -799,17 +743,23 @@ paths:
             type: string
       summary: Update a dashboard
       tags:
-        - dashboards
+      - dashboards
   /v1/admin/gateways:
     get:
       description: List all gateways
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.Gateway"
+            $ref: '#/definitions/model.Gateway'
         "400":
           description: Invalid request
           schema:
@@ -824,20 +774,25 @@ paths:
             type: string
       summary: List all gateways
       tags:
-        - Gateways
+      - Gateways
     post:
       consumes:
-        - application/json
+      - application/json
       description: Create a new gateway
       parameters:
-        - description: Gateway
-          in: body
-          name: gateway
-          required: true
-          schema:
-            $ref: "#/definitions/model.Gateway"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Gateway
+        in: body
+        name: gateway
+        required: true
+        schema:
+          $ref: '#/definitions/model.Gateway'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Gateway created successfully
@@ -853,18 +808,23 @@ paths:
             type: string
       summary: Create a new gateway
       tags:
-        - Gateways
+      - Gateways
   /v1/admin/gateways/{gatewayname}:
     delete:
       description: Delete a gateway by name
       parameters:
-        - description: Gateway Name
-          in: path
-          name: gatewayname
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Gateway Name
+        in: path
+        name: gatewayname
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Gateway deleted successfully
@@ -884,22 +844,27 @@ paths:
             type: string
       summary: Delete a gateway by name
       tags:
-        - Gateways
+      - Gateways
     get:
       description: Get a gateway by name
       parameters:
-        - description: Gateway Name
-          in: path
-          name: gatewayname
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Gateway Name
+        in: path
+        name: gatewayname
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.Gateway"
+            $ref: '#/definitions/model.Gateway'
         "400":
           description: Invalid request"}
           schema:
@@ -910,25 +875,30 @@ paths:
             type: string
       summary: Get a gateway by name
       tags:
-        - Gateways
+      - Gateways
     put:
       consumes:
-        - application/json
+      - application/json
       description: Update an existing gateway
       parameters:
-        - description: Gateway Name
-          in: path
-          name: gatewayname
-          required: true
-          type: string
-        - description: Gateway
-          in: body
-          name: gateway
-          required: true
-          schema:
-            $ref: "#/definitions/model.Gateway"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Gateway Name
+        in: path
+        name: gatewayname
+        required: true
+        type: string
+      - description: Gateway
+        in: body
+        name: gateway
+        required: true
+        schema:
+          $ref: '#/definitions/model.Gateway'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: Gateway updated successfully
@@ -944,28 +914,23 @@ paths:
             type: string
       summary: Update an existing gateway
       tags:
-        - Gateways
+      - Gateways
   /v1/admin/guardrails:
     delete:
       description: Delete guardrails
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -980,27 +945,22 @@ paths:
             type: string
       summary: Delete guardrails
       tags:
-        - Guardrails
+      - Guardrails
     get:
       description: Get guardrails
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.Guardrails"
+            $ref: '#/definitions/model.Guardrails'
         "400":
           description: Invalid request payload
           schema:
@@ -1011,35 +971,30 @@ paths:
             type: string
       summary: Get guardrails
       tags:
-        - Guardrails
+      - Guardrails
     post:
       consumes:
-        - application/json
+      - application/json
       description: Create guardrails
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Guardrails details
-          in: body
-          name: guardrails
-          required: true
-          schema:
-            $ref: "#/definitions/model.Guardrails"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Guardrails details
+        in: body
+        name: guardrails
+        required: true
+        schema:
+          $ref: '#/definitions/model.Guardrails'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1050,35 +1005,30 @@ paths:
             type: string
       summary: Create guardrails
       tags:
-        - Guardrails
+      - Guardrails
     put:
       consumes:
-        - application/json
+      - application/json
       description: Update guardrails
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Guardrails details
-          in: body
-          name: guardrails
-          required: true
-          schema:
-            $ref: "#/definitions/model.Guardrails"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Guardrails details
+        in: body
+        name: guardrails
+        required: true
+        schema:
+          $ref: '#/definitions/model.Guardrails'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1093,41 +1043,36 @@ paths:
             type: string
       summary: Update guardrails
       tags:
-        - Guardrails
+      - Guardrails
   /v1/admin/keyvault/keys/{providername}:
     get:
       consumes:
-        - application/json
+      - application/json
       description: List all API keys
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Namespace
-          in: header
-          name: x-javelin-namespace
-          required: true
-          type: string
-        - description: Provider Name
-          in: path
-          name: providername
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.APIKey"
+              $ref: '#/definitions/model.APIKey'
             type: array
         "400":
           description: Bad Request
@@ -1143,45 +1088,40 @@ paths:
             type: string
       summary: List API keys
       tags:
-        - keyvault
+      - keyvault
     post:
       consumes:
-        - application/json
+      - application/json
       description: Create a new API key with the specified details
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Namespace
-          in: header
-          name: x-javelin-namespace
-          required: true
-          type: string
-        - description: Provider Name
-          in: path
-          name: providername
-          required: true
-          type: string
-        - description: API Key details
-          in: body
-          name: apikey
-          required: true
-          schema:
-            $ref: "#/definitions/model.APIKey"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      - description: API Key details
+        in: body
+        name: apikey
+        required: true
+        schema:
+          $ref: '#/definitions/model.APIKey'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1192,45 +1132,40 @@ paths:
             type: string
       summary: Create a new API key
       tags:
-        - keyvault
+      - keyvault
     put:
       consumes:
-        - application/json
+      - application/json
       description: Update an existing API key
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Namespace
-          in: header
-          name: x-javelin-namespace
-          required: true
-          type: string
-        - description: Provider Name
-          in: path
-          name: providername
-          required: true
-          type: string
-        - description: API Key details
-          in: body
-          name: apikey
-          required: true
-          schema:
-            $ref: "#/definitions/model.APIKey"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      - description: API Key details
+        in: body
+        name: apikey
+        required: true
+        schema:
+          $ref: '#/definitions/model.APIKey'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1241,45 +1176,40 @@ paths:
             type: string
       summary: Update an API key
       tags:
-        - keyvault
+      - keyvault
   /v1/admin/keyvault/keys/{providername}/{keyname}:
     delete:
       consumes:
-        - application/json
+      - application/json
       description: Delete an API key by name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Namespace
-          in: header
-          name: x-javelin-namespace
-          required: true
-          type: string
-        - description: Provider Name
-          in: path
-          name: providername
-          required: true
-          type: string
-        - description: Key Name
-          in: path
-          name: keyname
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      - description: Key Name
+        in: path
+        name: keyname
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Bad Request
           schema:
@@ -1290,44 +1220,39 @@ paths:
             type: string
       summary: Delete an API key
       tags:
-        - keyvault
+      - keyvault
     get:
       consumes:
-        - application/json
+      - application/json
       description: Retrieve a specific API key by name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Namespace
-          in: header
-          name: x-javelin-namespace
-          required: true
-          type: string
-        - description: Provider Name
-          in: path
-          name: providername
-          required: true
-          type: string
-        - description: Key Name
-          in: path
-          name: keyname
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      - description: Key Name
+        in: path
+        name: keyname
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.APIKey"
+            $ref: '#/definitions/model.APIKey'
         "400":
           description: Bad Request
           schema:
@@ -1342,31 +1267,26 @@ paths:
             type: string
       summary: Get a specific API key
       tags:
-        - keyvault
+      - keyvault
   /v1/admin/logs:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Get a list of all log entries
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.Log"
+              $ref: '#/definitions/model.Log'
             type: array
         "400":
           description: Bad Request
@@ -1382,35 +1302,30 @@ paths:
             type: string
       summary: List all log entries
       tags:
-        - logs
+      - logs
     post:
       consumes:
-        - application/json
+      - application/json
       description: Add a new log entry with the specified details
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Log entry details
-          in: body
-          name: log
-          required: true
-          schema:
-            $ref: "#/definitions/model.Log"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Log entry details
+        in: body
+        name: log
+        required: true
+        schema:
+          $ref: '#/definitions/model.Log'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1421,31 +1336,26 @@ paths:
             type: string
       summary: Create a new log entry
       tags:
-        - logs
+      - logs
   /v1/admin/providers:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Get a list of all providers
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.Provider"
+              $ref: '#/definitions/model.Provider'
             type: array
         "400":
           description: Bad Request
@@ -1461,35 +1371,30 @@ paths:
             type: string
       summary: List all providers
       tags:
-        - provider
+      - provider
     post:
       consumes:
-        - application/json
+      - application/json
       description: Add a new provider with the specified details
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Provider details
-          in: body
-          name: provider
-          required: true
-          schema:
-            $ref: "#/definitions/model.Provider"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Provider details
+        in: body
+        name: provider
+        required: true
+        schema:
+          $ref: '#/definitions/model.Provider'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1500,35 +1405,30 @@ paths:
             type: string
       summary: Create a new provider
       tags:
-        - provider
+      - provider
   /v1/admin/providers/{providername}:
     delete:
       consumes:
-        - application/json
+      - application/json
       description: Remove a provider by name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Provider Name
-          in: path
-          name: providername
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Bad Request
           schema:
@@ -1543,34 +1443,29 @@ paths:
             type: string
       summary: Delete a provider
       tags:
-        - provider
+      - provider
     get:
       consumes:
-        - application/json
+      - application/json
       description: Retrieve a specific provider by name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Provider Name
-          in: path
-          name: providername
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.Provider"
+            $ref: '#/definitions/model.Provider'
         "400":
           description: Bad Request
           schema:
@@ -1585,40 +1480,35 @@ paths:
             type: string
       summary: Get a specific provider
       tags:
-        - provider
+      - provider
     put:
       consumes:
-        - application/json
+      - application/json
       description: Update an existing provider
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Provider Name
-          in: path
-          name: providername
-          required: true
-          type: string
-        - description: Provider details
-          in: body
-          name: provider
-          required: true
-          schema:
-            $ref: "#/definitions/model.Provider"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      - description: Provider details
+        in: body
+        name: provider
+        required: true
+        schema:
+          $ref: '#/definitions/model.Provider'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1629,31 +1519,26 @@ paths:
             type: string
       summary: Update a provider
       tags:
-        - provider
+      - provider
   /v1/admin/routes:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Get a list of all routes by filter
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.Route"
+              $ref: '#/definitions/model.Route'
             type: array
         "400":
           description: Bad Request
@@ -1669,35 +1554,30 @@ paths:
             type: string
       summary: List all routes by filter
       tags:
-        - routes
+      - routes
     post:
       consumes:
-        - application/json
+      - application/json
       description: Add a new route with the specified details
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Route details
-          in: body
-          name: route
-          required: true
-          schema:
-            $ref: "#/definitions/model.Route"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Route details
+        in: body
+        name: route
+        required: true
+        schema:
+          $ref: '#/definitions/model.Route'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1708,35 +1588,30 @@ paths:
             type: string
       summary: Create a new route
       tags:
-        - routes
+      - routes
   /v1/admin/routes/{routename}:
     delete:
       consumes:
-        - application/json
+      - application/json
       description: Remove a route by name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Route Name
-          in: path
-          name: routename
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Route Name
+        in: path
+        name: routename
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Bad Request
           schema:
@@ -1751,34 +1626,29 @@ paths:
             type: string
       summary: Delete a route
       tags:
-        - routes
+      - routes
     get:
       consumes:
-        - application/json
+      - application/json
       description: Retrieve a specific route by name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Route Name
-          in: path
-          name: routename
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Route Name
+        in: path
+        name: routename
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.Route"
+            $ref: '#/definitions/model.Route'
         "400":
           description: Bad Request
           schema:
@@ -1793,40 +1663,35 @@ paths:
             type: string
       summary: Get a specific route
       tags:
-        - routes
+      - routes
     put:
       consumes:
-        - application/json
+      - application/json
       description: Update an existing route
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Route Name
-          in: path
-          name: routename
-          required: true
-          type: string
-        - description: Route details
-          in: body
-          name: route
-          required: true
-          schema:
-            $ref: "#/definitions/model.Route"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Route Name
+        in: path
+        name: routename
+        required: true
+        type: string
+      - description: Route details
+        in: body
+        name: route
+        required: true
+        schema:
+          $ref: '#/definitions/model.Route'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1837,31 +1702,26 @@ paths:
             type: string
       summary: Update a route
       tags:
-        - routes
+      - routes
   /v1/admin/templates:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Get a list of all templates
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.Template"
+              $ref: '#/definitions/model.Template'
             type: array
         "400":
           description: Bad Request
@@ -1877,35 +1737,30 @@ paths:
             type: string
       summary: List all templates
       tags:
-        - templates
+      - templates
     post:
       consumes:
-        - application/json
+      - application/json
       description: Add a new template with the specified details
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Template details
-          in: body
-          name: template
-          required: true
-          schema:
-            $ref: "#/definitions/model.Template"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Template details
+        in: body
+        name: template
+        required: true
+        schema:
+          $ref: '#/definitions/model.Template'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -1916,35 +1771,30 @@ paths:
             type: string
       summary: Create a new template
       tags:
-        - templates
+      - templates
   /v1/admin/templates/{templatename}:
     delete:
       consumes:
-        - application/json
+      - application/json
       description: Remove a template by name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Template Name
-          in: path
-          name: templatename
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Template Name
+        in: path
+        name: templatename
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Bad Request
           schema:
@@ -1959,34 +1809,29 @@ paths:
             type: string
       summary: Delete a template
       tags:
-        - templates
+      - templates
     get:
       consumes:
-        - application/json
+      - application/json
       description: Retrieve details of a specific template by name
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Template Name
-          in: path
-          name: templatename
-          required: true
-          type: string
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Template Name
+        in: path
+        name: templatename
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.Template"
+            $ref: '#/definitions/model.Template'
         "400":
           description: Bad Request
           schema:
@@ -2001,40 +1846,35 @@ paths:
             type: string
       summary: Get a specific template
       tags:
-        - templates
+      - templates
     put:
       consumes:
-        - application/json
+      - application/json
       description: Update details of an existing template
       parameters:
-        - description: Account ID
-          in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
-          required: true
-          type: string
-        - description: Template Name
-          in: path
-          name: templatename
-          required: true
-          type: string
-        - description: Template details
-          in: body
-          name: template
-          required: true
-          schema:
-            $ref: "#/definitions/model.Template"
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Template Name
+        in: path
+        name: templatename
+        required: true
+        type: string
+      - description: Template details
+        in: body
+        name: template
+        required: true
+        schema:
+          $ref: '#/definitions/model.Template'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.ResponseMessage"
+            $ref: '#/definitions/model.ResponseMessage'
         "400":
           description: Invalid request payload
           schema:
@@ -2049,5 +1889,5 @@ paths:
             type: string
       summary: Update a template
       tags:
-        - templates
+      - templates
 swagger: "2.0"
