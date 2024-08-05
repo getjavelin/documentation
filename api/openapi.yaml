@@ -1044,230 +1044,6 @@ paths:
       summary: Update guardrails
       tags:
       - Guardrails
-  /v1/admin/keyvault/keys/{providername}:
-    get:
-      consumes:
-      - application/json
-      description: List all API keys
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/model.APIKey'
-            type: array
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: No key found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: List API keys
-      tags:
-      - keyvault
-    post:
-      consumes:
-      - application/json
-      description: Create a new API key with the specified details
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      - description: API Key details
-        in: body
-        name: apikey
-        required: true
-        schema:
-          $ref: '#/definitions/model.APIKey'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to create key
-          schema:
-            type: string
-      summary: Create a new API key
-      tags:
-      - keyvault
-    put:
-      consumes:
-      - application/json
-      description: Update an existing API key
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      - description: API Key details
-        in: body
-        name: apikey
-        required: true
-        schema:
-          $ref: '#/definitions/model.APIKey'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to update apikey
-          schema:
-            type: string
-      summary: Update an API key
-      tags:
-      - keyvault
-  /v1/admin/keyvault/keys/{providername}/{keyname}:
-    delete:
-      consumes:
-      - application/json
-      description: Delete an API key by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      - description: Key Name
-        in: path
-        name: keyname
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "500":
-          description: Failed to delete Key
-          schema:
-            type: string
-      summary: Delete an API key
-      tags:
-      - keyvault
-    get:
-      consumes:
-      - application/json
-      description: Retrieve a specific API key by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      - description: Key Name
-        in: path
-        name: keyname
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.APIKey'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Key not found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: Get a specific API key
-      tags:
-      - keyvault
   /v1/admin/logs:
     get:
       consumes:
@@ -1337,6 +1113,198 @@ paths:
       summary: Create a new log entry
       tags:
       - logs
+  /v1/admin/processors/dp/templates:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all templates
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Template'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: No templates found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: List all templates
+      tags:
+      - templates
+    post:
+      consumes:
+      - application/json
+      description: Add a new template with the specified details
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Template Name
+        in: path
+        name: templatename
+        required: true
+        type: string
+      - description: Template details
+        in: body
+        name: template
+        required: true
+        schema:
+          $ref: '#/definitions/model.Template'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ResponseMessage'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to create template
+          schema:
+            type: string
+      summary: Create a new template
+      tags:
+      - templates
+  /v1/admin/processors/dp/templates/{templatename}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a template by name
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Template Name
+        in: path
+        name: templatename
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ResponseMessage'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Template not found
+          schema:
+            type: string
+        "500":
+          description: Failed to delete template
+          schema:
+            type: string
+      summary: Delete a template
+      tags:
+      - templates
+    get:
+      consumes:
+      - application/json
+      description: Retrieve details of a specific template by name
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Template Name
+        in: path
+        name: templatename
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Template'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Template not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a specific template
+      tags:
+      - templates
+    put:
+      consumes:
+      - application/json
+      description: Update details of an existing template
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Template Name
+        in: path
+        name: templatename
+        required: true
+        type: string
+      - description: Template details
+        in: body
+        name: template
+        required: true
+        schema:
+          $ref: '#/definitions/model.Template'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ResponseMessage'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "404":
+          description: Template not found
+          schema:
+            type: string
+        "500":
+          description: Failed to update template
+          schema:
+            type: string
+      summary: Update a template
+      tags:
+      - templates
   /v1/admin/providers:
     get:
       consumes:
@@ -1520,6 +1488,241 @@ paths:
       summary: Update a provider
       tags:
       - provider
+  /v1/admin/providers/{providername}/keyvault/{keyname}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an API key by name
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      - description: Key Name
+        in: path
+        name: keyname
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ResponseMessage'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Failed to delete Key
+          schema:
+            type: string
+      summary: Delete an API key
+      tags:
+      - keyvault
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific API key by name
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      - description: Key Name
+        in: path
+        name: keyname
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.APIKey'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Key not found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get a specific API key
+      tags:
+      - keyvault
+    put:
+      consumes:
+      - application/json
+      description: Update an existing API key
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      - description: Key Name
+        in: path
+        name: keyname
+        required: true
+        type: string
+      - description: API Key details
+        in: body
+        name: apikey
+        required: true
+        schema:
+          $ref: '#/definitions/model.APIKey'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ResponseMessage'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to update apikey
+          schema:
+            type: string
+      summary: Update an API key
+      tags:
+      - keyvault
+  /v1/admin/providers/{providername}keyvault/{keyname}:
+    post:
+      consumes:
+      - application/json
+      description: Create a new API key with the specified details
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      - description: Key Name
+        in: path
+        name: keyname
+        required: true
+        type: string
+      - description: API Key details
+        in: body
+        name: apikey
+        required: true
+        schema:
+          $ref: '#/definitions/model.APIKey'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ResponseMessage'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to create key
+          schema:
+            type: string
+      summary: Create a new API key
+      tags:
+      - keyvault
+  /v1/admin/providers/keyvault/keys:
+    get:
+      consumes:
+      - application/json
+      description: List all API keys
+      parameters:
+      - description: Javelin API Key
+        in: header
+        name: x-api-key
+        required: true
+        type: string
+      - description: Namespace
+        in: header
+        name: x-javelin-namespace
+        required: true
+        type: string
+      - description: Provider Name
+        in: path
+        name: providername
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.APIKey'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: No key found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: List API keys
+      tags:
+      - keyvault
   /v1/admin/routes:
     get:
       consumes:
@@ -1703,191 +1906,4 @@ paths:
       summary: Update a route
       tags:
       - routes
-  /v1/admin/templates:
-    get:
-      consumes:
-      - application/json
-      description: Get a list of all templates
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/model.Template'
-            type: array
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: No templates found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: List all templates
-      tags:
-      - templates
-    post:
-      consumes:
-      - application/json
-      description: Add a new template with the specified details
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Template details
-        in: body
-        name: template
-        required: true
-        schema:
-          $ref: '#/definitions/model.Template'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to create template
-          schema:
-            type: string
-      summary: Create a new template
-      tags:
-      - templates
-  /v1/admin/templates/{templatename}:
-    delete:
-      consumes:
-      - application/json
-      description: Remove a template by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Template Name
-        in: path
-        name: templatename
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Template not found
-          schema:
-            type: string
-        "500":
-          description: Failed to delete template
-          schema:
-            type: string
-      summary: Delete a template
-      tags:
-      - templates
-    get:
-      consumes:
-      - application/json
-      description: Retrieve details of a specific template by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Template Name
-        in: path
-        name: templatename
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.Template'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Template not found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: Get a specific template
-      tags:
-      - templates
-    put:
-      consumes:
-      - application/json
-      description: Update details of an existing template
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Template Name
-        in: path
-        name: templatename
-        required: true
-        type: string
-      - description: Template details
-        in: body
-        name: template
-        required: true
-        schema:
-          $ref: '#/definitions/model.Template'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "404":
-          description: Template not found
-          schema:
-            type: string
-        "500":
-          description: Failed to update template
-          schema:
-            type: string
-      summary: Update a template
-      tags:
-      - templates
 swagger: "2.0"
