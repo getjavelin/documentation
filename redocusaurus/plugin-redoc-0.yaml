@@ -336,14 +336,9 @@ paths:
         - application/json
       description: List all archives
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Page number
@@ -383,14 +378,9 @@ paths:
         - application/json
       description: Create a new archive with the given details
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: New Archive Content
@@ -423,14 +413,9 @@ paths:
         - application/json
       description: Update archive with the given details
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Archive UUID
@@ -468,14 +453,9 @@ paths:
         - application/json
       description: Get archives filtered by route name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Route Name
@@ -525,14 +505,9 @@ paths:
         - application/json
       description: Count all archives by route
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Route Name
@@ -564,14 +539,9 @@ paths:
         - application/json
       description: Count all archives
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
       produces:
@@ -598,14 +568,9 @@ paths:
         - application/json
       description: Get a list of all dashboard
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
       produces:
@@ -637,14 +602,9 @@ paths:
         - application/json
       description: Add a new dashboard with the specified details
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Dashboard details
@@ -677,14 +637,9 @@ paths:
         - application/json
       description: Remove a dashboard by name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Dashboard Name
@@ -719,14 +674,9 @@ paths:
         - application/json
       description: Retrieve a specific dashboard by slug
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Dashboard Name
@@ -761,14 +711,9 @@ paths:
         - application/json
       description: Update an existing dashboard
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Dashboard Name
@@ -803,6 +748,12 @@ paths:
   /v1/admin/gateways:
     get:
       description: List all gateways
+      parameters:
+        - description: Javelin API Key
+          in: header
+          name: x-api-key
+          required: true
+          type: string
       produces:
         - application/json
       responses:
@@ -830,6 +781,11 @@ paths:
         - application/json
       description: Create a new gateway
       parameters:
+        - description: Javelin API Key
+          in: header
+          name: x-api-key
+          required: true
+          type: string
         - description: Gateway
           in: body
           name: gateway
@@ -858,6 +814,11 @@ paths:
     delete:
       description: Delete a gateway by name
       parameters:
+        - description: Javelin API Key
+          in: header
+          name: x-api-key
+          required: true
+          type: string
         - description: Gateway Name
           in: path
           name: gatewayname
@@ -888,6 +849,11 @@ paths:
     get:
       description: Get a gateway by name
       parameters:
+        - description: Javelin API Key
+          in: header
+          name: x-api-key
+          required: true
+          type: string
         - description: Gateway Name
           in: path
           name: gatewayname
@@ -916,6 +882,11 @@ paths:
         - application/json
       description: Update an existing gateway
       parameters:
+        - description: Javelin API Key
+          in: header
+          name: x-api-key
+          required: true
+          type: string
         - description: Gateway Name
           in: path
           name: gatewayname
@@ -949,14 +920,9 @@ paths:
     delete:
       description: Delete guardrails
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
       produces:
@@ -984,14 +950,9 @@ paths:
     get:
       description: Get guardrails
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
       produces:
@@ -1017,14 +978,9 @@ paths:
         - application/json
       description: Create guardrails
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Guardrails details
@@ -1056,14 +1012,9 @@ paths:
         - application/json
       description: Update guardrails
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Guardrails details
@@ -1100,14 +1051,9 @@ paths:
         - application/json
       description: List all API keys
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Namespace
@@ -1149,14 +1095,9 @@ paths:
         - application/json
       description: Create a new API key with the specified details
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Namespace
@@ -1198,14 +1139,9 @@ paths:
         - application/json
       description: Update an existing API key
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Namespace
@@ -1248,14 +1184,9 @@ paths:
         - application/json
       description: Delete an API key by name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Namespace
@@ -1296,14 +1227,9 @@ paths:
         - application/json
       description: Retrieve a specific API key by name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Namespace
@@ -1349,14 +1275,9 @@ paths:
         - application/json
       description: Get a list of all log entries
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
       produces:
@@ -1388,14 +1309,9 @@ paths:
         - application/json
       description: Add a new log entry with the specified details
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Log entry details
@@ -1428,14 +1344,9 @@ paths:
         - application/json
       description: Get a list of all providers
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
       produces:
@@ -1467,14 +1378,9 @@ paths:
         - application/json
       description: Add a new provider with the specified details
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Provider details
@@ -1507,14 +1413,9 @@ paths:
         - application/json
       description: Remove a provider by name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Provider Name
@@ -1549,14 +1450,9 @@ paths:
         - application/json
       description: Retrieve a specific provider by name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Provider Name
@@ -1591,14 +1487,9 @@ paths:
         - application/json
       description: Update an existing provider
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Provider Name
@@ -1636,14 +1527,9 @@ paths:
         - application/json
       description: Get a list of all routes by filter
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
       produces:
@@ -1675,14 +1561,9 @@ paths:
         - application/json
       description: Add a new route with the specified details
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Route details
@@ -1715,14 +1596,9 @@ paths:
         - application/json
       description: Remove a route by name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Route Name
@@ -1757,14 +1633,9 @@ paths:
         - application/json
       description: Retrieve a specific route by name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Route Name
@@ -1799,14 +1670,9 @@ paths:
         - application/json
       description: Update an existing route
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Route Name
@@ -1844,14 +1710,9 @@ paths:
         - application/json
       description: Get a list of all templates
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
       produces:
@@ -1883,14 +1744,9 @@ paths:
         - application/json
       description: Add a new template with the specified details
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Template details
@@ -1923,14 +1779,9 @@ paths:
         - application/json
       description: Remove a template by name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Template Name
@@ -1965,14 +1816,9 @@ paths:
         - application/json
       description: Retrieve details of a specific template by name
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Template Name
@@ -2007,14 +1853,9 @@ paths:
         - application/json
       description: Update details of an existing template
       parameters:
-        - description: Account ID
+        - description: Javelin API Key
           in: header
-          name: x-javelin-accountid
-          required: true
-          type: string
-        - description: Gateway ID
-          in: header
-          name: x-javelin-gatewayid
+          name: x-api-key
           required: true
           type: string
         - description: Template Name
