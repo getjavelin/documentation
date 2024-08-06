@@ -1,13 +1,15 @@
 # Integration Overview
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 Javelin offers configuration options to setup Large Language Models(LLMs) API Keys. You can easily setup virtual keys for all the providers. This will enable all your applications across your enterprise access all of your providers with just Javelin API Key.
 
 # Secret Object
 When represented as json, the provider object has the following structure:
-```shell
-  {
+<CodeBlock
+  language="python">
+  {`{
     "api_key": "unique key for the secret",
     "api_key_secret_name": "name for the secret",
     "api_key_secret_key": "API key from the provider",
@@ -17,8 +19,8 @@ When represented as json, the provider object has the following structure:
     "header_key": "",
     "group": "sales",
     "enabled": true
-  }
-  ```
+  }`}
+</CodeBlock>
 
 ## Secret Fields
 

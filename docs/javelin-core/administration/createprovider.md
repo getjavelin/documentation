@@ -2,17 +2,20 @@
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
-<TabItem value="shell" label="Using the API:">
+<TabItem value="shell" label="curl">
 
-```shell
-curl -X POST \
--H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
--d '{
-        "name": "openai",
-        "type": "closed",
+<CodeBlock
+  language="python">
+  {`curl -X POST \\
+  -H "Content-Type: application/json" \\
+  -H "x-api-key: $JAVELIN_API_KEY" \\
+  -d '{
+        "name": "InspectPII",
+        "description": "Inspect sensitive data",
+        "type": "inspect",
         "enabled": true,
         "config": {
             "api_base": "https://api.openai.com",
@@ -21,10 +24,10 @@ curl -X POST \
             "organization": "",
             "deployment_name": ""
         }
-}' \
-"https://api-dev.javelin.live/v1/admin/providers/openai"
+  }' \\
+  "https://api.javelin.live/v1/admin/providers/openai"`}
+</CodeBlock>
 
-```
 
 </TabItem>
 

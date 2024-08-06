@@ -1,13 +1,17 @@
 # Listing Templates
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
 <TabItem value="shell" label="Using the API:">
 
-```shell
-curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1/admin/processors/dp/templates"
-```
+<CodeBlock
+  language="python">
+  {`
+curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/processors/dp/templates"
+`}
+</CodeBlock>
 
 </TabItem>
 

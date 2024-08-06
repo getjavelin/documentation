@@ -1,11 +1,14 @@
 # Creating Route
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
 <TabItem value="shell" label="Using the API:">
 
-```shell
+<CodeBlock
+  language="python">
+  {`
 curl -X POST \
 -H "Content-Type: application/json" \
 -H "x-api-key: $JAVELIN_API_KEY" \
@@ -35,9 +38,9 @@ curl -X POST \
             }
         }
 }' \
-"https://api-dev.javelin.live/v1/admin/routes/test_route_1"
-
-```
+"https://api.javelin.live/v1/admin/routes/test_route_1"
+`}
+</CodeBlock>
 
 </TabItem>
 <TabItem value="py" label="In Python:">

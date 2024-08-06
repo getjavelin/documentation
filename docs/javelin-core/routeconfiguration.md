@@ -1,29 +1,32 @@
 # Integration Overview
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 Javelin offers a variety of configuration options to setup policies, cost guardrails and traffic shaping. You can easily connect your applications to route all LLM traffic through Javelin. 
 
 # Route Object
 When represented as json, the route object has the following structure:
-```shell
-  {
+<CodeBlock
+  language="python">
+  {`{
     "name": "name of the route",
-    "type": "this could be `chat`, `completions`, `embeddings` etc.,",
+    "type": "this could be \`chat\`, \`completions\`, \`embeddings\` etc.,",
     "models": [ 
-        {
-          "name": "name of the model to use, like text-davinci-003",
-          "provider": "name of the llm provider - openai",
-          "suffix": "/chat/completions"
-        } 
+      {
+        "name": "name of the model to use, like text-davinci-003",
+        "provider": "name of the llm provider - openai",
+        "suffix": "/chat/completions"
+      } 
     ],
     "config": {
       "rate_limit": 3,
       "archive": true,
       "retries": 3
     }
-  }
-  ```
+  }`}
+</CodeBlock>
+
 
 ## Route Fields
 These configuration settings are all defined per `route`, they are not global and are applied individually on each route. 

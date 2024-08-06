@@ -2,11 +2,14 @@
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
 <TabItem value="shell" label="Using the API:">
 
-```shell
+<CodeBlock
+  language="python">
+  {`
 curl -X PUT \
 -H "Content-Type: application/json" \
 -H "x-api-key: $JAVELIN_API_KEY" \
@@ -35,7 +38,8 @@ curl -X PUT \
 ' \
 "https://api-dev.javelin.live/v1/admin/processors/dp/templates/InspectPII"
 
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

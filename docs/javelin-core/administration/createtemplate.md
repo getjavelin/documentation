@@ -1,11 +1,14 @@
 # Creating Template
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
 <TabItem value="shell" label="Using the API:">
 
-```shell
+<CodeBlock
+  language="python">
+  {`
 curl -X POST \
 -H "Content-Type: application/json" \
 -H "x-api-key: $JAVELIN_API_KEY" \
@@ -147,9 +150,9 @@ curl -X POST \
             "likelihood": "Likely"
         }
 }' \
-"https://api-dev.javelin.live/v1/admin/processors/dp/templates/inspect"
-
-```
+"https://api.javelin.live/v1/admin/processors/dp/templates/inspect"
+`}
+</CodeBlock>
 
 </TabItem>
 

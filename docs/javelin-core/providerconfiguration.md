@@ -1,15 +1,17 @@
 # Integration Overview
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 Javelin offers configuration options to setup "open" and closed soure Large Language Models(LLMs) Providers. You can easily connect your applications to route all LLM traffic through Javelin. 
 
 # Provider Object
 When represented as json, the provider object has the following structure:
-```shell
-  {
+<CodeBlock
+  language="json">
+  {`{
     "name": "name of the provider",
-    "type": "this could be `open`, `closed` etc.,",
+    "type": "this could be \`open\`, \`closed\` etc.,",
     "config": {
         "api_base": "https://api.openai.com",
         "api_type": "",
@@ -17,8 +19,9 @@ When represented as json, the provider object has the following structure:
         "organization": "",
         "deployment_name": ""
     }
-  }
-  ```
+  }`}
+</CodeBlock>
+
 
 ## Provider Fields
 These configuration settings are all defined per `provider`, they are not global and are applied individually on each route. 

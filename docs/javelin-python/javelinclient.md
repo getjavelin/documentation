@@ -1,3 +1,5 @@
+import CodeBlock from '@theme/CodeBlock';
+
 # JavelinClient
 
 JavelinClient class is designed to support both synchronous and asynchronous context managers. This means you can use the JavelinClient within a with statement to ensure resources are properly managed.  
@@ -5,18 +7,26 @@ JavelinClient class is designed to support both synchronous and asynchronous con
 The JavelinClient instance can be used as either a synchronous or asynchronous context manager. When entering a with block, it returns the client itself and when finished, it cleans up resources (like closing any open connections) when exiting a 'with' or 'async with' block respectively.
 
 **Synchronous Client Example:**
-```python
+<CodeBlock
+language="python"
+>
+{`
 with JavelinClient(base_url="localhost:8000") as client:
     # use the client for synchronous operations
     ...
-```
+`}
+</CodeBlock>
 
 **Asynchronous Client Example:**
-```python
+<CodeBlock
+language="python"
+>
+{`
 async with JavelinClient(base_url="localhost:8000") as client:
     # use the client for asynchronous operations
     ...
-```
+`}
+</CodeBlock>
 ---
 
 ### **Synchronous Methods**

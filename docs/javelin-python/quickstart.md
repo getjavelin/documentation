@@ -1,3 +1,5 @@
+import CodeBlock from '@theme/CodeBlock';
+
 # Quickstart Guide
 
 The Javelin client is a Python library for interacting with the Javelin API. This guide provides a basic overview of setting up and using the Javelin client.
@@ -6,9 +8,11 @@ The Javelin client is a Python library for interacting with the Javelin API. Thi
 
 To install the Javelin client, use pip:
 
-```python
-pip install javelin_sdk
-```
+<CodeBlock
+  language="python"
+  title="">
+  {`pip install javelin_sdk`}
+</CodeBlock>
 
 ## 2. Setup
 
@@ -16,8 +20,11 @@ Before making any API calls, initialize the client:
 
 **Setting up the Python Client**
 
-```python
-from javelin_sdk
+<CodeBlock
+language="python"
+title=""
+>
+{`from javelin_sdk
 from javelin_sdk import (
     JavelinClient,
     Route,
@@ -38,15 +45,18 @@ try:
 except NetworkError as e:
     print("Failed to create client: Network Error")
     sys.exit()
-```
+`}
+</CodeBlock>
 
 ## 3. Making Requests
 
 With the client set up, you can make requests to the Javelin API:
 
-```python
-
-# Create a route object
+<CodeBlock
+language="python"
+title=""
+>
+{`# Create a route object
 route_data = {
     "name": "test_route_1",
     "type": "chat",
@@ -74,7 +84,8 @@ try:
     client.create_route(route)
 except NetworkError as e:
     print("Failed to create route: Network Error")
-```
+`}
+</CodeBlock>
 
 ### Fetching Data:
 
@@ -82,12 +93,16 @@ You can get configurations and other settings from Javelin through the SDK:
 
 **Fetching configurations from Javelin**
 
-```python
-try:
+<CodeBlock
+language="python"
+title=""
+>
+{`try:
     client.get_route(route.name)
 except RouteNotFoundError as e:
     print("Failed to get route: Route Not Found")
-```
+`}
+</CodeBlock>
 
 ### Making an LLM Request:
 
@@ -95,9 +110,11 @@ Once Javelin has been setup, its easy to route your LLM calls through Javelin. J
 
 **Making a request to an LLM through Javelin**
 
-```python
-
-# create the object for the LLM request
+<CodeBlock
+language="python"
+title=""
+>
+{`# create the object for the LLM request
 query_data = {
     "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
@@ -115,9 +132,8 @@ except UnauthorizedError as e:
 except NetworkError as e:
     print("Failed to query route: Network Error")
 except RouteNotFoundError as e:
-    print("Failed to query route: Route Not Found")
-
-```
+    print("Failed to query route: Route Not Found")`}
+</CodeBlock>
 
 ## 4. Error Handling
 
@@ -125,17 +141,17 @@ With the python SDK, handling errors is as easy as catching the appropriate exce
 
 **Creating a Route with Error Handling**
 
-```python
-
-try:
+<CodeBlock
+language="python"
+>
+{`try:
     client.create_route(route)
 
 except UnauthorizedError as e:
     print("Failed to create route: Unauthorized")
 
 except NetworkError as e:
-    print("Failed to create route: Network Error")
-
-```
+    print("Failed to create route: Network Error")`}
+</CodeBlock>
 
 ## 5. Further Reading
