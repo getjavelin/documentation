@@ -1,1328 +1,1716 @@
-definitions:
-  model.APIKey:
-    properties:
-      api_key:
-        type: string
-      api_key_secret_key:
-        type: string
-      api_key_secret_key_javelin:
-        type: string
-      api_key_secret_name:
-        type: string
-      created_at:
-        type: string
-      created_by:
-        type: string
-      enabled:
-        type: boolean
-      group:
-        type: string
-      header_key:
-        type: string
-      modified_at:
-        type: string
-      modified_by:
-        type: string
-      organization:
-        type: string
-      provider_name:
-        type: string
-      query_param_key:
-        type: string
-    type: object
-  model.Gateway:
-    properties:
-      config:
-        description: Configuration of the gateway
-        type: object
-      created_at:
-        description: Creation timestamp
-        type: string
-      created_by:
-        description: Creator of the gateway
-        type: string
-      enabled:
-        description: Whether the gateway is enabled
-        type: boolean
-      gateway_id:
-        description: Unique identifier for the gateway
-        type: string
-      modified_at:
-        description: Modification timestamp
-        type: string
-      modified_by:
-        description: Last modifier of the gateway
-        type: string
-      name:
-        description: Name of the gateway
-        type: string
-      type:
-        description: Type of the gateway
-        type: string
-    type: object
-  model.Guardrails:
-    properties:
-      account_id:
-        description: Account ID associated with the guardrail
-        type: string
-      config:
-        description: Configuration of the guardrail
-        type: object
-      created_at:
-        description: Creation timestamp
-        type: string
-      created_by:
-        description: Creator of the guardrail
-        type: string
-      gateway_id:
-        description: Gateway ID associated with the guardrail
-        type: string
-      metadata:
-        description: Metadata of the guardrail
-        type: object
-      modified_at:
-        description: Modification timestamp
-        type: string
-      modified_by:
-        description: Last modifier of the guardrail
-        type: string
-      name:
-        description: Name of the guardrail
-        type: string
-      request_chain:
-        description: Request chain configuration
-        type: object
-      response_chain:
-        description: Response chain configuration
-        type: object
-      type:
-        description: Type of the guardrail (chain or single)
-        type: string
-    type: object
-  model.ModelConfig:
-    properties:
-      fallback_codes:
-        description: Fallback codes
-        items:
-          type: integer
-        type: array
-      fallback_enabled:
-        description: Whether fallback is enabled
-        type: boolean
-      name:
-        description: Name of the model
-        type: string
-      provider:
-        description: Provider of the model
-        type: string
-      suffix:
-        description: Suffix for the model
-        type: string
-      virtual_secret_key:
-        description: Virtual secret name
-        type: string
-      weight:
-        description: Weight of the model
-        type: integer
-    type: object
-  model.Provider:
-    properties:
-      api_keys:
-        description: API keys associated with the provider
-        items:
-          type: object
-        type: array
-      config:
-        description: Configuration of the provider
-        type: object
-      created_at:
-        description: Creation timestamp
-        type: string
-      created_by:
-        description: Creator of the provider
-        type: string
-      enabled:
-        description: Whether the provider is enabled
-        type: boolean
-      modified_at:
-        description: Modification timestamp
-        type: string
-      modified_by:
-        description: Last modifier of the provider
-        type: string
-      name:
-        description: Name of the provider
-        type: string
-      type:
-        description: Type of the provider
-        type: string
-      vault_enabled:
-        description: Whether the provider's vault is enabled
-        type: boolean
-    type: object
-  model.ResponseMessage:
-    properties:
-      message:
-        type: string
-    type: object
-  model.Route:
-    properties:
-      config:
-        description: Configuration of the route
-        type: object
-      created_at:
-        description: Creation timestamp
-        type: string
-      created_by:
-        description: Creator of the route
-        type: string
-      enabled:
-        description: Whether the route is enabled
-        type: boolean
-      models:
-        description: Models associated with the route
-        items:
-          $ref: '#/definitions/model.ModelConfig'
-        type: array
-      modified_at:
-        description: Modification timestamp
-        type: string
-      modified_by:
-        description: Last modifier of the route
-        type: string
-      name:
-        description: Name of the route
-        type: string
-      type:
-        description: Type of the route
-        type: string
-    type: object
-  model.Template:
-    properties:
-      config:
-        description: Template specific configuration
-        type: object
-      created_at:
-        type: string
-      created_by:
-        type: string
-      description:
-        description: Description for the Template
-        type: string
-      enabled:
-        description: Whether the Template is enabled or not
-        type: boolean
-      models:
-        description: Models from spaCy, Cloud DLP etc.
-        items:
-          $ref: '#/definitions/model.ModelConfig'
-        type: array
-      modified_at:
-        type: string
-      modified_by:
-        type: string
-      name:
-        description: Short Name for the Template like "inspect", "deidentify", "reidentify"
-          etc.
-        type: string
-      type:
-        description: Type of the Template, e.g. spaCy, Cloud DLP etc.
-        type: string
-    type: object
-info:
-  contact: {}
-paths:
-  /v1/admin/gateways:
-    get:
-      description: List all gateways
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.Gateway'
-        "400":
-          description: Invalid request
-          schema:
-            type: string
-        "404":
-          description: No gateways found
-          schema:
-            type: string
-        "500":
-          description: Failed to list gateways
-          schema:
-            type: string
-      summary: List all gateways
-      tags:
-      - Gateways
-    post:
-      consumes:
-      - application/json
-      description: Create a new gateway
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Gateway
-        in: body
-        name: gateway
-        required: true
-        schema:
-          $ref: '#/definitions/model.Gateway'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Gateway created successfully
-          schema:
-            type: string
-        "400":
-          description: Gateway already exists
-          schema:
-            type: string
-        "500":
-          description: Failed to create gateway
-          schema:
-            type: string
-      summary: Create a new gateway
-      tags:
-      - Gateways
-  /v1/admin/gateways/{gatewayname}:
-    delete:
-      description: Delete a gateway by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Gateway Name
-        in: path
-        name: gatewayname
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Gateway deleted successfully
-          schema:
-            type: string
-        "400":
-          description: Invalid request
-          schema:
-            type: string
-        "404":
-          description: Gateway not found
-          schema:
-            type: string
-        "500":
-          description: Failed to delete gateway
-          schema:
-            type: string
-      summary: Delete a gateway by name
-      tags:
-      - Gateways
-    get:
-      description: Get a gateway by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Gateway Name
-        in: path
-        name: gatewayname
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.Gateway'
-        "400":
-          description: Invalid request"}
-          schema:
-            type: string
-        "404":
-          description: Gateway not found"}
-          schema:
-            type: string
-      summary: Get a gateway by name
-      tags:
-      - Gateways
-    put:
-      consumes:
-      - application/json
-      description: Update an existing gateway
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Gateway Name
-        in: path
-        name: gatewayname
-        required: true
-        type: string
-      - description: Gateway
-        in: body
-        name: gateway
-        required: true
-        schema:
-          $ref: '#/definitions/model.Gateway'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Gateway updated successfully
-          schema:
-            type: string
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to update gateway
-          schema:
-            type: string
-      summary: Update an existing gateway
-      tags:
-      - Gateways
-  /v1/admin/guardrails:
-    delete:
-      description: Delete guardrails
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "404":
-          description: guardrails not found
-          schema:
-            type: string
-        "500":
-          description: Failed to delete guardrails
-          schema:
-            type: string
-      summary: Delete guardrails
-      tags:
-      - Guardrails
-    get:
-      description: Get guardrails
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.Guardrails'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "404":
-          description: guardrails not found
-          schema:
-            type: string
-      summary: Get guardrails
-      tags:
-      - Guardrails
-    post:
-      consumes:
-      - application/json
-      description: Create guardrails
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Guardrails details
-        in: body
-        name: guardrails
-        required: true
-        schema:
-          $ref: '#/definitions/model.Guardrails'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to create guardrails
-          schema:
-            type: string
-      summary: Create guardrails
-      tags:
-      - Guardrails
-    put:
-      consumes:
-      - application/json
-      description: Update guardrails
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Guardrails details
-        in: body
-        name: guardrails
-        required: true
-        schema:
-          $ref: '#/definitions/model.Guardrails'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "404":
-          description: guardrails not found
-          schema:
-            type: string
-        "500":
-          description: Failed to update guardrails
-          schema:
-            type: string
-      summary: Update guardrails
-      tags:
-      - Guardrails
-  /v1/admin/processors/dp/templates:
-    get:
-      consumes:
-      - application/json
-      description: Get a list of all templates
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/model.Template'
-            type: array
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: No templates found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: List all templates
-      tags:
-      - templates
-    post:
-      consumes:
-      - application/json
-      description: Add a new template with the specified details
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Template Name
-        in: path
-        name: templatename
-        required: true
-        type: string
-      - description: Template details
-        in: body
-        name: template
-        required: true
-        schema:
-          $ref: '#/definitions/model.Template'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to create template
-          schema:
-            type: string
-      summary: Create a new template
-      tags:
-      - templates
-  /v1/admin/processors/dp/templates/{templatename}:
-    delete:
-      consumes:
-      - application/json
-      description: Remove a template by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Template Name
-        in: path
-        name: templatename
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Template not found
-          schema:
-            type: string
-        "500":
-          description: Failed to delete template
-          schema:
-            type: string
-      summary: Delete a template
-      tags:
-      - templates
-    get:
-      consumes:
-      - application/json
-      description: Retrieve details of a specific template by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Template Name
-        in: path
-        name: templatename
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.Template'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Template not found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: Get a specific template
-      tags:
-      - templates
-    put:
-      consumes:
-      - application/json
-      description: Update details of an existing template
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Template Name
-        in: path
-        name: templatename
-        required: true
-        type: string
-      - description: Template details
-        in: body
-        name: template
-        required: true
-        schema:
-          $ref: '#/definitions/model.Template'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "404":
-          description: Template not found
-          schema:
-            type: string
-        "500":
-          description: Failed to update template
-          schema:
-            type: string
-      summary: Update a template
-      tags:
-      - templates
-  /v1/admin/providers:
-    get:
-      consumes:
-      - application/json
-      description: Get a list of all providers
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/model.Provider'
-            type: array
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: No providers found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: List all providers
-      tags:
-      - provider
-    post:
-      consumes:
-      - application/json
-      description: Add a new provider with the specified details
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Provider details
-        in: body
-        name: provider
-        required: true
-        schema:
-          $ref: '#/definitions/model.Provider'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to create provider
-          schema:
-            type: string
-      summary: Create a new provider
-      tags:
-      - provider
-  /v1/admin/providers/{providername}:
-    delete:
-      consumes:
-      - application/json
-      description: Remove a provider by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Provider not found
-          schema:
-            type: string
-        "500":
-          description: Failed to delete provider
-          schema:
-            type: string
-      summary: Delete a provider
-      tags:
-      - provider
-    get:
-      consumes:
-      - application/json
-      description: Retrieve a specific provider by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.Provider'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Provider not found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: Get a specific provider
-      tags:
-      - provider
-    put:
-      consumes:
-      - application/json
-      description: Update an existing provider
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      - description: Provider details
-        in: body
-        name: provider
-        required: true
-        schema:
-          $ref: '#/definitions/model.Provider'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to update provider
-          schema:
-            type: string
-      summary: Update a provider
-      tags:
-      - provider
-  /v1/admin/providers/{providername}/keyvault/{keyname}:
-    delete:
-      consumes:
-      - application/json
-      description: Delete an API key by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      - description: Key Name
-        in: path
-        name: keyname
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "500":
-          description: Failed to delete Key
-          schema:
-            type: string
-      summary: Delete an API key
-      tags:
-      - keyvault
-    get:
-      consumes:
-      - application/json
-      description: Retrieve a specific API key by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      - description: Key Name
-        in: path
-        name: keyname
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.APIKey'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Key not found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: Get a specific API key
-      tags:
-      - keyvault
-    put:
-      consumes:
-      - application/json
-      description: Update an existing API key
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      - description: Key Name
-        in: path
-        name: keyname
-        required: true
-        type: string
-      - description: API Key details
-        in: body
-        name: apikey
-        required: true
-        schema:
-          $ref: '#/definitions/model.APIKey'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to update apikey
-          schema:
-            type: string
-      summary: Update an API key
-      tags:
-      - keyvault
-  /v1/admin/providers/{providername}keyvault/{keyname}:
-    post:
-      consumes:
-      - application/json
-      description: Create a new API key with the specified details
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      - description: Key Name
-        in: path
-        name: keyname
-        required: true
-        type: string
-      - description: API Key details
-        in: body
-        name: apikey
-        required: true
-        schema:
-          $ref: '#/definitions/model.APIKey'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to create key
-          schema:
-            type: string
-      summary: Create a new API key
-      tags:
-      - keyvault
-  /v1/admin/providers/keyvault/keys:
-    get:
-      consumes:
-      - application/json
-      description: List all API keys
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Namespace
-        in: header
-        name: x-javelin-namespace
-        required: true
-        type: string
-      - description: Provider Name
-        in: path
-        name: providername
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/model.APIKey'
-            type: array
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: No key found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: List API keys
-      tags:
-      - keyvault
-  /v1/admin/routes:
-    get:
-      consumes:
-      - application/json
-      description: Get a list of all routes by filter
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/model.Route'
-            type: array
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: No routes found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: List all routes by filter
-      tags:
-      - routes
-    post:
-      consumes:
-      - application/json
-      description: Add a new route with the specified details
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Route details
-        in: body
-        name: route
-        required: true
-        schema:
-          $ref: '#/definitions/model.Route'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to create route
-          schema:
-            type: string
-      summary: Create a new route
-      tags:
-      - routes
-  /v1/admin/routes/{routename}:
-    delete:
-      consumes:
-      - application/json
-      description: Remove a route by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Route Name
-        in: path
-        name: routename
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Route not found
-          schema:
-            type: string
-        "500":
-          description: Failed to delete route
-          schema:
-            type: string
-      summary: Delete a route
-      tags:
-      - routes
-    get:
-      consumes:
-      - application/json
-      description: Retrieve a specific route by name
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Route Name
-        in: path
-        name: routename
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.Route'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Route not found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      summary: Get a specific route
-      tags:
-      - routes
-    put:
-      consumes:
-      - application/json
-      description: Update an existing route
-      parameters:
-      - description: Javelin API Key
-        in: header
-        name: x-api-key
-        required: true
-        type: string
-      - description: Route Name
-        in: path
-        name: routename
-        required: true
-        type: string
-      - description: Route details
-        in: body
-        name: route
-        required: true
-        schema:
-          $ref: '#/definitions/model.Route'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.ResponseMessage'
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to update route
-          schema:
-            type: string
-      summary: Update a route
-      tags:
-      - routes
-swagger: "2.0"
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/v1/admin/gateways": {
+            "get": {
+                "description": "List all gateways",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateways"
+                ],
+                "summary": "List all gateways",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Gateway"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "No gateways found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to list gateways",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new gateway",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateways"
+                ],
+                "summary": "Create a new gateway",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Gateway",
+                        "name": "gateway",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Gateway"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway created successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Gateway already exists",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to create gateway",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/gateways/{gatewayname}": {
+            "get": {
+                "description": "Get a gateway by name",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateways"
+                ],
+                "summary": "Get a gateway by name",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Gateway Name",
+                        "name": "gatewayname",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Gateway"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Gateway not found\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update an existing gateway",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateways"
+                ],
+                "summary": "Update an existing gateway",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Gateway Name",
+                        "name": "gatewayname",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Gateway",
+                        "name": "gateway",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Gateway"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway updated successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to update gateway",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a gateway by name",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateways"
+                ],
+                "summary": "Delete a gateway by name",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Gateway Name",
+                        "name": "gatewayname",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway deleted successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Gateway not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to delete gateway",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/processors/dp/templates": {
+            "get": {
+                "description": "Get a list of all templates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "templates"
+                ],
+                "summary": "List all templates",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.Template"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "No templates found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new template with the specified details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "templates"
+                ],
+                "summary": "Create a new template",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Template Name",
+                        "name": "templatename",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Template details",
+                        "name": "template",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Template"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to create template",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/processors/dp/templates/{templatename}": {
+            "get": {
+                "description": "Retrieve details of a specific template by name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "templates"
+                ],
+                "summary": "Get a specific template",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Template Name",
+                        "name": "templatename",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Template"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Template not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update details of an existing template",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "templates"
+                ],
+                "summary": "Update a template",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Template Name",
+                        "name": "templatename",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Template details",
+                        "name": "template",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Template"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Template not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to update template",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Remove a template by name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "templates"
+                ],
+                "summary": "Delete a template",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Template Name",
+                        "name": "templatename",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Template not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to delete template",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/providers": {
+            "get": {
+                "description": "Get a list of all providers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "provider"
+                ],
+                "summary": "List all providers",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.Provider"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "No providers found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new provider with the specified details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "provider"
+                ],
+                "summary": "Create a new provider",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Provider details",
+                        "name": "provider",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Provider"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to create provider",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/providers/keyvault/keys": {
+            "get": {
+                "description": "List all API keys",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "keyvault"
+                ],
+                "summary": "List API keys",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Namespace",
+                        "name": "x-javelin-namespace",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Provider Name",
+                        "name": "providername",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.APIKey"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "No key found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/providers/{providername}": {
+            "get": {
+                "description": "Retrieve a specific provider by name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "provider"
+                ],
+                "summary": "Get a specific provider",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Provider Name",
+                        "name": "providername",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Provider"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Provider not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update an existing provider",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "provider"
+                ],
+                "summary": "Update a provider",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Provider Name",
+                        "name": "providername",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Provider details",
+                        "name": "provider",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Provider"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to update provider",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Remove a provider by name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "provider"
+                ],
+                "summary": "Delete a provider",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Provider Name",
+                        "name": "providername",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Provider not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to delete provider",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/providers/{providername}/keyvault/{keyname}": {
+            "get": {
+                "description": "Retrieve a specific API key by name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "keyvault"
+                ],
+                "summary": "Get a specific API key",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Namespace",
+                        "name": "x-javelin-namespace",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Provider Name",
+                        "name": "providername",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Key Name",
+                        "name": "keyname",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.APIKey"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Key not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update an existing API key",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "keyvault"
+                ],
+                "summary": "Update an API key",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Namespace",
+                        "name": "x-javelin-namespace",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Provider Name",
+                        "name": "providername",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Key Name",
+                        "name": "keyname",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "API Key details",
+                        "name": "apikey",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.APIKey"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to update apikey",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete an API key by name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "keyvault"
+                ],
+                "summary": "Delete an API key",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Namespace",
+                        "name": "x-javelin-namespace",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Provider Name",
+                        "name": "providername",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Key Name",
+                        "name": "keyname",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to delete Key",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/providers/{providername}keyvault/{keyname}": {
+            "post": {
+                "description": "Create a new API key with the specified details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "keyvault"
+                ],
+                "summary": "Create a new API key",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Namespace",
+                        "name": "x-javelin-namespace",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Provider Name",
+                        "name": "providername",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Key Name",
+                        "name": "keyname",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "API Key details",
+                        "name": "apikey",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.APIKey"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to create key",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/routes": {
+            "get": {
+                "description": "Get a list of all routes by filter",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "routes"
+                ],
+                "summary": "List all routes by filter",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.Route"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "No routes found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new route with the specified details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "routes"
+                ],
+                "summary": "Create a new route",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Route details",
+                        "name": "route",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Route"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to create route",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/routes/{routename}": {
+            "get": {
+                "description": "Retrieve a specific route by name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "routes"
+                ],
+                "summary": "Get a specific route",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Route Name",
+                        "name": "routename",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Route"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Route not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update an existing route",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "routes"
+                ],
+                "summary": "Update a route",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Route Name",
+                        "name": "routename",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Route details",
+                        "name": "route",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Route"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to update route",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Remove a route by name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "routes"
+                ],
+                "summary": "Delete a route",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Javelin API Key",
+                        "name": "x-api-key",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Route Name",
+                        "name": "routename",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResponseMessage"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Route not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Failed to delete route",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.APIKey": {
+            "type": "object",
+            "properties": {
+                "api_key": {
+                    "type": "string"
+                },
+                "api_key_secret_key": {
+                    "type": "string"
+                },
+                "api_key_secret_key_javelin": {
+                    "type": "string"
+                },
+                "api_key_secret_name": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "created_by": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "group": {
+                    "type": "string"
+                },
+                "header_key": {
+                    "type": "string"
+                },
+                "modified_at": {
+                    "type": "string"
+                },
+                "modified_by": {
+                    "type": "string"
+                },
+                "organization": {
+                    "type": "string"
+                },
+                "provider_name": {
+                    "type": "string"
+                },
+                "query_param_key": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Gateway": {
+            "type": "object",
+            "properties": {
+                "config": {
+                    "description": "Configuration of the gateway",
+                    "type": "object"
+                },
+                "created_at": {
+                    "description": "Creation timestamp",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "Creator of the gateway",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "Whether the gateway is enabled",
+                    "type": "boolean"
+                },
+                "gateway_id": {
+                    "description": "Unique identifier for the gateway",
+                    "type": "string"
+                },
+                "modified_at": {
+                    "description": "Modification timestamp",
+                    "type": "string"
+                },
+                "modified_by": {
+                    "description": "Last modifier of the gateway",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the gateway",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of the gateway",
+                    "type": "string"
+                }
+            }
+        },
+        "model.ModelConfig": {
+            "type": "object",
+            "properties": {
+                "fallback_codes": {
+                    "description": "Fallback codes",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "fallback_enabled": {
+                    "description": "Whether fallback is enabled",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "Name of the model",
+                    "type": "string"
+                },
+                "provider": {
+                    "description": "Provider of the model",
+                    "type": "string"
+                },
+                "suffix": {
+                    "description": "Suffix for the model",
+                    "type": "string"
+                },
+                "virtual_secret_key": {
+                    "description": "Virtual secret name",
+                    "type": "string"
+                },
+                "weight": {
+                    "description": "Weight of the model",
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Provider": {
+            "type": "object",
+            "properties": {
+                "api_keys": {
+                    "description": "API keys associated with the provider",
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "config": {
+                    "description": "Configuration of the provider",
+                    "type": "object"
+                },
+                "created_at": {
+                    "description": "Creation timestamp",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "Creator of the provider",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "Whether the provider is enabled",
+                    "type": "boolean"
+                },
+                "modified_at": {
+                    "description": "Modification timestamp",
+                    "type": "string"
+                },
+                "modified_by": {
+                    "description": "Last modifier of the provider",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the provider",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of the provider",
+                    "type": "string"
+                },
+                "vault_enabled": {
+                    "description": "Whether the provider's vault is enabled",
+                    "type": "boolean"
+                }
+            }
+        },
+        "model.ResponseMessage": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Route": {
+            "type": "object",
+            "properties": {
+                "config": {
+                    "description": "Configuration of the route",
+                    "type": "object"
+                },
+                "created_at": {
+                    "description": "Creation timestamp",
+                    "type": "string"
+                },
+                "created_by": {
+                    "description": "Creator of the route",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "Whether the route is enabled",
+                    "type": "boolean"
+                },
+                "models": {
+                    "description": "Models associated with the route",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ModelConfig"
+                    }
+                },
+                "modified_at": {
+                    "description": "Modification timestamp",
+                    "type": "string"
+                },
+                "modified_by": {
+                    "description": "Last modifier of the route",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the route",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of the route",
+                    "type": "string"
+                }
+            }
+        },
+        "model.Template": {
+            "type": "object",
+            "properties": {
+                "config": {
+                    "description": "Template specific configuration",
+                    "type": "object"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "created_by": {
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description for the Template",
+                    "type": "string"
+                },
+                "enabled": {
+                    "description": "Whether the Template is enabled or not",
+                    "type": "boolean"
+                },
+                "models": {
+                    "description": "Models from spaCy, Cloud DLP etc.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ModelConfig"
+                    }
+                },
+                "modified_at": {
+                    "type": "string"
+                },
+                "modified_by": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Short Name for the Template like \"inspect\", \"deidentify\", \"reidentify\" etc.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of the Template, e.g. spaCy, Cloud DLP etc.",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
