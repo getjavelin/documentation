@@ -17,8 +17,11 @@ curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/adm
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Delete Secret Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Secret
 )
@@ -35,10 +38,11 @@ client = JavelinClient(base_url="https://api.javelin.live",
 # secret name to delete is "openai-vkey1"
 secret_name = "openai-vkey1"
 
-# delete the secret, for async use `await client.adelete_secret(secret_name)`
+# delete the secret, for async use \`await client.adelete_secret(secret_name)\`
 client.delete_secret(secret_name) 
+`}
+</CodeBlock>
 
-```
 
 </TabItem>
 

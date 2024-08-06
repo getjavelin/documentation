@@ -1,20 +1,25 @@
 # Listing Gateways
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
 <TabItem value="shell" label="Using the API:">
 
-```shell
+<CodeBlock
+  language="python">
+  {`
 curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1/admin/gateways"
-```
+`}
+</CodeBlock>
 
 </TabItem>
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python">
+  {`from javelin_sdk import (
     JavelinClient,
     Gateway
 )
@@ -24,15 +29,14 @@ import os
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
-# create javelin client
+# Create Javelin client
 client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
-) 
+                       javelin_api_key=javelin_api_key)
 
-# print out the list of gateways, for async use `await client.alist_gateways()`
-print(client.list_gateways())
+# Print out the list of gateways, for async use 'await client.alist_gateways()'
+print(client.list_gateways())`}
+</CodeBlock>
 
-```
 
 </TabItem>
 

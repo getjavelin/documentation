@@ -1,5 +1,6 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 # Applications
 Its easy to integrate applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with 3 lines of code change.
@@ -18,7 +19,9 @@ Javelin may send a request to one or more models based on the configured policie
 <Tabs>
 <TabItem value="shell" label="curl">
 
-```shell
+<CodeBlock
+  language="python">
+  {`
 curl -X POST \
 -H "Content-Type: application/json" \
 -H "x-api-key: $JAVELIN_API_KEY" \
@@ -37,7 +40,8 @@ curl -X POST \
   "temperature": 0.8
 }' \
 "https://api-dev.javelin.live/v1/query/{routename}"
-```
+`}
+</CodeBlock>
 
 </TabItem>
 </Tabs>
@@ -46,12 +50,17 @@ curl -X POST \
 <Tabs>
 <TabItem value="py1" label="Javelin SDK">
 
-```shell
-pip install javelin-sdk
-```
+<CodeBlock
+  language="python">
+  {`pip install javelin-sdk
+`}
+</CodeBlock>
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Query Route with Javelin SDK"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Route
 )
@@ -61,11 +70,11 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 llm_api_key = os.getenv("OPENAI_API_KEY")
 
-# create javelin client
+# Create Javelin client
 client = JavelinClient(javelin_api_key=javelin_api_key, 
                        llm_api_key=llm_api_key)
 
-# route name to get is {routename} e.g., sampleroute1
+# Route name to get is {routename} e.g., sampleroute1
 query_data = {
     "messages": [ 
         {
@@ -77,25 +86,29 @@ query_data = {
             "content": "What is the chemical composition of sugar?"
         }
     ],
-    "temperature": 0.8,
+    "temperature": 0.8
 }
 
-# now query the route, for async use `await client.aquery_route("sampleroute1", query_data)`
+# Now query the route, for async use 'await client.aquery_route("sampleroute1", query_data)'
 response = client.query_route("sampleroute1", query_data)
-print(response.model_dump_json(indent=2))
-
-```
+print(response.model_dump_json(indent=2))`}
+</CodeBlock>
 
 </TabItem>
 
 <TabItem value="py2" label="OpenAI">
 
-```shell
-pip install openai
-```
+<CodeBlock
+  language="python">
+  {`pip install openai
+`}
+</CodeBlock>
 
-```py
-from openai import OpenAI
+<CodeBlock
+  language="python"
+  title="Query and Stream Responses with OpenAI"
+  showLineNumbers>
+  {`from openai import OpenAI
 import os
 
 javelin_api_key = os.environ['JAVELIN_API_KEY']
@@ -103,9 +116,9 @@ llm_api_key = os.environ["OPENAI_API_KEY"]
 
 # Javelin Headers
 javelin_headers = {
-                    "x-api-key": javelin_api_key,       # Javelin API key from admin
-                     "x-javelin-route": "sampleroute1"  # Javelin route to use
-                  }
+    "x-api-key": javelin_api_key,       # Javelin API key from admin
+    "x-javelin-route": "sampleroute1"  # Javelin route to use
+}
 
 # Create OpenAI Client
 client = OpenAI(api_key=llm_api_key,
@@ -118,7 +131,8 @@ completion = client.chat.completions.create(
   messages=[
     {"role": "system", "content": "Hello, you are a helpful scientific assistant"},
     {"role": "user", "content": "What is the chemical composition of sugar?"}
-  ])
+  ]
+)
 
 print(completion.model_dump_json(indent=2))
 
@@ -129,24 +143,28 @@ stream = client.chat.completions.create(
       {"role": "system", "content": "Hello, you are a helpful scientific assistant."},
       {"role": "user", "content": "What is the chemical composition of sugar?"}
     ],
-    stream=True,
+    stream=True
 )
 
 for chunk in stream:
-    print(chunk.choices[0].delta.content or "", end="")
+    print(chunk.choices[0].delta.content or "", end="")`}
+</CodeBlock>
 
-```
 
 </TabItem>
 
 <TabItem value="py3" label="Azure OpenAI">
 
-```shell<!--
-pip install openai
-```
+<CodeBlock
+  language="shell">
+  {`pip install openai`}
+</CodeBlock>
 
-```py
-from openai import AzureOpenAI
+<CodeBlock
+  language="python"
+  title="Query and Stream Responses with AzureOpenAI"
+  showLineNumbers>
+  {`from openai import AzureOpenAI
 import os
 
 # Javelin Headers
@@ -154,9 +172,9 @@ javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["AZURE_OPENAI_API_KEY"]
 
 javelin_headers = {
-                    "x-api-key": javelin_api_key,     # Javelin API key from admin
-                    "x-javelin-route": "sampleroute1" # Javelin route to use
-                  }
+    "x-api-key": javelin_api_key,     # Javelin API key from admin
+    "x-javelin-route": "sampleroute1" # Javelin route to use
+}
 
 client = AzureOpenAI(api_key=llm_api_key,
                      base_url="https://api-dev.javelin.live/v1/query",
@@ -180,26 +198,31 @@ stream = client.chat.completions.create(
       {"role": "system", "content": "Hello, you are a helpful scientific assistant."},
       {"role": "user", "content": "What is the chemical composition of sugar?"}
     ],
-    stream=True,
+    stream=True
 )
 
 for chunk in stream:
   if chunk.choices:
-    print(chunk.choices[0].delta.content or "", end="")
+    print(chunk.choices[0].delta.content or "", end="")`}
+</CodeBlock>
 
-```
 
 </TabItem>
 
 <TabItem value="py4" label="LangChain">
 
-```shell<!--
-pip install langchain
-pip install langchain-openai
-```
+<CodeBlock
+  language="shell">
+  {`pip install langchain
+pip install langchain-openai`}
+</CodeBlock>
 
-```py
-from langchain_openai import ChatOpenAI
+
+<CodeBlock
+  language="python"
+  title="LangChain with OpenAI Example"
+  showLineNumbers>
+  {`from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
@@ -208,9 +231,9 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 llm_api_key = os.getenv("OPENAI_API_KEY")
 javelin_headers = {
-                    "x-api-key": javelin_api_key,      # Javelin API key from admin
-                    "x-javelin-route": "sample_route1" # Javelin route to use
-                  }
+    "x-api-key": javelin_api_key,      # Javelin API key from admin
+    "x-javelin-route": "sample_route1" # Javelin route to use
+}
 
 llm = ChatOpenAI(
     openai_api_base="https://api-dev.javelin.live/v1/query",
@@ -230,7 +253,9 @@ output_parser = StrOutputParser()
 chain = prompt | llm | output_parser
 
 print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
-```
+`}
+</CodeBlock>
+
 </TabItem>
 
 <TabItem value="py5" label="DSPy">
@@ -238,12 +263,17 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 **Introduction:** [DSPy: Goodbye Prompting, Hello Programming!](https://towardsdatascience.com/intro-to-dspy-goodbye-prompting-hello-programming-4ca1c6ce3eb9)  
 **Documentation:** [DSPy Docs](https://dspy-docs.vercel.app/)
 
-```shell<!--
-pip install dspy-ai
-```
+<CodeBlock
+  language="shell">
+  {`pip install dspy-ai`}
+</CodeBlock>
 
-```py
-import dspy
+
+<CodeBlock
+  language="py"
+  title="Using DSPY with Javelin"
+  showLineNumbers>
+  {`import dspy
 from dsp import LM
 import os
 import requests
@@ -316,8 +346,9 @@ dspy.configure(lm=javelin)
 # Define a module (ChainOfThought) and assign it a signature (return an answer, given a question).
 qa = dspy.ChainOfThought('question -> answer')
 response = qa(question="You have 3 baskets. The first basket has twice as many apples as the second basket. The third basket has 3 fewer apples than the first basket. If you have a total of 27 apples, how many apples are in each basket?")
-print(response)
-```
+print(response)`}
+</CodeBlock>
+
 
 </TabItem>
 
@@ -340,18 +371,23 @@ print(response)
 <Tabs>
 <TabItem value="js1" label="OpenAI">
 
-```shell
-npm install openai
-```
+<CodeBlock
+  language="python">
+  {`npm install openai
+`}
+</CodeBlock>
 
-```js
-import OpenAI from "openai";
+<CodeBlock
+  language="js"
+  title="OpenAI API Integration Example"
+  showLineNumbers>
+  {`import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   baseURL: "https://api-dev.javelin.live/v1/query",
   defaultHeaders: {
-    "x-api-key": `${process.env.JAVELIN_API_KEY}`,
+    "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`,
     "x-javelin-route": "sample_route1",
   },
 });
@@ -365,28 +401,32 @@ async function main() {
   console.log(completion.choices[0]);
 }
 
-main();
+main();`}
+</CodeBlock>
 
-```
 
 </TabItem>
 
 <TabItem value="js2" label="Langchain">
 
-```shell
-npm install @langchain/openai
-```
+<CodeBlock
+  language="python">
+  {`npm install @langchain/openai
+`}
+</CodeBlock>
 
-```js
-
-import { ChatOpenAI } from '@langchain/openai';
+<CodeBlock
+  language="js"
+  title="LangChain OpenAI Integration Example"
+  showLineNumbers>
+  {`import { ChatOpenAI } from '@langchain/openai';
 
 const llm = new ChatOpenAI({
     openAIApiKey: process.env.OPENAI_API_KEY,
     configuration: {
         basePath: "https://api-dev.javelin.live/v1/query",
         defaultHeaders: {
-          "x-api-key": `${process.env.JAVELIN_API_KEY}`,
+          "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`,
           "x-javelin-route": "sample_route1",
         },
     },
@@ -397,9 +437,9 @@ async function main() {
   console.log(response);
 }
 
-main();
+main();`}
+</CodeBlock>
 
-``` 
 </TabItem>
 
 <TabItem value="js3" label="...">

@@ -17,8 +17,11 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin List Secrets Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Secret
 )
@@ -33,10 +36,10 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
                        javelin_api_key=javelin_api_key,
 ) 
 
-# print out the list of virtual keys, for async use `await client.alist_secrets()`
+# print out the list of secrets, for async use \`await client.alist_secrets()\`
 print(client.list_secrets())
-
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

@@ -16,8 +16,11 @@ import CodeBlock from '@theme/CodeBlock';
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin List Providers Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Provider
 )
@@ -32,10 +35,10 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
                        javelin_api_key=javelin_api_key,
 ) 
 
-# print out the list of providers, for async use `await client.alist_providers()`
+# print out the list of providers, for async use \`await client.alist_providers()\`
 print(client.list_providers())
-
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

@@ -1,3 +1,5 @@
+import CodeBlock from '@theme/CodeBlock';
+
 # Chain Integration 
 Javelin is fully integrated into Langchain to support Apps already built on Langchain to rapidly use the Gateway to leverage all the features & capabilities of Javelin.  
 
@@ -6,19 +8,26 @@ Javelin is fully integrated into Langchain to support Apps already built on Lang
 ## Installation and Setup
 Install `javelin_sdk` to interact with Javelin AI Gateway:
 
-```sh
-pip install 'javelin_sdk'
-```
+<CodeBlock
+  language="python">
+  {`pip install 'javelin_sdk'
+`}
+</CodeBlock>
 
 Set the Javelin's API key as an environment variable:
 
-```sh
-export JAVELIN_API_KEY=...
-```
+<CodeBlock
+  language="python">
+  {`export JAVELIN_API_KEY=...
+`}
+</CodeBlock>
 
 ## Completions Example
-```python
-from langchain.chains import LLMChain
+<CodeBlock
+  language="python"
+  title="LangChain Example with JavelinAIGateway"
+  showLineNumbers>
+  {`from langchain.chains import LLMChain
 from langchain.llms import JavelinAIGateway
 from langchain.prompts import PromptTemplate
 
@@ -34,12 +43,15 @@ llmchain = LLMChain(llm=gateway, prompt=prompt)
 result = llmchain.run("podcast player")
 
 print(result)
-
-```
+`}
+</CodeBlock>
 
 ## Embeddings Example
-```python
-from langchain.embeddings import JavelinAIGatewayEmbeddings
+<CodeBlock
+  language="python"
+  title="LangChain JavelinAIGatewayEmbeddings Example"
+  showLineNumbers>
+  {`from langchain.embeddings import JavelinAIGatewayEmbeddings
 from langchain.embeddings.openai import OpenAIEmbeddings
 
 embeddings = JavelinAIGatewayEmbeddings(
@@ -49,11 +61,15 @@ embeddings = JavelinAIGatewayEmbeddings(
 
 print(embeddings.embed_query("hello"))
 print(embeddings.embed_documents(["hello"]))
-```
+`}
+</CodeBlock>
 
 ## Chat Example
-```python
-from langchain.chat_models import ChatJavelinAIGateway
+<CodeBlock
+  language="python"
+  title="LangChain ChatJavelinAIGateway Example"
+  showLineNumbers>
+  {`from langchain.chat_models import ChatJavelinAIGateway
 from langchain.schema import HumanMessage, SystemMessage
 
 messages = [
@@ -68,13 +84,14 @@ messages = [
 chat = ChatJavelinAIGateway(
     gateway_uri="https://api-dev.javelin.live/v1", 
     route="mychatbot_route",
-    model_name="gpt-3.5-turbo"
+    model_name="gpt-3.5-turbo",
     params={
         "temperature": 0.1
     }
 )
 
 print(chat(messages))
+`}
+</CodeBlock>
 
-```
 

@@ -17,8 +17,11 @@ curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/adm
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Delete Provider Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Provider
 )
@@ -35,10 +38,11 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
 # provider name to delete is "openai"
 provider_name = "openai"
 
-# delete the provider, for async use `await client.adelete_provider(provider_name)`
+# delete the provider, for async use \`await client.adelete_provider(provider_name)\`
 client.delete_provider(provider_name) 
+`}
+</CodeBlock>
 
-```
 
 </TabItem>
 

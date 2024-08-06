@@ -1,14 +1,21 @@
+import CodeBlock from '@theme/CodeBlock';
+
 # Quickstart  
 
 With your LangChain environment, you can use Javelin by changing the API base and adding Javelin headers
 
-```shell<!--
-pip install langchain
+<CodeBlock
+  language="python">
+  {`pip install langchain
 pip install langchain-openai
-```
+`}
+</CodeBlock>
 
-```python
-# Code snippet
+<CodeBlock
+  language="python"
+  title="ChatOpenAI Configuration Example"
+  showLineNumbers>
+  {`# Code snippet
 
 llm = ChatOpenAI(
     openai_api_base="https://api-dev.javelin.live/v1/query",
@@ -21,11 +28,15 @@ llm = ChatOpenAI(
     },
     openai_api_base="https://api-dev.javelin.live/v1/query",
 )
-```
+`}
+</CodeBlock>
 
 Below is a sample code to use Javelin with LangChain:
-```python
-# Example of a simple chat prompt
+<CodeBlock
+  language="python"
+  title="Simple Chat Prompt Example"
+  showLineNumbers>
+  {`# Example of a simple chat prompt
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
@@ -51,4 +62,5 @@ chain = prompt | model | output_parser
 
 response = chain.invoke({"topic": "ice cream"})
 print(response)
-```
+`}
+</CodeBlock>
