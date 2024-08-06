@@ -7,14 +7,6 @@ module.exports = {
     'Integrating Applications': [
       'javelin-core/integration',
     ],
-    'LangChain': [
-      'javelin-langchain-python/quickstart',
-      'javelin-langchain-python/chain',
-    ],
-    'Playground': [
-      'javelin-core/playground/overview',
-      'javelin-core/playground/playground',
-    ],
     'Features': [
       {
         type: 'category',
@@ -84,8 +76,12 @@ module.exports = {
           'javelin-processors/custom',      
         ]
       },
-    ],   
-    'Python API Reference': [
+    ],  
+    'Playground': [
+      'javelin-core/playground/overview',
+      'javelin-core/playground/playground',
+    ],
+    'Python SDK': [
       'javelin-python/quickstart',
       {
         type: 'category',
@@ -156,6 +152,10 @@ module.exports = {
           'javelin-core/administration/deletetemplate',
         ]
       },
+    ],
+    'LangChain': [
+      'javelin-langchain-python/quickstart',
+      'javelin-langchain-python/chain',
     ],
     'Changelog': [
       'changelog'
