@@ -1,13 +1,16 @@
 # Listing Providers
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
 <TabItem value="shell" label="curl">
 
-```shell
-curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/providers"
-```
+<CodeBlock
+  language="python">
+  {`curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/providers"
+`}
+</CodeBlock>
 
 </TabItem>
 

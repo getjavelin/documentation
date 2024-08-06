@@ -26,3 +26,9 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.code-block .copy-button {
+  color: red !important;
+  background-color: red !important;
+  margin : 100px;
+}

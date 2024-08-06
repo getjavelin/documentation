@@ -1,13 +1,17 @@
 # Deleting Virtual Key
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
 <TabItem value="shell" label="curl">
 
-```shell
+<CodeBlock
+  language="python">
+  {`
 curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/providers/openai/keyvault/openai-vkey1"  
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

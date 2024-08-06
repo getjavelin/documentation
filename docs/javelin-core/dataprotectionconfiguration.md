@@ -1,31 +1,34 @@
 # Integration Overview
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 Javelin provides a flexible framework for managing sensitive data. Its configuration options cater to a wide range of data privacy needs, from simple inspections to more complex data transformation tasks. 
 
 # Template Object
 When represented as json, the template object has the following structure:
-```shell
-  {
+<CodeBlock
+  language="python">
+  {`{
     "name": "name of the template",
     "description": "Template for Inspecting PII data",
-    "type": "this could be `inspect`, `de-identify` etc.,",
+    "type": "this could be \`inspect\`, \`de-identify\` etc.,",
     "enabled": true,
     "models": [ 
-        {
-          "name": "name of the model to use, like LlamaGuard",
-          "provider": "name of the provider - Google Sensitive Protection, Meta etc.",
-          "suffix": "",
-          "weight": 0
-        } 
+      {
+        "name": "name of the model to use, like LlamaGuard",
+        "provider": "name of the provider - Google Sensitive Protection, Meta etc.",
+        "suffix": "",
+        "weight": 0
+      } 
     ],
     "config": {
-         "infoTypes": [{"name": "PASSWORD"}, {"name": "ENCRYPTION_KEY"}],
-         "likelihood": "Likely"
+      "infoTypes": [{"name": "PASSWORD"}, {"name": "ENCRYPTION_KEY"}],
+      "likelihood": "Likely"
     }
-  }
-  ```
+  }`}
+</CodeBlock>
+
 
 ## Template Fields
 These configuration settings are all defined per `template`, they are not global and are applied individually on each route. 
