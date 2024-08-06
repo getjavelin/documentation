@@ -17,47 +17,12 @@ import CodeBlock from '@theme/CodeBlock';
         "description": "Inspect sensitive data",
         "type": "inspect",
         "enabled": true,
-        "models": [
-            {
-                "name": "Sensitive Data Protection",
-                "provider": "Google Cloud",
-                "suffix": "",
-                "weight": 0
-            }
-        ],
         "config": {
-            "notify": true,
-            "reject": false,
-            "infoTypes": [
-                {
-                    "name": "EMAIL_ADDRESS"
-                },
-                {
-                    "name": "STREET_ADDRESS"
-                },
-                {
-                    "name": "MEDICAL_TERM"
-                },
-                {
-                    "name": "US_MEDICARE_BENEFICIARY_ID_NUMBER"
-                },
-                {
-                    "name": "US_HEALTHCARE_NPI"
-                },
-                {
-                    "name": "AUTH_TOKEN"
-                },
-                {
-                    "name": "ENCRYPTION_KEY"
-                },
-                {
-                    "name": "OAUTH_CLIENT_SECRET"
-                },
-                {
-                    "name": "PASSWORD"
-                }
-            ],
-            "likelihood": "Likely"
+            "api_base": "https://api.openai.com",
+            "api_type": "",
+            "api_version": "v1",
+            "organization": "",
+            "deployment_name": ""
         }
   }' \\
   "https://api.javelin.live/v1/admin/providers/openai"`}
@@ -66,9 +31,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 </TabItem>
 
-<!--
-
-<TabItem value="py" label="Python">
+<TabItem value="py" label="In Python:">
 
 ```py
 from javelin_sdk import (
@@ -82,7 +45,7 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api.javelin.live",
+client = JavelinClient(base_url="https://api-dev.javelin.live",
                        javelin_api_key=javelin_api_key,
 )
 
@@ -108,7 +71,5 @@ client.create_route(provider)
 ```
 
 </TabItem>
-
--->
 
 </Tabs>

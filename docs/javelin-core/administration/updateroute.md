@@ -4,7 +4,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
-<TabItem value="shell" label="curl">
+<TabItem value="shell" label="Using the API:">
 
 <CodeBlock
   language="python">
@@ -27,13 +27,13 @@ curl -X PUT \
             "retries": 5
         }
 }' \
-"https://api.javelin.live/v1/admin/routes/test_route_1"
+"https://api-dev.javelin.live/v1/admin/routes/test_route_1"
 
 `}
 </CodeBlock>
 
 </TabItem>
-<TabItem value="py" label="Python">
+<TabItem value="py" label="In Python:">
 
 <CodeBlock
   language="python">

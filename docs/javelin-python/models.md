@@ -1,5 +1,36 @@
 # Data Model
 
+### `Gateways`
+
+**Fields**:
+
+- `gateways`: List of [gateway](./models.md#gateway) objects.
+
+---
+
+### `Gateway`
+
+**Fields**:
+
+- `name`: The unique identifier for this gateway.
+- `type`: The type `development`, `staging`, `production` of this gateway.
+- `enabled`: Enable/Disable this gateway.
+- `config`: [Configuration](./models.md#gatewayconfig) settings, like base_url, api_key_value associated with this gateway.
+
+---
+
+### `GatewayConfig`
+
+**Fields**:
+
+- `base_url`: The foundational URL where all API requests are directed. It acts as the root from which endpoint paths are extended.
+- `api_key_value`: The API key used for authenticating requests to the API endpoints specified by the base_url. This key is essential for securing access and ensuring that only authorized applications can make API requests.
+- `buid`: Business Unit ID (BUID) uniquely identifies the business unit associated with this gateway configuration.
+- `organization_id`: The identifier for the organization using this gateway. This ensures that the gateway’s settings are correctly associated with the organization, facilitating better management and access control.
+- `system_namespace`: A unique namespace within the system to prevent naming conflicts and to organize resources logically. It helps in managing the scope and accessibility of the configurations and resources within the gateway.
+
+---
+
 ### `Routes`
 
 **Fields**:

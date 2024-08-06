@@ -4,7 +4,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
-<TabItem value="shell" label="curl">
+<TabItem value="shell" label="Using the API:">
 
 <CodeBlock
   language="python">
@@ -15,9 +15,7 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/
 
 </TabItem>
 
-<!--
-
-<TabItem value="py" label="Python">
+<TabItem value="py" label="In Python:">
 
 ```py
 from javelin_sdk import (
@@ -31,7 +29,7 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api.javelin.live",
+client = JavelinClient(base_url="https://api-dev.javelin.live",
                        javelin_api_key=javelin_api_key,
 ) 
 
@@ -41,7 +39,5 @@ print(client.list_secrets())
 ```
 
 </TabItem>
-
--->
 
 </Tabs>

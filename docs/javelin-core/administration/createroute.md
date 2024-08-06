@@ -4,7 +4,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
-<TabItem value="shell" label="curl">
+<TabItem value="shell" label="Using the API:">
 
 <CodeBlock
   language="python">
@@ -43,7 +43,7 @@ curl -X POST \
 </CodeBlock>
 
 </TabItem>
-<TabItem value="py" label="Python">
+<TabItem value="py" label="In Python:">
 
 ```py
 from javelin_sdk import (
@@ -57,7 +57,7 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api.javelin.live",
+client = JavelinClient(base_url="https://api-dev.javelin.live",
                        javelin_api_key=javelin_api_key,
 ) 
 

@@ -4,7 +4,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
-<TabItem value="shell" label="curl">
+<TabItem value="shell" label="Using the API:">
 
 <CodeBlock
   language="python">
@@ -14,7 +14,7 @@ curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/adm
 </CodeBlock>
 
 </TabItem>
-<TabItem value="py" label="Python">
+<TabItem value="py" label="In Python:">
 
 <CodeBlock
   language="python">

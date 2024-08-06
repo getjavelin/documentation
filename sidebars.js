@@ -7,14 +7,6 @@ module.exports = {
     'Integrating Applications': [
       'javelin-core/integration',
     ],
-    'LangChain': [
-      'javelin-langchain-python/quickstart',
-      'javelin-langchain-python/chain',
-    ],
-    'Playground': [
-      'javelin-core/playground/overview',
-      'javelin-core/playground/playground',
-    ],
     'Features': [
       {
         type: 'category',
@@ -84,8 +76,12 @@ module.exports = {
           'javelin-processors/custom',      
         ]
       },
-    ],   
-    'Python API Reference': [
+    ],  
+    'Playground': [
+      'javelin-core/playground/overview',
+      'javelin-core/playground/playground',
+    ],
+    'Python SDK': [
       'javelin-python/quickstart',
       {
         type: 'category',
@@ -94,6 +90,18 @@ module.exports = {
           'javelin-python/models',
           'javelin-python/javelinclient',
           'javelin-python/exceptions'
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Setting Up Gateways',
+        items: [
+          'javelin-core/gatewayconfiguration',
+          'javelin-core/administration/creategateway',
+          'javelin-core/administration/getgateway',
+          'javelin-core/administration/listgateways',
+          'javelin-core/administration/updategateway',
+          'javelin-core/administration/deletegateway',
         ]
       },
       {
@@ -122,18 +130,6 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'Setting Up Data Protection',
-        items: [
-          'javelin-core/dataprotectionconfiguration',
-          'javelin-core/administration/createtemplate',
-          'javelin-core/administration/gettemplate',
-          'javelin-core/administration/listtemplates',
-          'javelin-core/administration/updatetemplate',
-          'javelin-core/administration/deletetemplate',
-        ]
-      },
-      {
-        type: 'category',
         label: 'Setting Up Secrets',
         items: [
           'javelin-core/secretsconfiguration',
@@ -144,6 +140,22 @@ module.exports = {
           'javelin-core/administration/deletevkey',
         ]
       },
+      {
+        type: 'category',
+        label: 'Setting Up Data Protection',
+        items: [
+          'javelin-core/dataprotectionconfiguration',
+          'javelin-core/administration/createtemplate',
+          'javelin-core/administration/gettemplate',
+          'javelin-core/administration/listtemplates',
+          'javelin-core/administration/updatetemplate',
+          'javelin-core/administration/deletetemplate',
+        ]
+      },
+    ],
+    'LangChain': [
+      'javelin-langchain-python/quickstart',
+      'javelin-langchain-python/chain',
     ],
     'Changelog': [
       'changelog'
