@@ -98,6 +98,18 @@ module.exports = {
       },
       {
         type: 'category',
+        label: 'Setting Up Gateways',
+        items: [
+          'javelin-core/gatewayconfiguration',
+          'javelin-core/administration/creategateway',
+          'javelin-core/administration/getgateway',
+          'javelin-core/administration/listgateways',
+          'javelin-core/administration/updategateway',
+          'javelin-core/administration/deletegateway',
+        ]
+      },
+      {
+        type: 'category',
         label: 'Setting Up Providers',
         items: [
           'javelin-core/providerconfiguration',
@@ -122,18 +134,6 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'Setting Up Data Protection',
-        items: [
-          'javelin-core/dataprotectionconfiguration',
-          'javelin-core/administration/createtemplate',
-          'javelin-core/administration/gettemplate',
-          'javelin-core/administration/listtemplates',
-          'javelin-core/administration/updatetemplate',
-          'javelin-core/administration/deletetemplate',
-        ]
-      },
-      {
-        type: 'category',
         label: 'Setting Up Secrets',
         items: [
           'javelin-core/secretsconfiguration',
@@ -142,6 +142,18 @@ module.exports = {
           'javelin-core/administration/listvkeys',
           'javelin-core/administration/updatevkey',
           'javelin-core/administration/deletevkey',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Setting Up Data Protection',
+        items: [
+          'javelin-core/dataprotectionconfiguration',
+          'javelin-core/administration/createtemplate',
+          'javelin-core/administration/gettemplate',
+          'javelin-core/administration/listtemplates',
+          'javelin-core/administration/updatetemplate',
+          'javelin-core/administration/deletetemplate',
         ]
       },
     ],
