@@ -158,8 +158,11 @@ curl -X POST \
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Template Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Template
 )
@@ -175,15 +178,16 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
 ) 
 
 template_data = {
-
+    // Add your template data here
 }
 
-template = Provider.parse_obj(template_data)
+template = Template.parse_obj(template_data)
 
-# create the template, for async use `await client.acreate_template(template)`
+# create the template, for async use \`await client.acreate_template(template)\`
 client.create_template(template)
- 
-```
+`}
+</CodeBlock>
+
 
 </TabItem>
 

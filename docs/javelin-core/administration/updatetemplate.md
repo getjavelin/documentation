@@ -45,8 +45,11 @@ curl -X PUT \
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Update Template Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Template
 )
@@ -61,16 +64,16 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
                        javelin_api_key=javelin_api_key,
 )
 
-# get the provider (to see what we need to change)
+# get the template (to see what we need to change)
 template_name = "InspectPII"
 template = client.get_template(template_name)
 
 # make the necessary template changes
 
-# update the template, for async use `await client.aupdate_template(template)`
+# update the template, for async use \`await client.aupdate_template(template)\`
 client.update_template(template)
-
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

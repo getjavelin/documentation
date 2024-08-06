@@ -17,8 +17,11 @@ curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/adm
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Delete Template Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Template
 )
@@ -35,10 +38,10 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
 # template name to delete is "InspectPII"
 template_name = "InspectPII"
 
-# delete the template, for async use `await client.adelete_template(template_name)`
+# delete the template, for async use \`await client.adelete_template(template_name)\`
 client.delete_template(template_name) 
-
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

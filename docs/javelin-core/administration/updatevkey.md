@@ -29,8 +29,11 @@ curl -X PUT \
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Update Secret Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Secret
 )
@@ -51,10 +54,10 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
 # make the necessary changes
 
 
-# update the secret, for async use `await client.aupdate_secret(secret)`
+# update the secret, for async use \`await client.aupdate_secret(secret)\`
 client.update_secret(secret)
-
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

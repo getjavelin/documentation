@@ -33,8 +33,11 @@ import CodeBlock from '@theme/CodeBlock';
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Client Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Provider
 )
@@ -64,11 +67,11 @@ provider_data = {
 
 provider = Provider.parse_obj(provider_data)
 
-# create the provider, for async use `await client.acreate_provider(provider)`
+# create the provider, for async use \`await client.acreate_provider(provider)\`
 client.create_route(provider)
+`}
+</CodeBlock>
 
-
-```
 
 </TabItem>
 

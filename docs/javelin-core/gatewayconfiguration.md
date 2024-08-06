@@ -1,24 +1,27 @@
 # Integration Overview
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 Javelin offers configuration options to setup Model Gateways. You can easily connect your applications to route all Generative AI traffic through Javelin.
 
 # Gateway Object
 When represented as json, the gateway object has the following structure:
-```shell
-  {
+<CodeBlock
+  language="python">
+  {`{
     "name": "name of the gateway",
-    "type": "this could be `development`, `production` etc.,",
+    "type": "this could be \`development\`, \`production\` etc.,",
     "config": {
-        "buid": "kensho",
-        "base_url": "https://api-dev.javelin.live",
-        "api_key_value": "",
-        "organization_id": "",
-        "system_namespace": ""
+      "buid": "kensho",
+      "base_url": "https://api-dev.javelin.live",
+      "api_key_value": "",
+      "organization_id": "",
+      "system_namespace": ""
     }
-  }
-  ```
+  }`}
+</CodeBlock>
+
 
 ## Gateway Fields
 These configuration settings are all defined per `gateway`, they are not global and are applied individually on each gateway. 

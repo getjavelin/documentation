@@ -16,8 +16,11 @@ import CodeBlock from '@theme/CodeBlock';
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Get Provider Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Provider
 )
@@ -35,9 +38,10 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
 # provider name to get is "openai"
 provider_name = "openai"
 
-# get the route, for async use `await client.aget_provider(provider_name)`
+# get the provider, for async use \`await client.aget_provider(provider_name)\`
 print(client.get_provider(provider_name))
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

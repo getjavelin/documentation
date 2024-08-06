@@ -17,8 +17,11 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Get Secret Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Secret
 )
@@ -36,9 +39,10 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
 # secret name to get is "openai-vkey1"
 secret_name = "openai-vkey1"
 
-# get the secret, for async use `await client.aget_provider(secret_name)`
+# get the secret, for async use \`await client.aget_secret(secret_name)\`
 print(client.get_secret(secret_name))
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

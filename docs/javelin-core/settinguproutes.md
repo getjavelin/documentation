@@ -1,5 +1,6 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 # Setting Up Routes
 Javelin offers a variety of configuration options to setup policies, cost guardrails and traffic shaping. 
@@ -12,28 +13,35 @@ Routes can be administered easily and quickly using the following operations:
 <Tabs>
 <TabItem value="shell" label="curl">
 
-```js
-function helloWorld() {
+<CodeBlock
+  language="javascript"
+  title="Hello World Function"
+  showLineNumbers>
+  {`function helloWorld() {
   console.log('Hello, world!');
 }
-```
+`}
+</CodeBlock>
 
 </TabItem>
 <TabItem value="py" label="Python">
 
-```py
-    from javelin_sdk import (
-        JavelinClient,
-        Route
-    )
+<CodeBlock
+  language="python"
+  title="Javelin Client Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
+      JavelinClient,
+      Route
+  )
 
-    try:
-        client = JavelinClient(base_url="http://localhost:9000") # replace this with your javelin URL
-    except NetworkError as e:
-        print("Failed to create client: Network Error")
-        return
+  try:
+      client = JavelinClient(base_url="http://localhost:9000") # replace this with your javelin URL
+  except NetworkError as e:
+      print("Failed to create client: Network Error")
+`}
+</CodeBlock>
 
-```
 
 </TabItem>
 </Tabs>
@@ -43,19 +51,28 @@ function helloWorld() {
 <Tabs>
 <TabItem value="python" label="curl">
 
-```js
-function helloWorld() {
+<CodeBlock
+  language="javascript"
+  title="Hello World Function"
+  showLineNumbers>
+  {`function helloWorld() {
   console.log('Hello, world!');
 }
-```
+`}
+</CodeBlock>
 
 </TabItem>
 <TabItem value="py" label="Python">
 
-```py
-def hello_world():
+<CodeBlock
+  language="python"
+  title="Hello World Example"
+  showLineNumbers>
+  {`def hello_world():
   print("Hello, world!")
-```
+`}
+</CodeBlock>
+
 
 </TabItem>
 </Tabs>
@@ -65,19 +82,28 @@ def hello_world():
 <Tabs>
 <TabItem value="python" label="curl">
 
-```js
-function helloWorld() {
+<CodeBlock
+  language="javascript"
+  title="Hello World Function"
+  showLineNumbers>
+  {`function helloWorld() {
   console.log('Hello, world!');
 }
-```
+`}
+</CodeBlock>
 
 </TabItem>
 <TabItem value="py" label="Python">
 
-```py
-def hello_world():
+<CodeBlock
+  language="python"
+  title="Hello World Example"
+  showLineNumbers>
+  {`def hello_world():
   print("Hello, world!")
-```
+`}
+</CodeBlock>
+
 
 </TabItem>
 </Tabs>
@@ -87,19 +113,28 @@ def hello_world():
 <Tabs>
 <TabItem value="python" label="cURL">
 
-```js
-function helloWorld() {
+<CodeBlock
+  language="javascript"
+  title="Hello World Function"
+  showLineNumbers>
+  {`function helloWorld() {
   console.log('Hello, world!');
 }
-```
+`}
+</CodeBlock>
 
 </TabItem>
 <TabItem value="py" label="Python">
 
-```py
-def hello_world():
+<CodeBlock
+  language="python"
+  title="Hello World Example"
+  showLineNumbers>
+  {`def hello_world():
   print("Hello, world!")
-```
+`}
+</CodeBlock>
+
 
 </TabItem>
 </Tabs>
@@ -109,19 +144,28 @@ def hello_world():
 <Tabs>
 <TabItem value="python" label="curl">
 
-```js
-function helloWorld() {
+<CodeBlock
+  language="javascript"
+  title="Hello World Function"
+  showLineNumbers>
+  {`function helloWorld() {
   console.log('Hello, world!');
 }
-```
+`}
+</CodeBlock>
 
 </TabItem>
 <TabItem value="py" label="Python">
 
-```py
-def hello_world():
+<CodeBlock
+  language="python"
+  title="Hello World Example"
+  showLineNumbers>
+  {`def hello_world():
   print("Hello, world!")
-```
+`}
+</CodeBlock>
+
 
 </TabItem>
 </Tabs>
@@ -131,19 +175,28 @@ def hello_world():
 <Tabs>
 <TabItem value="python" label="curl">
 
-```js
-function helloWorld() {
+<CodeBlock
+  language="javascript"
+  title="Hello World Function"
+  showLineNumbers>
+  {`function helloWorld() {
   console.log('Hello, world!');
 }
-```
+`}
+</CodeBlock>
 
 </TabItem>
 <TabItem value="py" label="Python">
 
-```py
-def hello_world():
+<CodeBlock
+  language="python"
+  title="Hello World Example"
+  showLineNumbers>
+  {`def hello_world():
   print("Hello, world!")
-```
+`}
+</CodeBlock>
+
 
 </TabItem>
 </Tabs>

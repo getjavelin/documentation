@@ -24,7 +24,6 @@ curl -X PUT \
         }
 }' \
 "https://api-dev.javelin.live/v1/admin/providers/openai"
-
 `}
 </CodeBlock>
 
@@ -32,8 +31,11 @@ curl -X PUT \
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Update Provider Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Provider
 )
@@ -57,10 +59,10 @@ provider.name = "openai"
 provider.type = "closedsource"
 provider.enabled = True
 
-# update the provider, for async use `await client.aupdate_provider(provider)`
+# update the provider, for async use \`await client.aupdate_provider(provider)\`
 client.update_provider(provider)
-
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

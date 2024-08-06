@@ -30,8 +30,11 @@ curl -X POST \
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Secret Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Secret
 )
@@ -47,16 +50,16 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
 ) 
 
 secret_data = {
-
+    // Add your secret data here
 }
 
-secret = Provider.parse_obj(secret_data)
+secret = Secret.parse_obj(secret_data)
 
-# create the secret, for async use `await client.acreate_secret(secret)`
+# create the secret, for async use \`await client.acreate_secret(secret)\`
 client.create_secret(secret)
- 
+`}
+</CodeBlock>
 
-```
 
 </TabItem>
 

@@ -17,8 +17,11 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/
 
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin List Templates Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Template
 )
@@ -33,10 +36,10 @@ client = JavelinClient(base_url="https://api-dev.javelin.live",
                        javelin_api_key=javelin_api_key,
 ) 
 
-# print out the list of templates, for async use `await client.alist_templates()`
+# print out the list of templates, for async use \`await client.alist_templates()\`
 print(client.list_templates())
-
-```
+`}
+</CodeBlock>
 
 </TabItem>
 

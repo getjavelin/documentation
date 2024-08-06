@@ -45,8 +45,11 @@ curl -X POST \
 </TabItem>
 <TabItem value="py" label="In Python:">
 
-```py
-from javelin_sdk import (
+<CodeBlock
+  language="python"
+  title="Javelin Route Example"
+  showLineNumbers>
+  {`from javelin_sdk import (
     JavelinClient,
     Route
 )
@@ -90,11 +93,11 @@ route_data = {
 
 route = Route.parse_obj(route_data)
 
-# create the route, for async use `await client.acreate_route(route)`
+# create the route, for async use \`await client.acreate_route(route)\`
 client.create_route(route)
- 
+`}
+</CodeBlock>
 
-```
 
 </TabItem>
 </Tabs>
