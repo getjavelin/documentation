@@ -15,7 +15,7 @@
 - `name`: The unique identifier for this gateway.
 - `type`: The type `development`, `staging`, `production` of this gateway.
 - `enabled`: Enable/Disable this gateway.
-- `config`: [Configuration](./models.md#gatewayconfig) settings, like base_url, api_key_value associated with this route.
+- `config`: [Configuration](./models.md#gatewayconfig) settings, like base_url, api_key_value associated with this gateway.
 
 ---
 
