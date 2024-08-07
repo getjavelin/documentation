@@ -15,6 +15,14 @@ Returns a string representation of the error.
 
 ### Derived Exceptions
 
+#### `GatewayNotFoundError`
+
+Indicates that a specified gateway was not found in the Javelin service.
+
+#### `GatewayAlreadyExistsError`
+
+Indicates that an attempt was made to create a gateway that already exists in the Javelin service.
+
 #### `RouteNotFoundError`
 
 Indicates that a specified route was not found in the Javelin service.
