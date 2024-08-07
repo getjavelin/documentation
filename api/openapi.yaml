@@ -1156,4 +1156,34 @@ paths:
       summary: Update a route
       tags:
       - Routes
+  /query/{routename}:
+    post:
+      consumes:
+      - application/json
+      description: Query data for a specific route
+      parameters:
+      - description: Route name
+        in: path
+        name: routename
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Query response
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Query a Route
+      tags:
+      - Query Routes
 swagger: "2.0"
