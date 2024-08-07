@@ -6,7 +6,7 @@ The Prompt Playground is designed to be a versatile and user-friendly environmen
 While using the Prompt Playground, you can either use configured Javelin Virtual Keys or use the Authorization header with bearer token to authenticate with the model provider. 
 
 ## Assistant
-Javelin also developed [HuggingChat Assistant](https://hf.co/chat/assistant/65bdbbf7f10680b82361aa45) that may be used as alternative interfaces for crafting and testing prompts. Please contact: support@getjavelin.io if you would like to use this feature.
+[HuggingChat Assistant](https://hf.co/chat/assistant/65bdbbf7f10680b82361aa45) may be used as alternative interface for crafting and testing prompts. Please contact: support@getjavelin.io if you would like to use this feature.
 
 ## Chatbot Arena
 Consider using lmsys.org [chatbot arena](https://chat.lmsys.org/) for your queries. Many models are now pretty good and it let you see where they differ while contributing to the public ranking.
