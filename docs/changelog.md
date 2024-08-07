@@ -1,2 +1,51 @@
 # Changelog
-**v0.4.5 Early Preview Release**
+
+## August 2024
+
+Security Dashboard Integration with OWASP LLM Top 10: Launch of a comprehensive security dashboard categorizing vulnerabilities aligned with the latest OWASP Large Language Models (LLM) Top 10 risks, enhancing the ability to monitor and mitigate potential security threats effectively.
+
+Comprehensive Audit Logging: Implementation of detailed audit logs for all user activities related to Routes, Providers, Data Protection, and Secrets management, ensuring traceability and compliance with security policies.
+
+Enhanced API Call Tracing with OpenTelemetry: Introduction of OpenTelemetry-based tracing for all API interactions through the Gateway, allowing for precise performance monitoring and debugging capabilities.
+
+Python SDK Enhancements: Upgrades and optimizations to the Python SDK to improve usability, performance, and compatibility with the latest Python versions.
+
+Documentation Overhaul: Significant updates to API documentation, including revamped Swagger files and enhanced overall documentation, making it easier for developers to understand and integrate APIs.
+
+Advanced Analytics Features: Enhancements to analytics functionalities, focusing on better data capture techniques and visualization tools to provide deeper insights into data usage and trends.
+
+New Security Guardrails - Code/Markdown Detection: Implementation of advanced security filters designed to detect and handle code or markdown injections, ensuring content integrity and preventing security vulnerabilities.
+
+## July 2024
+
+Roles and User Management Framework: Expanded support for managing roles, permissions, and user access across groups, teams, and entire organizations, enhancing control over user activities and data access.
+
+Granular Privilege Control: Definition of distinct privileges for various user roles such as Super Admins, Super Members, Team Members, and Team Admins, ensuring appropriate access levels are maintained.
+
+Permissions Enforcement on UI and API: Comprehensive permissions management across all UI pages and API calls, safeguarding against unauthorized actions and ensuring system security.
+
+API Usage and Performance Analytics Dashboard: New analytics dashboard providing insights into API usage, performance statistics, error tracking, and latency measurements, aiding in efficient AI management.
+
+Chronicle: Detailed chronicles for all AI calls, including logs, error reports, and performance metrics specifically for Route Configuration, helping in troubleshooting and optimizations.
+
+UI Enhancements for Navigation: Updates to UI components such as sidebars, headers, and footers, aimed at improving the overall user navigation experience.
+
+Extension Processor for Custom API Logic: Introduction of an Extension Processor to implement custom logic for API calls, including data transformations and response handling, with support for gRPC.
+
+New Security Guardrails and Streaming Support: Implementation of new security measures like keyword checks and code vulnerability scanners, alongside support for real-time data streaming technologies such as Redis and Kafka.
+
+## June 2024
+
+Websocket Support in Core Platform: Integration of WebSocket technology into the core platform to enable real-time, bi-directional communication between clients and servers.
+
+Support for Alternative Machine Learning Models: Incorporation of support for non-OpenAI models, such as Bedrock, allowing for greater flexibility and diversity in machine learning operations.
+
+Playground for Real-Time Testing: Establishment of a playground environment for real-time testing and experimentation with new features and configurations.
+
+Enhanced Guardrails for Team and Global Settings: New functionalities for setting and managing security guardrails at both team and gateway levels, ensuring consistent security practices across all operational levels.
+
+UI Improvements for Guardrail Configurations: User interface updates to facilitate the definition and management of guardrails, tailored to team and organizational requirements.
+
+Configurations Across Teams and Organizations: Enhanced support for managing configurations across teams and organizations, providing scalability and flexibility in deployments.
+
+Automation Enhancements for Private VPCs: Improved automation processes for private Virtual Private Cloud (VPC) deployments, optimizing resource utilization and deployment efficiency.
