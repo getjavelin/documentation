@@ -192,6 +192,8 @@ definitions:
     type: object
 info:
   contact: {}
+servers:
+  - url: https://api-dev.javelin.live
 paths:
   /v1/admin/dataprotection/templates:
     get:
