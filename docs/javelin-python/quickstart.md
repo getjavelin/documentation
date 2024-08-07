@@ -24,8 +24,7 @@ Before making any API calls, initialize the client:
 language="python"
 title=""
 >
-{`from javelin_sdk
-from javelin_sdk import (
+{`from javelin_sdk import (
     JavelinClient,
     Route,
     NetworkError
