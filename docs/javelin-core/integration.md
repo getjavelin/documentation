@@ -71,7 +71,8 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 llm_api_key = os.getenv("OPENAI_API_KEY")
 
 # Create Javelin client
-client = JavelinClient(javelin_api_key=javelin_api_key, 
+client = JavelinClient(base_url="https://api-dev.javelin.live",
+                       javelin_api_key=javelin_api_key, 
                        llm_api_key=llm_api_key)
 
 # Route name to get is {routename} e.g., sampleroute1
