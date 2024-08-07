@@ -17,7 +17,7 @@ We are always adding support for new models, supported models include those from
 [HuggingFace](https://huggingface.co/models)  
 [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)  
 [Amazon Bedrock](https://aws.amazon.com/bedrock)  
-[NVIDIA](https://catalog.ngc.nvidia.com/ai-foundation-models)  
+[NVIDIA](https://catalog.ngc.nvidia.com)  
 [AnyScale](https://www.anyscale.com/endpoints)     
 [TogetherAI](https://www.together.ai/)       
 [Stanford Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html)  
