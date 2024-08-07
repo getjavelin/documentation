@@ -11,7 +11,7 @@ We are always adding support for new models, supported models include those from
 [Anthropic](https://docs.anthropic.com/claude/docs/models-overview)  
 [Google Gemini](https://ai.google.dev/models)  
 [Inflection](https://inflection.ai/inflection-2-5)  
-[Llama2](https://llama.meta.com/llama2/)   
+[Llama](https://llama.meta.com/)   
 [Perplexity](https://docs.perplexity.ai/docs/model-cards)  
 [Cohere](https://cohere.com/)       
 [HuggingFace](https://huggingface.co/models)  
