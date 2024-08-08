@@ -1,3 +1,5 @@
+import path from 'path';
+
 module.exports = {
   title: 'Javelin',
   tagline: 'Enterprise AI Platform for Rapid, Responsible AI Adoption',
@@ -48,6 +50,7 @@ module.exports = {
     [
       'redocusaurus',
       {
+        config: path.join(__dirname, 'redocly.yaml'),
         specs: [{
           route: '/api',
           spec: 'api/openapi.yaml',
