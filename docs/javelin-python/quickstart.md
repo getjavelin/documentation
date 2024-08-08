@@ -153,5 +153,3 @@ except UnauthorizedError as e:
 except NetworkError as e:
     print("Failed to create route: Network Error")`}
 </CodeBlock>
-
-## 5. Further Reading
