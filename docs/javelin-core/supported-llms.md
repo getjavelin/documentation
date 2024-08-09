@@ -8,14 +8,16 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 We are always adding support for new models, supported models include those from:  
 
 [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)  
-[Amazon Bedrock](https://aws.amazon.com/bedrock)  
-[OpenAI](https://platform.openai.com/docs/models)     
-[Google Gemini](https://ai.google.dev/models)  
-[Anthropic](https://docs.anthropic.com/claude/docs/models-overview) 
+[OpenAI](https://platform.openai.com/docs/models)   
 
-[HuggingFace](https://huggingface.co/models)  
+[Amazon Bedrock](https://aws.amazon.com/bedrock)  
+[Anthropic](https://docs.anthropic.com/claude/docs/models-overview) 
 [Mistral](https://docs.mistral.ai/guides/model-selection/)  
 [Llama](https://llama.meta.com/) 
+
+[Google Gemini](https://ai.google.dev/models)  
+
+[HuggingFace](https://huggingface.co/models)  
 
 [NVIDIA](https://catalog.ngc.nvidia.com)  
 
