@@ -11,9 +11,9 @@ We are always adding support for new models, supported models include those from
 [OpenAI](https://platform.openai.com/docs/models)   
 
 [Amazon Bedrock](https://aws.amazon.com/bedrock)  
-[Anthropic](https://docs.anthropic.com/claude/docs/models-overview) 
+[Anthropic](https://docs.anthropic.com/claude/docs/models-overview)  
 [Mistral](https://docs.mistral.ai/guides/model-selection/)  
-[Llama](https://llama.meta.com/) 
+[Llama](https://llama.meta.com/)  
 
 [Google Gemini](https://ai.google.dev/models)  
 
