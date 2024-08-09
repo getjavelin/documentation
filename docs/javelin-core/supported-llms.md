@@ -11,12 +11,13 @@ We are always adding support for new models, supported models include those from
 [Amazon Bedrock](https://aws.amazon.com/bedrock)  
 [OpenAI](https://platform.openai.com/docs/models)     
 [Google Gemini](https://ai.google.dev/models)  
-[NVIDIA](https://catalog.ngc.nvidia.com)  
 [Anthropic](https://docs.anthropic.com/claude/docs/models-overview) 
 
 [HuggingFace](https://huggingface.co/models)  
 [Mistral](https://docs.mistral.ai/guides/model-selection/)  
 [Llama](https://llama.meta.com/) 
+
+[NVIDIA](https://catalog.ngc.nvidia.com)  
 
 [Inflection](https://inflection.ai/inflection-2-5)  
 [Perplexity](https://docs.perplexity.ai/docs/model-cards)  
