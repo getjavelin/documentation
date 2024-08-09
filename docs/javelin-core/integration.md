@@ -71,7 +71,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 llm_api_key = os.getenv("OPENAI_API_KEY")
 
 # Create Javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
+client = JavelinClient(base_url="https://api-dev.javelin.live", # Set Javelin's API base URL for query
                        javelin_api_key=javelin_api_key, 
                        llm_api_key=llm_api_key)
 
@@ -123,7 +123,7 @@ javelin_headers = {
 
 # Create OpenAI Client
 client = OpenAI(api_key=llm_api_key,
-                base_url="https://api-dev.javelin.live/v1/query",
+                base_url="https://api-dev.javelin.live/v1/query", # Set Javelin's API base URL for query
                 default_headers=javelin_headers)
 
 # Query the model
@@ -178,7 +178,7 @@ javelin_headers = {
 }
 
 client = AzureOpenAI(api_key=llm_api_key,
-                     base_url="https://api-dev.javelin.live/v1/query",
+                     base_url="https://api-dev.javelin.live/v1/query", # Set Javelin's API base URL for query
                      default_headers=javelin_headers,
                      api_version="2023-07-01-preview")
 
@@ -237,7 +237,7 @@ javelin_headers = {
 }
 
 llm = ChatOpenAI(
-    openai_api_base="https://api-dev.javelin.live/v1/query",
+    openai_api_base="https://api-dev.javelin.live/v1/query", # Set Javelin's API base URL for query
     openai_api_key=llm_api_key,
     model_kwargs={
       "extra_headers": javelin_headers
@@ -301,7 +301,7 @@ class Javelin(LM):
                     "stream": False
         }
 
-        self.base_url = "https://api-dev.javelin.live/v1/query/"
+        self.base_url = "https://api-dev.javelin.live/v1/query/" # Set Javelin's API base URL for query
         self.javelin_headers = {
                     "Content-Type": "application/json",
                     "Authorization": f"Bearer { api_key }",
