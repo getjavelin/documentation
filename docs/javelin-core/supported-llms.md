@@ -10,7 +10,7 @@ We are always adding support for new models, supported models include those from
 | LLM                | Endpoint                                 | Suffix                               | Secret                  |
 |--------------------|------------------------------------------|--------------------------------------|-------------------------|
 | [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)  | `https://<your-resource-name>.openai.azure.com` | - `/openai/deployments/{deployment-id}/completions`<br/>- `/openai/deployments/{deployment-id}/chat/completions`<br/>- `/openai/deployments/{deployment-id}/embeddings` |                         |
-| [OpenAI](https://platform.openai.com/docs/models)             | `https://api.openai.com`                         | - `/v1/completions`<br/>- `/v1/chat/completions`<br/>- `/v1/embeddings`<br/>- `/images` |                         |
+| [OpenAI](https://platform.openai.com/docs/models)             | `https://api.openai.com`                         | - `/v1/completions`<br/>- `/v1/chat/completions`<br/>- `/v1/embeddings`<br/> |                         |
 | [Amazon Bedrock](https://aws.amazon.com/bedrock)              | `https://bedrock.<region>.amazonaws.com`            | - `/model-name/invoke`<br/>- `/model-name/input` |                         |
 | [Anthropic](https://docs.anthropic.com/claude/docs/models-overview)   | `https://api.anthropic.com`                         | - `/v1/complete`<br/>- `/v1/claude` |                         |
 | [Mistral](https://docs.mistral.ai/guides/model-selection/)    | `https://api.mistral.ai`                            | - `/v1/models`<br/>- `/v1/infer` |                         |
