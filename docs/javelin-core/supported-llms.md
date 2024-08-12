@@ -7,7 +7,7 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 ## Supported Model Providers  
 We are always adding support for new models, supported models include those from:  
 
-| LLM                | Endpoint                                 | Suffix                               | Secret                  |
+| LLM                | Base URL                                 | Endpoints                               | Secret                  |
 |--------------------|------------------------------------------|--------------------------------------|-------------------------|
 | [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)  | `https://<your-resource-name>.openai.azure.com` | - `/openai/deployments/{deployment-id}/completions`<br/>- `/openai/deployments/{deployment-id}/chat/completions`<br/>- `/openai/deployments/{deployment-id}/embeddings` |                         |
 | [OpenAI](https://platform.openai.com/docs/models)             | `https://api.openai.com`                         | - `/v1/completions`<br/>- `/v1/chat/completions`<br/>- `/v1/embeddings`<br/> |                         |
