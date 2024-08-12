@@ -152,6 +152,13 @@ module.exports = {
           'javelin-core/administration/deletetemplate',
         ]
       },
+      {
+        type: 'category',
+        label: 'CLI Reference',
+        items: [
+          'javelin-python/cli'
+        ]
+      },
     ],
     'LangChain': [
       'javelin-langchain-python/quickstart',
