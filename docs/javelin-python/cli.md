@@ -4,11 +4,11 @@ import CodeBlock from '@theme/CodeBlock';
 
 ## Introduction
 
-The Javelin CLI is a powerful tool for interacting with the Javelin SDK. This guide will help you get started with installing and using the CLI to manage gateways, providers, and routes.
+The Javelin CLI is a tool for interacting with the Javelin SDK. This guide will help you get started with installing and using the CLI to manage gateways, providers, and routes.
 
 ## Installation
 
-1. **Ensure Python is Installed**: Python 3.8+ is required.
+1. **Ensure Python is Installed**: Python 3.10+ is required.
 2. **Install Javelin SDK**:  
    <CodeBlock language="shell">
    {`pip install javelin-sdk`}
