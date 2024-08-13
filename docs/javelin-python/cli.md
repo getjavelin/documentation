@@ -1,3 +1,5 @@
+import CodeBlock from '@theme/CodeBlock';
+
 # Quickstart Guide
 
 ## Introduction
