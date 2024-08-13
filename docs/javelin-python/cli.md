@@ -46,7 +46,7 @@ export LLM_API_KEY=your_llm_api_key`}
 
 - **Read a Gateway**:  
   <CodeBlock language="shell">
-  {`javelin gateway read --name "example_gateway"`}
+  {`javelin gateway get --name "example_gateway"`}
   </CodeBlock>
 
 - **Update a Gateway**:  
@@ -68,17 +68,17 @@ export LLM_API_KEY=your_llm_api_key`}
   
 - **Create a Provider**:  
   <CodeBlock language="shell">
-  {`javelin provider create --name "example_provider" --type "cloud" --api_base "https://api.provider.com" --config '{"api_version": "v1", "deployment_name": "example_deployment", "organization": "example_org"}'`}
+  {`javelin provider create --name "example_provider" --type "closed" --config '{"api_version": "v1", "deployment_name": "example_deployment", "organization": "example_org"}'`}
   </CodeBlock>
 
 - **Read a Provider**:  
   <CodeBlock language="shell">
-  {`javelin provider read --name "example_provider"`}
+  {`javelin provider get --name "example_provider"`}
   </CodeBlock>
 
 - **Update a Provider**:  
   <CodeBlock language="shell">
-  {`javelin provider update --name "example_provider" --api_base "https://new-api.provider.com" --config '{"api_version": "v2", "deployment_name": "new_deployment"}'`}
+  {`javelin provider update --name "example_provider" --config '{"api_base" "https://new-api.provider.com"}'`}
   </CodeBlock>
 
 - **Delete a Provider**:  
@@ -100,7 +100,7 @@ export LLM_API_KEY=your_llm_api_key`}
 
 - **Read a Route**:  
   <CodeBlock language="shell">
-  {`javelin route read --name "example_route"`}
+  {`javelin route get --name "example_route"`}
   </CodeBlock>
 
 - **Update a Route**:  
