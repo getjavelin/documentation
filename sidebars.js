@@ -164,6 +164,9 @@ module.exports = {
       'javelin-langchain-python/quickstart',
       'javelin-langchain-python/chain',
     ],
+    'Security': [
+      'security'
+    ],
     'Changelog': [
       'changelog'
     ],
