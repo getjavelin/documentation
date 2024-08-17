@@ -9,7 +9,7 @@ We are always adding support for new models, supported models include those from
 
 | LLM                | Base URL                                 | Endpoints                               | API keys                  |
 |--------------------|------------------------------------------|--------------------------------------|-------------------------|
-| [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)  | `https://<your-resource-name>.openai.azure.com` | - `/openai/deployments/{deployment-id}/completions`<br/>- `/openai/deployments/{deployment-id}/chat/completions`<br/>- `/openai/deployments/{deployment-id}/embeddings` |                         |
+| [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)  | `https://<your-resource-name>.openai.azure.com` | - `/openai/deployments/{deployment-id}/completions`<br/>- `/openai/deployments/{deployment-id}/chat/completions`<br/>- `/openai/deployments/{deployment-id}/embeddings` |    https://portal.azure.com/                     |
 | [OpenAI](https://platform.openai.com/docs/models)             | `https://api.openai.com`                         | - `/v1/completions`<br/>- `/v1/chat/completions`<br/>- `/v1/embeddings`<br/> |       https://platform.openai.com/api-keys                  |
 | [Amazon Bedrock](https://aws.amazon.com/bedrock)              | `https://bedrock.<region>.amazonaws.com`            | - `/model-name/invoke`<br/>- `/model-name/input` |                         |
 | [Anthropic](https://docs.anthropic.com/claude/docs/models-overview)   | `https://api.anthropic.com`                         | - `/v1/complete`<br/>- `/v1/claude` |                         |
