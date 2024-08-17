@@ -7,7 +7,7 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 ## Supported Model Providers  
 We are always adding support for new models, supported models include those from:  
 
-| Models                | Base URL                                 | Endpoints                               | API keys                  |
+| Models             | Base URL                                 | Endpoints                            | Auth                    |
 |--------------------|------------------------------------------|--------------------------------------|-------------------------|
 | [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)  | `https://<your-resource-name>.openai.azure.com` | - `/openai/deployments/{deployment-id}/completions`<br/>- `/openai/deployments/{deployment-id}/chat/completions`<br/>- `/openai/deployments/{deployment-id}/embeddings` |    https://portal.azure.com/                     |
 | [OpenAI](https://platform.openai.com/docs/models)             | `https://api.openai.com`                         | - `/v1/completions`<br/>- `/v1/chat/completions`<br/>- `/v1/embeddings`<br/> |       https://platform.openai.com/api-keys                  |
@@ -16,6 +16,17 @@ We are always adding support for new models, supported models include those from
 | [Mistral](https://docs.mistral.ai/guides/model-selection/)    | `https://api.mistral.ai`                            | - `/v1/models`<br/>- `/v1/infer` |            https://console.mistral.ai/api-keys/             |
 | [HuggingFace](https://huggingface.co/models)                  | `https://api-inference.huggingface.co`              | - `/models/{model-id}`<br/>- `/pipeline/{task}`<br/><br/><br/> Create an endpoint following the instructions here https://huggingface.co/docs/inference-endpoints/guides/create_endpoint |                         |
 | [NVIDIA](https://build.nvidia.com/explore/discover) | | [NVIDIA AI Endpoints](https://docs.nvidia.com/nemo/guardrails/user_guides/llm/nvidia_ai_endpoints/index.html)  |  |
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
+|              |                                |                             |                     | 
 
 
 
