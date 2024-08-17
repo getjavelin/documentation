@@ -16,26 +16,13 @@ We are always adding support for new models, supported models include those from
 | [Mistral](https://docs.mistral.ai/guides/model-selection/)    | `https://api.mistral.ai`                            | - `/v1/models`<br/>- `/v1/infer` |            https://console.mistral.ai/api-keys/             |
 | [HuggingFace](https://huggingface.co/models)                  | `https://api-inference.huggingface.co`              | - `/models/{model-id}`<br/>- `/pipeline/{task}`<br/><br/><br/> Create an endpoint following the instructions here https://huggingface.co/docs/inference-endpoints/guides/create_endpoint |                         |
 | [NVIDIA](https://build.nvidia.com/explore/discover) | | [NVIDIA AI Endpoints](https://docs.nvidia.com/nemo/guardrails/user_guides/llm/nvidia_ai_endpoints/index.html)  |  |
-|              |                                |                             |                     | 
-|              |                                |                             |                     | 
-|              |                                |                             |                     | 
-|              |                                |                             |                     | 
-|              |                                |                             |                     | 
-|              |                                |                             |                     | 
-|              |                                |                             |                     | 
-|              |                                |                             |                     | 
-|              |                                |                             |                     | 
-|              |                                |                             |                     | 
+| [Llama](https://llama.meta.com/) |                                |                             |                     | 
+| [Google Gemini](https://ai.google.dev/models) |                                |                             |                     | 
+| [Inflection](https://inflection.ai/inflection-2-5) |                                |                             |                     | 
+| [Perplexity](https://docs.perplexity.ai/docs/model-cards) |                                |                             |                     | 
+| [Cohere](https://cohere.com/) |                                |                             |                     | 
+| [AnyScale](https://www.anyscale.com/endpoints) |                                |                             |                     | 
+| [TogetherAI](https://www.together.ai/) |                                |                             |                     | 
 |              |                                |                             |                     | 
 
-
-
-[Llama](https://llama.meta.com/)  
-[Google Gemini](https://ai.google.dev/models)  
-[Inflection](https://inflection.ai/inflection-2-5)  
-[Perplexity](https://docs.perplexity.ai/docs/model-cards)  
-[Cohere](https://cohere.com/)       
-[AnyScale](https://www.anyscale.com/endpoints)     
-[TogetherAI](https://www.together.ai/)       
 **and more...**
-
