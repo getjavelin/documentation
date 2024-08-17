@@ -23,6 +23,6 @@ We are always adding support for new models, supported models include those from
 | [Cohere](https://cohere.com/) |                                |                             |                     | 
 | [AnyScale](https://www.anyscale.com/endpoints) |                                |                             |                     | 
 | [TogetherAI](https://www.together.ai/) |                                |                             |                     | 
-|              |                                |                             |                     | 
+| **and more...**             |                                |                             |                     | 
 
-**and more...**
+
