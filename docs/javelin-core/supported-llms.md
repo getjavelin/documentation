@@ -21,7 +21,7 @@ We are always adding support for new models, supported models include those from
 [Llama](https://llama.meta.com/)  
 [Google Gemini](https://ai.google.dev/models)  
 [HuggingFace](https://huggingface.co/models)  
-[NVIDIA](https://catalog.ngc.nvidia.com)  
+[NVIDIA](https://build.nvidia.com/explore/discover)  
 [Inflection](https://inflection.ai/inflection-2-5)  
 [Perplexity](https://docs.perplexity.ai/docs/model-cards)  
 [Cohere](https://cohere.com/)       
