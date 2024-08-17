@@ -14,7 +14,7 @@ We are always adding support for new models, supported models include those from
 | [Amazon Bedrock](https://aws.amazon.com/bedrock)              | `https://bedrock.<region>.amazonaws.com`            | - `/model-name/invoke`<br/>- `/model-name/input` |                         |
 | [Anthropic](https://docs.anthropic.com/claude/docs/models-overview)   | `https://api.anthropic.com`                         | - `/v1/complete`<br/>- `/v1/claude` |     https://console.anthropic.com/settings/keys                    |
 | [Mistral](https://docs.mistral.ai/guides/model-selection/)    | `https://api.mistral.ai`                            | - `/v1/models`<br/>- `/v1/infer` |            https://console.mistral.ai/api-keys/             |
-| [HuggingFace](https://huggingface.co/models)                  | `https://api-inference.huggingface.co`              | - `/models/{model-id}`<br/>- `/pipeline/{task}`<br/><br/><br/>- create an endpoint following the instructions here https://huggingface.co/docs/inference-endpoints/guides/create_endpoint |                         |
+| [HuggingFace](https://huggingface.co/models)                  | `https://api-inference.huggingface.co`              | - `/models/{model-id}`<br/>- `/pipeline/{task}`<br/><br/><br/> Create an endpoint following the instructions here https://huggingface.co/docs/inference-endpoints/guides/create_endpoint |                         |
 | [NVIDIA](https://build.nvidia.com/explore/discover) | | [NVIDIA AI Endpoints](https://docs.nvidia.com/nemo/guardrails/user_guides/llm/nvidia_ai_endpoints/index.html)  |  |
 
 
