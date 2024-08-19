@@ -35,7 +35,8 @@
     "ws": "^8.17.1"
   },
   "resolutions": {
-    "braces": "^3.0.3"
+    "braces": "^3.0.3",
+    "ws": "^8.17.1"
   },
   "browserslist": {
     "production": [
