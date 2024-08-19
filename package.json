@@ -37,7 +37,8 @@
   "resolutions": {
     "braces": "^3.0.3",
     "ws": "^8.17.1",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "follow-redirects": "^1.15.6"
   },
   "browserslist": {
     "production": [
