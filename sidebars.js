@@ -160,10 +160,12 @@ module.exports = {
         ]
       },
     ],
+    /*
     'LangChain': [
       'javelin-langchain-python/quickstart',
       'javelin-langchain-python/chain',
     ],
+    */
     'Security': [
       'security'
     ],
