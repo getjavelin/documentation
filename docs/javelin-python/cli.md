@@ -113,7 +113,7 @@ export LLM_API_KEY=your_llm_api_key`}
   {`javelin route delete --name "example_route"`}
   </CodeBlock>
 
-## Secret Management
+### Secret Management
 
 - **List Secrets**:  
   <CodeBlock language="shell">
