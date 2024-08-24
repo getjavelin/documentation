@@ -113,4 +113,29 @@ export LLM_API_KEY=your_llm_api_key`}
   {`javelin route delete --name "example_route"`}
   </CodeBlock>
 
+## Secret Management
 
+- **List Secrets**:  
+  <CodeBlock language="shell">
+  {`javelin secret list`}
+  </CodeBlock>
+
+- **Create a Secret**:  
+  <CodeBlock language="shell">
+  {`javelin secret create --api_key "example_api_key" --api_key_secret_name "example_secret_name" --api_key_secret_key "example_secret_key" --provider_name "example_provider" --query_param_key "example_param_key" --header_key "example_header_key" --group "example_group" --enabled true`}
+  </CodeBlock>
+
+- **Read a Secret**:  
+  <CodeBlock language="shell">
+  {`javelin secret read --api_key "example_api_key"`}
+  </CodeBlock>
+
+- **Update a Secret**:  
+  <CodeBlock language="shell">
+  {`javelin secret update --api_key "example_api_key" --api_key_secret_name "example_secret_name" --api_key_secret_key "new_secret_key" --enabled false`}
+  </CodeBlock>
+
+- **Delete a Secret**:  
+  <CodeBlock language="shell">
+  {`javelin secret delete --api_key "example_api_key"`}
+  </CodeBlock>
