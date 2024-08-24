@@ -132,5 +132,5 @@ export LLM_API_KEY=your_llm_api_key`}
 
 - **Delete a Secret**:  
   <CodeBlock language="shell">
-  {`javelin secret delete --api_key "example_api_key"`}
+  {`javelin secret delete --api_key "example_api_key" --provider_name "example_provider"`}
   </CodeBlock>
