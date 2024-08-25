@@ -20,7 +20,6 @@ curl -X POST \
         "config": {
             "buid": "kensho",
             "base_url": "https://api-dev.javelin.live",
-            "api_key_value": "A17MR3tN8jr7B6IVLzoA2HTWEHB_wSFHZ_zvPt8NMQf09rwh4Q0KlG0QialcMtpIwqXg8OFthr9tmOGwIbOxbdVoRTdJ_S1iHb",
             "organization_id": "org_2gaDm7xK9mDWM4JY8x4so8ndoMt",
             "system_namespace": "javelin-dev"
         }
@@ -55,7 +54,6 @@ gateway_data = {
     "config": {
         "buid": "kensho",
         "base_url": "https://api-dev.javelin.live",
-        "api_key_value": "A17MR3tN8jr7B6IVLzoA2HTWEHB_wSFHZ_zvPt8NMQf09rwh4Q0KlG0QialcMtpIwqXg8OFthr9tmOGwIbOxbdVoRTdJ_S1iHb",
         "organization_id": "org_2gaDm7xK9mDWM4JY8x4so8ndoMt",
         "system_namespace": "javelin-dev"
     }
