@@ -95,7 +95,7 @@ export LLM_API_KEY=your_llm_api_key`}
   
 - **Create a Route**:  
   <CodeBlock language="shell">
-  {`javelin route create --name "example_route" --type "chat" --model "gpt-3.5-turbo" --provider "OpenAI" --config '{"rate_limit": 10, "archive": true, "retention": 7, "budget": {"enabled": true, "annual": 50000, "currency": "USD"}, "dlp": {"enabled": true, "strategy": "Inspect", "action": "notify"}}'`}
+  {`javelin route create --name "example_route" --type "completion" --enabled true --models '[{"name": "model1", "provider": "provider1", "suffix": "suffix1"}, {"name": "model2", "provider": "provider2", "suffix": "suffix2"}]' --config '{"organization": "example_org", "owner": "owner1", "rate_limit": 1000, "retries": 3, "archive": true, "retention": 30, "budget": {"enabled": true, "weekly": 2500, "currency": "USD"}, "dlp": {"enabled": true, "strategy": "block", "action": "alert"}}'`}
   </CodeBlock>
 
 - **Read a Route**:  
