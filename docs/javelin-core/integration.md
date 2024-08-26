@@ -6,11 +6,11 @@ import CodeBlock from '@theme/CodeBlock';
 Its easy to integrate applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with minimal code changes.
 
 ## Leveraging the Javelin Platform
-Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, Gemini etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent. 
-
-See [Python SDK](../javelin-python/quickstart) for details on how you can easily embed this within your AI Apps. 
+The core usage of Javelin is to define routes, and then to define what to do at each route. Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, Gemini etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent. 
 
 See [Javelin Configuration](routeconfiguration) section, for details on how to setup routes on the gateway to different models and providers. 
+
+See [Python SDK](../javelin-python/quickstart) for details on how you can easily embed this within your AI Apps. 
 
 ## Querying an LLM
 Javelin may send a request to one or more models based on the configured policies and route configurations and return back a response.
