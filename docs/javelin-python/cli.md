@@ -33,104 +33,132 @@ export LLM_API_KEY=your_llm_api_key`}
 ## Commands Overview
 
 ### Gateway Management
-
-- **List Gateways**:  
-  <CodeBlock language="shell">
-  {`javelin gateway list`}
-  </CodeBlock>
   
-- **Create a Gateway**:  
+- **Create a gateway**:  
   <CodeBlock language="shell">
   {`javelin gateway create --name "example_gateway" --type "development" --enabled true --config '{"buid": "example_buid", "base_url": "https://api.example.com", "organization_id": "example_org_id", "system_namespace": "example_namespace"}'`}
   </CodeBlock>
 
-- **Read a Gateway**:  
+- **List all gateways**:  
+  <CodeBlock language="shell">
+  {`javelin gateway list`}
+  </CodeBlock>
+
+- **Get a specific gateway**:  
   <CodeBlock language="shell">
   {`javelin gateway get --name "example_gateway"`}
   </CodeBlock>
 
-- **Update a Gateway**:  
+- **Update a gateway**:  
   <CodeBlock language="shell">
   {`javelin gateway update --name "example_gateway" --type "production" --config '{"buid": "new_buid", "base_url": "https://api.newexample.com"}'`}
   </CodeBlock>
 
-- **Delete a Gateway**:  
+- **Delete a gateway**:  
   <CodeBlock language="shell">
   {`javelin gateway delete --name "example_gateway"`}
   </CodeBlock>
 
 ### Provider Management
-
-- **List Providers**:  
-  <CodeBlock language="shell">
-  {`javelin provider list`}
-  </CodeBlock>
   
-- **Create a Provider**:  
+- **Create a provider**:  
   <CodeBlock language="shell">
   {`javelin provider create --name "example_provider" --type "closed" --config '{"api_version": "v1", "deployment_name": "example_deployment", "organization": "example_org"}'`}
   </CodeBlock>
 
-- **Read a Provider**:  
+- **List all providers**:  
+  <CodeBlock language="shell">
+  {`javelin provider list`}
+  </CodeBlock>
+
+- **Get a specific provider**:  
   <CodeBlock language="shell">
   {`javelin provider get --name "example_provider"`}
   </CodeBlock>
 
-- **Update a Provider**:  
+- **Update a provider**:  
   <CodeBlock language="shell">
   {`javelin provider update --name "example_provider" --config '{"api_base" "https://new-api.provider.com"}'`}
   </CodeBlock>
 
-- **Delete a Provider**:  
+- **Delete a provider**:  
   <CodeBlock language="shell">
   {`javelin provider delete --name "example_provider"`}
   </CodeBlock>
 
 ### Route Management
 
-- **List Routes**:  
-  <CodeBlock language="shell">
-  {`javelin route list`}
-  </CodeBlock>
-  
-- **Create a Route**:  
+- **Create a route**:  
   <CodeBlock language="shell">
   {`javelin route create --name "example_route" --type "completion" --enabled true --models '[{"name": "model1", "provider": "provider1", "suffix": "suffix1"}, {"name": "model2", "provider": "provider2", "suffix": "suffix2"}]' --config '{"organization": "example_org", "owner": "owner1", "rate_limit": 1000, "retries": 3, "archive": true, "retention": 30, "budget": {"enabled": true, "weekly": 2500, "currency": "USD"}, "dlp": {"enabled": true, "strategy": "block", "action": "alert"}}'`}
   </CodeBlock>
 
-- **Read a Route**:  
+- **List all routes**:  
+  <CodeBlock language="shell">
+  {`javelin route list`}
+  </CodeBlock>
+
+- **Get a specific route**:  
   <CodeBlock language="shell">
   {`javelin route get --name "example_route"`}
   </CodeBlock>
 
-- **Update a Route**:  
+- **Update a route**:  
   <CodeBlock language="shell">
   {`javelin route update --name "example_route" --config '{"rate_limit": 20, "budget": {"enabled": false}}'`}
   </CodeBlock>
 
-- **Delete a Route**:  
+- **Delete a route**:  
   <CodeBlock language="shell">
   {`javelin route delete --name "example_route"`}
   </CodeBlock>
 
 ### Secret Management
 
-- **List Secrets**:  
-  <CodeBlock language="shell">
-  {`javelin secret list`}
-  </CodeBlock>
-
-- **Create a Secret**:  
+- **Create a secret**:  
   <CodeBlock language="shell">
   {`javelin secret create --api_key "example_api_key" --api_key_secret_name "example_secret_name" --api_key_secret_key "example_secret_key" --provider_name "example_provider" --query_param_key "example_param_key" --header_key "example_header_key" --group "example_group" --enabled true`}
   </CodeBlock>
 
-- **Update a Secret**:  
+- **List all secrets**:  
+  <CodeBlock language="shell">
+  {`javelin secret list`}
+  </CodeBlock>
+
+- **Update a secret**:  
   <CodeBlock language="shell">
   {`javelin secret update --api_key "example_api_key" --api_key_secret_name "example_secret_name" --api_key_secret_key "new_secret_key" --enabled false`}
   </CodeBlock>
 
-- **Delete a Secret**:  
+- **Delete a secret**:  
   <CodeBlock language="shell">
   {`javelin secret delete --api_key "example_api_key" --provider_name "example_provider"`}
   </CodeBlock>
+
+### Template Management
+
+- **Create a template**:  
+  <CodeBlock language="shell">
+  {`javelin template create --name "example_template" --description "A template for testing" --type "inspect" --enabled true --models '[{"name": "Sensitive Data Protection", "provider": "Google Cloud", "suffix": ""}]' --config '{"infoTypes": [{"name": "Personal Identifier", "regex": "\\b\\d{3}-\\d{2}-\\d{4}\\b"}], "likelihood": "Likely", "notify": true}'`}
+  </CodeBlock>
+
+- **List all templates**:  
+  <CodeBlock language="shell">
+  {`javelin template list`}
+  </CodeBlock>
+
+- **Get a specific template**:  
+  <CodeBlock language="shell">
+  {`javelin template get --name "example_template"`}
+  </CodeBlock>
+
+- **Update a template**:  
+  <CodeBlock language="shell">
+  {`javelin template update --name "example_template" --description "Updated description"`}
+  </CodeBlock>
+
+- **Delete a template**:  
+  <CodeBlock language="shell">
+  {`javelin template delete --name "example_template"`}
+  </CodeBlock>
+  
