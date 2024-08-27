@@ -20,7 +20,7 @@ We are always adding support for new models, supported models include those from
 | [Google Gemini](https://ai.google.dev/models) |                                |                             |                     | 
 | [Inflection](https://inflection.ai/inflection-2-5) |                                |                             |                     | 
 | [Perplexity](https://docs.perplexity.ai/docs/model-cards) |                                |                             |                     | 
-| [Cohere](https://cohere.com/) |                                |                             |                     | 
+| [Cohere](https://cohere.com/) |                                |                             | https://dashboard.cohere.com/api-keys | 
 | [AnyScale](https://www.anyscale.com/endpoints) |                                |                             |                     | 
 | [TogetherAI](https://www.together.ai/) |                                |                             |                     | 
 | **and more...**             |                                |                             |                     | 
