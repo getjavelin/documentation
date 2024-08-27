@@ -17,7 +17,7 @@ We are always adding support for new models, supported models include those from
 | [HuggingFace](https://huggingface.co/models)                  | `https://api-inference.huggingface.co`              | - `/models/{model-id}`<br/>- `/pipeline/{task}`<br/><br/><br/> Create an endpoint following the instructions here https://huggingface.co/docs/inference-endpoints/guides/create_endpoint |                         |
 | [NVIDIA](https://build.nvidia.com/explore/discover) | | [NVIDIA AI Endpoints](https://docs.nvidia.com/nemo/guardrails/user_guides/llm/nvidia_ai_endpoints/index.html)  |  |
 | [Llama](https://llama.meta.com/) |                                |                             |                     | 
-| [Google Gemini](https://ai.google.dev/models) |                                |                             | https://makersuite.google.com/app/apikey / https://console.cloud.google.com/vertex-ai | 
+| [Google Gemini](https://ai.google.dev/models) |                                |                             | https://aistudio.google.com/app/apikey | 
 | [Inflection](https://inflection.ai/inflection-2-5) |                                |                             |                     | 
 | [Perplexity](https://docs.perplexity.ai/docs/model-cards) |                                |                             | https://www.perplexity.ai/settings/api | 
 | [Cohere](https://cohere.com/) |                                |                             | https://dashboard.cohere.com/api-keys | 
