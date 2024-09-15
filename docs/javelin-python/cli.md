@@ -21,14 +21,10 @@ Before using the CLI, set up the required environment variables:
 <CodeBlock language="shell">
 {`export JAVELIN_BASE_URL=your_base_url
 export JAVELIN_API_KEY=your_api_key
-export JAVELIN_VIRTUALAPIKEY=your_virtual_api_key
-export LLM_API_KEY=your_llm_api_key`}
 </CodeBlock>
 
 - **JAVELIN_BASE_URL**: Set this to the base URL of your deployment (defaults to https://api-dev.javelin.live).
 - **JAVELIN_API_KEY**: Please provide a valid Javelin API Key. When you sign into Javelin, you can find your API Key in the Account -> Developer settings.
-- **JAVELIN_VIRTUALAPIKEY**: If applicable, can be found in Routing & Guardrails -> Gateways -> `<Gateway>` -> Secrets.
-- **LLM_API_KEY**: This should be set to the API key provided by your LLM (Language Model) provider. You can obtain it from your LLM provider's console.
 
 ## Commands Overview
 
