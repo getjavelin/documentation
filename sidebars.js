@@ -43,13 +43,28 @@ module.exports = {
     ],
     'Guardrails Processors': [
       'javelin-processors/overview',
-      'javelin-processors/promptinjection',
+      {
+        type: 'category',
+        label: 'Prompt Injection & Jailbreak Detection',
+        items: [
+          'javelin-processors/promptinjection',
+          'javelin-processors/promptinjectionusage',
+        ]
+      },
       {
         type: 'category',
         label: 'Sensitive Data Protection',
         items: [
           'javelin-processors/privacyredaction',
           'javelin-processors/infotypes',
+          {
+            type: 'category',
+            label: 'Usage',
+            items: [
+              'javelin-processors/piiphi',
+              'javelin-processors/secretsandcredentials',
+            ]
+          }
         ]
       },            
       {
@@ -58,22 +73,42 @@ module.exports = {
         items: [
           'javelin-processors/trustsafety',      
           'javelin-processors/contentmoderation',
-          'javelin-processors/malware'
+          'javelin-processors/trustsafetyusage',
         ]
       },
       {
         type: 'category',
         label: 'Content Filtering', 
         items: [
-          'javelin-processors/keywordfilter',      
+          'javelin-processors/keywordfilter',
+          'javelin-processors/keywordcheck',
+          'javelin-processors/regex',          
         ]
       },      
+      {
+        type: 'category',
+        label: 'Security Filters',
+        items: [
+          'javelin-processors/securityfilters',
+          'javelin-processors/malware',
+          {
+            type: 'category',
+            label: 'Usage',
+            items: [
+              'javelin-processors/codedetectionusage',
+              'javelin-processors/garbagedetectionusage',
+              'javelin-processors/languagedetectionusage',
+              'javelin-processors/malwareusage',            
+            ]
+          }
+        ]
+      },       
       'javelin-processors/hallucination',
       {
         type: 'category',
         label: 'Custom Guardrails',
         items: [
-          'javelin-processors/custom',      
+          'javelin-processors/javascript',      
         ]
       },
     ],  

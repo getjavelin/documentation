@@ -1,5 +1,29 @@
 # Changelog
 
+## September 2024
+
+### Major Analytics & Telemetry Infrastructure Upgrade
+
+Enhancements to the analytics infrastructure including pub-sub for large scale analytics capture and telemetry aggregations.
+
+***Breaking change:*** All analytics data will now be stored in a new data store. We are not migrating the old data to the new store so old data will not be available. Graphs, Analytics and Metrics will only show data from the date of the upgrade.
+
+### Regex & Keyword Filtering Support
+
+We are introducing regex and keyword filtering support as a part of Javelin Data Protection. This will allow users to define custom filters based on regex patterns and keywords to protect sensitive data.
+
+### Enhanced Security Filters for Data Protection
+
+Introduction of advanced security filters for code detection, markdown detection, and keyword/regex checks to prevent security vulnerabilities and data breaches.
+
+### Custom Processor Support
+
+Javelin now supports a javascript-based custom processor that can be used to implement custom logic for API calls, including data transformations and response handling.
+
+### Bug Fixes & Enhancements
+
+Various bug fixes and enhancements to improve the overall stability and performance of the platform.
+
 ## August 2024
 
 ### Security Dashboard Integration with OWASP LLM Top 10

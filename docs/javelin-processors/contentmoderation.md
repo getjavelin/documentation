@@ -1,14 +1,17 @@
-# Content Moderation
-In the era of digital communication and user-generated content, content moderation has become crucial for maintaining the integrity, safety, and user-friendliness of online platforms. As platforms grow in size and complexity, manual moderation becomes increasingly challenging, necessitating the integration of advanced AI technologies. 
+# Taxonomies
+
+In the era of digital communication and user-generated content, content moderation has become crucial for maintaining the integrity, safety, and user-friendliness of online platforms. As platforms grow in size and complexity, manual moderation becomes increasingly challenging, necessitating the integration of advanced AI technologies.
 
 Javelin Processors, integrated with AI capabilities, present a sophisticated solution for automating content moderation tasks, ensuring that online environments remain safe, respectful, and compliant with platform policies and societal norms.
 
 Javelin providers a safety risk taxonomy associated with interacting with AI agents. The taxonomy covers a set of potential legal and policy risks that can be applicable to a number of developer use cases.
 
 ## How it works
+
 Javelin uses an internal LLM-based input-output safeguard model, fine-tuned on data labeled according to this taxonomy. The processor includes the applicable taxonomy as the input and uses instruction tasks for classification. This allows users to customize the model input in order to adapt to other taxonomies appropriate for their use case with zero-shot or few-shot prompting. 
 
 ## Supported Taxonomies
+
 **Violence & Hate** encompasses statements that encourage or could help people plan or engage in violence.
 Similarly, statements that advocate discrimination, contain slurs, or voice hateful sentiments against
 people based on their sensitive personal characteristics (ex: race, color, religion, national origin, sexual
@@ -40,7 +43,9 @@ types above (ex: statements that encourage violence should be considered violati
 Hate rather than this category).
 
 ## Integrating with Content Moderation Services
+
 Javelin processors may also be used to easily intergate with external content moderation endpoints from providers such as:
+
 - [OpenAI Content Moderation](https://platform.openai.com/docs/guides/moderation), 
 - [Azure AI Content Safety](https://azure.microsoft.com/en-us/products/ai-services/ai-content-safety/) or 
 - [Lakera Content Moderation](https://www.lakera.ai) etc., 
