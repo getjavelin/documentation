@@ -1,17 +1,15 @@
-# Custom Guardrails
+# Extension Guardrails
+
 import CodeBlock from '@theme/CodeBlock';
 
-Javelin can be extended with custom guardrails to enable additional functionality. Custom guardrails can be used to perform custom operations on the input data before it is sent to the model or on the output data before it is returned to the user. Custom guardrails can also be used to implement custom data transformations, data validation, data augmentation, and more. 
+There are 2 components to building secure extension guardrails in Javelin:
 
-Javelin executes a processor chain configured as a directed acyclic graph(DAG) of processors. Each processor in the chain is a self-contained module designed to perform a specific function. The processors are arranged in a sequence to facilitate complex processing sequences and ensure the execution flow is efficient, logical, and adaptable to various enterprise needs. 
-
-There are 2 components to building custom guardrails in Javelin:
 1. Extension Processor
 2. Custom Guardrail Service
 
-When incorporating custom guardrails, you will need to configure a special 'extension_processor' that will call the custom guardrail. The extension_processor is configured in Javelin's request or response chain to execute the custom guardrail and the GRPC endpoint for the custom guardrail is configured as input in the extension_processor configuration. 
+When incorporating extension guardrails, you will need to configure a special 'extension_processor' that will call the custom guardrail. The extension_processor is configured in Javelin's request or response chain to execute the custom guardrail and the GRPC endpoint for the custom guardrail is configured as input in the extension_processor configuration. 
 
-> **Tip:** Custom guardrail endpoints should be implemented as GRPC services and configured in javelin for low latency and high throughput.
+> **Tip:** Extension guardrail endpoints should be implemented as GRPC services and configured in javelin for low latency and high throughput.
 
 The extension_processor provides a convenient and flexible GRPC interface that allows you to implement custom guardrails in any language that supports GRPC. The extension_processor can be configured to call the custom guardrail service over GRPC.
 
@@ -112,20 +110,23 @@ Custom guardrails can be implemented in any language and are ideally expected to
 The `Evaluate` method should take a `GuardrailRequest` as input and return a `GuardrailResponse` as output.
 
 ## Building a Custom Guardrail
+
 You will first need to decide what language you plan to write your custom guardrail in. The custom guardrail can be written in any language that supports GRPC.
 
 ### Golang
+
 To build a custom guardrail in Golang, you will need to install the following dependencies:
 
 #### Step1: Install the dependencies
+
 <CodeBlock
   language="bash">
   {`go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest`}
 </CodeBlock>
 
-
 #### Step2: Generate the stubs from the `.proto` file
+
 Next, you will need to generate the Golang code from the `.proto` file. You can use the following command to generate the Golang code:
 
 <CodeBlock
@@ -135,6 +136,7 @@ Next, you will need to generate the Golang code from the `.proto` file. You can 
 
 
 #### Step 3: Implement the server
+
 <CodeBlock
   language="go">
   {`package main
@@ -176,15 +178,18 @@ func main() {
 
 
 ### Python
+
 To build a custom guardrail in Python, you will need to install the following dependencies:
 
 #### Step1: Install the dependencies
+
 <CodeBlock
   language="bash">
   {`pip install grpcio grpcio-tools`}
 </CodeBlock>
 
 #### Step2: Generate the stubs from the `.proto` file
+
 Next, you will need to generate the Python code from the `.proto` file. You can use the following command to generate the Python code:
 
 <CodeBlock
@@ -194,6 +199,7 @@ Next, you will need to generate the Python code from the `.proto` file. You can 
 
 
 #### Step3: Implement the server
+
 Sample python grpc guardrail server:
 <CodeBlock
   language="python">
@@ -224,15 +230,18 @@ except KeyboardInterrupt:
 
 
 ### TypeScript
+
 To build a custom guardrail in TypeScript, you will need to install the following dependencies:
 
 #### Step1: Install the dependencies
+
 <CodeBlock
     language="bash">
         {`npm install @grpc/grpc-js @grpc/proto-loader`}
 </CodeBlock>
 
 #### Step2: Generate the stubs from the `.proto` file
+
 Next, you will need to generate the TypeScript code from the `.proto` file. You can use the following command to generate the 
 TypeScript code:
 <CodeBlock
@@ -246,6 +255,7 @@ grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./output \
 
 
 #### Step3: Implement the server
+
 Sample TypeScript grpc guardrail server:
 <CodeBlock
   language="typescript"
