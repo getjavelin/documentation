@@ -1,4 +1,4 @@
-# Supported Large Language Models(LLMs)
+# Supported Language Models
 
 Javelin is committed to integrating and supporting the most popular models in the industry. From the groundbreaking innovations of OpenAI and Azure OpenAI to the dynamic platforms like HuggingFace and Anthropic, Javelin ensures seamless interfacing with these models. 
 
