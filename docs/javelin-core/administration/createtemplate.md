@@ -164,6 +164,7 @@ curl -X POST \
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Template
 )
 
@@ -173,9 +174,12 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
-) 
+config = JavelinConfig(
+    base_url="https://api-dev.javelin.live",
+    javelin_api_key=javelin_api_key,
+    llm_api_key=llm_api_key
+)
+client = JavelinClient(config)
 
 template_data = {
     // Add your template data here

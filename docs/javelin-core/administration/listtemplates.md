@@ -23,6 +23,7 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Template
 )
 
@@ -32,9 +33,12 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
-) 
+config = JavelinConfig(
+    base_url="https://api-dev.javelin.live",
+    javelin_api_key=javelin_api_key,
+    llm_api_key=llm_api_key
+)
+client = JavelinClient(config)
 
 # print out the list of templates, for async use \`await client.alist_templates()\`
 print(client.list_templates())
