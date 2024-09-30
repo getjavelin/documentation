@@ -65,4 +65,6 @@ The output object should have the following structure:
 
 The JavaScript processor can access the input data, process it, and return the processed data. The processed data can be used to implement custom guardrails, data transformations, data validation, data augmentation, and more. Custom Javascript has a 2 second timeout limit - if the processing takes longer than 2 seconds, the processor will be automatically terminated.
 
+Custom guardrails may pass additional metadata such as `"sensitive_data_detected" = true` in metadata. This metadata is propagated into analytics & usage logs in Javelin. 
+
 Note: Javelin scans the JavaScript processor code for security vulnerabilities before executing it. The JavaScript processor code should be secure and follow best practices to prevent security vulnerabilities.
