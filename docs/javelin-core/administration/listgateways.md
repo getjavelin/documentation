@@ -21,6 +21,7 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1/ad
   language="python">
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Gateway
 )
 
@@ -28,10 +29,17 @@ import os
 
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
+llm_api_key = os.getenv('LLM_API_KEY')
+
+# Create Javelin configuration
+config = JavelinConfig(
+    base_url="https://api-dev.javelin.live",
+    javelin_api_key=javelin_api_key,
+    llm_api_key=llm_api_key
+)
 
 # Create Javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key)
+client = JavelinClient(config)
 
 # Print out the list of gateways, for async use 'await client.alist_gateways()'
 print(client.list_gateways())`}

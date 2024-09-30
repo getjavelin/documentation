@@ -22,6 +22,7 @@ import CodeBlock from '@theme/CodeBlock';
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Provider
 )
 
@@ -31,9 +32,12 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
-) 
+config = JavelinConfig(
+    base_url="https://api-dev.javelin.live",
+    javelin_api_key=javelin_api_key,
+    llm_api_key=llm_api_key
+)
+client = JavelinClient(config)
 
 # print out the list of providers, for async use \`await client.alist_providers()\`
 print(client.list_providers())

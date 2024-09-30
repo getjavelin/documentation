@@ -32,11 +32,12 @@ Routes can be administered easily and quickly using the following operations:
   showLineNumbers>
   {`from javelin_sdk import (
       JavelinClient,
+      JavelinConfig,
       Route
   )
 
   try:
-      client = JavelinClient(base_url="http://localhost:9000") # replace this with your javelin URL
+      client = JavelinClient(JavelinConfig(base_url="http://localhost:9000")) # replace this with your javelin URL
   except NetworkError as e:
       print("Failed to create client: Network Error")
 `}

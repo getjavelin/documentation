@@ -60,20 +60,21 @@ curl -X POST \
   language="python"
   title="Query Route with Javelin SDK"
   showLineNumbers>
-  {`from javelin_sdk import (
-    JavelinClient,
-    Route
-)
-
+  {`from javelin_sdk import JavelinClient, JavelinConfig, Route
 import os
 
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 llm_api_key = os.getenv("OPENAI_API_KEY")
 
+# Create Javelin configuration
+config = JavelinConfig(
+    base_url="https://api-dev.javelin.live",
+    javelin_api_key=javelin_api_key,
+    llm_api_key=llm_api_key
+)
+
 # Create Javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live", # Set Javelin's API base URL for query
-                       javelin_api_key=javelin_api_key, 
-                       llm_api_key=llm_api_key)
+client = JavelinClient(config)
 
 # Route name to get is {routename} e.g., sampleroute1
 query_data = {
@@ -366,6 +367,7 @@ print(response)`}
 </TabItem>
 
 </Tabs>
+
 
 ### JavaScript/TypeScript
 

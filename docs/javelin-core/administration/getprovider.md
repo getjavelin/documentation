@@ -22,6 +22,7 @@ import CodeBlock from '@theme/CodeBlock';
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Provider
 )
 
@@ -29,11 +30,17 @@ import os
 
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
-   
-# create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
-) 
+llm_api_key = os.getenv('LLM_API_KEY')
+
+# Create Javelin configuration
+config = JavelinConfig(
+    base_url="https://api-dev.javelin.live",
+    javelin_api_key=javelin_api_key,
+    llm_api_key=llm_api_key
+)
+
+# Create Javelin client
+client = JavelinClient(config)
 
 # provider name to get is "openai"
 provider_name = "openai"

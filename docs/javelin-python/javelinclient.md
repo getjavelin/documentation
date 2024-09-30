@@ -11,7 +11,7 @@ The JavelinClient instance can be used as either a synchronous or asynchronous c
 language="python"
 >
 {`
-with JavelinClient(base_url="localhost:8000") as client:
+with JavelinClient(JavelinConfig(base_url="localhost:8000")) as client:
     # use the client for synchronous operations
     ...
 `}
@@ -22,7 +22,7 @@ with JavelinClient(base_url="localhost:8000") as client:
 language="python"
 >
 {`
-async with JavelinClient(base_url="localhost:8000") as client:
+async with JavelinClient(JavelinConfig(base_url="localhost:8000")) as client:
     # use the client for asynchronous operations
     ...
 `}
