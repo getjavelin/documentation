@@ -17,6 +17,13 @@ module.exports = {
       },
       {
         type: 'category',
+        label: 'Fallback Routing',
+        items: [
+          'javelin-core/fallbackrouting/overview',
+        ]
+      },
+      {
+        type: 'category',
         label: 'Secrets Vault',
         items: [
           'javelin-core/secretsvault/overview',
