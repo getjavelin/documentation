@@ -40,6 +40,13 @@ module.exports = {
           'javelin-core/features/auditarchive',      
         ]
       },
+      {
+        type: 'category',
+        label: 'Model Scan',
+        items: [
+          'javelin-core/model-scan',
+        ]
+      },
     ],
     'Guardrails Processors': [
       'javelin-processors/overview',
