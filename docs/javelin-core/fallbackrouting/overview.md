@@ -14,7 +14,7 @@ To configure fallback routing, the following parameters are required:
    - **Name**: The name or version of the model (e.g., `chatgpt-4`, `gpt-3.5`).
    - **Suffix**: The unique URL where the model can be accessed (e.g., `/v1/engines/gpt-4/completions`).
 
-2. **Fallback Codes**: A set of predefined status codes (such as HTTP response codes) that indicate when the fallback model should be triggered. For example, status codes like 500 (internal server error) or 503 (service unavailable) are commonly used as fallback triggers.
+2. **Fallback Codes**: A set of predefined status codes (such as HTTP response codes) that indicate when the fallback model should be triggered. For example, status codes like 429 (Too Many Requests) or 503 (service unavailable) are commonly used as fallback triggers.
 
 3. **Backup LLM**: A secondary LLM that is invoked when the primary model fails or returns a status code present in the fallback list. The backup LLM is usually from the same provider but with a different version or configuration:
 
@@ -27,7 +27,7 @@ In practice, fallback routing ensures that user prompts are processed even if th
 1. A prompt is sent to the <b>primary LLM</b> (e.g., `chatgpt-4` with the suffix production).
 2. The primary LLM processes the request and returns a response.
    - If the response is successful (e.g., status code 200), the request completes without invoking the fallback model.
-   - If the response returns a fallback status code (e.g., 500, 502), the fallback mechanism activates.
+   - If the response returns a fallback status code (e.g., 429, 503), the fallback mechanism activates.
 3. The fallback routing automatically triggers the backup LLM (e.g., `gpt-3.5` with the suffix <b>backup</b>).
    - The same prompt is sent to the backup LLM, which processes it and returns a response.
 4. The user receives the response from the backup LLM, ensuring minimal disruption.
@@ -35,6 +35,6 @@ In practice, fallback routing ensures that user prompts are processed even if th
 ### Sample Workflow
 - **Step 1**: The user sends a prompt to the `gpt-4` model via its URL (`https://api.openai.com/v1/engines/gpt-4/completions`).
 - **Step 2**: The primary model returns a 502 error code (bad gateway).
-- **Step 3**: The system checks the fallback codes list, detects the 502 error, and reroutes the request to the backup model `gpt-3.5` via its URL (`https://api.openai.com/v1/engines/gpt-3.5/completions`).
+- **Step 3**: The system checks the fallback codes list, detects the 503 error, and reroutes the request to the backup model `gpt-3.5` via its URL (`https://api.openai.com/v1/engines/gpt-3.5/completions`).
 - **Step 4**: The backup model processes the prompt and returns the result.
 - **Step 5**: The user receives the response from the backup model, ensuring continuity.
