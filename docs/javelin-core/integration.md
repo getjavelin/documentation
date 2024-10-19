@@ -17,31 +17,73 @@ Javelin may send a request to one or more models based on the configured policie
 
 ### REST API
 <Tabs>
-<TabItem value="shell" label="curl">
+<TabItem value="curl" label="curl">
+
+First, create a route as shown in the [Create Route](../javelin-core/administration/createroute) section.
+
+Once you have created a route, you can query it using the following curl command:
+
+<CodeBlock
+  language="bash">
+  {`curl 'https://api-dev.javelin.live/v1/query/your_route_name' \\
+  -H 'Content-Type: application/json' \\
+  -H 'Authorization: Bearer YOUR_OPENAI_API_KEY' \\
+  -H 'x-api-key: YOUR_JAVELIN_API_KEY' \\
+  --data-raw '{
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {"role": "user", "content": "SANFRANCISCO is located in?"}
+    ],
+    "temperature": 0.8
+  }'`}
+</CodeBlock>
+
+Make sure to replace `your_route_name`, `YOUR_OPENAI_API_KEY`, and `YOUR_JAVELIN_API_KEY` with your actual values.
+
+</TabItem>
+<TabItem value="python" label="Python Requests">
+
+First, create a route as shown in the [Create Route](../javelin-core/administration/createroute) section.
+
+Once you have created a route, you can query it using Python requests:
 
 <CodeBlock
   language="python">
-  {`
-curl -X POST \
--H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
--H "Authorization: Bearer $OPENAI_API_KEY" \
--d '{
-  "messages": [
-    {
-      "role": "system",
-      "content": "Hello, you are a helpful scientific assistant."
-    },
-    {
-      "role": "user",
-      "content": "What is the chemical composition of sugar?"
-    }
-  ],
-  "temperature": 0.8
-}' \
-"https://api-dev.javelin.live/v1/query/{routename}"
-`}
+  {`import requests
+import os
+import dotenv
+
+dotenv.load_dotenv()
+
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
+openai_api_key = os.getenv('OPENAI_API_KEY')
+route_name = 'your_route_name'
+
+url = f'https://api-dev.javelin.live/v1/query/{route_name}'
+
+headers = {
+    'Content-Type': 'application/json',
+    'Authorization': f'Bearer {openai_api_key}',
+    'x-api-key': javelin_api_key
+}
+
+data = {
+    "model": "gpt-3.5-turbo",
+    "messages": [
+        {"role": "user", "content": "SANFRANCISCO is located in?"}
+    ],
+    "temperature": 0.8
+}
+
+response = requests.post(url, headers=headers, json=data)
+
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Error: {response.status_code}, {response.text}")`}
 </CodeBlock>
+
+Make sure to replace `your_route_name` with your actual route name and set the `JAVELIN_API_KEY` and `OPENAI_API_KEY` environment variables.
 
 </TabItem>
 </Tabs>
@@ -456,4 +498,6 @@ We have worked on the integrations. Please contact: support@getjavelin.io if you
 </TabItem>
 
 </Tabs>
+
+
 
