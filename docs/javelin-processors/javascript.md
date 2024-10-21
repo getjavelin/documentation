@@ -68,3 +68,48 @@ The JavaScript processor can access the input data, process it, and return the p
 Custom guardrails may pass additional metadata such as `"sensitive_data_detected" = true` in metadata. This metadata is propagated into analytics & usage logs in Javelin. 
 
 Note: Javelin scans the JavaScript processor code for security vulnerabilities before executing it. The JavaScript processor code should be secure and follow best practices to prevent security vulnerabilities.
+
+## Custom Validator
+
+A `custom validator` for LLM (Large Language Model) requests and responses can be built using Javelin's Custom Guardrail to ensure that the inputs (requests) meet certain format, structure, or content criteria, and that the responses follow the expected format and provide valid outputs. For example, you could validate whether the prompt input is structured correctly or whether the model's response adheres to certain business rules or constraints.
+
+```javascript
+function process(request) {
+  function customValidator(input) {
+    var request = JSON.parse(input);
+    try {
+      if (request.prompt.trim().length < 10) {
+        throw new Error("Prompt must be at least 10 characters long.");
+      }
+      if (request.prompt.length > 500) {
+        throw new Error("Prompt must be no longer than 500 characters.");
+      }
+
+      return true;
+    } catch (error) {
+      throw new Error("This is not a valid prompt format.")
+    }
+  };
+
+  try {
+    customValidator(request);
+    var output = {
+      transformed_body: JSON.stringify(request),
+      response_metadata: {},
+      response_code: '200',
+      response_reason: 'OK'
+    };
+    return JSON.stringify(output);
+  } catch (error) {
+    var output = {
+      transformed_body: JSON.stringify({
+        error: 'Failed in passing custom validation. Reason:' + error.message
+      }),
+      response_metadata: {},
+      response_code: '400',
+      response_reason: 'Bad Request'
+    };
+    return JSON.stringify(output);
+  }
+}
+```
