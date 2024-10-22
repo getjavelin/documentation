@@ -22,7 +22,7 @@ Custom guardrails can be enabled by using Javelin's Javascript processor. Make s
 }
 ```
 
-Note: You can use the Javelin console to add a JavaScript processor to the processor chain. The JavaScript processor can be added to the Request or Response chain at the Gateway or Route level. Once its added, it becomes clickable and you can edit the JavaScript code directly in the Javelin console.
+**Note:** You can add a JavaScript processor to the processor chain using the Javelin console. This processor can be applied to either the Request or Response chain, at both the Gateway and Route levels. Once added, it becomes interactive, allowing you to directly edit the JavaScript code within the webapp directly. Please note that the JavaScript processor only supports native JavaScript, not ES6+.
 
 ## JavaScript Processor Interface
 
@@ -67,7 +67,7 @@ The JavaScript processor can access the input data, process it, and return the p
 
 Custom guardrails may pass additional metadata such as `"sensitive_data_detected" = true` in metadata. This metadata is propagated into analytics & usage logs in Javelin. 
 
-Note: Javelin scans the JavaScript processor code for security vulnerabilities before executing it. The JavaScript processor code should be secure and follow best practices to prevent security vulnerabilities.
+**Note:** Javelin scans the JavaScript processor code for security vulnerabilities before executing it. The JavaScript processor code should be secure and follow best practices to prevent security vulnerabilities.
 
 ## Custom Validator
 
