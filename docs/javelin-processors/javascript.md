@@ -113,3 +113,32 @@ function process(request) {
   }
 }
 ```
+
+## Prompt Decorator
+
+The Prompt Decorator functionality in `Custom Guardrails` allows users to dynamically modify or enhance the input prompts before they are processed by the language model. This feature enables the injection of additional context, metadata, or specific formatting to the user input, ensuring that the model responds appropriately within the desired guidelines. By applying transformations or augmentations to the original prompt, it provides more control over the output while maintaining flexibility in how prompts are handled in real-time.
+
+```javascript
+function process(input) {
+  var data = JSON.parse(input);
+
+  function promptDecorator(data) {
+    if (data.messages && data.messages.length > 0 && data.messages[1].content === 'What is the capital of country?') {
+      data.messages[1].content = 'What is the capital of France?';
+    }
+  }
+
+  // Modifies the prompt based on the specified condition
+  promptDecorator(data);
+
+  var output = {
+    transformed_body: JSON.stringify(data),
+    response_metadata: {},
+    response_code: '200',
+    response_reason: 'OK'
+  };
+
+  return JSON.stringify(output);
+}
+```
+
