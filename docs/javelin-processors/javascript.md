@@ -142,3 +142,51 @@ function process(input) {
 }
 ```
 
+## Trigger Webhook
+
+The `Trigger Webhook` functionality enables seamless integration between `Custom Guardrails` and external services. When specific conditions are met during the prompt processing or response generation, the webhook is triggered to send data to a designated URL in real-time. This allows for automated workflows, such as logging events, notifying external systems, or initiating further processing based on the model's interaction. The webhook payload can include details about the prompt, response, and any custom parameters defined by the user, ensuring smooth and scalable communication between systems.
+
+**Note:** you can use this Slack webhook guide to test the feature: [Slack Webhooks Guide](https://api.slack.com/messaging/webhooks).
+
+```javascript
+function process(input) {
+  // Example data
+  var data = {
+    "text": "Danny Torrence left a 1 star review for your property."
+  };
+
+  // Webhook URL
+  var webhookUrl = "your_webhook_url_here";
+
+  // Payload
+  var payload = JSON.stringify(data);
+
+  // Authentication details, structured to match the expected format in Go
+  var authDetails = {
+    "authHeader": "your_bearer_token_here",
+    "apiKey": "your_api_key_here"
+  };
+
+  // Callback function to handle the response or error
+  function handleResponse(response) {
+    var resp = JSON.parse(response); // Assuming response is a JSON string.
+    if (resp.error) {
+      console.error("Webhook call failed: " + resp.error);
+    } else {
+      console.log("Webhook response received: ", resp);
+    }
+  }
+
+  // Call the webhook with authentication details and handle the response with a callback
+  platform.callWebhook(webhookUrl, payload, authDetails, handleResponse);
+
+  var output = {
+    transformed_body: input,
+    response_metadata: {},
+    response_code: '200',
+    response_reason: 'OK'
+  };
+
+  return JSON.stringify(output);
+}
+```
