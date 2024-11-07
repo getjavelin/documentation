@@ -302,6 +302,73 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 
 </TabItem>
 
+<TabItem value="py7" label="Model Adapters">
+
+<CodeBlock
+  language="python"
+  title="OpenAI-Compatible Model Adapters Example"
+  showLineNumbers>
+  {`
+#This example demonstrates how Javelin uses OpenAI's schema as a standardized interface for different LLM providers. 
+#By adopting OpenAI's widely-used request/response format, Javelin enables seamless integration with various LLM providers 
+#(like Anthropic, Bedrock, Mistral, etc.) while maintaining a consistent API structure. This allows developers to use the 
+#same code pattern regardless of the underlying model provider, with Javelin handling the necessary translations and adaptations behind the scenes.
+
+from javelin_sdk import JavelinClient, JavelinConfig
+import os
+
+# Example showing different routes for different model providers
+routes = {
+    "anthropic_route": "anthropic_chat",
+    "bedrock_route": "bedrock_chat",
+    "mistral_route": "mistral_chat",
+    "llama_route": "llama_chat",
+    "titan_route": "titan_completion"
+}
+
+javelin_api_key = os.environ['JAVELIN_API_KEY']
+llm_api_key = os.environ["OPENAI_API_KEY"]
+
+# Common OpenAI-compatible request format for all providers
+messages = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "What is the capital of France?"}
+]
+
+# Create OpenAI Client with Javelin routing
+config = JavelinConfig(
+        base_url="https://api-dev.javelin.live",
+        javelin_api_key=javelin_api_key,
+        javelin_virtualapikey=javelin_virtualapikey,
+        llm_api_key=llm_api_key,
+    )
+client = JavelinClient(config)
+
+# Query different routes using the same interface
+for provider, route_name in routes.items():
+    print(f"\nQuerying {provider} through route: {route_name}")
+    
+    try:
+        completion = client.chat.completions.create(
+            route=route_name,
+            messages=messages,
+            temperature=0.7,
+            max_tokens=100
+        )
+        
+        # All responses follow OpenAI format
+        print(f"Response: {completion.choices[0].message.content}")
+        print(f"Usage: {completion.usage.total_tokens} tokens")
+        
+    except Exception as e:
+        print(f"Error querying {route_name}: {str(e)}")
+
+`}
+</CodeBlock>
+
+</TabItem>
+
+
 <TabItem value="py5" label="DSPy">
 
 **Introduction:** [DSPy: Goodbye Prompting, Hello Programming!](https://towardsdatascience.com/intro-to-dspy-goodbye-prompting-hello-programming-4ca1c6ce3eb9)  
@@ -407,7 +474,6 @@ print(response)`}
 - [Microsoft Prompt flow](https://microsoft.github.io/promptflow/index.html#)
 
 </TabItem>
-
 </Tabs>
 
 
