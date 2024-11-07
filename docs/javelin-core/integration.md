@@ -302,7 +302,7 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 
 </TabItem>
 
-<TabItem value="py7" label="Model Adapters">
+<TabItem value="py7" label="OpenAI-Compatible Query Example">
 
 <CodeBlock
   language="python"
@@ -320,10 +320,7 @@ import os
 # Example showing different routes for different model providers
 routes = {
     "anthropic_route": "anthropic_chat",
-    "bedrock_route": "bedrock_chat",
-    "mistral_route": "mistral_chat",
-    "llama_route": "llama_chat",
-    "titan_route": "titan_completion"
+    "mistral_route": "mistral_chat"
 }
 
 javelin_api_key = os.environ['JAVELIN_API_KEY']
@@ -362,6 +359,16 @@ for provider, route_name in routes.items():
         
     except Exception as e:
         print(f"Error querying {route_name}: {str(e)}")
+
+# Text Completion
+completion = client.completions.create(
+    route="bedrocktitan",
+    prompt="Complete this sentence: The quick brown fox",
+    max_tokens=50,
+    temperature=0.7
+)
+
+print(completion.choices[0].text)
 
 `}
 </CodeBlock>
