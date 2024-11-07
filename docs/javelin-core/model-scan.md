@@ -15,7 +15,7 @@ Model Scan is a powerful feature designed to assess and identify potential vulne
 
 ## Starting/Configuring a Scan
 
-To initiate a Model Scan, navigate to the Model Assessments page in the Javelin platform at `https://dev.javelin.live/gateways/corporate/workbench/model-assessments`. You'll find a form with several input parameters:
+To initiate a Model Scan, navigate to the Model Assessments page in the Javelin platform at `https://dev.javelin.live/gateways/{your_gateway}/workbench/model-assessments`. You'll find a form with several input parameters:
 
 ### Input Parameters
 
@@ -25,11 +25,15 @@ To initiate a Model Scan, navigate to the Model Assessments page in the Javelin 
 
 3. **Model Name**: Specify the name of the model you want to scan (e.g., gpt-3.5-turbo, claude-2).
 
-4. **LLM API Key**: Choose the API key to be used for the scan. This should be a valid key with appropriate permissions for the selected model.
+4. **Max Duration (min)**: Set the maximum duration for the scan in minutes. This helps control the length and resource usage of the scan.
 
-5. **Max Duration (min)**: Set the maximum duration for the scan in minutes. This helps control the length and resource usage of the scan.
+5. **Parallel Probe Attempts**: Number of parallel probe attempts to run simultaneously.
 
-6. **Probes**: Select the specific probes you want to run during the scan. Probes are predefined tests designed to identify different types of vulnerabilities or undesired behaviors.
+6. **Parallel Generator Requests**: Number of parallel generator requests to run simultaneously.
+
+7. **Response JSON**: Boolean indicating whether the response is in JSON format.
+
+8. **Response JSON Field**: (Optional) Specifies which field of the response JSON should be used as the output string. Default is 'text'. Can also be a JSONPath value - if the field starts with '$', it will be interpreted as a JSONPath expression.
 
 ### Probes
 
@@ -41,52 +45,63 @@ Probes are the core components of the Model Scan. Each probe sends specific prom
 - Guardrail bypass checks
 - Text replay vulnerabilities
 
+Javelin's Model Scan includes a wide variety of probes based on the [garak framework](https://reference.garak.ai/en/latest/probes.html), including:
+
+#### Security & Jailbreak
+- DAN (Do Anything Now) variants
+- Visual jailbreak attempts
+- Encoding-based attacks
+- Latent injection tests
+- Prompt injection attacks
+
+#### Content & Safety
+- Real toxicity prompts
+- Discriminatory content
+- Sexual content
+- Profanity
+- Bullying detection
+- Identity attacks
+- Threats
+
+#### Technical Vulnerabilities
+- XSS (Cross-site scripting)
+- Package hallucination
+- File format manipulation
+- Malware generation attempts
+- Suffix-based attacks
+
+#### Data Quality
+- Misleading content
+- Divergence tests
+- Information hazards
+- Controversial topics
+- Factual assertions
+
 After selecting your desired configuration, click the "RUN NOW" button to initiate the scan.
-
-## Canceling a Scan
-
-To cancel an ongoing scan:
-
-1. Navigate to the scan details page.
-2. Look for a "Cancel" or "Stop" button.
-3. Click this button to terminate the scan process.
-
-Note that any results collected up to that point may be saved, depending on the system's configuration.
 
 ## Success and Failures
 
-The Model Scan uses a combination of probes and detectors to determine the success or failure of each test. Here's how it works:
+The Model Scan uses a combination of detectors and probes to determine the success or failure of each test. Results are displayed in a table format with the following columns:
 
-1. Probes generate multiple outputs for each prompt.
-2. Detectors analyze these outputs for specific patterns, keywords, or behaviors.
-3. If a detector registers a "hit," that particular attempt is marked as failing.
-4. The system calculates a success/failure rate for each probe and detector combination.
+### Results Table Columns
 
-A typical result might look like this:
+1. **Detector**: Shows the specific detector used for the test (e.g., detector.toxicity.ToxicCommentModel)
+2. **Probe**: Indicates the probe type used (e.g., atkgen.Tox)
+3. **Status**: Displays either "Pass" or "Fail" for each test
+4. **Tests**: Shows the ratio of successful tests to total attempts (e.g., 22/25)
+5. **Failure Rate**: Displays the percentage of failed attempts with a visual indicator
 
-lmrc.Profanity riskywords.SurgeProfanityAnimalReferences: PASS ok on 20/20
-lmrc.Profanity riskywords.SurgeProfanityMentalDisability: FAIL ok on 17/20 (failure rate: 15%)
+### Understanding Results
 
+Each row in the results table represents a specific detector-probe combination. For example:
 
-In this example:
-- The first test passed all 20 attempts.
-- The second test failed 3 out of 20 attempts, resulting in a 15% failure rate.
-
-## Scan Limitations
-
-While Model Scan is a powerful tool, it's important to understand its limitations:
-
-1. **Model Compatibility**: Not all LLMs may be compatible with every probe. Ensure your selected model is supported by the chosen probes.
-
-2. **False Positives/Negatives**: Like any automated testing tool, Model Scan may occasionally produce false positives or negatives. Always review results critically and consider additional manual testing for critical applications.
-
-3. **Resource Intensity**: Comprehensive scans can be resource-intensive and time-consuming, especially for larger models or extensive probe sets.
-
-4. **API Rate Limits**: Be aware of any API rate limits imposed by the LLM provider. Exceeding these limits may cause scan failures or incomplete results.
-
-5. **Evolving Threats**: The field of LLM security is rapidly evolving. While Model Scan covers many known vulnerabilities, new threats may emerge that are not yet included in the current probe set.
-
-6. **Context Sensitivity**: Some vulnerabilities may be context-dependent and might not be caught by generalized probes. Consider supplementing Model Scan with targeted, application-specific testing.
+```text
+Detector: detector.toxicity.ToxicCommentModel
+Probe: atkgen.Tox
+Status: Fail
+Tests: 22/25
+Failure Rate: 12%
+```
 
 ## Best Practices
 
