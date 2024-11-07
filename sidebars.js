@@ -10,6 +10,20 @@ module.exports = {
     'Features': [
       {
         type: 'category',
+        label: 'Threat Alerts',
+        items: [
+          'javelin-webapp/threat-alerts/overview'
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Fallback Routing',
+        items: [
+          'javelin-core/fallbackrouting/overview',
+        ]
+      },
+      {
+        type: 'category',
         label: 'Secrets Vault',
         items: [
           'javelin-core/secretsvault/overview',
