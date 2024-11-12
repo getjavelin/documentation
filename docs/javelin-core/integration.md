@@ -303,7 +303,6 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 </TabItem>
 
 <TabItem value="py7" label="OpenAI-Compatible Query Example">
-
 <CodeBlock
   language="python"
   title="OpenAI-Compatible Model Adapters Example"
@@ -316,59 +315,135 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 
 from javelin_sdk import JavelinClient, JavelinConfig
 import os
+from typing import Dict, Any
+import json
 
-# Example showing different routes for different model providers
-routes = {
-    "anthropic_route": "anthropic_chat",
-    "mistral_route": "mistral_chat"
-}
+# Helper function to pretty print responses
+def print_response(provider: str, response: Dict[str, Any]) -> None:
+    print(f"\n=== Response from {provider} ===")
+    print(json.dumps(response, indent=2))
 
-javelin_api_key = os.environ['JAVELIN_API_KEY']
-llm_api_key = os.environ["OPENAI_API_KEY"]
-
-# Common OpenAI-compatible request format for all providers
-messages = [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "What is the capital of France?"}
-]
-
-# Create OpenAI Client with Javelin routing
+# Setup client configuration
 config = JavelinConfig(
-        base_url="https://api-dev.javelin.live",
-        javelin_api_key=javelin_api_key,
-        javelin_virtualapikey=javelin_virtualapikey,
-        llm_api_key=llm_api_key,
-    )
+    base_url="https://api-dev.javelin.live",
+    javelin_api_key=os.getenv('JAVELIN_API_KEY'),
+    llm_api_key=os.getenv('OPENAI_API_KEY')
+)
 client = JavelinClient(config)
 
-# Query different routes using the same interface
-for provider, route_name in routes.items():
-    print(f"\nQuerying {provider} through route: {route_name}")
+# Example messages in OpenAI format
+messages = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "What are the three primary colors?"}
+]
+
+# 1. Query OpenAI route
+try:
+    openai_response = client.chat.completions.create(
+        route="openai_route",  # Route configured for OpenAI
+        messages=messages,
+        temperature=0.7,
+        max_tokens=150
+    )
+    print_response("OpenAI", openai_response)
+except Exception as e:
+    print(f"OpenAI query failed: {str(e)}")
     
-    try:
-        completion = client.chat.completions.create(
-            route=route_name,
-            messages=messages,
-            temperature=0.7,
-            max_tokens=100
-        )
-        
-        # All responses follow OpenAI format
-        print(f"Response: {completion.choices[0].message.content}")
-        print(f"Usage: {completion.usage.total_tokens} tokens")
-        
-    except Exception as e:
-        print(f"Error querying {route_name}: {str(e)}")
+=== Response from OpenAI ===
+"""
+{
+  "id": "chatcmpl-123abc",
+  "object": "chat.completion",
+  "created": 1677858242,
+  "model": "gpt-3.5-turbo",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 38,
+    "total_tokens": 80
+  },
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "The three primary colors are red, blue, and yellow."
+      },
+      "finish_reason": "stop",
+      "index": 0
+    }
+  ]
+}
+"""
+# 2. Query Bedrock route (using same OpenAI format)
+try:
+    bedrock_response = client.chat.completions.create(
+        route="bedrock_route",  # Route configured for Bedrock
+        messages=messages,
+        temperature=0.7,
+        max_tokens=150
+    )
+    print_response("Bedrock", bedrock_response)
+except Exception as e:
+    print(f"Bedrock query failed: {str(e)}")
+"""
+=== Response from Bedrock ===
+{
+  "id": "bedrock-123xyz",
+  "object": "chat.completion",
+  "created": 1677858243,
+  "model": "anthropic.claude-v2",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 41,
+    "total_tokens": 83
+  },
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "The three primary colors are red, blue, and yellow. These colors cannot be created by mixing other colors together."
+      },
+      "finish_reason": "stop",
+      "index": 0
+    }
+  ]
+}
+"""
 
-# Text Completion
-completion = client.completions.create(
-    route="bedrocktitan",
-    prompt="Complete this sentence: The quick brown fox",
-    max_tokens=50,
-    temperature=0.7
-)
+# Example using text completions with Llama
+try:
+    llama_response = client.completions.create(
+        route="bedrockllama",  # Route configured for Bedrock Llama
+        prompt="Write a haiku about programming:",
+        max_tokens=50,
+        temperature=0.7,
+        top_p=0.9,
+    )
+    print("=== Llama Text Completion Response ===")
+    pretty_print(llama_response)
+except Exception as e:
+    print(f"Llama query failed: {str(e)}")
 
-print(completion.choices[0].text)
+"""
+=== Llama Text Completion Response ===
+{
+  "id": "bedrock-comp-123xyz",
+  "object": "text_completion",
+  "created": 1677858244,
+  "model": "meta.llama2-70b",
+  "choices": [
+    {
+      "text": "Code flows like water\\nBugs crawl through silent errors\\nDebugger saves all",
+      "index": 0,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 6,
+    "completion_tokens": 15,
+    "total_tokens": 21
+  }
+}
+"""
 
 `}
 </CodeBlock>
