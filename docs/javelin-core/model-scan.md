@@ -19,21 +19,37 @@ To initiate a Model Scan, navigate to the Model Assessments page in the Javelin 
 
 ### Input Parameters
 
-1. **Route**: Select the specific route you want to scan. This determines which model and configuration will be tested.
+1. **Route**: Select your deployment route. The model and provider settings will be automatically configured based on your selection.
 
-2. **Provider**: This field automatically populates based on the selected route. It indicates the LLM provider (e.g., OpenAI, Anthropic) associated with the chosen route.
+2. **Provider**: Displays the AI provider (e.g., AWS, Anthropic, OpenAI) associated with your selected route. This field updates automatically based on your route selection.
 
-3. **Model Name**: Specify the name of the model you want to scan (e.g., gpt-3.5-turbo, claude-2).
+3. **Model Name**: Shows the specific AI model associated with your selected route (e.g., anthropic.claude-3-5-sonnet-20240620-v1:0). This field updates automatically.
 
-4. **Max Duration (min)**: Set the maximum duration for the scan in minutes. This helps control the length and resource usage of the scan.
+4. **LLM API Key**: Your authentication key for accessing the AI model. This is required for making API calls to the model provider.
 
-5. **Parallel Probe Attempts**: Number of parallel probe attempts to run simultaneously.
+5. **Header Key**: The authentication header field name. For OpenAI, this must be set to "Authorization". Each provider has specific requirements for this field.
 
-6. **Parallel Generator Requests**: Number of parallel generator requests to run simultaneously.
+6. **Max Duration (mins)**: Sets the maximum duration for the security scan. Default is 30 minutes. Increase this value when:
+   - Running comprehensive security assessments
+   - Testing complex model behaviors
+   - Evaluating a large number of probes
 
-7. **Response JSON**: Boolean indicating whether the response is in JSON format.
+7. **Parallel Probe Attempts**: Number of probe attempts to run simultaneously. Default is 5. Adjust this value based on:
+   - Available computing resources
+   - API rate limits from your provider
+   - Desired scan completion time
+   Higher values = faster scanning but more resource intensive
 
-8. **Response JSON Field**: (Optional) Specifies which field of the response JSON should be used as the output string. Default is 'text'. Can also be a JSONPath value - if the field starts with '$', it will be interpreted as a JSONPath expression.
+8. **Parallel Generator Requests**: Number of generator requests to run simultaneously. Default is 5. Similar to Probe Attempts, adjust based on:
+   - Your computing resources
+   - Provider's API rate limits
+   - Required scan speed
+   Higher values = faster processing but increased resource usage
+
+9. **Response JSON Field**: Specifies which field in the response JSON contains the output text. Default is '$.choices[*].message.content'. Special features:
+   - Can use JSONPath expressions (starting with '$')
+   - Helps parse complex response structures
+   - Optional field - only needed for non-standard response formats
 
 ### Probes
 
@@ -48,34 +64,38 @@ Probes are the core components of the Model Scan. Each probe sends specific prom
 Javelin's Model Scan includes a wide variety of probes based on the [garak framework](https://reference.garak.ai/en/latest/probes.html), including:
 
 #### Security & Jailbreak
-- DAN (Do Anything Now) variants
-- Visual jailbreak attempts
-- Encoding-based attacks
-- Latent injection tests
-- Prompt injection attacks
+Tests that attempt to bypass model safeguards and security measures:
+- DAN (Do Anything Now) variants: Probes that test if the model can be tricked into ignoring its safety constraints
+- Visual jailbreak attempts: Tests using ASCII art or unicode to bypass filters
+- Encoding-based attacks: Attempts to hide malicious content using various text encodings
+- Latent injection tests: Subtle attempts to influence model behavior
+- Prompt injection attacks: Tests for unauthorized prompt modifications
 
 #### Content & Safety
-- Real toxicity prompts
-- Discriminatory content
-- Sexual content
-- Profanity
-- Bullying detection
-- Identity attacks
-- Threats
+Probes that check the model's handling of inappropriate or harmful content:
+- Real toxicity prompts: Tests using real-world examples of toxic content
+- Discriminatory content: Checks for bias and discrimination handling
+- Sexual content: Tests boundaries of NSFW content filtering
+- Profanity: Evaluates handling of explicit language
+- Bullying detection: Tests response to harassment scenarios
+- Identity attacks: Probes targeting demographic-based harassment
+- Threats: Evaluates response to threatening language
 
 #### Technical Vulnerabilities
-- XSS (Cross-site scripting)
-- Package hallucination
-- File format manipulation
-- Malware generation attempts
-- Suffix-based attacks
+Tests focusing on technical exploitation attempts:
+- XSS (Cross-site scripting): Tests for code injection vulnerabilities
+- Package hallucination: Checks for generation of fake software packages
+- File format manipulation: Tests handling of various file formats
+- Malware generation attempts: Probes for code that could be malicious
+- Suffix-based attacks: Tests using file extensions and technical suffixes
 
 #### Data Quality
-- Misleading content
-- Divergence tests
-- Information hazards
-- Controversial topics
-- Factual assertions
+Probes that assess the model's output reliability:
+- Misleading content: Tests for generation of false information
+- Divergence tests: Checks for output consistency
+- Information hazards: Tests handling of dangerous information
+- Controversial topics: Evaluates response to sensitive subjects
+- Factual assertions: Checks accuracy of factual statements
 
 After selecting your desired configuration, click the "RUN NOW" button to initiate the scan.
 
