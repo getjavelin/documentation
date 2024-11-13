@@ -17,31 +17,73 @@ Javelin may send a request to one or more models based on the configured policie
 
 ### REST API
 <Tabs>
-<TabItem value="shell" label="curl">
+<TabItem value="curl" label="curl">
+
+First, create a route as shown in the [Create Route](../javelin-core/administration/createroute) section.
+
+Once you have created a route, you can query it using the following curl command:
+
+<CodeBlock
+  language="bash">
+  {`curl 'https://api-dev.javelin.live/v1/query/your_route_name' \\
+  -H 'Content-Type: application/json' \\
+  -H 'Authorization: Bearer YOUR_OPENAI_API_KEY' \\
+  -H 'x-api-key: YOUR_JAVELIN_API_KEY' \\
+  --data-raw '{
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {"role": "user", "content": "SANFRANCISCO is located in?"}
+    ],
+    "temperature": 0.8
+  }'`}
+</CodeBlock>
+
+Make sure to replace `your_route_name`, `YOUR_OPENAI_API_KEY`, and `YOUR_JAVELIN_API_KEY` with your actual values.
+
+</TabItem>
+<TabItem value="python" label="Python Requests">
+
+First, create a route as shown in the [Create Route](../javelin-core/administration/createroute) section.
+
+Once you have created a route, you can query it using Python requests:
 
 <CodeBlock
   language="python">
-  {`
-curl -X POST \
--H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
--H "Authorization: Bearer $OPENAI_API_KEY" \
--d '{
-  "messages": [
-    {
-      "role": "system",
-      "content": "Hello, you are a helpful scientific assistant."
-    },
-    {
-      "role": "user",
-      "content": "What is the chemical composition of sugar?"
-    }
-  ],
-  "temperature": 0.8
-}' \
-"https://api-dev.javelin.live/v1/query/{routename}"
-`}
+  {`import requests
+import os
+import dotenv
+
+dotenv.load_dotenv()
+
+javelin_api_key = os.getenv('JAVELIN_API_KEY')
+openai_api_key = os.getenv('OPENAI_API_KEY')
+route_name = 'your_route_name'
+
+url = f'https://api-dev.javelin.live/v1/query/{route_name}'
+
+headers = {
+    'Content-Type': 'application/json',
+    'Authorization': f'Bearer {openai_api_key}',
+    'x-api-key': javelin_api_key
+}
+
+data = {
+    "model": "gpt-3.5-turbo",
+    "messages": [
+        {"role": "user", "content": "SANFRANCISCO is located in?"}
+    ],
+    "temperature": 0.8
+}
+
+response = requests.post(url, headers=headers, json=data)
+
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Error: {response.status_code}, {response.text}")`}
 </CodeBlock>
+
+Make sure to replace `your_route_name` with your actual route name and set the `JAVELIN_API_KEY` and `OPENAI_API_KEY` environment variables.
 
 </TabItem>
 </Tabs>
@@ -260,6 +302,155 @@ print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 
 </TabItem>
 
+<TabItem value="py7" label="OpenAI-Compatible Query Example">
+<CodeBlock
+  language="python"
+  title="OpenAI-Compatible Model Adapters Example"
+  showLineNumbers>
+  {`
+#This example demonstrates how Javelin uses OpenAI's schema as a standardized interface for different LLM providers. 
+#By adopting OpenAI's widely-used request/response format, Javelin enables seamless integration with various LLM providers 
+#(like Anthropic, Bedrock, Mistral, etc.) while maintaining a consistent API structure. This allows developers to use the 
+#same code pattern regardless of the underlying model provider, with Javelin handling the necessary translations and adaptations behind the scenes.
+
+from javelin_sdk import JavelinClient, JavelinConfig
+import os
+from typing import Dict, Any
+import json
+
+# Helper function to pretty print responses
+def print_response(provider: str, response: Dict[str, Any]) -> None:
+    print(f"\n=== Response from {provider} ===")
+    print(json.dumps(response, indent=2))
+
+# Setup client configuration
+config = JavelinConfig(
+    base_url="https://api-dev.javelin.live",
+    javelin_api_key=os.getenv('JAVELIN_API_KEY'),
+    llm_api_key=os.getenv('OPENAI_API_KEY')
+)
+client = JavelinClient(config)
+
+# Example messages in OpenAI format
+messages = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "What are the three primary colors?"}
+]
+
+# 1. Query OpenAI route
+try:
+    openai_response = client.chat.completions.create(
+        route="openai_route",  # Route configured for OpenAI
+        messages=messages,
+        temperature=0.7,
+        max_tokens=150
+    )
+    print_response("OpenAI", openai_response)
+except Exception as e:
+    print(f"OpenAI query failed: {str(e)}")
+    
+=== Response from OpenAI ===
+"""
+{
+  "id": "chatcmpl-123abc",
+  "object": "chat.completion",
+  "created": 1677858242,
+  "model": "gpt-3.5-turbo",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 38,
+    "total_tokens": 80
+  },
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "The three primary colors are red, blue, and yellow."
+      },
+      "finish_reason": "stop",
+      "index": 0
+    }
+  ]
+}
+"""
+# 2. Query Bedrock route (using same OpenAI format)
+try:
+    bedrock_response = client.chat.completions.create(
+        route="bedrock_route",  # Route configured for Bedrock
+        messages=messages,
+        temperature=0.7,
+        max_tokens=150
+    )
+    print_response("Bedrock", bedrock_response)
+except Exception as e:
+    print(f"Bedrock query failed: {str(e)}")
+"""
+=== Response from Bedrock ===
+{
+  "id": "bedrock-123xyz",
+  "object": "chat.completion",
+  "created": 1677858243,
+  "model": "anthropic.claude-v2",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 41,
+    "total_tokens": 83
+  },
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "The three primary colors are red, blue, and yellow. These colors cannot be created by mixing other colors together."
+      },
+      "finish_reason": "stop",
+      "index": 0
+    }
+  ]
+}
+"""
+
+# Example using text completions with Llama
+try:
+    llama_response = client.completions.create(
+        route="bedrockllama",  # Route configured for Bedrock Llama
+        prompt="Write a haiku about programming:",
+        max_tokens=50,
+        temperature=0.7,
+        top_p=0.9,
+    )
+    print("=== Llama Text Completion Response ===")
+    pretty_print(llama_response)
+except Exception as e:
+    print(f"Llama query failed: {str(e)}")
+
+"""
+=== Llama Text Completion Response ===
+{
+  "id": "bedrock-comp-123xyz",
+  "object": "text_completion",
+  "created": 1677858244,
+  "model": "meta.llama2-70b",
+  "choices": [
+    {
+      "text": "Code flows like water\\nBugs crawl through silent errors\\nDebugger saves all",
+      "index": 0,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 6,
+    "completion_tokens": 15,
+    "total_tokens": 21
+  }
+}
+"""
+
+`}
+</CodeBlock>
+
+</TabItem>
+
+
 <TabItem value="py5" label="DSPy">
 
 **Introduction:** [DSPy: Goodbye Prompting, Hello Programming!](https://towardsdatascience.com/intro-to-dspy-goodbye-prompting-hello-programming-4ca1c6ce3eb9)  
@@ -365,7 +556,6 @@ print(response)`}
 - [Microsoft Prompt flow](https://microsoft.github.io/promptflow/index.html#)
 
 </TabItem>
-
 </Tabs>
 
 
@@ -456,4 +646,6 @@ We have worked on the integrations. Please contact: support@getjavelin.io if you
 </TabItem>
 
 </Tabs>
+
+
 
