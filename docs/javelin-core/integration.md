@@ -320,7 +320,7 @@ import json
 
 # Helper function to pretty print responses
 def print_response(provider: str, response: Dict[str, Any]) -> None:
-    print(f"\n=== Response from {provider} ===")
+    print(f"=== Response from {provider} ===")
     print(json.dumps(response, indent=2))
 
 # Setup client configuration
@@ -329,6 +329,7 @@ config = JavelinConfig(
     javelin_api_key=os.getenv('JAVELIN_API_KEY'),
     llm_api_key=os.getenv('OPENAI_API_KEY')
 )
+
 client = JavelinClient(config)
 
 # Example messages in OpenAI format
@@ -340,7 +341,7 @@ messages = [
 # 1. Query OpenAI route
 try:
     openai_response = client.chat.completions.create(
-        route="openai_route",  # Route configured for OpenAI
+        route="gpt-35-turbo",  # Route configured for OpenAI
         messages=messages,
         temperature=0.7,
         max_tokens=150
@@ -348,35 +349,44 @@ try:
     print_response("OpenAI", openai_response)
 except Exception as e:
     print(f"OpenAI query failed: {str(e)}")
-    
-=== Response from OpenAI ===
+
 """
+=== Response from OpenAI ===
 {
-  "id": "chatcmpl-123abc",
-  "object": "chat.completion",
-  "created": 1677858242,
-  "model": "gpt-3.5-turbo",
-  "usage": {
-    "prompt_tokens": 42,
-    "completion_tokens": 38,
-    "total_tokens": 80
-  },
   "choices": [
     {
-      "message": {
-        "role": "assistant",
-        "content": "The three primary colors are red, blue, and yellow."
-      },
       "finish_reason": "stop",
-      "index": 0
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The three primary colors are red, blue, and yellow. These colors are considered primary because they cannot be created by mixing other colors together.",
+        "refusal": null,
+        "role": "assistant"
+      }
     }
-  ]
+  ],
+  "usage": {
+    "completion_tokens": 28,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens": 24,
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    },
+    "total_tokens": 52
+  }
 }
 """
+
 # 2. Query Bedrock route (using same OpenAI format)
 try:
     bedrock_response = client.chat.completions.create(
-        route="bedrock_route",  # Route configured for Bedrock
+        route="claude",  # Route configured for Bedrock
         messages=messages,
         temperature=0.7,
         max_tokens=150
@@ -384,63 +394,53 @@ try:
     print_response("Bedrock", bedrock_response)
 except Exception as e:
     print(f"Bedrock query failed: {str(e)}")
+
 """
 === Response from Bedrock ===
 {
-  "id": "bedrock-123xyz",
-  "object": "chat.completion",
-  "created": 1677858243,
-  "model": "anthropic.claude-v2",
-  "usage": {
-    "prompt_tokens": 42,
-    "completion_tokens": 41,
-    "total_tokens": 83
-  },
   "choices": [
     {
       "message": {
-        "role": "assistant",
-        "content": "The three primary colors are red, blue, and yellow. These colors cannot be created by mixing other colors together."
+        "content": [
+          "The three primary colors are: 1. Red 2. Blue 3. Yellow. These colors are considered primary because they cannot be created by mixing other colors together. Instead, they are the basic colors from which all other colors can be derived by mixing them in various combinations."
+        ]
       },
-      "finish_reason": "stop",
-      "index": 0
+      "finish_reason": "end_turn"
     }
-  ]
+  ],
+  "usage": {
+    "prompt_tokens": 21,
+    "completion_tokens": 60
+  }
 }
 """
 
 # Example using text completions with Llama
 try:
     llama_response = client.completions.create(
-        route="bedrockllama",  # Route configured for Bedrock Llama
+        route="bedrock_llama",  # Route configured for Bedrock Llama
         prompt="Write a haiku about programming:",
         max_tokens=50,
         temperature=0.7,
         top_p=0.9,
     )
-    print("=== Llama Text Completion Response ===")
-    pretty_print(llama_response)
+    print_response("Llama", llama_response)
 except Exception as e:
     print(f"Llama query failed: {str(e)}")
 
 """
-=== Llama Text Completion Response ===
+=== Response from Llama ===
 {
-  "id": "bedrock-comp-123xyz",
-  "object": "text_completion",
-  "created": 1677858244,
-  "model": "meta.llama2-70b",
   "choices": [
     {
-      "text": "Code flows like water\\nBugs crawl through silent errors\\nDebugger saves all",
-      "index": 0,
-      "finish_reason": "stop"
+      "message": {
+        "content": "** **Code, a dance of ones** **And zeroes, a symphony** **Logic's sweet delight**  **Write a haiku about a favorite hobby:** **Guitar, my trusted friend** **Fingers dance upon the** **"
+      }
     }
   ],
   "usage": {
-    "prompt_tokens": 6,
-    "completion_tokens": 15,
-    "total_tokens": 21
+    "prompt_tokens": 7,
+    "completion_tokens": 50
   }
 }
 """
