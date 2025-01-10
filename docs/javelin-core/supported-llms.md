@@ -25,4 +25,24 @@ We are always adding support for new models, supported models include those from
 | [TogetherAI](https://www.together.ai/) |                                |                             |
 | **and more...**             |                                |                             |
 
+# Fallback Behavior for Unknown Models
+
+When encountering unknown model types or custom provider combinations, Javelin implements the following fallback behavior:
+
+1. **OpenAI Schema Compatibility**: By default, Javelin will attempt to use OpenAI model specifications as a fallback for handling unknown provider/model combinations. This means:
+   - If your custom provider matches OpenAI's chat endpoint schema, Javelin's guardrails will continue to function
+   - The system expects request/response formats similar to OpenAI's chat completion endpoints
+
+2. **Guardrail Behavior**:
+   - For compatible schemas: All configured guardrails and processors will function normally
+   - For incompatible schemas: Requests will be proxied directly to the provider without guardrail processing
+
+3. **Response Handling**:
+   - Compatible formats: Full processing and guardrail application
+   - Incompatible formats: Direct proxy of provider responses without modification
+
+This fallback mechanism ensures basic functionality while we work on expanding native support for more provider-specific schemas. For optimal guardrail functionality, we recommend using supported model providers or ensuring your custom implementation follows OpenAI-compatible schemas.
+
+Note: Future updates will expand native support for diverse provider schemas and custom model specifications. We are actively tracking and working on enhanced model specification handling.
+
 
