@@ -545,7 +545,78 @@ print(response)`}
 
 </TabItem>
 
-<TabItem value="py6" label="...">
+<TabItem value="py6" label="Bedrock">
+
+<CodeBlock
+  language="shell">
+  {`pip install boto3`}
+</CodeBlock>
+
+<CodeBlock
+  language="python"
+  title="AWS Bedrock Integration Example - Boto3"
+  showLineNumbers>
+  {`import boto3
+
+# Configure boto3 client
+client = boto3.client(
+    service_name="bedrock-runtime",
+    region_name="us-east-1",
+    endpoint_url="https://api-dev.javelin.live/v1/",
+)
+
+def add_custom_headers(request, **kwargs):
+    headers = {
+        "x-api-key": f"{JAVELIN_API_KEY}"
+    }
+    request.headers.update(headers)
+
+client.meta.events.register('before-send.*.*', add_custom_headers)
+
+# Example using Claude model via Bedrock
+response = client.invoke_model_with_response_stream(
+    modelId="anthropic.claude-v2:1",
+    body={
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+            {
+                "content": "What is machine learning?",
+                "role": "user"
+            }
+        ]
+    },
+    contentType="application/json"
+)
+
+for event in response['body']:
+    print(event)`}
+</CodeBlock>
+
+<CodeBlock
+  language="python"
+  title="AWS Bedrock Integration Example - LangChain"
+  showLineNumbers>
+  {`# Example using Langchain 
+
+# Use the boto3 client to create a BedrockLLM
+llm = BedrockLLM(
+    client=client,
+    model_id="anthropic.claude-v2:1",
+    model_kwargs={
+        "max_tokens_to_sample": 256,
+        "temperature": 0.7,
+    }
+)
+
+stream_generator = llm.stream(prompt_text)
+for chunk in stream_generator:
+    print(chunk)`}
+</CodeBlock>
+
+</TabItem>
+
+<TabItem value="py8" label="...">
 
 - [LlamaIndex](https://www.llamaindex.ai/open-source)
 
