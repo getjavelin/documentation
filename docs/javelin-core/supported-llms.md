@@ -12,7 +12,7 @@ We are always adding support for new models, supported models include those from
 | [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models) | `https://<your-resource-name>.openai.azure.com` | - `/openai/deployments/{deployment-name}/completions`<br/>- `/openai/deployments/{deployment-name}/chat/completions`<br/>- `/openai/deployments/{deployment-name}/embeddings` |
 | [OpenAI](https://platform.openai.com/docs/models) | `https://api.openai.com/v1` | - `/completions`<br/>- `/chat/completions`<br/>- `/embeddings`<br/> |
 | [Amazon Bedrock](https://aws.amazon.com/bedrock) | `https://bedrock.<region>.amazonaws.com` | - `/model/{modelId}/invoke`<br/>- `/model/{modelId}/invoke-with-response-stream`<br/>- `/model/{modelId}/converse`<br/>- `/model/{modelId}/converse-stream`<br/> |
-| [Google Gemini](https://ai.google.dev/models) |                                         |                             |
+| [Google Gemini](https://ai.google.dev/models) | `https://generativelanguage.googleapis.com` | `/v1beta/openai/chat/completions` |
 | [HuggingFace](https://huggingface.co/models) | `https://api-inference.huggingface.co` |  Create an endpoint following the instructions here https://huggingface.co/docs/inference-endpoints/guides/create_endpoint |
 | [NVIDIA](https://build.nvidia.com/explore/discover) | | [NVIDIA AI Endpoints](https://docs.nvidia.com/nemo/guardrails/user_guides/llm/nvidia_ai_endpoints/index.html)  |
 | [Llama](https://llama.meta.com/) |                                                      |                             |
