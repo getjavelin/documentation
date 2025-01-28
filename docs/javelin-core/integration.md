@@ -714,7 +714,7 @@ main();`}
 
 <CodeBlock
   language="js"
-  title="AWS Bedrock Integration Example - Boto3"
+  title="AWS Bedrock Integration Example"
   showLineNumbers>
   {`import { BedrockRuntimeClient, InvokeModelCommand, InvokeModelWithResponseStreamCommand } from "@aws-sdk/client-bedrock-runtime";
 
