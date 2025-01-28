@@ -545,7 +545,81 @@ print(response)`}
 
 </TabItem>
 
-<TabItem value="py6" label="...">
+<TabItem value="py6" label="Bedrock">
+
+<CodeBlock
+  language="shell">
+  {`pip install boto3`}
+</CodeBlock>
+
+<CodeBlock
+  language="python"
+  title="AWS Bedrock Integration Example - Boto3"
+  showLineNumbers>
+  {`import boto3
+
+# Configure boto3 client
+client = boto3.client(
+    service_name="bedrock-runtime",
+    region_name="us-east-1",
+    endpoint_url="https://api-dev.javelin.live/v1/",
+)
+
+def add_custom_headers(request, **kwargs):
+    headers = {
+        "x-api-key": f"{JAVELIN_API_KEY}"
+    }
+    request.headers.update(headers)
+
+client.meta.events.register('before-send.*.*', add_custom_headers)
+
+# Example using Claude model via Bedrock
+response = client.invoke_model_with_response_stream(
+    modelId="anthropic.claude-v2:1",
+    body={
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+            {
+                "content": "What is machine learning?",
+                "role": "user"
+            }
+        ]
+    },
+    contentType="application/json"
+)
+
+for event in response['body']:
+    print(event)`}
+</CodeBlock>
+
+<CodeBlock
+  language="python"
+  title="AWS Bedrock Integration Example - LangChain"
+  showLineNumbers>
+  {`# Example using Langchain 
+
+# Use the boto3 client to create a BedrockLLM
+llm = BedrockLLM(
+    client=client,
+    model_id="anthropic.claude-v2:1",
+    model_kwargs={
+        "max_tokens_to_sample": 256,
+        "temperature": 0.7,
+    }
+)
+
+stream_generator = llm.stream(prompt_text)
+for chunk in stream_generator:
+    print(chunk)`}
+</CodeBlock>
+
+Learn more about how to setup Bedrock routes to use these examples [here](../javelin-core/administration/createbedrockroutes).
+
+
+</TabItem>
+
+<TabItem value="py8" label="...">
 
 - [LlamaIndex](https://www.llamaindex.ai/open-source)
 
@@ -635,7 +709,79 @@ main();`}
 
 </TabItem>
 
-<TabItem value="js3" label="...">
+
+<TabItem value="js3" label="Bedrock">
+
+<CodeBlock
+  language="js"
+  title="AWS Bedrock Integration Example"
+  showLineNumbers>
+  {`import { BedrockRuntimeClient, InvokeModelCommand, InvokeModelWithResponseStreamCommand } from "@aws-sdk/client-bedrock-runtime";
+
+const customHeaders = {
+  'x-api-key': JAVELIN_API_KEY
+};
+
+const client = new BedrockRuntimeClient({
+  region: AWS_REGION,
+  // Use the javelin endpoint for bedrock
+  endpoint: JAVELIN_ENDPOINT,
+  credentials: {
+    accessKeyId: AWS_ACCESS_KEY_ID,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY,
+  },
+});
+
+// Add custom headers via middleware
+client.middlewareStack.add(
+  (next, context) => async (args) => {
+    args.request.headers = {
+      ...args.request.headers,
+      ...customHeaders
+    };
+    return next(args);
+  },
+  {
+    step: "build"
+  }
+);
+
+
+
+// Query the model
+const payload = {
+  anthropic_version: "bedrock-2023-05-31",
+  max_tokens: 1000,
+  messages: [
+    {
+      role: "user",
+      content: "What is machine learning?",
+    },
+  ],
+};
+
+
+const command = new InvokeModelWithResponseStreamCommand({
+  contentType: "application/json",
+  body: JSON.stringify(payload),
+  "anthropic.claude-v2:1",
+});
+
+const apiResponse = await client.send(command);
+
+for await (const item of apiResponse.body) {
+  console.log(item);
+}
+
+`}
+</CodeBlock>
+
+Learn more about how to setup Bedrock routes to use these examples [here](../javelin-core/administration/createbedrockroutes).
+
+</TabItem>
+
+
+<TabItem value="js4" label="...">
 
 - [Vercel AI SDK](https://sdk.vercel.ai/docs) -> [AI Integrations on Vercel](https://vercel.com/blog/ai-integrations)
 
