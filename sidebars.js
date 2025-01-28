@@ -182,6 +182,7 @@ module.exports = {
           'javelin-core/administration/listroutes',
           'javelin-core/administration/updateroute',
           'javelin-core/administration/deleteroute',
+          'javelin-core/administration/createbedrockroutes',
         ]
       },
       {

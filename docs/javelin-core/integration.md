@@ -614,6 +614,9 @@ for chunk in stream_generator:
     print(chunk)`}
 </CodeBlock>
 
+Learn more about how to setup Bedrock routes to use these examples [here](../javelin-core/administration/createbedrockroutes).
+
+
 </TabItem>
 
 <TabItem value="py8" label="...">
@@ -706,7 +709,79 @@ main();`}
 
 </TabItem>
 
-<TabItem value="js3" label="...">
+
+<TabItem value="js3" label="Bedrock">
+
+<CodeBlock
+  language="js"
+  title="AWS Bedrock Integration Example - Boto3"
+  showLineNumbers>
+  {`import { BedrockRuntimeClient, InvokeModelCommand, InvokeModelWithResponseStreamCommand } from "@aws-sdk/client-bedrock-runtime";
+
+const customHeaders = {
+  'x-api-key': '${process.env.JAVELIN_API_KEY}'
+};
+
+const client = new BedrockRuntimeClient({
+  region: '${process.env.AWS_REGION}',
+  // Use the javelin endpoint for bedrock
+  endpoint: '${process.env.JAVELIN_ENDPOINT}',
+  credentials: {
+    accessKeyId: '${process.env.AWS_ACCESS_KEY_ID}',
+    secretAccessKey: '${process.env.AWS_SECRET_ACCESS_KEY}',
+  },
+});
+
+// Add custom headers via middleware
+client.middlewareStack.add(
+  (next, context) => async (args) => {
+    args.request.headers = {
+      ...args.request.headers,
+      ...customHeaders
+    };
+    return next(args);
+  },
+  {
+    step: "build"
+  }
+);
+
+
+
+// Query the model
+const payload = {
+  anthropic_version: "bedrock-2023-05-31",
+  max_tokens: 1000,
+  messages: [
+    {
+      role: "user",
+      content: "What is machine learning?",
+    },
+  ],
+};
+
+
+const command = new InvokeModelWithResponseStreamCommand({
+  contentType: "application/json",
+  body: JSON.stringify(payload),
+  "anthropic.claude-v2:1",
+});
+
+const apiResponse = await client.send(command);
+
+for await (const item of apiResponse.body) {
+  console.log(item);
+}
+
+`}
+</CodeBlock>
+
+Learn more about how to setup Bedrock routes to use these examples [here](../javelin-core/administration/createbedrockroutes).
+
+</TabItem>
+
+
+<TabItem value="js4" label="...">
 
 - [Vercel AI SDK](https://sdk.vercel.ai/docs) -> [AI Integrations on Vercel](https://vercel.com/blog/ai-integrations)
 
