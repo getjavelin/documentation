@@ -50,7 +50,7 @@ This is how you would set the rest of the route configuration.
 
 ## Usecase
 
-After creating the routes, you can use the examples in the [integration](../integration.md) section to test the models. 
+After creating the routes, you can use the examples in the [integration](../integration.md#python) section to test the models. 
 
 When making API calls, instead of using the AWS Bedrock endpoint directly, you'll need to use your Javelin endpoint. Replace the endpoint in your API calls with your Javelin URL:
 
