@@ -719,16 +719,16 @@ main();`}
   {`import { BedrockRuntimeClient, InvokeModelCommand, InvokeModelWithResponseStreamCommand } from "@aws-sdk/client-bedrock-runtime";
 
 const customHeaders = {
-  'x-api-key': '${process.env.JAVELIN_API_KEY}'
+  'x-api-key': JAVELIN_API_KEY
 };
 
 const client = new BedrockRuntimeClient({
-  region: '${process.env.AWS_REGION}',
+  region: AWS_REGION,
   // Use the javelin endpoint for bedrock
-  endpoint: '${process.env.JAVELIN_ENDPOINT}',
+  endpoint: JAVELIN_ENDPOINT,
   credentials: {
-    accessKeyId: '${process.env.AWS_ACCESS_KEY_ID}',
-    secretAccessKey: '${process.env.AWS_SECRET_ACCESS_KEY}',
+    accessKeyId: AWS_ACCESS_KEY_ID,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY,
   },
 });
 
