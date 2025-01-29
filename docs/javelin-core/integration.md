@@ -576,7 +576,7 @@ client.meta.events.register('before-send.*.*', add_custom_headers)
 # Example using Claude model via Bedrock
 response = client.invoke_model_with_response_stream(
     modelId="anthropic.claude-v2:1",
-    body={
+    body=json.dumps({
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": 100,
         "messages": [
@@ -585,7 +585,7 @@ response = client.invoke_model_with_response_stream(
                 "role": "user"
             }
         ]
-    },
+    }),
     contentType="application/json"
 )
 
