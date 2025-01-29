@@ -557,6 +557,7 @@ print(response)`}
   title="AWS Bedrock Integration Example - Boto3"
   showLineNumbers>
   {`import boto3
+import json
 
 # Configure boto3 client
 client = boto3.client(
