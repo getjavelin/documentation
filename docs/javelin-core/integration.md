@@ -558,24 +558,41 @@ print(response)`}
   showLineNumbers>
   {`import boto3
 import json
-
-# Configure boto3 client
-client = boto3.client(
-    service_name="bedrock-runtime",
-    region_name="us-east-1",
-    endpoint_url="https://api-dev.javelin.live/v1/",
+from javelin_sdk import (
+    JavelinClient,
+    JavelinConfig,
 )
 
-def add_custom_headers(request, **kwargs):
-    headers = {
-        "x-api-key": f"{JAVELIN_API_KEY}"
-    }
-    request.headers.update(headers)
+# Configure boto3 bedrock-runtime service client
+bedrock_runtime_client = boto3.client(
+    service_name="bedrock-runtime",
+    region_name="us-east-1"
+)
 
-client.meta.events.register('before-send.*.*', add_custom_headers)
+# Configure boto3 bedrock service client
+bedrock_client = boto3.client(
+    service_name="bedrock",
+    region_name="us-east-1"
+)
 
-# Example using Claude model via Bedrock
-response = client.invoke_model_with_response_stream(
+
+# Initialize Javelin Client
+config = JavelinConfig(
+    base_url=os.getenv('JAVELIN_BASE_URL'),
+    javelin_api_key=os.getenv('JAVELIN_API_KEY')
+)
+client = JavelinClient(config)
+
+# Passing bedrock_client is recommended for optimal error handling
+# and request management, though it remains optional.
+client.register_bedrock(
+  bedrock_runtime_client=bedrock_runtime_client, 
+  bedrock_client=bedrock_client, 
+  route_name="bedrock" # Universal route for the Amazon Bedrock models
+)
+
+# Example using Claude model via Bedrock Runtime
+response = bedrock_runtime_client.invoke_model(
     modelId="anthropic.claude-v2:1",
     body=json.dumps({
         "anthropic_version": "bedrock-2023-05-31",
@@ -589,10 +606,15 @@ response = client.invoke_model_with_response_stream(
     }),
     contentType="application/json"
 )
+response_body = json.loads(response["body"].read())
+print(f"Invoke Response: {json.dumps(response_body, indent=2)}")
 
-for event in response['body']:
-    print(event)`}
+`}
 </CodeBlock>
+
+Learn more about how to setup Universal Bedrock routes to use this example [here](../javelin-core/administration/createbedrockroutes).
+
+
 
 <CodeBlock
   language="python"
@@ -600,9 +622,10 @@ for event in response['body']:
   showLineNumbers>
   {`# Example using Langchain 
 
-# Use the boto3 client to create a BedrockLLM
+from langchain_community.llms.bedrock import Bedrock as BedrockLLM
+
 llm = BedrockLLM(
-    client=client,
+    client=bedrock_runtime_client,
     model_id="anthropic.claude-v2:1",
     model_kwargs={
         "max_tokens_to_sample": 256,
@@ -610,12 +633,14 @@ llm = BedrockLLM(
     }
 )
 
-stream_generator = llm.stream(prompt_text)
+stream_generator = llm.stream("What is machine learning?")
 for chunk in stream_generator:
-    print(chunk)`}
+    print(chunk, end='', flush=True)
+
+`}
 </CodeBlock>
 
-Learn more about how to setup Bedrock routes to use these examples [here](../javelin-core/administration/createbedrockroutes).
+Learn more about how to setup Universal Bedrock routes to use this example [here](../javelin-core/administration/createbedrockroutes).
 
 
 </TabItem>
