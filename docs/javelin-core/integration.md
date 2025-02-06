@@ -158,16 +158,22 @@ import os
 javelin_api_key = os.environ['JAVELIN_API_KEY']
 llm_api_key = os.environ["OPENAI_API_KEY"]
 
-# Javelin Headers
+## Javelin Headers
+# Define Javelin headers with the API key
 javelin_headers = {
-    "x-api-key": javelin_api_key,       # Javelin API key from admin
-    "x-javelin-route": "sampleroute1"  # Javelin route to use
+    "x-api-key": javelin_api_key  # Javelin API key from admin
 }
 
+# Define the Javelin route as a variable
+javelin_route = "sampleroute1"  # Example route
+
 # Create OpenAI Client
-client = OpenAI(api_key=llm_api_key,
-                base_url="https://api-dev.javelin.live/v1/query", # Set Javelin's API base URL for query
-                default_headers=javelin_headers)
+client = OpenAI(
+    api_key=llm_api_key,
+    base_url=f"https://api-dev.javelin.live/v1/query/{javelin_route}",  # Javelin route is passed as a URL parameter
+    default_headers=javelin_headers
+)
+
 
 # Query the model
 completion = client.chat.completions.create(
@@ -212,18 +218,21 @@ for chunk in stream:
 import os
 
 # Javelin Headers
-javelin_api_key = os.environ['JAVELIN_API_KEY']
-llm_api_key = os.environ["AZURE_OPENAI_API_KEY"]
-
 javelin_headers = {
-    "x-api-key": javelin_api_key,     # Javelin API key from admin
-    "x-javelin-route": "sampleroute1" # Javelin route to use
+    "x-api-key": javelin_api_key  # Javelin API key from admin
 }
 
-client = AzureOpenAI(api_key=llm_api_key,
-                     base_url="https://api-dev.javelin.live/v1/query", # Set Javelin's API base URL for query
-                     default_headers=javelin_headers,
-                     api_version="2023-07-01-preview")
+# Define the Javelin route as a variable
+javelin_route = "sampleroute1"  # Example route
+
+# Create Azure OpenAI Client
+client = AzureOpenAI(
+    api_key=llm_api_key,
+    base_url=f"https://api-dev.javelin.live/v1/query/{javelin_route}",  # Javelin route is now passed as a URL parameter
+    default_headers=javelin_headers,
+    api_version="2023-07-01-preview"
+)
+
 
 completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
@@ -272,21 +281,28 @@ from langchain_core.output_parsers import StrOutputParser
 
 import os
 
+# Retrieve API keys from environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 llm_api_key = os.getenv("OPENAI_API_KEY")
+
+# Define Javelin headers with the API key
 javelin_headers = {
-    "x-api-key": javelin_api_key,      # Javelin API key from admin
-    "x-javelin-route": "sample_route1" # Javelin route to use
+    "x-api-key": javelin_api_key  # Javelin API key from admin
 }
 
+# Define the Javelin route as a variable
+javelin_route = "sample_route1"  # Example route
+
+# Create LangChain OpenAI client
 llm = ChatOpenAI(
-    openai_api_base="https://api-dev.javelin.live/v1/query", # Set Javelin's API base URL for query
+    openai_api_base=f"https://api-dev.javelin.live/v1/query/{javelin_route}",  # Javelin route is passed as a URL parameter
     openai_api_key=llm_api_key,
     model_kwargs={
       "extra_headers": javelin_headers
     },
 )
 
+# Define the prompt
 prompt = ChatPromptTemplate.from_messages([
     ("system", "Hello, you are a helpful scientific assistant."),
     ("user", "{input}")
@@ -294,8 +310,10 @@ prompt = ChatPromptTemplate.from_messages([
 
 output_parser = StrOutputParser()
 
+# Create the processing chain
 chain = prompt | llm | output_parser
 
+# Invoke the chain with an example input
 print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
 `}
 </CodeBlock>
