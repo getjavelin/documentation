@@ -160,42 +160,37 @@ llm_api_key = os.environ["OPENAI_API_KEY"]
 
 ## Javelin Headers
 # Define Javelin headers with the API key
-javelin_headers = {
-    "x-api-key": javelin_api_key  # Javelin API key from admin
-}
+config = JavelinConfig(
+  javelin_api_key=javelin_api_key,
+)
 
 # Define the Javelin route as a variable
 javelin_route = "sampleroute1"  # Example route
 
-# Create OpenAI Client
-client = OpenAI(
-    api_key=llm_api_key,
-    base_url=f"https://api-dev.javelin.live/v1/query/{javelin_route}",  # Javelin route is passed as a URL parameter
-    default_headers=javelin_headers
-)
+client = JavelinClient(config)
+
+# Register the OpenAI client with Javelin using the route name
+client.register_openai(openai_client, route_name=javelin_route)
 
 
 # Query the model
-completion = client.chat.completions.create(
-  model="gpt-3.5-turbo",
-  messages=[
-    {"role": "system", "content": "Hello, you are a helpful scientific assistant"},
-    {"role": "user", "content": "What is the chemical composition of sugar?"}
-  ]
-)
+# --- Call OpenAI Endpoints ---
 
+print("OpenAI: 1 - Chat completions")
+chat_completions = openai_client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[{"role": "user", "content": "What is machine learning?"}],
+)
 print(completion.model_dump_json(indent=2))
 
 # Streaming Responses
-stream = client.chat.completions.create(
-    model="gpt-3.5-turbo",
+stream = openai_client.chat.completions.create(
     messages=[
-      {"role": "system", "content": "Hello, you are a helpful scientific assistant."},
-      {"role": "user", "content": "What is the chemical composition of sugar?"}
+        {"role": "user", "content": "Say this is a test"}
     ],
-    stream=True
+    model="gpt-4o",
+    stream=True,
 )
-
 for chunk in stream:
     print(chunk.choices[0].delta.content or "", end="")`}
 </CodeBlock>
@@ -225,27 +220,31 @@ javelin_headers = {
 # Define the Javelin route as a variable
 javelin_route = "sampleroute1"  # Example route
 
+client = JavelinClient(config) # Create Javelin Client
+client.register_azureopenai(openai_client, route_name=javelin_route) # Register Azure OpenAI Client with Javelin
+
 # Create Azure OpenAI Client
-client = AzureOpenAI(
-    api_key=llm_api_key,
-    base_url=f"https://api-dev.javelin.live/v1/query/{javelin_route}",  # Javelin route is now passed as a URL parameter
-    default_headers=javelin_headers,
-    api_version="2023-07-01-preview"
+openai_client = AzureOpenAI(
+    api_version="2023-07-01-preview",
+    azure_endpoint="https://javelinpreview.openai.azure.com",  # Azure Univeral Route
+    api_key=azure_openai_api_key
 )
 
 
-completion = client.chat.completions.create(
-  model="gpt-3.5-turbo",
-  messages=[
-    {"role": "system", "content": "Hello, you are a helpful scientific assistant."},
-    {"role": "user", "content": "What is the chemical composition of sugar?"}
-  ]
+completion = openai_client.chat.completions.create(
+    model="gpt-4",  # e.g. gpt-3.5-turbo
+    messages=[
+        {
+            "role": "user",
+            "content": "How do I output all files in a directory using Python?",
+        },
+    ],
 )
 
 print(completion.model_dump_json(indent=2))
 
 # Streaming Responses
-stream = client.chat.completions.create(
+stream = openai_client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
       {"role": "system", "content": "Hello, you are a helpful scientific assistant."},
@@ -285,36 +284,51 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 llm_api_key = os.getenv("OPENAI_API_KEY")
 
+model_choice = "gpt-3.5-turbo"  # For example, change to "gpt-4"
+
+# Define the Javelin route as a variable
+route_name = "sampleroute1"
+
 # Define Javelin headers with the API key
 javelin_headers = {
     "x-api-key": javelin_api_key  # Javelin API key from admin
 }
 
-# Define the Javelin route as a variable
-javelin_route = "sample_route1"  # Example route
-
-# Create LangChain OpenAI client
 llm = ChatOpenAI(
-    openai_api_base=f"https://api-dev.javelin.live/v1/query/{javelin_route}",  # Javelin route is passed as a URL parameter
-    openai_api_key=llm_api_key,
-    model_kwargs={
-      "extra_headers": javelin_headers
-    },
+    openai_api_key=openai_api_key,
+    openai_api_base="https://api-dev.javelin.live/v1/openai",
+    default_headers={
+        "x-api-key": javelin_api_key,
+        "x-javelin-route": route_name,
+        "x-javelin-provider": "https://api.openai.com/v1",
+        "x-javelin-model":model_choice
+        
+    }
 )
 
-# Define the prompt
+
+# Define a simple prompt template
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "Hello, you are a helpful scientific assistant."),
+    ("system", "You are a helpful assistant."),
     ("user", "{input}")
 ])
 
+# Use a simple output parser (string output)
 output_parser = StrOutputParser()
 
-# Create the processing chain
+# Create the processing chain (prompt -> LLM -> parser)
 chain = prompt | llm | output_parser
 
-# Invoke the chain with an example input
-print(chain.invoke({"input": "What is the chemical composition of sugar?"}))
+def ask_question(question: str) -> str:
+    return chain.invoke({"input": question})
+
+# Example usage:
+if __name__ == "__main__":
+    question = "What is the chemical composition of water?"
+    answer = ask_question(question)
+    print("Answer:", answer)
+
+
 `}
 </CodeBlock>
 
