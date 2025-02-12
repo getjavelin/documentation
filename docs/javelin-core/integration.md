@@ -165,7 +165,7 @@ config = JavelinConfig(
 )
 
 # Define the Javelin route as a variable
-javelin_route = "sampleroute1"  # Example route
+javelin_route = "sampleroute1"  # Define your universal route
 
 client = JavelinClient(config)
 
@@ -226,7 +226,7 @@ client.register_azureopenai(openai_client, route_name=javelin_route) # Register 
 # Create Azure OpenAI Client
 openai_client = AzureOpenAI(
     api_version="2023-07-01-preview",
-    azure_endpoint="https://javelinpreview.openai.azure.com",  # Azure Univeral Route
+    azure_endpoint="https://javelinpreview.openai.azure.com", # Azure Endpoint
     api_key=azure_openai_api_key
 )
 
