@@ -49,13 +49,17 @@ These endpoints mirror the standard OpenAI API methods. They allow you to perfor
 
 #### Example Usage
 
-```bash
-curl -X POST "https://your-api-domain.com/openai/completions" \
-  -H "Content-Type: application/json" \
-  -d '{
+<CodeBlock
+language="python">
+{`
+curl -X POST "https://your-api-domain.com/v1/openai/completions" \
+-H "Content-Type: application/json" \
+-d '{
         "prompt": "Once upon a time",
         "max_tokens": 50
-      }'
+    }'
+`}
+</CodeBlock>
 
 Replace openai with the appropriate openai API compatible provider name like azure, mistral, deepseek etc. as required.
 
@@ -85,15 +89,19 @@ For providers using Azure’s deployment model, endpoints include an additional 
 
 #### Example Usage
 
-```bash
-curl -X POST "https://your-api-domain.com/azure/deployments/my-deployment/chat/completions" \
-  -H "Content-Type: application/json" \
-  -d '{
+<CodeBlock
+language="python">
+{`
+curl -X POST "https://your-api-domain.com/v1/azure/deployments/my-deployment/chat/completions" \
+-H "Content-Type: application/json" \
+-d '{
         "messages": [
            {"role": "user", "content": "Tell me a story"}
         ],
         "max_tokens": 50
-      }'
+    }'
+`}
+</CodeBlock>
 
 ### 3. AWS Bedrock API Endpoints
 
@@ -109,12 +117,16 @@ For AWS Bedrock–style providers, the endpoints use a slightly different URL pa
 
 #### Example Usage
 
-```bash
-curl -X POST "https://your-api-domain.com//model/anthropic.claude-3-sonnet-20240229-v1:0/invoke" \
-  -H "Content-Type: application/json" \
-  -d '{
+<CodeBlock
+language="python">
+{`
+curl -X POST "https://your-api-domain.com/v1/model/anthropic.claude-3-sonnet-20240229-v1:0/invoke" \
+-H "Content-Type: application/json" \
+-d '{
         "input": "What is the capital of France?"
-      }'
+    }'
+`}
+</CodeBlock>
 
 ### 4. Query Endpoints
 
@@ -127,9 +139,9 @@ These endpoints allow direct querying of predefined routes, bypassing provider-s
   **Path Parameter:**  
   - `routename`: The route with one or more models based on the configured policies and route configurations and return back a response
 
-###  Example Usage
+####  Example Usage
 
-### REST API
+#### REST API
 <Tabs>
 <TabItem value="curl" label="curl">
 
@@ -202,7 +214,7 @@ Make sure to replace `your_route_name` with your actual route name and set the `
 </TabItem>
 </Tabs>
 
-### Python
+#### Python
 <Tabs>
 <TabItem value="py1" label="Javelin SDK">
 
@@ -804,7 +816,7 @@ Learn more about how to setup Universal Bedrock routes to use this example [here
 </Tabs>
 
 
-### JavaScript/TypeScript
+#### JavaScript/TypeScript
 
 <Tabs>
 <TabItem value="js1" label="OpenAI">
@@ -823,10 +835,9 @@ Learn more about how to setup Universal Bedrock routes to use this example [here
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: "https://api-dev.javelin.live/v1/query",
+  baseURL: "https://api-dev.javelin.live/v1/query/{your_route_name}",
   defaultHeaders: {
-    "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`,
-    "x-javelin-route": "sample_route1",
+    "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`
   },
 });
 
@@ -862,10 +873,9 @@ main();`}
 const llm = new ChatOpenAI({
     openAIApiKey: process.env.OPENAI_API_KEY,
     configuration: {
-        basePath: "https://api-dev.javelin.live/v1/query",
+        basePath: "https://api-dev.javelin.live/v1/query/{your_route_name}",
         defaultHeaders: {
-          "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`,
-          "x-javelin-route": "sample_route1",
+          "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`
         },
     },
 });
