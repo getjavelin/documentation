@@ -3,21 +3,28 @@ import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useColorMode } from '@docusaurus/theme-common';
 import styles from './index.module.css';
 import HomepageFeatures from '../components/HomepageFeatures';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
+  const { colorMode } = useColorMode(); // Get current mode ('light' or 'dark')
+
+  const textColor = colorMode === 'dark' ? 'white' : 'black';
+
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <h1 className="hero__title" style={{ color: 'white' }}>
+          <span className="highlight-text">Javelin AI Security Platform</span>
+        </h1>
+        <p className="hero__subtitle" style={{ color: 'orange' }}>
+          <span className="highlight-text">Enterprise AI Platform</span> for rapid, responsible LLM use.
+        </p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/javelin-core/overview">  {/* Changed the link target to match Javelin's introduction page */}
-            Get Started with Javelin 🚀
+          <Link className="button button--secondary button--lg" to="/docs/javelin-core/overview">
+            Get started 🚀
           </Link>
         </div>
       </div>
@@ -26,11 +33,11 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Welcome to ${siteConfig.title}`}
-      description="Javelin is an Enterprise AI Platform for rapid, responsible LLM use. Dive in to learn more.">  {/* Adjust the description to something more relevant */}
+      title={`Javelin | Enterprise AI Platform`}
+      description="Javelin is an Enterprise AI Platform for rapid, responsible LLM use. Dive in to learn more.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
