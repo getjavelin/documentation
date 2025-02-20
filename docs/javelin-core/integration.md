@@ -3,19 +3,145 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 # Applications
+
 Its easy to integrate applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with minimal code changes.
 
 ## Leveraging the Javelin Platform
-The core usage of Javelin is to define routes, and then to define what to do at each route. Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, Gemini etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent. 
+
+The core usage of Javelin is to define routes, and then to define what to do at each route. Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, Gemini etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent.
 
 See [Javelin Configuration](routeconfiguration) section, for details on how to setup routes on the gateway to different models and providers. 
 
-See [Python SDK](../javelin-python/quickstart) for details on how you can easily embed this within your AI Apps. 
+See [Python SDK](../javelin-python/quickstart) for details on how you can easily embed this within your AI Apps.
 
-## Querying an LLM
-Javelin may send a request to one or more models based on the configured policies and route configurations and return back a response.
+## Unified Endpoints
 
-### REST API
+The **Unified Endpoints** provide a consistent API interface that abstracts the provider-specific details of various AI services. Whether you are interfacing with an OpenAI-compatible service, an Azure OpenAI deployment, or an AWS Bedrock API, these endpoints enable you to use a standardized request/response format. This documentation explains the available endpoints, their purpose, and usage examples.
+
+1. **Single Entry Points**: Instead of routing to different URLs for each provider, you call these “unified” endpoints with specific route parameters or path segments (e.g., `/completions`, `/chat/completions`, `/embeddings`, or `deployments/{deployment}/completions` in the case of Azure).
+2. **Provider-Agnostic Handling**: A common handler (e.g., `queryHandler(appState)`) receives each request and delegates it to the appropriate provider logic based on URL parameters like `providername` or `deployment`.
+3. **Consistent Request/Response Shapes**: All requests follow a uniform structure (for example, a JSON object with a `prompt`, `messages`, or `input` for embeddings). The service then translates it to each provider’s specific API format as needed.
+
+---
+
+## Endpoint Breakdown
+
+### 1. OpenAI-Compatible Endpoints
+
+These endpoints mirror the standard OpenAI API methods. They allow you to perform common AI tasks such as generating text completions, handling chat-based requests, or producing embeddings.
+
+#### Endpoints
+
+- **POST `/{providername}/completions`**  
+  Request text completions from the provider.  
+  **Path Parameter:**  
+  - `providername`: Identifier for the OpenAI-compatible provider.
+
+- **POST `/{providername}/chat/completions`**  
+  Request chat-based completions (ideal for conversational interfaces).  
+  **Path Parameter:**  
+  - `providername`: Identifier for the provider.
+
+- **POST `/{providername}/embeddings`**  
+  Generate embeddings for provided text data.  
+  **Path Parameter:**  
+  - `providername`: Identifier for the provider.
+
+#### Example Usage
+
+<CodeBlock
+language="python">
+{`
+curl -X POST "https://your-api-domain.com/v1/openai/completions" \
+-H "Content-Type: application/json" \
+-d '{
+        "prompt": "Once upon a time",
+        "max_tokens": 50
+    }'
+`}
+</CodeBlock>
+
+Replace openai with the appropriate openai API compatible provider name like azure, mistral, deepseek etc. as required.
+
+### 2. Azure OpenAI API Endpoints
+
+For providers using Azure’s deployment model, endpoints include an additional parameter for deployment management.
+
+#### Endpoints
+
+- **POST `/{providername}/deployments/{deployment}/completions`**  
+  Request text completions from the provider.  
+  **Path Parameter:**  
+  - `providername`: The Azure OpenAI provider identifier.
+  - `deployment`: The deployment ID configured in Azure.
+
+- **POST `/{providername}/deployments/{deployment}/chat/completions`**  
+  Request chat-based completions (ideal for conversational interfaces).  
+  **Path Parameter:**  
+  - `providername`: The Azure OpenAI provider identifier.
+  - `deployment`: The deployment ID configured in Azure.
+
+- **POST `/{providername}/deployments/{deployment}/embeddings`**  
+  Generate embeddings for provided text data.  
+  **Path Parameter:**  
+  - `providername`: The Azure OpenAI provider identifier.
+  - `deployment`: The deployment ID configured in Azure.
+
+#### Example Usage
+
+<CodeBlock
+language="python">
+{`
+curl -X POST "https://your-api-domain.com/v1/azure/deployments/my-deployment/chat/completions" \
+-H "Content-Type: application/json" \
+-d '{
+        "messages": [
+           {"role": "user", "content": "Tell me a story"}
+        ],
+        "max_tokens": 50
+    }'
+`}
+</CodeBlock>
+
+### 3. AWS Bedrock API Endpoints
+
+For AWS Bedrock–style providers, the endpoints use a slightly different URL pattern to accommodate model versioning and extended routing.
+
+#### Endpoints
+
+- **POST `/model/{routename}/{apivariation}`**  
+  Route requests to a specific model and API variation.
+  **Path Parameter:**  
+  - `routename`: The model or route name (identifies a specific AWS Bedrock model).
+  - `apivariation`:  A parameter to indicate the API variation (Invoke", "Invoke-Stream", "Invoke-With-Response-Stream", "Converse", "Converse-Stream) or version.
+
+#### Example Usage
+
+<CodeBlock
+language="python">
+{`
+curl -X POST "https://your-api-domain.com/v1/model/anthropic.claude-3-sonnet-20240229-v1:0/invoke" \
+-H "Content-Type: application/json" \
+-d '{
+        "input": "What is the capital of France?"
+    }'
+`}
+</CodeBlock>
+
+### 4. Query Endpoints
+
+These endpoints allow direct querying of predefined routes, bypassing provider-specific names when a generic and customizable route configuration is desired.
+
+#### Endpoints
+
+- **POST `/query/{routename}`**  
+  Execute a query against a specific route.
+  **Path Parameter:**  
+  - `routename`: The route with one or more models based on the configured policies and route configurations and return back a response
+
+####  Example Usage
+
+#### REST API
 <Tabs>
 <TabItem value="curl" label="curl">
 
@@ -88,7 +214,7 @@ Make sure to replace `your_route_name` with your actual route name and set the `
 </TabItem>
 </Tabs>
 
-### Python
+#### Python
 <Tabs>
 <TabItem value="py1" label="Javelin SDK">
 
@@ -528,11 +654,10 @@ class Javelin(LM):
                     "stream": False
         }
 
-        self.base_url = "https://api.javelin.live/v1/query/" # Set Javelin's API base URL for query
+        self.base_url = "https://api.javelin.live/v1/query/your_route_name" # Set Javelin's API base URL for query
         self.javelin_headers = {
                     "Content-Type": "application/json",
                     "Authorization": f"Bearer { api_key }",
-                    "x-javelin-route": "openai", # route name configured for OpenAI
                     "x-api-key": javelin_api_key,
         }
 
@@ -593,24 +718,41 @@ print(response)`}
   showLineNumbers>
   {`import boto3
 import json
-
-# Configure boto3 client
-client = boto3.client(
-    service_name="bedrock-runtime",
-    region_name="us-east-1",
-    endpoint_url="https://api.javelin.live/v1/",
+from javelin_sdk import (
+    JavelinClient,
+    JavelinConfig,
 )
 
-def add_custom_headers(request, **kwargs):
-    headers = {
-        "x-api-key": f"{JAVELIN_API_KEY}"
-    }
-    request.headers.update(headers)
+# Configure boto3 bedrock-runtime service client
+bedrock_runtime_client = boto3.client(
+    service_name="bedrock-runtime",
+    region_name="us-east-1"
+)
 
-client.meta.events.register('before-send.*.*', add_custom_headers)
+# Configure boto3 bedrock service client
+bedrock_client = boto3.client(
+    service_name="bedrock",
+    region_name="us-east-1"
+)
 
-# Example using Claude model via Bedrock
-response = client.invoke_model_with_response_stream(
+
+# Initialize Javelin Client
+config = JavelinConfig(
+    base_url=os.getenv('JAVELIN_BASE_URL'),
+    javelin_api_key=os.getenv('JAVELIN_API_KEY')
+)
+client = JavelinClient(config)
+
+# Passing bedrock_client is recommended for optimal error handling
+# and request management, though it remains optional.
+client.register_bedrock(
+  bedrock_runtime_client=bedrock_runtime_client, 
+  bedrock_client=bedrock_client, 
+  route_name="bedrock" # Universal route for the Amazon Bedrock models
+)
+
+# Example using Claude model via Bedrock Runtime
+response = bedrock_runtime_client.invoke_model(
     modelId="anthropic.claude-v2:1",
     body=json.dumps({
         "anthropic_version": "bedrock-2023-05-31",
@@ -624,10 +766,15 @@ response = client.invoke_model_with_response_stream(
     }),
     contentType="application/json"
 )
+response_body = json.loads(response["body"].read())
+print(f"Invoke Response: {json.dumps(response_body, indent=2)}")
 
-for event in response['body']:
-    print(event)`}
+`}
 </CodeBlock>
+
+Learn more about how to setup Universal Bedrock routes to use this example [here](../javelin-core/administration/createbedrockroutes).
+
+
 
 <CodeBlock
   language="python"
@@ -635,9 +782,10 @@ for event in response['body']:
   showLineNumbers>
   {`# Example using Langchain 
 
-# Use the boto3 client to create a BedrockLLM
+from langchain_community.llms.bedrock import Bedrock as BedrockLLM
+
 llm = BedrockLLM(
-    client=client,
+    client=bedrock_runtime_client,
     model_id="anthropic.claude-v2:1",
     model_kwargs={
         "max_tokens_to_sample": 256,
@@ -645,12 +793,14 @@ llm = BedrockLLM(
     }
 )
 
-stream_generator = llm.stream(prompt_text)
+stream_generator = llm.stream("What is machine learning?")
 for chunk in stream_generator:
-    print(chunk)`}
+    print(chunk, end='', flush=True)
+
+`}
 </CodeBlock>
 
-Learn more about how to setup Bedrock routes to use these examples [here](../javelin-core/administration/createbedrockroutes).
+Learn more about how to setup Universal Bedrock routes to use this example [here](../javelin-core/administration/createbedrockroutes).
 
 
 </TabItem>
@@ -669,7 +819,7 @@ Learn more about how to setup Bedrock routes to use these examples [here](../jav
 </Tabs>
 
 
-### JavaScript/TypeScript
+#### JavaScript/TypeScript
 
 <Tabs>
 <TabItem value="js1" label="OpenAI">
@@ -688,10 +838,9 @@ Learn more about how to setup Bedrock routes to use these examples [here](../jav
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: "https://api.javelin.live/v1/query",
+  baseURL: "https://api.javelin.live/v1/query/{your_route_name}",
   defaultHeaders: {
-    "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`,
-    "x-javelin-route": "sample_route1",
+    "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`
   },
 });
 
@@ -727,10 +876,9 @@ main();`}
 const llm = new ChatOpenAI({
     openAIApiKey: process.env.OPENAI_API_KEY,
     configuration: {
-        basePath: "https://api.javelin.live/v1/query",
+        basePath: "https://api.javelin.live/v1/query/{your_route_name}",
         defaultHeaders: {
-          "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`,
-          "x-javelin-route": "sample_route1",
+          "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`
         },
     },
 });
