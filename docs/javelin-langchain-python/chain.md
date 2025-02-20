@@ -34,7 +34,7 @@ from langchain.prompts import PromptTemplate
 route_completions = "eng_dept03"
 
 gateway = JavelinAIGateway(
-    gateway_uri="https://api-dev.javelin.live/v1", 
+    gateway_uri="https://api.javelin.live/v1", 
     route=route_completions,
     model_name="text-davinci-003",
 )
@@ -55,7 +55,7 @@ print(result)
 from langchain.embeddings.openai import OpenAIEmbeddings
 
 embeddings = JavelinAIGatewayEmbeddings(
-    gateway_uri="https://api-dev.javelin.live/v1", 
+    gateway_uri="https://api.javelin.live/v1", 
     route="embeddings",
 )
 
@@ -82,7 +82,7 @@ messages = [
 ]
 
 chat = ChatJavelinAIGateway(
-    gateway_uri="https://api-dev.javelin.live/v1", 
+    gateway_uri="https://api.javelin.live/v1", 
     route="mychatbot_route",
     model_name="gpt-3.5-turbo",
     params={

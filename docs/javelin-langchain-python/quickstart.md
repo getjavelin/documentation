@@ -18,7 +18,7 @@ pip install langchain-openai
   {`# Code snippet
 
 llm = ChatOpenAI(
-    openai_api_base="https://api-dev.javelin.live/v1/query",
+    openai_api_base="https://api.javelin.live/v1/query",
     openai_api_key=openai_api_key, # OpenAI API key
     model_kwargs={
       "extra_headers":{
@@ -26,7 +26,7 @@ llm = ChatOpenAI(
         "x-javelin-route": "sample_route1" # Javelin route to use
       }
     },
-    openai_api_base="https://api-dev.javelin.live/v1/query",
+    openai_api_base="https://api.javelin.live/v1/query",
 )
 `}
 </CodeBlock>
@@ -47,7 +47,7 @@ prompt = ChatPromptTemplate.from_template("tell me a short joke about {topic}")
 # model = ChatOpenAI(model="gpt-4")
 model = ChatOpenAI(
     openai_api_key=os.getenv("OPENAI_API_KEY"),
-    openai_api_base="https://api-dev.javelin.live/v1/query",
+    openai_api_base="https://api.javelin.live/v1/query",
     model_kwargs={
         "extra_headers":{
         "x-api-key": f"{os.getenv('JAVELIN_API_KEY')}",

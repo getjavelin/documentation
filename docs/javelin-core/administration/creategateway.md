@@ -19,12 +19,12 @@ curl -X POST \
         "enabled": true,
         "config": {
             "buid": "kensho",
-            "base_url": "https://api-dev.javelin.live",
+            "base_url": "https://api.javelin.live",
             "organization_id": "org_2gaDm7xK9mDWM4JY8x4so8ndoMt",
             "system_namespace": "javelin-dev"
         }
 }' \
-"https://api-dev.javelin.live/v1/admin/gateways/corporate"`}
+"https://api.javelin.live/v1/admin/gateways/corporate"`}
 </CodeBlock>
 
 </TabItem>
@@ -46,7 +46,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # Create Javelin client
 config = JavelinConfig(
-    base_url="https://api-dev.javelin.live",
+    base_url="https://api.javelin.live",
     javelin_api_key=javelin_api_key,
     llm_api_key=llm_api_key
 )
@@ -58,7 +58,7 @@ gateway_data = {
     "enabled": True,
     "config": {
         "buid": "kensho",
-        "base_url": "https://api-dev.javelin.live",
+        "base_url": "https://api.javelin.live",
         "organization_id": "org_2gaDm7xK9mDWM4JY8x4so8ndoMt",
         "system_namespace": "javelin-dev"
     }

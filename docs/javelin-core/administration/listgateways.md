@@ -9,7 +9,7 @@ import CodeBlock from '@theme/CodeBlock';
 <CodeBlock
   language="python">
   {`
-curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1/admin/gateways"
+curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/gateways"
 `}
 </CodeBlock>
 
@@ -33,7 +33,7 @@ llm_api_key = os.getenv('LLM_API_KEY')
 
 # Create Javelin configuration
 config = JavelinConfig(
-    base_url="https://api-dev.javelin.live",
+    base_url="https://api.javelin.live",
     javelin_api_key=javelin_api_key,
     llm_api_key=llm_api_key
 )

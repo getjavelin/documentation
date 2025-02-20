@@ -25,7 +25,7 @@ Once you have created a route, you can query it using the following curl command
 
 <CodeBlock
   language="bash">
-  {`curl 'https://api-dev.javelin.live/v1/query/your_route_name' \\
+  {`curl 'https://api.javelin.live/v1/query/your_route_name' \\
   -H 'Content-Type: application/json' \\
   -H 'Authorization: Bearer YOUR_OPENAI_API_KEY' \\
   -H 'x-api-key: YOUR_JAVELIN_API_KEY' \\
@@ -59,7 +59,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 openai_api_key = os.getenv('OPENAI_API_KEY')
 route_name = 'your_route_name'
 
-url = f'https://api-dev.javelin.live/v1/query/{route_name}'
+url = f'https://api.javelin.live/v1/query/{route_name}'
 
 headers = {
     'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ llm_api_key = os.getenv("OPENAI_API_KEY")
 
 # Create Javelin configuration
 config = JavelinConfig(
-    base_url="https://api-dev.javelin.live",
+    base_url="https://api.javelin.live",
     javelin_api_key=javelin_api_key,
     llm_api_key=llm_api_key
 )
@@ -168,7 +168,9 @@ config = JavelinConfig(
 javelin_route = "sampleroute1"  # Define your universal route
 
 client = JavelinClient(config)
-
+openai_client = OpenAI(
+  api_key=openai_api_key,
+)
 # Register the OpenAI client with Javelin using the route name
 client.register_openai(openai_client, route_name=javelin_route)
 
@@ -221,7 +223,6 @@ javelin_headers = {
 javelin_route = "sampleroute1"  # Example route
 
 client = JavelinClient(config) # Create Javelin Client
-client.register_azureopenai(openai_client, route_name=javelin_route) # Register Azure OpenAI Client with Javelin
 
 # Create Azure OpenAI Client
 openai_client = AzureOpenAI(
@@ -229,6 +230,8 @@ openai_client = AzureOpenAI(
     azure_endpoint="https://javelinpreview.openai.azure.com", # Azure Endpoint
     api_key=azure_openai_api_key
 )
+
+client.register_azureopenai(openai_client, route_name=javelin_route) # Register Azure OpenAI Client with Javelin
 
 
 completion = openai_client.chat.completions.create(
@@ -296,7 +299,7 @@ javelin_headers = {
 
 llm = ChatOpenAI(
     openai_api_key=openai_api_key,
-    openai_api_base="https://api-dev.javelin.live/v1/openai",
+    openai_api_base="https://api.javelin.live/v1/openai",
     default_headers={
         "x-api-key": javelin_api_key,
         "x-javelin-route": route_name,
@@ -357,7 +360,7 @@ def print_response(provider: str, response: Dict[str, Any]) -> None:
 
 # Setup client configuration
 config = JavelinConfig(
-    base_url="https://api-dev.javelin.live",
+    base_url="https://api.javelin.live",
     javelin_api_key=os.getenv('JAVELIN_API_KEY'),
     llm_api_key=os.getenv('OPENAI_API_KEY')
 )
@@ -525,7 +528,7 @@ class Javelin(LM):
                     "stream": False
         }
 
-        self.base_url = "https://api-dev.javelin.live/v1/query/" # Set Javelin's API base URL for query
+        self.base_url = "https://api.javelin.live/v1/query/" # Set Javelin's API base URL for query
         self.javelin_headers = {
                     "Content-Type": "application/json",
                     "Authorization": f"Bearer { api_key }",
@@ -595,7 +598,7 @@ import json
 client = boto3.client(
     service_name="bedrock-runtime",
     region_name="us-east-1",
-    endpoint_url="https://api-dev.javelin.live/v1/",
+    endpoint_url="https://api.javelin.live/v1/",
 )
 
 def add_custom_headers(request, **kwargs):
@@ -685,7 +688,7 @@ Learn more about how to setup Bedrock routes to use these examples [here](../jav
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: "https://api-dev.javelin.live/v1/query",
+  baseURL: "https://api.javelin.live/v1/query",
   defaultHeaders: {
     "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`,
     "x-javelin-route": "sample_route1",
@@ -724,7 +727,7 @@ main();`}
 const llm = new ChatOpenAI({
     openAIApiKey: process.env.OPENAI_API_KEY,
     configuration: {
-        basePath: "https://api-dev.javelin.live/v1/query",
+        basePath: "https://api.javelin.live/v1/query",
         defaultHeaders: {
           "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`,
           "x-javelin-route": "sample_route1",
