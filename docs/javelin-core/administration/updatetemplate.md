@@ -36,7 +36,7 @@ curl -X PUT \
   }
 }
 ' \
-"https://api-dev.javelin.live/v1/admin/processors/dp/templates/InspectPII"
+"https://api.javelin.live/v1/admin/processors/dp/templates/InspectPII"
 
 `}
 </CodeBlock>
@@ -62,7 +62,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
 config = JavelinConfig(
-    base_url="https://api-dev.javelin.live",
+    base_url="https://api.javelin.live",
     javelin_api_key=javelin_api_key,
     llm_api_key=llm_api_key
 )
