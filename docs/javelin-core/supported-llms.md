@@ -68,25 +68,23 @@ To use a specific model through HuggingFace's router:
      hf_token: "your_huggingface_token"
    ```
 
-This configuration allows you to access various models through HuggingFace's unified API interface while maintaining compatibility with Javelin's guardrails and processing features.
+This configuration example gives you a way to access various models through HuggingFace's unified API interface while maintaining compatibility with Javelin's guardrails and processing features.
+
 
 # Fallback Behavior for Unknown Models
 
 When encountering unknown model types or custom provider combinations, Javelin implements the following fallback behavior:
 
-1. **Provider-Specific Schema Defaults**: Javelin now maintains a comprehensive set of default specifications for different providers, including:
-   - Provider-specific API endpoints and variations (chat, streaming, embeddings)
-   - Authorization methods and parameters
-   - Request/response path mappings for proper data extraction
-   - Playground templates for testing
-   - Model-specific configurations
+1. **OpenAI Schema Compatibility**: By default, Javelin will attempt to use OpenAI model specifications as a fallback for handling unknown provider/model combinations. This means:
+   - If your custom provider matches OpenAI's chat endpoint schema, Javelin's guardrails will continue to function
+   - The system expects request/response formats similar to OpenAI's chat completion endpoints
 
-2. **Schema Resolution Process**:
-   - Javelin first attempts to match the provider with known default specifications
-   - If found, uses provider-specific request/response formats and endpoints
-   - Falls back to OpenAI-compatible schema if no specific match is found
+2. **Guardrail Behavior**:
+   - For compatible schemas: All configured guardrails and processors will function normally
+   - For incompatible schemas: Requests will be proxied directly to the provider without guardrail processing
 
 3. **Response Handling**:
-   - Provider-specific formats: Processed using corresponding path mappings
-   - Default formats: Processed using OpenAI-compatible schema
-   - Custom formats: Direct proxy without modification
+   - Compatible formats: Full processing and guardrail application
+   - Incompatible formats: Direct proxy of provider responses without modification
+
+This fallback mechanism ensures basic functionality while we work on expanding native support for more provider-specific schemas. For optimal guardrail functionality, we recommend using supported model providers or ensuring your custom implementation follows OpenAI-compatible schemas.
