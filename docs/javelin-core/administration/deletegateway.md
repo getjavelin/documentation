@@ -9,7 +9,7 @@ import CodeBlock from '@theme/CodeBlock';
 <CodeBlock
   language="python">
   {`
-curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/gateways/corporate"  
+curl -X DELETE -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/gateways/corporate"  
 `}
 </CodeBlock>
 

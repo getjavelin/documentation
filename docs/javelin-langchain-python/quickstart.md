@@ -22,7 +22,7 @@ llm = ChatOpenAI(
     openai_api_key=openai_api_key, # OpenAI API key
     model_kwargs={
       "extra_headers":{
-        "x-api-key": f"{JAVELIN_API_KEY}", # Javelin API key from admin
+        "x-javelin-apikey": f"{JAVELIN_API_KEY}", # Javelin API key from admin
       }
     },
     openai_api_base="https://api.javelin.live/v1/query",
@@ -49,7 +49,7 @@ model = ChatOpenAI(
     openai_api_base="https://api.javelin.live/v1/query/{your_route_name}",
     model_kwargs={
         "extra_headers":{
-        "x-api-key": f"{os.getenv('JAVELIN_API_KEY')}"
+        "x-javelin-apikey": f"{os.getenv('JAVELIN_API_KEY')}"
         }
     }
 )

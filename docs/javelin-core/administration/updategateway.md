@@ -11,7 +11,7 @@ import CodeBlock from '@theme/CodeBlock';
   {`
 curl -X PUT \
 -H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -d '{
         "name": "corporate",
         "type": "production",
