@@ -11,7 +11,7 @@ import CodeBlock from '@theme/CodeBlock';
   {`
 curl -X POST \
 -H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -d '{
         "api_key": "openai-vkey1",
         "api_key_secret_name": "name for the secret key",

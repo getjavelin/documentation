@@ -8,7 +8,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 <CodeBlock
   language="python">
-  {`curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/gateways/corporate"  
+  {`curl -X GET -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/gateways/corporate"  
 `}
 </CodeBlock>
 

@@ -154,7 +154,7 @@ Once you have created a route, you can query it using the following curl command
   {`curl 'https://api.javelin.live/v1/query/your_route_name' \\
   -H 'Content-Type: application/json' \\
   -H 'Authorization: Bearer YOUR_OPENAI_API_KEY' \\
-  -H 'x-api-key: YOUR_JAVELIN_API_KEY' \\
+  -H 'x-javelin-apikey: YOUR_JAVELIN_API_KEY' \\
   --data-raw '{
     "model": "gpt-3.5-turbo",
     "messages": [
@@ -190,7 +190,7 @@ url = f'https://api.javelin.live/v1/query/{route_name}'
 headers = {
     'Content-Type': 'application/json',
     'Authorization': f'Bearer {openai_api_key}',
-    'x-api-key': javelin_api_key
+    'x-javelin-apikey': javelin_api_key
 }
 
 data = {
@@ -342,7 +342,7 @@ import os
 
 # Javelin Headers
 javelin_headers = {
-    "x-api-key": javelin_api_key  # Javelin API key from admin
+    "x-javelin-apikey": javelin_api_key  # Javelin API key from admin
 }
 
 # Define the Javelin route as a variable
@@ -420,14 +420,14 @@ route_name = "sampleroute1"
 
 # Define Javelin headers with the API key
 javelin_headers = {
-    "x-api-key": javelin_api_key  # Javelin API key from admin
+    "x-javelin-apikey": javelin_api_key  # Javelin API key from admin
 }
 
 llm = ChatOpenAI(
     openai_api_key=openai_api_key,
     openai_api_base="https://api.javelin.live/v1/openai",
     default_headers={
-        "x-api-key": javelin_api_key,
+        "x-javelin-apikey": javelin_api_key,
         "x-javelin-route": route_name,
         "x-javelin-provider": "https://api.openai.com/v1",
         "x-javelin-model":model_choice
@@ -658,7 +658,7 @@ class Javelin(LM):
         self.javelin_headers = {
                     "Content-Type": "application/json",
                     "Authorization": f"Bearer { api_key }",
-                    "x-api-key": javelin_api_key,
+                    "x-javelin-apikey": javelin_api_key,
         }
 
         self.history = []
@@ -840,7 +840,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   baseURL: "https://api.javelin.live/v1/query/{your_route_name}",
   defaultHeaders: {
-    "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`
+    "x-javelin-apikey": \`\${process.env.JAVELIN_API_KEY}\`
   },
 });
 
@@ -878,7 +878,7 @@ const llm = new ChatOpenAI({
     configuration: {
         basePath: "https://api.javelin.live/v1/query/{your_route_name}",
         defaultHeaders: {
-          "x-api-key": \`\${process.env.JAVELIN_API_KEY}\`
+          "x-javelin-apikey": \`\${process.env.JAVELIN_API_KEY}\`
         },
     },
 });
@@ -903,7 +903,7 @@ main();`}
   {`import { BedrockRuntimeClient, InvokeModelCommand, InvokeModelWithResponseStreamCommand } from "@aws-sdk/client-bedrock-runtime";
 
 const customHeaders = {
-  'x-api-key': JAVELIN_API_KEY
+  'x-javelin-apikey': JAVELIN_API_KEY
 };
 
 const client = new BedrockRuntimeClient({
