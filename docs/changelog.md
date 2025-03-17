@@ -1,5 +1,65 @@
 # Changelog
 
+## January 2025
+
+### Application Enhancements
+
+Introduced the concept of applications, allowing for structured app versioning and schema improvements. Added support for querying traces by trace ID, improving observability.
+
+### Security & Compliance
+
+Introduced a new Threats table for storing security-related trace records. Improved KeyVault transaction handling and validation for better security.Implemented security enhancements to prevent CORS-related vulnerabilities.
+
+### Performance & Infrastructure
+
+System Performance Metrics, Added avg_model_latency to system performance tracking. Enhanced Pub/Sub Handling, Reimplemented pub/sub for better Redis handling under load. Database Performance, Optimized query performance and improved indexing across key tables.
+
+### DevOps & CI/CD
+
+Pipeline Enhancements, Improved CI/CD pipeline, including better PR status tracking and linting. Automated changelog updates as part of the release process. Integrated Trivy scans into the build pipeline for improved security monitoring.
+
+## December 2024
+
+### Security & Compliance
+
+OpenAI-Compatible Model Specs, Updated model specs to align with Claude and OpenAI standards. Sensitive Data Protection, Enhanced filtering to prevent sensitive data leaks in API responses.
+
+### Performance & Optimization
+
+Optimized Query Performance, Added new indexes to traces and threats tables. Enhanced Caching Mechanism, Improved caching system for API responses to reduce latency.
+
+### DevOps & Automation
+
+Slack Plugin Updates, Bumped versions of Slack plugins in CI/CD pipelines. Version Bumps & Maintenance: Upgraded various dependencies and improved package management.
+
+## November 2024
+
+### New Features
+
+Transformation Rules: Introduced transformation rules for model output handling. Advanced Gateway Filtering: Added gateway filtering by Business Unit ID, Organization ID, and Type.
+
+### Security & Compliance
+
+Threat Table Enhancements: Added security detectors to trace records stored in the Threats table. Audit Logging: Improved audit logs to capture changes in routes, providers, and secrets.
+
+### Performance & DevOps
+
+Upgraded Go Version: Migrated to Go 1.23.3 for performance improvements. Dockerfile Security Enhancements: Removed non-root users for improved container security.
+
+## October 2024
+
+### API & Infrastructure Improvements
+
+Swagger Documentation Updates: Improved API documentation with better security schemes and operation IDs. KeyVault Enhancements: Enhanced transaction management and API key handling.
+
+### Security & Compliance
+
+Regex & Keyword Filtering: Introduced regex-based filtering to prevent sensitive data leaks. Security Patch for CORS Handling: Improved CORS rules to prevent unauthorized API access.
+
+### Performance Enhancements
+
+Optimized System Performance Metrics: Improved performance tracking for AI models. Improved CI/CD Pipelines: Enhanced build and deployment workflows with automated validation.
+
 ## September 2024
 
 ### Major Analytics & Telemetry Infrastructure Upgrade
