@@ -19,7 +19,7 @@ See [Python SDK](../javelin-python/quickstart) for details on how you can easily
 The **Unified Endpoints** provide a consistent API interface that abstracts the provider-specific details of various AI services. Whether you are interfacing with an OpenAI-compatible service, an Azure OpenAI deployment, or an AWS Bedrock API, these endpoints enable you to use a standardized request/response format. This documentation explains the available endpoints, their purpose, and usage examples.
 
 1. **Single Entry Points**: Instead of routing to different URLs for each provider, you call these “unified” endpoints with specific route parameters or path segments (e.g., `/completions`, `/chat/completions`, `/embeddings`, or `deployments/{deployment}/completions` in the case of Azure).
-2. **Provider-Agnostic Handling**: A common handler (e.g., `queryHandler(appState)`) receives each request and delegates it to the appropriate provider logic based on URL parameters like `providername` or `deployment`.
+2. **Provider-Agnostic Handling**: A common handler (e.g., `queryHandler(appState)`) receives each request and delegates it to the appropriate provider logic.
 3. **Consistent Request/Response Shapes**: All requests follow a uniform structure (for example, a JSON object with a `prompt`, `messages`, or `input` for embeddings). The service then translates it to each provider’s specific API format as needed.
 
 ---
@@ -32,27 +32,21 @@ These endpoints mirror the standard OpenAI API methods. They allow you to perfor
 
 #### Endpoints
 
-- **POST `/{providername}/completions`**  
+- **POST `/completions`**  
   Request text completions from the provider.  
-  **Path Parameter:**  
-  - `providername`: Identifier for the OpenAI-compatible provider.
 
-- **POST `/{providername}/chat/completions`**  
+- **POST `/chat/completions`**  
   Request chat-based completions (ideal for conversational interfaces).  
-  **Path Parameter:**  
-  - `providername`: Identifier for the provider.
 
-- **POST `/{providername}/embeddings`**  
+- **POST `/embeddings`**  
   Generate embeddings for provided text data.  
-  **Path Parameter:**  
-  - `providername`: Identifier for the provider.
 
 #### Example Usage
 
 <CodeBlock
 language="python">
 {`
-curl -X POST "https://your-api-domain.com/v1/openai/completions" \
+curl -X POST "https://your-api-domain.com/v1/completions" \
 -H "Content-Type: application/json" \
 -d '{
         "prompt": "Once upon a time",

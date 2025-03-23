@@ -11,6 +11,7 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 | [OpenAI](https://platform.openai.com/docs/models) | `https://api.openai.com/v1` | - `/completions`<br/>- `/chat/completions`<br/>- `/embeddings`<br/> |
 | [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models) | `https://<your-resource-name>.openai.azure.com` | - `/openai/deployments/{deployment-name}/completions`<br/>- `/openai/deployments/{deployment-name}/chat/completions`<br/>- `/openai/deployments/{deployment-name}/embeddings` |
 | [Google Gemini](https://ai.google.dev/models) | `https://generativelanguage.googleapis.com/v1beta/openai` | - `/chat/completions` |
+| [Anthropic](https://docs.anthropic.com/en/docs/about-claude/models/all-models) | `https://api.anthropic.com/v1` | - `/chat/completions`<br/> |
 | [Mistral](https://docs.mistral.ai/guides/model-selection/) | `https://api.mistral.ai/v1` | - `/chat/completions`<br/>- `/embeddings`<br/>     |
 | [Cohere](https://docs.cohere.com/docs/compatibility-api) | `https://api.cohere.ai/compatibility/v1` | - `/chat/completions`<br/>- `/embeddings`<br/> |
 | [Nous Research](https://portal.nousresearch.com/api-docs) | `https://inference-api.nousresearch.com/v1` | - `/completions`<br/>- `/chat/completions`<br/>    |
