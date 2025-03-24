@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.7.0">
 <title data-rh="true">Applications | javelin.</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://getjavelin.com/docs/javelin-core/integration"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Applications | javelin."><meta data-rh="true" name="description" content="Its easy to integrate applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with minimal code changes."><meta data-rh="true" property="og:description" content="Its easy to integrate applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with minimal code changes."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://getjavelin.com/docs/javelin-core/integration"><link data-rh="true" rel="alternate" href="https://getjavelin.com/docs/javelin-core/integration" hreflang="en"><link data-rh="true" rel="alternate" href="https://getjavelin.com/docs/javelin-core/integration" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.2e20e7c5.css">
-<script src="/assets/js/runtime~main.70e1bd8e.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b54d4e92.js" defer="defer"></script>
 <script src="/assets/js/main.52e457b1.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -18,7 +18,7 @@
 <p>The <strong>Unified Endpoints</strong> provide a consistent API interface that abstracts the provider-specific details of various AI services. Whether you are interfacing with an OpenAI-compatible service, an Azure OpenAI deployment, or an AWS Bedrock API, these endpoints enable you to use a standardized request/response format. This documentation explains the available endpoints, their purpose, and usage examples.</p>
 <ol>
 <li><strong>Single Entry Points</strong>: Instead of routing to different URLs for each provider, you call these “unified” endpoints with specific route parameters or path segments (e.g., <code>/completions</code>, <code>/chat/completions</code>, <code>/embeddings</code>, or <code>deployments/{deployment}/completions</code> in the case of Azure).</li>
-<li><strong>Provider-Agnostic Handling</strong>: A common handler (e.g., <code>queryHandler(appState)</code>) receives each request and delegates it to the appropriate provider logic based on URL parameters like <code>providername</code> or <code>deployment</code>.</li>
+<li><strong>Provider-Agnostic Handling</strong>: A common handler (e.g., <code>queryHandler(appState)</code>) receives each request and delegates it to the appropriate provider logic.</li>
 <li><strong>Consistent Request/Response Shapes</strong>: All requests follow a uniform structure (for example, a JSON object with a <code>prompt</code>, <code>messages</code>, or <code>input</code> for embeddings). The service then translates it to each provider’s specific API format as needed.</li>
 </ol>
 <hr>
@@ -28,32 +28,20 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="endpoints">Endpoints<a href="#endpoints" class="hash-link" aria-label="Direct link to Endpoints" title="Direct link to Endpoints">​</a></h4>
 <ul>
 <li>
-<p><strong>POST <code>/{providername}/completions</code></strong><br>
-<!-- -->Request text completions from the provider.<br>
-<strong>Path Parameter:</strong></p>
-<ul>
-<li><code>providername</code>: Identifier for the OpenAI-compatible provider.</li>
-</ul>
+<p><strong>POST <code>/completions</code></strong><br>
+<!-- -->Request text completions from the provider.</p>
 </li>
 <li>
-<p><strong>POST <code>/{providername}/chat/completions</code></strong><br>
-<!-- -->Request chat-based completions (ideal for conversational interfaces).<br>
-<strong>Path Parameter:</strong></p>
-<ul>
-<li><code>providername</code>: Identifier for the provider.</li>
-</ul>
+<p><strong>POST <code>/chat/completions</code></strong><br>
+<!-- -->Request chat-based completions (ideal for conversational interfaces).</p>
 </li>
 <li>
-<p><strong>POST <code>/{providername}/embeddings</code></strong><br>
-<!-- -->Generate embeddings for provided text data.<br>
-<strong>Path Parameter:</strong></p>
-<ul>
-<li><code>providername</code>: Identifier for the provider.</li>
-</ul>
+<p><strong>POST <code>/embeddings</code></strong><br>
+<!-- -->Generate embeddings for provided text data.</p>
 </li>
 </ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-usage">Example Usage<a href="#example-usage" class="hash-link" aria-label="Direct link to Example Usage" title="Direct link to Example Usage">​</a></h4>
-<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">curl </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">X POST </span><span class="token string" style="color:#e3116c">&quot;https://your-api-domain.com/v1/openai/completions&quot;</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">H </span><span class="token string" style="color:#e3116c">&quot;Content-Type: application/json&quot;</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">d &#x27;</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;prompt&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Once upon a time&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;max_tokens&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">50</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain">&#x27;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">curl </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">X POST </span><span class="token string" style="color:#e3116c">&quot;https://your-api-domain.com/v1/completions&quot;</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">H </span><span class="token string" style="color:#e3116c">&quot;Content-Type: application/json&quot;</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">d &#x27;</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;prompt&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Once upon a time&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;max_tokens&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">50</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain">&#x27;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>Replace openai with the appropriate openai API compatible provider name like azure, mistral, deepseek etc. as required.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-azure-openai-api-endpoints">2. Azure OpenAI API Endpoints<a href="#2-azure-openai-api-endpoints" class="hash-link" aria-label="Direct link to 2. Azure OpenAI API Endpoints" title="Direct link to 2. Azure OpenAI API Endpoints">​</a></h3>
 <p>For providers using Azure’s deployment model, endpoints include an additional parameter for deployment management.</p>
