@@ -71,7 +71,7 @@ provider_data = {
     },
 }
 
-provider = Provider.parse_obj(provider_data)
+provider = Provider.model_validate(provider_data)
 
 # create the provider, for async use \`await client.acreate_provider(provider)\`
 client.create_provider(provider)

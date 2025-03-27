@@ -38,7 +38,8 @@ config = JavelinConfig(
 client = JavelinClient(config) 
 
 # Print out the list of routes, for async use 'await client.alist_routes()'
-print(client.list_routes())`}
+routes = client.list_routes()
+print(routes.model_dump_json(indent=2))`}
 </CodeBlock>
 
 

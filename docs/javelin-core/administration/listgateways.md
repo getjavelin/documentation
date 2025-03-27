@@ -42,7 +42,8 @@ config = JavelinConfig(
 client = JavelinClient(config)
 
 # Print out the list of gateways, for async use 'await client.alist_gateways()'
-print(client.list_gateways())`}
+gateways = client.list_gateways()
+print(gateways.model_dump_json(indent=2))`}
 </CodeBlock>
 
 

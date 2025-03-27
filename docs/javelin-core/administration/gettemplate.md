@@ -44,7 +44,8 @@ client = JavelinClient(config)
 template_name = "InspectPII"
 
 # get the template, for async use \`await client.aget_template(template_name)\`
-print(client.get_template(template_name))
+fetched_template = client.get_template(template_name)
+print(fetched_template.model_dump_json(indent=2))
 `}
 </CodeBlock>
 

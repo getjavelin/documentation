@@ -41,7 +41,8 @@ config = JavelinConfig(
 client = JavelinClient(config)
 
 # print out the list of templates, for async use \`await client.alist_templates()\`
-print(client.list_templates())
+templates = client.list_templates()
+print(templates.model_dump_json(indent=2))
 `}
 </CodeBlock>
 

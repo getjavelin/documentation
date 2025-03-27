@@ -41,7 +41,8 @@ config = JavelinConfig(
 client = JavelinClient(config)
 
 # print out the list of secrets, for async use \`await client.alist_secrets()\`
-print(client.list_secrets())
+secrets = client.list_secrets()
+print(secrets.model_dump_json(indent=2))
 `}
 </CodeBlock>
 

@@ -185,7 +185,7 @@ template_data = {
     // Add your template data here
 }
 
-template = Template.parse_obj(template_data)
+template = Template.model_validate(template_data)
 
 # create the template, for async use \`await client.acreate_template(template)\`
 client.create_template(template)

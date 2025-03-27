@@ -41,7 +41,8 @@ client = JavelinClient(config)
 route_name = "test_route_1"
 
 # Get the route, for async use 'await client.aget_route(route_name)'
-print(client.get_route(route_name))`}
+fetched_route = client.get_route(route_name)
+print(fetched_route.model_dump_json(indent=2))`}
 </CodeBlock>
 
 

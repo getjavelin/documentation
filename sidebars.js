@@ -6,6 +6,7 @@ module.exports = {
     ],
     'Integrating Applications': [
       'javelin-core/integration',
+      'javelin-core/huggingface',
     ],
     'Features': [
       {

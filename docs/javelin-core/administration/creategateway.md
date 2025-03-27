@@ -64,7 +64,7 @@ gateway_data = {
     }
 }
 
-gateway = Gateway.parse_obj(gateway_data)
+gateway = Gateway.model_validate(gateway_data)
 
 # Create the gateway, for async use 'await client.acreate_gateway(gateway)'
 client.create_gateway(gateway)`}

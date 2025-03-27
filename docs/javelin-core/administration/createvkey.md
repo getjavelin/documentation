@@ -57,7 +57,7 @@ secret_data = {
     // Add your secret data here
 }
 
-secret = Secret.parse_obj(secret_data)
+secret = Secret.model_validate(secret_data)
 
 # create the secret, for async use \`await client.acreate_secret(secret)\`
 client.create_secret(secret)

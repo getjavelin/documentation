@@ -95,7 +95,7 @@ route_data = {
     },
 }
 
-route = Route.parse_obj(route_data)
+route = Route.model_validate(route_data)
 
 # create the route, for async use \`await client.acreate_route(route)\`
 client.create_route(route)
