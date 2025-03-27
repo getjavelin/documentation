@@ -34,13 +34,13 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 # create javelin client
 config = JavelinConfig(
     base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)
 
 # print out the list of providers, for async use \`await client.alist_providers()\`
-print(client.list_providers())
+providers = client.list_providers()
+print(providers.model_dump_json(indent=2))
 `}
 </CodeBlock>
 

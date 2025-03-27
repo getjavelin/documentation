@@ -35,8 +35,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 # create javelin client
 config = JavelinConfig(
     base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)
 
@@ -44,7 +43,8 @@ client = JavelinClient(config)
 template_name = "InspectPII"
 
 # get the template, for async use \`await client.aget_template(template_name)\`
-print(client.get_template(template_name))
+fetched_template = client.get_template(template_name)
+print(fetched_template.model_dump_json(indent=2))
 `}
 </CodeBlock>
 

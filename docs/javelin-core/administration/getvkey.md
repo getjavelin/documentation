@@ -35,8 +35,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 # create javelin client
 config = JavelinConfig(
     base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)
 
@@ -44,7 +43,8 @@ client = JavelinClient(config)
 secret_name = "openai-vkey1"
 
 # get the secret, for async use \`await client.aget_secret(secret_name)\`
-print(client.get_secret(secret_name))
+fetched_secret = client.get_secret(secret_name)
+print(fetched_secret.model_dump_json(indent=2))
 `}
 </CodeBlock>
 

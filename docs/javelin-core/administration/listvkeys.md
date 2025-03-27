@@ -35,13 +35,13 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 # create javelin client
 config = JavelinConfig(
     base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)
 
 # print out the list of secrets, for async use \`await client.alist_secrets()\`
-print(client.list_secrets())
+secrets = client.list_secrets()
+print(secrets.model_dump_json(indent=2))
 `}
 </CodeBlock>
 

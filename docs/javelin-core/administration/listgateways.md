@@ -29,20 +29,19 @@ import os
 
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
-llm_api_key = os.getenv('LLM_API_KEY')
 
 # Create Javelin configuration
 config = JavelinConfig(
     base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    javelin_api_key=javelin_api_key
 )
 
 # Create Javelin client
 client = JavelinClient(config)
 
 # Print out the list of gateways, for async use 'await client.alist_gateways()'
-print(client.list_gateways())`}
+gateways = client.list_gateways()
+print(gateways.model_dump_json(indent=2))`}
 </CodeBlock>
 
 

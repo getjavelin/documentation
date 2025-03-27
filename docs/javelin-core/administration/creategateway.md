@@ -47,8 +47,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 # Create Javelin client
 config = JavelinConfig(
     base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)
 
@@ -64,7 +63,7 @@ gateway_data = {
     }
 }
 
-gateway = Gateway.parse_obj(gateway_data)
+gateway = Gateway.model_validate(gateway_data)
 
 # Create the gateway, for async use 'await client.acreate_gateway(gateway)'
 client.create_gateway(gateway)`}

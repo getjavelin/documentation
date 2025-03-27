@@ -28,7 +28,9 @@ title=""
     JavelinClient,
     JavelinConfig,
     Route,
-    NetworkError
+    NetworkError,
+    RouteNotFoundError,
+    UnauthorizedError
 )
 
 import os, sys
@@ -37,15 +39,15 @@ try:
     javelin_api_key = os.getenv('JAVELIN_API_KEY')
     llm_api_key = os.getenv("OPENAI_API_KEY")
 
+    # Update the base_url to point to your dev, staging, or production environments
     config = JavelinConfig(
-        base_url="https://api.javelin.live",
-        javelin_api_key=javelin_api_key,
-        llm_api_key=llm_api_key,
+        base_url="https://api.javelin.live",   # Use appropriate environment URL
+        javelin_api_key=javelin_api_key,       # API key for Javelin authentication
+        llm_api_key=llm_api_key,               # API key for LLM provider (e.g., OpenAI)   
     )
     client = JavelinClient(config)
 
-
-    print('sucessfully connected to Javelin Client')
+    print('successfully connected to Javelin Client')
 
 except NetworkError as e:
     print("Failed to create client: Network Error")
@@ -61,28 +63,28 @@ With the client set up, you can make requests to the Javelin API:
 language="python"
 title=""
 >
-{`# Create a route object
+{`# Define route configuration data
 route_data = {
-    "name": "test_route_1",
-    "type": "chat",
+    "name": "test_route_1",                   # Unique name for the route
+    "type": "chat",                           # Route type (e.g., chat, completion, etc.)
     "models": [
         {
-            "name": "gpt-3.5-turbo",
-            "enabled": True,
-            "provider": "openai",
-            "suffix": "/v1/chat/completions",
+            "name": "gpt-3.5-turbo",          # Model name to be used
+            "enabled": True,                  # Enable/disable this route
+            "provider": "openai",             # Model provider
+            "suffix": "/chat/completions",    # API endpoint suffix
         }
     ],
     "config": {
-        "archive": True,
-        "organization": "myusers",
-        "retries": 3,
-        "rate_limit": 7,
+        "archive": True,                      # Archive the request/responses for this route
+        "organization": "myusers",            # Organization associated with this route
+        "retries": 3,                         # Number of retry attempts in case of failure
+        "rate_limit": 7,                      # Maximum requests per second allowed for this route
     },
 }
 
-# serialize
-route = Route.parse_obj(route_data)
+# Validate and create a Route object from the route configuration data dictionary
+route = Route.model_validate(route_data)
 
 # create a route
 try:
@@ -103,7 +105,8 @@ language="python"
 title=""
 >
 {`try:
-    client.get_route(route.name)
+    fetched_route = client.get_route(route.name)
+    print(fetched_route.model_dump_json(indent=2))
 except RouteNotFoundError as e:
     print("Failed to get route: Route Not Found")
 `}
