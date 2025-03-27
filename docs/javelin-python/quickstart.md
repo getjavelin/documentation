@@ -47,7 +47,7 @@ try:
     )
     client = JavelinClient(config)
 
-    print('sucessfully connected to Javelin Client')
+    print('successfully connected to Javelin Client')
 
 except NetworkError as e:
     print("Failed to create client: Network Error")

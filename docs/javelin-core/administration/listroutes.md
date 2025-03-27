@@ -32,8 +32,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 # Create Javelin client
 config = JavelinConfig(
     base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config) 
 
