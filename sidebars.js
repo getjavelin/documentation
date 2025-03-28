@@ -18,6 +18,13 @@ module.exports = {
       },
       {
         type: 'category',
+        label: 'Alerts',
+        items: [
+          'javelin-admin/alerts/overview'
+        ]
+      },
+      {
+        type: 'category',
         label: 'Fallback Routing',
         items: [
           'javelin-core/fallbackrouting/overview',
