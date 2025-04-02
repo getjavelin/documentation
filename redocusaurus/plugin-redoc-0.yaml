@@ -194,7 +194,7 @@ definitions:
 info:
   contact: {}
 servers:
-  - url: https://api-dev.javelin.live
+  - url: https://your-api-domain.com
 paths:
   /v1/admin/dataprotection/templates:
     get:
