@@ -8,7 +8,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 <CodeBlock
   language="python">
-  {`curl -X GET -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/providers/openai"  
+  {`curl -X GET -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://your-api-domain.com/v1/admin/providers/openai"  
 `}
 </CodeBlock>
 
@@ -30,13 +30,11 @@ import os
 
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
-llm_api_key = os.getenv('LLM_API_KEY')
 
 # Create Javelin configuration
 config = JavelinConfig(
-    base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
 )
 
 # Create Javelin client
@@ -46,7 +44,8 @@ client = JavelinClient(config)
 provider_name = "openai"
 
 # get the provider, for async use \`await client.aget_provider(provider_name)\`
-print(client.get_provider(provider_name))
+fetched_provider = client.get_provider(provider_name)
+print(fetched_provider.model_dump_json(indent=2))
 `}
 </CodeBlock>
 

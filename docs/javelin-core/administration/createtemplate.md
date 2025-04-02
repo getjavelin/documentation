@@ -150,7 +150,7 @@ curl -X POST \
             "likelihood": "Likely"
         }
 }' \
-"https://api.javelin.live/v1/admin/processors/dp/templates/inspect"
+"https://your-api-domain.com/v1/admin/processors/dp/templates/inspect"
 `}
 </CodeBlock>
 
@@ -175,9 +175,8 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
 config = JavelinConfig(
-    base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)
 
@@ -185,7 +184,7 @@ template_data = {
     // Add your template data here
 }
 
-template = Template.parse_obj(template_data)
+template = Template.model_validate(template_data)
 
 # create the template, for async use \`await client.acreate_template(template)\`
 client.create_template(template)

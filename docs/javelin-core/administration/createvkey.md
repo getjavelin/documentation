@@ -21,7 +21,7 @@ curl -X POST \
         "group": "demo",
         "enabled": true
 }' \
-"https://api.javelin.live/v1/admin/providers/openai/keyvault/openai-vkey1"
+"https://your-api-domain.com/v1/admin/providers/openai/keyvault/openai-vkey1"
 `}
 </CodeBlock>
 
@@ -46,9 +46,8 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
 config = JavelinConfig(
-  base_url="https://api.javelin.live",
-  javelin_api_key=javelin_api_key,
-  llm_api_key=llm_api_key
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)
 
@@ -63,7 +62,7 @@ secret_data = {
   "enabled": True,
 }
 
-secret = Secret.parse_obj(secret_data)
+secret = Secret.model_validate(secret_data)
 
 # create the secret, for async use \`await client.acreate_secret(secret)\`
 client.create_secret(secret)

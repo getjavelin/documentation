@@ -25,7 +25,7 @@ import CodeBlock from '@theme/CodeBlock';
             "deployment_name": ""
         }
   }' \\
-  "https://api.javelin.live/v1/admin/providers/openai"`}
+  "https://your-api-domain.com/v1/admin/providers/openai"`}
 </CodeBlock>
 
 
@@ -46,13 +46,11 @@ import os
 
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
-llm_api_key = os.getenv('LLM_API_KEY')
 
 # Create Javelin configuration
 config = JavelinConfig(
-    base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
 )
 
 # Create Javelin client
@@ -71,7 +69,7 @@ provider_data = {
     },
 }
 
-provider = Provider.parse_obj(provider_data)
+provider = Provider.model_validate(provider_data)
 
 # create the provider, for async use \`await client.acreate_provider(provider)\`
 client.create_provider(provider)

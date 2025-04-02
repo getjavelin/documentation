@@ -38,7 +38,7 @@ curl -X POST \
             }
         }
 }' \
-"https://api.javelin.live/v1/admin/routes/test_route_1"
+"https://your-api-domain.com/v1/admin/routes/test_route_1"
 `}
 </CodeBlock>
 
@@ -62,9 +62,8 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
 config = JavelinConfig(
-    base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)
 
@@ -95,7 +94,7 @@ route_data = {
     },
 }
 
-route = Route.parse_obj(route_data)
+route = Route.model_validate(route_data)
 
 # create the route, for async use \`await client.acreate_route(route)\`
 client.create_route(route)

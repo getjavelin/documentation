@@ -6,6 +6,7 @@ module.exports = {
     'Integrating Applications': [
       'javelin-core/supported-llms',
       'javelin-core/integration',
+      'javelin-core/huggingface',
     ],
     'Features': [
       {
@@ -13,6 +14,13 @@ module.exports = {
         label: 'Threat Alerts',
         items: [
           'javelin-webapp/threat-alerts/overview'
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Alerts',
+        items: [
+          'javelin-admin/alerts/overview'
         ]
       },
       {

@@ -9,7 +9,7 @@ import CodeBlock from '@theme/CodeBlock';
 <CodeBlock
   language="python">
   {`
-curl -X GET -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/routes/test_route_1"  
+curl -X GET -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://your-api-domain.com/v1/admin/routes/test_route_1"  
 `}
 </CodeBlock>
 
@@ -31,9 +31,8 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
    
 # Create Javelin client
 config = JavelinConfig(
-    base_url="https://api.javelin.live",
-    javelin_api_key=javelin_api_key,
-    llm_api_key=llm_api_key
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)
 
@@ -41,7 +40,8 @@ client = JavelinClient(config)
 route_name = "test_route_1"
 
 # Get the route, for async use 'await client.aget_route(route_name)'
-print(client.get_route(route_name))`}
+fetched_route = client.get_route(route_name)
+print(fetched_route.model_dump_json(indent=2))`}
 </CodeBlock>
 
 
