@@ -145,7 +145,7 @@ Once you have created a route, you can query it using the following curl command
 
 <CodeBlock
   language="bash">
-  {`curl 'https://api.javelin.live/v1/query/your_route_name' \\
+  {`curl 'https://your-api-domain.com/v1/query/your_route_name' \\
   -H 'Content-Type: application/json' \\
   -H 'Authorization: Bearer YOUR_OPENAI_API_KEY' \\
   -H 'x-javelin-apikey: YOUR_JAVELIN_API_KEY' \\
@@ -179,7 +179,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 openai_api_key = os.getenv('OPENAI_API_KEY')
 route_name = 'your_route_name'
 
-url = f'https://api.javelin.live/v1/query/{route_name}'
+url = f'https://your-api-domain.com/v1/query/{route_name}'
 
 headers = {
     'Content-Type': 'application/json',
@@ -230,7 +230,7 @@ llm_api_key = os.getenv("OPENAI_API_KEY")
 
 # Create Javelin configuration
 config = JavelinConfig(
-    base_url="https://api.javelin.live",
+    base_url="https://your-api-domain.com",
     javelin_api_key=javelin_api_key,
     llm_api_key=llm_api_key
 )
@@ -419,7 +419,7 @@ javelin_headers = {
 
 llm = ChatOpenAI(
     openai_api_key=openai_api_key,
-    openai_api_base="https://api.javelin.live/v1/openai",
+    openai_api_base="https://your-api-domain.com/v1/openai",
     default_headers={
         "x-javelin-apikey": javelin_api_key,
         "x-javelin-route": route_name,
@@ -480,7 +480,7 @@ def print_response(provider: str, response: Dict[str, Any]) -> None:
 
 # Setup client configuration
 config = JavelinConfig(
-    base_url="https://api.javelin.live",
+    base_url="https://your-api-domain.com",
     javelin_api_key=os.getenv('JAVELIN_API_KEY'),
     llm_api_key=os.getenv('OPENAI_API_KEY')
 )
@@ -648,7 +648,7 @@ class Javelin(LM):
                     "stream": False
         }
 
-        self.base_url = "https://api.javelin.live/v1/query/your_route_name" # Set Javelin's API base URL for query
+        self.base_url = "https://your-api-domain.com/v1/query/your_route_name" # Set Javelin's API base URL for query
         self.javelin_headers = {
                     "Content-Type": "application/json",
                     "Authorization": f"Bearer { api_key }",
@@ -832,7 +832,7 @@ Learn more about how to setup Universal Bedrock routes to use this example [here
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: "https://api.javelin.live/v1/query/{your_route_name}",
+  baseURL: "https://your-api-domain.com/v1/query/{your_route_name}",
   defaultHeaders: {
     "x-javelin-apikey": \`\${process.env.JAVELIN_API_KEY}\`
   },
@@ -870,7 +870,7 @@ main();`}
 const llm = new ChatOpenAI({
     openAIApiKey: process.env.OPENAI_API_KEY,
     configuration: {
-        basePath: "https://api.javelin.live/v1/query/{your_route_name}",
+        basePath: "https://your-api-domain.com/v1/query/{your_route_name}",
         defaultHeaders: {
           "x-javelin-apikey": \`\${process.env.JAVELIN_API_KEY}\`
         },
