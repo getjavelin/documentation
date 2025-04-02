@@ -14,10 +14,9 @@ curl -X POST \
 -H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -d '{
         "api_key": "openai-vkey1",
-        "api_key_secret_name": "name for the secret key",
         "api_key_secret_key": "secret key",
         "provider_name": "openai",
-        "header_key": "",
+        "header_key": "Authorization",
         "query_param_key": "",
         "group": "demo",
         "enabled": true
@@ -41,7 +40,7 @@ curl -X POST \
 )
 
 import os
-    
+
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
@@ -53,7 +52,14 @@ config = JavelinConfig(
 client = JavelinClient(config)
 
 secret_data = {
-    // Add your secret data here
+  # Add your secret data here
+  "api_key": "openai-vkey1",
+  "api_key_secret_key": "<OPENAI_API_KEY>",
+  "provider_name": "openai", # Change this to your provider name (e.g., 'anthropic', 'mistral')
+  "header_key": "Authorization",
+  "query_param_key": "",
+  "group": "demo",
+  "enabled": True,
 }
 
 secret = Secret.model_validate(secret_data)

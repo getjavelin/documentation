@@ -32,6 +32,8 @@ export JAVELIN_API_KEY=your_api_key`}
 <CodeBlock language="shell">
   {`javelin auth`}
   </CodeBlock>
+  
+<!--
 ### Gateway Management
   
 - **Create a gateway**:  
@@ -57,7 +59,7 @@ export JAVELIN_API_KEY=your_api_key`}
 - **Delete a gateway**:  
   <CodeBlock language="shell">
   {`javelin gateway delete --name "example_gateway"`}
-  </CodeBlock>
+  </CodeBlock> -->
 
 ### Provider Management
   
