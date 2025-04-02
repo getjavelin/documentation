@@ -30,7 +30,7 @@ dotenv.load_dotenv()
 
 try:
     config = JavelinConfig(
-        base_url="https://api-dev.javelin.live",   # Use appropriate environment URL
+        base_url="https://your-api-domain.com",   # Use appropriate environment URL
         javelin_api_key=os.getenv('JAVELIN_API_KEY'),
         llm_api_key=os.getenv("OPENAI_API_KEY")
     )
@@ -56,20 +56,20 @@ openai_provider = Provider(
     name="OpenAI",
     type="openai",
     config={
-        "api_base": "https://api.openai.com/v1",
+        "api_base": "https://api.openai.com/v1"
     }
 )
 client.create_provider(openai_provider)
 `}
 </CodeBlock>
 
-## 4. Creating a Protected Route
+## 4. Creating a Route
 
-Set up a route with prompt safety settings to protect against malicious prompts:
+Set up a route with prompt safety settings to protect against prompt injection attacks:
 
 <CodeBlock
 language="python"
-title="Creating a Protected Route">
+title="Creating a Route">
 {`from javelin_sdk import Route
 
 # Define route configuration data
@@ -86,16 +86,27 @@ route_data = {
         }
     ],
     "config": {
+        # Enable request archiving for audit and analysis purposes
         "archive": True,
+        
+        # Number of retry attempts if the request fails
         "retries": 5,
+        
+        # Rate limit in requests per second (0 means no limit)
         "rate_limit": 0,
+        
+        # Prompt safety configuration to protect against prompt injection attacks
         "prompt_safety": {
             "enabled": True,
+            
+            # HTTP status code to return when a prompt is rejected
             "error_code": 200,
             "content_types": [
                 {
                     "operator": "greater_than",
                     "restriction": "prompt_injection",
+                    
+                    # Threshold value (0.0 to 1.0) - prompts with higher probability will be rejected
                     "probability_threshold": 0.25
                 },
                 {
@@ -104,6 +115,8 @@ route_data = {
                     "probability_threshold": 0.25
                 }
             ],
+            
+            # Message to return when a prompt is rejected
             "reject_prompt": "Rejected from prompt safety policy."
         }
     }
@@ -214,7 +227,7 @@ def main():
     # 1. Initialize the Javelin client
     try:
         config = JavelinConfig(
-            base_url="https://api-dev.javelin.live",
+            base_url="https://your-api-domain.com",
             javelin_api_key=os.getenv("JAVELIN_API_KEY"),
             llm_api_key=os.getenv("OPENAI_API_KEY")
         )
@@ -235,7 +248,7 @@ def main():
     client.create_provider(openai_provider)
     print('Successfully created OpenAI provider')
 
-    # 3. Create a protected route
+    # 3. Create a route
     route_data = {
         "name": "openai_route",
         "enabled": True,
