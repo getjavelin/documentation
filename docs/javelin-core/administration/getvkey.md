@@ -42,9 +42,11 @@ client = JavelinClient(config)
 
 # secret name to get is "openai-vkey1"
 secret_name = "openai-vkey1"
+provider_name = "openai"
 
 # get the secret, for async use \`await client.aget_secret(secret_name)\`
-print(client.get_secret(secret_name))
+fetched_secret = client.get_secret(secret_name, provider_name)
+print(fetched_secret.model_dump_json(indent=2))
 `}
 </CodeBlock>
 
