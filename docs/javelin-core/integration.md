@@ -2,7 +2,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
-# Applications
+# Routes & Unified Endpoints
 
 Its easy to integrate applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with minimal code changes.
 
@@ -18,11 +18,9 @@ See [Python SDK](../javelin-python/quickstart) for details on how you can easily
 
 The **Unified Endpoints** provide a consistent API interface that abstracts the provider-specific details of various AI services. Whether you are interfacing with an OpenAI-compatible service, an Azure OpenAI deployment, or an AWS Bedrock API, these endpoints enable you to use a standardized request/response format. This documentation explains the available endpoints, their purpose, and usage examples.
 
-1. **Single Entry Points**: Instead of routing to different URLs for each provider, you call these “unified” endpoints with specific route parameters or path segments (e.g., `/completions`, `/chat/completions`, `/embeddings`, or `deployments/{deployment}/completions` in the case of Azure).
-2. **Provider-Agnostic Handling**: A common handler (e.g., `queryHandler(appState)`) receives each request and delegates it to the appropriate provider logic.
-3. **Consistent Request/Response Shapes**: All requests follow a uniform structure (for example, a JSON object with a `prompt`, `messages`, or `input` for embeddings). The service then translates it to each provider’s specific API format as needed.
+1. **Single Entry Points**: Instead of routing to different URLs for each provider, you call these “unified” endpoints with specific route parameters or path segments (e.g., `/completions`, `/chat/completions`, `/embeddings`, or `/openai/deployments/{deployment}/chat/completions` in the case of Azure).
 
----
+2. **Consistent Request/Response Shapes**: All requests follow a uniform structure (for example, a JSON object with a `prompt`, `messages`, or `input` for embeddings). The service then translates it to each provider’s specific API format as needed.
 
 ## Endpoint Breakdown
 
@@ -63,19 +61,19 @@ For providers using Azure’s deployment model, endpoints include an additional 
 
 #### Endpoints
 
-- **POST `/{providername}/deployments/{deployment}/completions`**  
+- **POST `/openai/deployments/{deployment}/completions`**  
   Request text completions from the provider.  
   **Path Parameter:**  
   - `providername`: The Azure OpenAI provider identifier.
   - `deployment`: The deployment ID configured in Azure.
 
-- **POST `/{providername}/deployments/{deployment}/chat/completions`**  
+- **POST `/openai/deployments/{deployment}/chat/completions`**  
   Request chat-based completions (ideal for conversational interfaces).  
   **Path Parameter:**  
   - `providername`: The Azure OpenAI provider identifier.
   - `deployment`: The deployment ID configured in Azure.
 
-- **POST `/{providername}/deployments/{deployment}/embeddings`**  
+- **POST `/openai/deployments/{deployment}/embeddings`**  
   Generate embeddings for provided text data.  
   **Path Parameter:**  
   - `providername`: The Azure OpenAI provider identifier.
@@ -86,7 +84,7 @@ For providers using Azure’s deployment model, endpoints include an additional 
 <CodeBlock
 language="python">
 {`
-curl -X POST "https://your-api-domain.com/v1/azure/deployments/my-deployment/chat/completions" \
+curl -X POST "https://your-api-domain.com/v1/openai/deployments/my-deployment/chat/completions" \
 -H "Content-Type: application/json" \
 -d '{
         "messages": [

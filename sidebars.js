@@ -1,10 +1,10 @@
 module.exports = {  
   someSidebar: {
     'Getting Started': [
-      'javelin-core/overview', 
-      'javelin-core/supported-llms',
+      'javelin-core/overview'
     ],
     'Integrating Applications': [
+      'javelin-core/supported-llms',
       'javelin-core/integration',
     ],
     'Features': [
@@ -134,7 +134,6 @@ module.exports = {
       },
     ],  
     'Playground': [
-      'javelin-core/playground/overview',
       'javelin-core/playground/playground',
     ],
     'Python SDK': [
@@ -148,6 +147,7 @@ module.exports = {
           'javelin-python/exceptions'
         ]
       },
+      /*
       {
         type: 'category',
         label: 'Setting Up Gateways',
@@ -160,6 +160,7 @@ module.exports = {
           'javelin-core/administration/deletegateway',
         ]
       },
+      */
       {
         type: 'category',
         label: 'Setting Up Providers',

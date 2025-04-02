@@ -39,9 +39,11 @@ We are always adding support for new models, supported models include those from
 | [TogetherAI](https://www.together.ai/) |                                |                                                                  |
 | **and more...**             |                                    |                                                                         |
 
-## HuggingFace Integration
+## Hugging Face Models Integration
 
-HuggingFace offers flexible integration options through their router API. Here's how to configure it:
+Hugging Face offers flexible integration options through their router API, allowing you to connect to a wide range of open-source models.
+
+As of now, Hugging Face hosts over **1,565,524 models**, covering tasks such as text generation, classification, translation, question answering, and more.
 
 ### Router API Configuration
 
