@@ -27,7 +27,7 @@ curl -X PUT \
             "retries": 5
         }
 }' \
-"https://api.javelin.live/v1/admin/routes/test_route_1"
+"https://api-dev.javelin.live/v1/admin/routes/test_route_1"
 
 `}
 </CodeBlock>
@@ -49,7 +49,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # Create Javelin configuration
 config = JavelinConfig(
-    base_url="https://api.javelin.live",
+    base_url="https://api-dev.javelin.live",
     javelin_api_key=javelin_api_key
 )
 

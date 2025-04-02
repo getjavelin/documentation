@@ -9,7 +9,7 @@ import CodeBlock from '@theme/CodeBlock';
 <CodeBlock
   language="python">
   {`
-curl -X GET -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/providers/openai/keyvault/openai-vkey1"  
+curl -X GET -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1/admin/providers/openai/keyvault/openai-vkey1"  
 `}
 </CodeBlock>
 
@@ -34,7 +34,7 @@ javelin_api_key = os.getenv('JAVELIN_API_KEY')
    
 # create javelin client
 config = JavelinConfig(
-    base_url="https://api.javelin.live",
+    base_url="https://api-dev.javelin.live",
     javelin_api_key=javelin_api_key
 )
 client = JavelinClient(config)

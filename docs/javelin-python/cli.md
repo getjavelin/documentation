@@ -23,7 +23,7 @@ Before using the CLI, set up the required environment variables:
 export JAVELIN_API_KEY=your_api_key`}
 </CodeBlock>
 
-- **JAVELIN_BASE_URL**: Set this to the base URL of your deployment (defaults to https://api.javelin.live).
+- **JAVELIN_BASE_URL**: Set this to the base URL of your deployment (defaults to https://api-dev.javelin.live).
 - **JAVELIN_API_KEY**: Please provide a valid Javelin API Key. When you sign into Javelin, you can find your API Key in the Account -> Developer settings.
 
 ## Commands Overview
