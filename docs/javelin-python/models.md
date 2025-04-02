@@ -1,5 +1,6 @@
 # Data Model
 
+<!--
 ### `Gateways`
 
 **Fields**:
@@ -29,13 +30,38 @@
 - `organization_id`: The identifier for the organization using this gateway. This ensures that the gateway’s settings are correctly associated with the organization, facilitating better management and access control.
 - `system_namespace`: A unique namespace within the system to prevent naming conflicts and to organize resources logically. It helps in managing the scope and accessibility of the configurations and resources within the gateway.
 
----
+--- 
+-->
 
-### `Routes`
+### `Provider`
 
 **Fields**:
 
-- `routes`: List of [route](./models.md#route) objects.
+- `name`: The unique identifier for this provider.
+- `type`: Type of the Provider.
+- `enabled`: Whether the provider is enabled.
+- `vault_enabled`: Whether the secrets vault is enabled.
+- `config`: [Configuration](./models.md#providerconfig) for the provider.
+
+---
+
+### `ProviderConfig`
+
+**Fields**:
+
+- `api_base`: Base URL of the API.
+- `api_type`: Type of the API.
+- `api_version`: Version of the API.
+- `deployment_name`: Name of the deployment.
+- `organization`: Name of the organization.
+
+---
+
+### `Providers`
+
+**Fields**:
+
+- `providers`: List of [provider](./models.md#provider) objects.
 
 ---
 
@@ -66,6 +92,14 @@
 
 ---
 
+### `Routes`
+
+---
+
+**Fields**:
+
+- `routes`: List of [route](./models.md#route) objects.
+
 ### `budget`
 
 **Fields**:
@@ -84,46 +118,6 @@
 
 - `enabled`: Enable/Disable Data Loss Prevention(DLP).
 - `strategy`: Data Loss Prevention strategy inspect or de-identify.
-
----
-
-### `Providers`
-
-**Fields**:
-
-- `providers`: List of [provider](./models.md#provider) objects.
-
----
-
-### `Provider`
-
-**Fields**:
-
-- `name`: The unique identifier for this provider.
-- `type`: Type of the Provider.
-- `enabled`: Whether the provider is enabled.
-- `vault_enabled`: Whether the secrets vault is enabled.
-- `config`: [Configuration](./models.md#providerconfig) for the provider.
-
----
-
-### `ProviderConfig`
-
-**Fields**:
-
-- `api_base`: Base URL of the API.
-- `api_type`: Type of the API.
-- `api_version`: Version of the API.
-- `deployment_name`: Name of the deployment.
-- `organization`: Name of the organization.
-
----
-
-### `Templates`
-
-**Fields**:
-
-- `templates`: List of [template](./models.md#template) objects.
 
 ---
 
@@ -152,6 +146,38 @@
 
 ---
 
+### `Secret`
+
+**Fields**:
+
+- `api_key`: Key of the Secret.
+- `api_key_secret_name`: Name of the Secret.
+- `api_key_secret_key`: API Key of the Secret.
+- `api_key_secret_key_javelin`: Virtual API Key of the Secret.
+- `provider_name`: Provider Name of the Secret.
+- `query_param_key`: Query Param Key of the Secret.
+- `header_key`: Header Key of the Secret.
+- `group`: Group of the Secret.
+- `enabled`: Whether the secret is enabled.
+
+---
+
+### `Secrets`
+
+**Fields**:
+
+- `secrets`: List of [secret](./models.md#secret) objects.
+
+---
+
+### `Templates`
+
+**Fields**:
+
+- `templates`: List of [template](./models.md#template) objects.
+
+---
+
 ### `infoType`
 
 **Fields**:
@@ -168,30 +194,6 @@
 **Fields**:
 
 - `method`: Method of the transformation Mask, Redact, Replace, etc.
-
----
-
-### `Secrets`
-
-**Fields**:
-
-- `secrets`: List of [secret](./models.md#secret) objects.
-
----
-
-### `Secret`
-
-**Fields**:
-
-- `api_key`: Key of the Secret.
-- `api_key_secret_name`: Name of the Secret.
-- `api_key_secret_key`: API Key of the Secret.
-- `api_key_secret_key_javelin`: Virtual API Key of the Secret.
-- `provider_name`: Provider Name of the Secret.
-- `query_param_key`: Query Param Key of the Secret.
-- `header_key`: Header Key of the Secret.
-- `group`: Group of the Secret.
-- `enabled`: Whether the secret is enabled.
 
 ---
 
