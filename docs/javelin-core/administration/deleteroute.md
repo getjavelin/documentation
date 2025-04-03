@@ -20,8 +20,7 @@ curl -X DELETE -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://your-api-domain.
   language="python">
   {`from javelin_sdk import (
     JavelinClient,
-    JavelinConfig,
-    Route
+    JavelinConfig   
 )
 import os
 

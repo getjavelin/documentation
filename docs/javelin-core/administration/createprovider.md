@@ -39,7 +39,8 @@ import CodeBlock from '@theme/CodeBlock';
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
-    Provider
+    Provider,
+    JavelinConfig
 )
 
 import os

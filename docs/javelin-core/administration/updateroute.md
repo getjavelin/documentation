@@ -39,7 +39,7 @@ curl -X PUT \
   language="python">
   {`from javelin_sdk import (
     JavelinClient,
-    Route
+    JavelinConfig
 )
 
 import os
