@@ -40,9 +40,10 @@ client = JavelinClient(config)
 
 # secret name to delete is "openai-vkey1"
 secret_name = "openai-vkey1"
+provider = "openai"
 
 # delete the secret, for async use \`await client.adelete_secret(secret_name)\`
-client.delete_secret(secret_name) 
+client.delete_secret(secret_name, provider) 
 `}
 </CodeBlock>
 

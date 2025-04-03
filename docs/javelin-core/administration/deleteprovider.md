@@ -23,8 +23,7 @@ curl -X DELETE -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://your-api-domain.
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
-    JavelinConfig,
-    Provider
+    JavelinConfig
 )
 import os
  

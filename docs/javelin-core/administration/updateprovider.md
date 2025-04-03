@@ -37,8 +37,7 @@ curl -X PUT \
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
-    JavelinConfig,
-    Provider
+    JavelinConfig
 )
 
 import os
