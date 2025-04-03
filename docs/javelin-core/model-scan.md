@@ -15,7 +15,7 @@ Model Scan is a powerful feature designed to assess and identify potential vulne
 
 ## Starting/Configuring a Scan
 
-To initiate a Model Scan, navigate to the Model Assessments page in the Javelin platform at `https://dev.javelin.live/gateways/{your_gateway}/workbench/model-assessments`. You'll find a form with several input parameters:
+To initiate a Model Scan, navigate to the Model Assessments page in the Javelin platform at `https://your-api-domain.com/gateways/{your_gateway}/model-assessments`. You'll find a form with several input parameters:
 
 ### Input Parameters
 
