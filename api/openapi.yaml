@@ -4,9 +4,6 @@ definitions:
       account_id:
         description: Account ID associated with the route
         type: string
-      gateway_id:
-        description: Gateway ID associated with the route
-        type: string
       route:
         description: Route to be updated
         allOf:
@@ -16,42 +13,6 @@ definitions:
         type: array
         items:
           type: string
-  model.Gateway:
-    type: object
-    properties:
-      config:
-        description: Configuration of the gateway
-        type: object
-      created_at:
-        description: Creation timestamp
-        type: string
-      created_by:
-        description: Creator of the gateway
-        type: string
-      enabled:
-        description: Whether the gateway is enabled
-        type: boolean
-      gateway_id:
-        description: Unique identifier for the gateway
-        type: string
-      modified_at:
-        description: Modification timestamp
-        type: string
-      modified_by:
-        description: Last modifier of the gateway
-        type: string
-      name:
-        description: Name of the gateway
-        type: string
-      request_chain:
-        description: Request from App to Model
-        type: object
-      response_chain:
-        description: Response from Model to App
-        type: object
-      type:
-        description: Type of the gateway
-        type: string
   model.ModelConfig:
     type: object
     properties:
@@ -184,12 +145,16 @@ definitions:
       type:
         description: Type of the Template, e.g. spaCy, Cloud DLP etc.
         type: string
+<<<<<<< HEAD
   modelspec.ModelSpecResponse:
     type: object
 info:
   contact: {}
 servers:
   - url: https://your-api-domain.com
+=======
+
+>>>>>>> 65aabb9b (fix: Remove Modelspec and gateway from openapi-spec)
 paths:
   /v1/admin/dataprotection/templates:
     get:
@@ -372,211 +337,6 @@ paths:
       summary: Get a specific template
       tags:
         - Data Protection
-  /v1/admin/gateways:
-    get:
-      operationId: listGateways
-      description: List all gateways
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.Gateway'
-        "400":
-          description: Invalid request
-          schema:
-            type: string
-        "404":
-          description: No gateways found
-          schema:
-            type: string
-        "500":
-          description: Failed to list gateways
-          schema:
-            type: string
-      security:
-        - ApiKeyAuth: []
-      summary: List all gateways
-      tags:
-        - Gateways
-    post:
-      operationId: createGateway
-      consumes:
-        - application/json
-      description: Create a new gateway
-      parameters:
-        - name: gateway
-          in: body
-          description: Gateway details
-          required: true
-          schema:
-            $ref: '#/definitions/model.Gateway'
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Gateway created successfully
-          schema:
-            type: string
-        "400":
-          description: Gateway already exists
-          schema:
-            type: string
-        "500":
-          description: Failed to create gateway
-          schema:
-            type: string
-      security:
-        - ApiKeyAuth: []
-      summary: Create a new gateway
-      tags:
-        - Gateways
-  /v1/admin/gateways/{gatewayname}:
-    delete:
-      operationId: deleteGateway
-      description: Delete a gateway by name
-      parameters:
-        - name: gatewayname
-          in: path
-          description: Gateway Name
-          required: true
-          type: string
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Gateway deleted successfully
-          schema:
-            type: string
-        "400":
-          description: Invalid request
-          schema:
-            type: string
-        "404":
-          description: Gateway not found
-          schema:
-            type: string
-        "500":
-          description: Failed to delete gateway
-          schema:
-            type: string
-      security:
-        - ApiKeyAuth: []
-      summary: Delete a gateway by name
-      tags:
-        - Gateways
-    get:
-      operationId: getGateway
-      description: Get a gateway by name
-      parameters:
-        - name: gatewayname
-          in: path
-          description: Gateway Name
-          required: true
-          type: string
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/model.Gateway'
-        "400":
-          description: Invalid request
-          schema:
-            type: string
-        "404":
-          description: Gateway not found
-          schema:
-            type: string
-      security:
-        - ApiKeyAuth: []
-      summary: Get a gateway by name
-      tags:
-        - Gateways
-    put:
-      operationId: updateGateway
-      consumes:
-        - application/json
-      description: Update an existing gateway
-      parameters:
-        - name: gatewayname
-          in: path
-          description: Gateway Name
-          required: true
-          type: string
-        - name: gateway
-          in: body
-          description: Gateway details
-          required: true
-          schema:
-            $ref: '#/definitions/model.Gateway'
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Gateway updated successfully
-          schema:
-            type: string
-        "400":
-          description: Invalid request payload
-          schema:
-            type: string
-        "500":
-          description: Failed to update gateway
-          schema:
-            type: string
-      security:
-        - ApiKeyAuth: []
-      summary: Update an existing gateway
-      tags:
-        - Gateways
-  /v1/admin/modelspec:
-    get:
-      operationId: getModelSpec
-      consumes:
-        - application/json
-      description: Get model specifications for a specific provider and model
-      parameters:
-        - name: provider_key
-          in: query
-          description: Provider Key
-          required: true
-          type: string
-        - name: model_name
-          in: query
-          description: Model Name
-          required: true
-          type: string
-        - name: api_base
-          in: query
-          description: API Base
-          type: string
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/modelspec.ModelSpecResponse'
-        "400":
-          description: Bad Request
-          schema:
-            type: string
-        "404":
-          description: Model specification not found
-          schema:
-            type: string
-        "500":
-          description: Internal Server Error
-          schema:
-            type: string
-      security:
-        - ApiKeyAuth: []
-      summary: Get model specifications
-      tags:
-        - Models
   /v1/admin/providers:
     get:
       operationId: listProviders
