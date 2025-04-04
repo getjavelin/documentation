@@ -10,7 +10,7 @@ Install `javelin_sdk` to interact with Javelin AI Gateway:
 
 <CodeBlock
   language="python">
-  {`pip install 'javelin_sdk'
+  {`pip install 'javelin-sdk'
 `}
 </CodeBlock>
 
