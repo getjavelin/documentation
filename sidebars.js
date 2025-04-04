@@ -132,7 +132,9 @@ module.exports = {
           }
         ]
       },       
+      /*
       'javelin-processors/hallucination',
+      */
       {
         type: 'category',
         label: 'Custom Guardrails',
