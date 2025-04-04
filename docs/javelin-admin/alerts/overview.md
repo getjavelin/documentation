@@ -50,7 +50,7 @@ To configure an alert in the Javelin application, follow these steps:
 Perform a **POST** request to:
 
 ```
-<base_url>/v1/admin/alerts/config
+https://your-api-domain.com/v1/admin/alerts/config
 ```
 
 with the following JSON body:
@@ -109,7 +109,7 @@ with the following JSON body:
 To update an alert configuration, perform a **PUT** request to:
 
 ```
-<base_url>/v1/admin/alerts/config/<alert_id>
+https://your-api-domain.com/v1/admin/alerts/config/<alert_id>
 ```
 
 with the full alert configuration including any updated fields.

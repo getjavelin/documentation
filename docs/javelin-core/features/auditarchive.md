@@ -1,4 +1,4 @@
-# Archiving 
+# Archiving
 
 Javelin provides organizations with state-of-the-art archiving capabilities, catering to diverse requirements ranging from compliance to model optimization.
 Note: Archiving incurs separate storage costs
@@ -9,7 +9,7 @@ Note: Archiving incurs separate storage costs
 - **Semantic Search Enabled:** Archives are automatically embedded and stored by Javelin, this allows fast, relevant, semantic searches on archives. 
     - Audit searches, forensic analysis or human-in-the-loop analysis of archives are always fast, returning semantically relevant results
 
-- **Secure:** Archives are stored in crytographically encrypted Enterprise grade storage repositories for safe & compliant storage & retrieval. 
+- **Secure:** Archives are stored in crytographically encrypted Enterprise grade storage repositories for safe & compliant storage & retrieval.
 
 ## Use Cases
 
@@ -31,8 +31,10 @@ To stay at the forefront of AI capabilities, enterprises often need their LLMs t
 
 **Training Support:** Using the annotated accuracy scores, developers can optimize models, ensuring they become more precise and reliable over time.
 
+<!--
 ### Hallucination Detection
-Once enabled, Archives can be subsequently searched or tagged with hallucination probabilities. See Hallucination Detection for more details. 
+Once enabled, Archives can be subsequently searched or tagged with hallucination probabilities. See Hallucination Detection for more details.
+-->
 
 ## Archive Retention
 Ensuring data is stored only as long as necessary is both cost-effective and often a regulatory mandate.
