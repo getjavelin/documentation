@@ -1,12 +1,9 @@
 module.exports = {  
   someSidebar: {
     'Getting Started': [
-      'javelin-core/overview'
-    ],
-    'Integrating Applications': [
+      'javelin-core/overview',
       'javelin-core/supported-llms',
-      'javelin-core/integration',
-      'javelin-core/huggingface',
+      'javelin-core/integration'
     ],
     'Features': [
       {
@@ -69,6 +66,13 @@ module.exports = {
           'javelin-core/model-scan',
         ]
       },
+      {
+        type: 'category',
+        label: 'Playground',
+        'items': [
+          'javelin-core/playground/playground',
+        ],
+      }
     ],
     'Guardrails Processors': [
       'javelin-processors/overview',
@@ -142,9 +146,6 @@ module.exports = {
           'javelin-processors/javascript',      
         ]
       },
-    ],  
-    'Playground': [
-      'javelin-core/playground/playground',
     ],
     'Python SDK': [
       'javelin-python/quickstart',
@@ -234,7 +235,8 @@ module.exports = {
       'javelin-langchain-python/chain',
     ],
     */
-    'Security': [
+    'Architecture': [
+      'javelin-architecture/javelin-architecture',
       'security'
     ],
     'Changelog': [
