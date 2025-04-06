@@ -1,4 +1,4 @@
-# Security at Javelin
+# Security Architecture
 
 At Javelin, security is a top priority. We are committed to protecting your data through robust security measures and ongoing improvements. Our security practices include the following:
 
