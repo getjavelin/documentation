@@ -5,7 +5,7 @@ At Javelin, security is a top priority. We are committed to protecting your data
 ## Certifications & Compliance
 We are in the process of obtaining the following certifications:
 
-- **SOC 2 Type II**: We are working towards achieving SOC 2 Type II certification, which will demonstrate our commitment to data security, availability, processing integrity, confidentiality, and privacy.
+- **SOC 2 Type II**: We are SOC 2 Type I and Type II certified! This demonstrates our commitment to data security, availability, processing integrity, confidentiality, and privacy.
 - **ISO 27001**: We are also pursuing ISO 27001 certification to ensure that our information security management system meets the highest standards.
 
 ## Penetration Testing
