@@ -11,7 +11,7 @@ import CodeBlock from '@theme/CodeBlock';
   {`
 curl -X POST \
 -H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -d '{
         "name": "test_route_1",
         "type": "chat",
@@ -38,7 +38,7 @@ curl -X POST \
             }
         }
 }' \
-"https://api.javelin.live/v1/admin/routes/test_route_1"
+"https://your-api-domain.com/v1/admin/routes/test_route_1"
 `}
 </CodeBlock>
 
@@ -51,6 +51,7 @@ curl -X POST \
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Route
 )
 
@@ -60,9 +61,11 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
-) 
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
+)
+client = JavelinClient(config)
 
 route_data = {
     "name": "test_route_1",
@@ -91,7 +94,7 @@ route_data = {
     },
 }
 
-route = Route.parse_obj(route_data)
+route = Route.model_validate(route_data)
 
 # create the route, for async use \`await client.acreate_route(route)\`
 client.create_route(route)

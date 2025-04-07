@@ -1,9 +1,9 @@
 import path from 'path';
 
 module.exports = {
-  title: 'Javelin',
+  title: 'javelin.',
   tagline: 'Enterprise AI Platform for Rapid, Responsible AI Adoption',
-  url: 'https://getjavelin.io',
+  url: 'https://getjavelin.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
@@ -15,12 +15,15 @@ module.exports = {
       title: '',
       logo: {
         alt: 'Javelin Logo',
-        src: 'img/javelinlogo.png',
+        src: 'img/javelinlogoblack.png',
+        srcDark: 'img/javelinlogowhite.png',
       },
       items: [
         { type: 'doc', docId: 'javelin-core/overview', position: 'left', label: 'Getting Started' },
-        { type: 'doc', docId: 'javelin-processors/overview', position: 'left', label: 'Guardrails' },
+        { type: 'doc', docId: 'javelin-processors/overview', position: 'left', label: 'Security & Guardrails' },
+        /*
         { to: 'api', label: 'API Reference', position: 'left' },
+        */
         { type: 'doc', docId: 'javelin-python/quickstart', position: 'left', label: 'Python SDK' },
         /*
         { type: 'doc', docId: 'javelin-langchain-python/quickstart', position: 'left', label: 'LangChain' },
@@ -29,7 +32,7 @@ module.exports = {
     },
     footer: {
       style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} Javelin.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Javelin, Inc`,
     },
     prism: {
       theme: require('prism-react-renderer/themes/github'),

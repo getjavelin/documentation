@@ -9,7 +9,7 @@ import CodeBlock from '@theme/CodeBlock';
 <CodeBlock
   language="python">
   {`
-curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/providers/openai/keyvault/openai-vkey1"  
+curl -X DELETE -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://your-api-domain.com/v1/admin/providers/openai/keyvault/openai-vkey1"  
 `}
 </CodeBlock>
 
@@ -23,6 +23,7 @@ curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/adm
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Secret
 )
 import os
@@ -31,15 +32,18 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api.javelin.live",
-                       javelin_api_key=javelin_api_key,
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
 )
+client = JavelinClient(config)
 
 # secret name to delete is "openai-vkey1"
 secret_name = "openai-vkey1"
+provider = "openai"
 
 # delete the secret, for async use \`await client.adelete_secret(secret_name)\`
-client.delete_secret(secret_name) 
+client.delete_secret(secret_name, provider) 
 `}
 </CodeBlock>
 

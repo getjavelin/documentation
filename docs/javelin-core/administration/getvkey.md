@@ -9,7 +9,7 @@ import CodeBlock from '@theme/CodeBlock';
 <CodeBlock
   language="python">
   {`
-curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/providers/openai/keyvault/openai-vkey1"  
+curl -X GET -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://your-api-domain.com/v1/admin/providers/openai/keyvault/openai-vkey1"  
 `}
 </CodeBlock>
 
@@ -23,6 +23,7 @@ curl -X GET -H "x-api-key: $JAVELIN_API_KEY" "https://api.javelin.live/v1/admin/
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Secret
 )
 
@@ -32,15 +33,19 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
    
 # create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
-) 
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
+)
+client = JavelinClient(config)
 
 # secret name to get is "openai-vkey1"
 secret_name = "openai-vkey1"
+provider_name = "openai"
 
 # get the secret, for async use \`await client.aget_secret(secret_name)\`
-print(client.get_secret(secret_name))
+fetched_secret = client.get_secret(secret_name, provider_name)
+print(fetched_secret.model_dump_json(indent=2))
 `}
 </CodeBlock>
 

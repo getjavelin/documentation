@@ -11,7 +11,7 @@ import CodeBlock from '@theme/CodeBlock';
   language="python">
   {`curl -X POST \\
   -H "Content-Type: application/json" \\
-  -H "x-api-key: $JAVELIN_API_KEY" \\
+  -H "x-javelin-apikey: $JAVELIN_API_KEY" \\
   -d '{
         "name": "InspectPII",
         "description": "Inspect sensitive data",
@@ -25,7 +25,7 @@ import CodeBlock from '@theme/CodeBlock';
             "deployment_name": ""
         }
   }' \\
-  "https://api.javelin.live/v1/admin/providers/openai"`}
+  "https://your-api-domain.com/v1/admin/providers/openai"`}
 </CodeBlock>
 
 
@@ -39,7 +39,8 @@ import CodeBlock from '@theme/CodeBlock';
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
-    Provider
+    Provider,
+    JavelinConfig
 )
 
 import os
@@ -47,10 +48,14 @@ import os
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
-# create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
+# Create Javelin configuration
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
 )
+
+# Create Javelin client
+client = JavelinClient(config)
 
 provider_data = {
     "name": "openai",
@@ -65,7 +70,7 @@ provider_data = {
     },
 }
 
-provider = Provider.parse_obj(provider_data)
+provider = Provider.model_validate(provider_data)
 
 # create the provider, for async use \`await client.acreate_provider(provider)\`
 client.create_provider(provider)

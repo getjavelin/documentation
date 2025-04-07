@@ -15,6 +15,7 @@ Returns a string representation of the error.
 
 ### Derived Exceptions
 
+<!--
 #### `GatewayNotFoundError`
 
 Indicates that a specified gateway was not found in the Javelin service.
@@ -22,14 +23,7 @@ Indicates that a specified gateway was not found in the Javelin service.
 #### `GatewayAlreadyExistsError`
 
 Indicates that an attempt was made to create a gateway that already exists in the Javelin service.
-
-#### `RouteNotFoundError`
-
-Indicates that a specified route was not found in the Javelin service.
-
-#### `RouteAlreadyExistsError`
-
-Indicates that an attempt was made to create a route that already exists in the Javelin service.
+-->
 
 #### `ProviderNotFoundError`
 
@@ -39,13 +33,13 @@ Indicates that a specified provider was not found in the Javelin service.
 
 Indicates that an attempt was made to create a provider that already exists in the Javelin service.
 
-#### `TemplateNotFoundError`
+#### `RouteNotFoundError`
 
-Indicates that a specified template was not found in the Javelin service.
+Indicates that a specified route was not found in the Javelin service.
 
-#### `TemplateAlreadyExistsError`
+#### `RouteAlreadyExistsError`
 
-Indicates that an attempt was made to create a template that already exists in the Javelin service.
+Indicates that an attempt was made to create a route that already exists in the Javelin service.
 
 #### `SecretNotFoundError`
 
@@ -54,6 +48,14 @@ Indicates that a specified secret was not found in the Javelin service.
 #### `SecretAlreadyExistsError`
 
 Indicates that an attempt was made to create a secter that already exists in the Javelin service.
+
+#### `TemplateNotFoundError`
+
+Indicates that a specified template was not found in the Javelin service.
+
+#### `TemplateAlreadyExistsError`
+
+Indicates that an attempt was made to create a template that already exists in the Javelin service.
 
 #### `NetworkError`
 

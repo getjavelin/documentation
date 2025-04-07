@@ -11,19 +11,19 @@ import CodeBlock from '@theme/CodeBlock';
   {`
 curl -X PUT \
 -H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -d '{
         "name": "corporate",
         "type": "production",
         "enabled": true,
         "config": {
             "buid": "kensho",
-            "base_url": "https://api-dev.javelin.live",
+            "base_url": "https://your-api-domain.com",
             "organization_id": "org_2gaDm7xK9mDWM4JY8x4so8ndoMt",
             "system_namespace": "javelin-dev"
         }
 }' \
-"https://api-dev.javelin.live/v1/admin/gateways/corporate"
+"https://your-api-domain.com/v1/admin/gateways/corporate"
 `}
 </CodeBlock>
 
@@ -35,6 +35,7 @@ curl -X PUT \
   language="python">
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Gateway
 )
 
@@ -44,8 +45,11 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # Create Javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key)
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
+)
+client = JavelinClient(config)
 
 # Get the gateway (to see what we need to change)
 gateway_name = "corporate"

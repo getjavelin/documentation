@@ -14,7 +14,7 @@ When represented as json, the gateway object has the following structure:
     "type": "this could be \`development\`, \`production\` etc.,",
     "config": {
       "buid": "kensho",
-      "base_url": "https://api-dev.javelin.live",
+      "base_url": "https://your-api-domain.com",
       "api_key_value": "",
       "organization_id": "",
       "system_namespace": ""

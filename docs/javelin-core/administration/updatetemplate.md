@@ -12,7 +12,7 @@ import CodeBlock from '@theme/CodeBlock';
   {`
 curl -X PUT \
 -H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -d '{
   "name": "InspectPII",
   "description": "Inspect sensitive data",
@@ -36,7 +36,7 @@ curl -X PUT \
   }
 }
 ' \
-"https://api-dev.javelin.live/v1/admin/processors/dp/templates/InspectPII"
+"https://your-api-domain.com/v1/admin/processors/dp/templates/InspectPII"
 
 `}
 </CodeBlock>
@@ -51,6 +51,7 @@ curl -X PUT \
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Template
 )
 
@@ -60,9 +61,11 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
 )
+client = JavelinClient(config)
 
 # get the template (to see what we need to change)
 template_name = "InspectPII"

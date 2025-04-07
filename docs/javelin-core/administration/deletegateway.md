@@ -9,7 +9,7 @@ import CodeBlock from '@theme/CodeBlock';
 <CodeBlock
   language="python">
   {`
-curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1/admin/gateways/corporate"  
+curl -X DELETE -H "x-javelin-apikey: $JAVELIN_API_KEY" "https://your-api-domain.com/v1/admin/gateways/corporate"  
 `}
 </CodeBlock>
 
@@ -21,6 +21,7 @@ curl -X DELETE -H "x-api-key: $JAVELIN_API_KEY" "https://api-dev.javelin.live/v1
   language="python">
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Gateway
 )
 import os
@@ -29,8 +30,11 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # Create Javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key)
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
+)
+client = JavelinClient(config)
 
 # Gateway name to delete is "corporate"
 gateway_name = "corporate"

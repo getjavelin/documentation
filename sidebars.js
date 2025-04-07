@@ -1,13 +1,32 @@
 module.exports = {  
   someSidebar: {
     'Getting Started': [
-      'javelin-core/overview', 
+      'javelin-core/overview',
       'javelin-core/supported-llms',
-    ],
-    'Integrating Applications': [
-      'javelin-core/integration',
+      'javelin-core/integration'
     ],
     'Features': [
+      {
+        type: 'category',
+        label: 'Threat Alerts',
+        items: [
+          'javelin-webapp/threat-alerts/overview'
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Alerts',
+        items: [
+          'javelin-admin/alerts/overview'
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Fallback Routing',
+        items: [
+          'javelin-core/fallbackrouting/overview',
+        ]
+      },
       {
         type: 'category',
         label: 'Secrets Vault',
@@ -40,6 +59,20 @@ module.exports = {
           'javelin-core/features/auditarchive',      
         ]
       },
+      {
+        type: 'category',
+        label: 'Model Scan',
+        items: [
+          'javelin-core/model-scan',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Playground',
+        'items': [
+          'javelin-core/playground/playground',
+        ],
+      }
     ],
     'Third Party Integrations': [
       'javelin-core/3rdpartyintegrations',
@@ -106,7 +139,9 @@ module.exports = {
           }
         ]
       },       
+      /*
       'javelin-processors/hallucination',
+      */
       {
         type: 'category',
         label: 'Custom Guardrails',
@@ -114,10 +149,6 @@ module.exports = {
           'javelin-processors/javascript',      
         ]
       },
-    ],  
-    'Playground': [
-      'javelin-core/playground/overview',
-      'javelin-core/playground/playground',
     ],
     'Python SDK': [
       'javelin-python/quickstart',
@@ -130,6 +161,7 @@ module.exports = {
           'javelin-python/exceptions'
         ]
       },
+      /*
       {
         type: 'category',
         label: 'Setting Up Gateways',
@@ -142,6 +174,7 @@ module.exports = {
           'javelin-core/administration/deletegateway',
         ]
       },
+      */
       {
         type: 'category',
         label: 'Setting Up Providers',
@@ -164,6 +197,7 @@ module.exports = {
           'javelin-core/administration/listroutes',
           'javelin-core/administration/updateroute',
           'javelin-core/administration/deleteroute',
+          'javelin-core/administration/createbedrockroutes',
         ]
       },
       {
@@ -204,7 +238,8 @@ module.exports = {
       'javelin-langchain-python/chain',
     ],
     */
-    'Security': [
+    'Architecture': [
+      'javelin-architecture/javelin-architecture',
       'security'
     ],
     'Changelog': [

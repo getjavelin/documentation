@@ -11,7 +11,7 @@ import CodeBlock from '@theme/CodeBlock';
   {`
 curl -X PUT \
 -H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -d '{
         "name": "test_route_1",
         "type": "chat",
@@ -27,7 +27,7 @@ curl -X PUT \
             "retries": 5
         }
 }' \
-"https://api-dev.javelin.live/v1/admin/routes/test_route_1"
+"https://your-api-domain.com/v1/admin/routes/test_route_1"
 
 `}
 </CodeBlock>
@@ -39,7 +39,7 @@ curl -X PUT \
   language="python">
   {`from javelin_sdk import (
     JavelinClient,
-    Route
+    JavelinConfig
 )
 
 import os
@@ -47,9 +47,14 @@ import os
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
+# Create Javelin configuration
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
+)
+
 # Create Javelin client
-client = JavelinClient(base_url="https://api.javelin.live",
-                       javelin_api_key=javelin_api_key) 
+client = JavelinClient(config)
 
 # Get the route (to see what we need to change)
 route_name = "test_route_1"

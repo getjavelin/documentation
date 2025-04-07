@@ -14,8 +14,11 @@ Trust & safety settings allow for creating standalone strategies for content fil
 ```json
 {
     "name": "Trust & Safety",
-    "reference": "lakera",
+    "reference": "trustsafety",
     "will_block": true,
+    "inputs": {
+      "engine": "lakera"
+    },
     "scope": "system",
 }
 ```
@@ -36,23 +39,27 @@ Alternatively, you can also configure other trust & safety processor engines for
 Processor telemetry is always enabled by default and it is passed back to the calling client application under a `"javelin"` json object in the response. For example, you will see a response similar to the following if data masking was carried out based on matching restricted keywords:
 
 ```json
-      "response.chain.lakera_processor_20240916074544.028389380": {
+      "request.chain.trustsafety_processor_20241009064443.938388837": {
+        "flagged": false,
+        "payload": {},
+        "duration": "312.079037ms",
         "categories": {
           "hate": false,
-          "profanity": false,
+          "crime": false,
           "sexual": false,
-          "violence": false
+          "weapons": false,
+          "violence": false,
+          "profanity": false
         },
         "category_scores": {
-          "hate": 0.018,
-          "profanity": 0,
+          "hate": 0.001,
+          "crime": 0.001,
           "sexual": 0,
-          "violence": 0.04
-        },
-        "duration": "266.288485ms",
-        "flagged": false,
-        "payload": {}
-      },
+          "weapons": 0.001,
+          "violence": 0.001,
+          "profanity": 0
+        }
+      }
 ```
 
 This telemetry is also available in the Javelin Chronicle for detailed analysis and tracking of sensitive data violations. You can browse to the Route configuration section of the Javelin WebApp to view the telemetry data for each request.

@@ -11,18 +11,17 @@ import CodeBlock from '@theme/CodeBlock';
   {`
 curl -X POST \
 -H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -d '{
         "api_key": "openai-vkey1",
-        "api_key_secret_name": "name for the secret key",
         "api_key_secret_key": "secret key",
         "provider_name": "openai",
-        "header_key": "",
+        "header_key": "Authorization",
         "query_param_key": "",
         "group": "demo",
         "enabled": true
 }' \
-"https://api.javelin.live/v1/admin/providers/openai/keyvault/openai-vkey1"
+"https://your-api-domain.com/v1/admin/providers/openai/keyvault/openai-vkey1"
 `}
 </CodeBlock>
 
@@ -36,24 +35,34 @@ curl -X POST \
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
+    JavelinConfig,
     Secret
 )
 
 import os
-    
+
 # Retrieve environment variables
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
-) 
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
+)
+client = JavelinClient(config)
 
 secret_data = {
-    // Add your secret data here
+  # Add your secret data here
+  "api_key": "openai-vkey1",
+  "api_key_secret_key": "<OPENAI_API_KEY>",
+  "provider_name": "openai", # Change this to your provider name (e.g., 'anthropic', 'mistral')
+  "header_key": "Authorization",
+  "query_param_key": "",
+  "group": "demo",
+  "enabled": True,
 }
 
-secret = Secret.parse_obj(secret_data)
+secret = Secret.model_validate(secret_data)
 
 # create the secret, for async use \`await client.acreate_secret(secret)\`
 client.create_secret(secret)

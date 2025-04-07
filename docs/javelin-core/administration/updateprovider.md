@@ -11,7 +11,7 @@ import CodeBlock from '@theme/CodeBlock';
   {`
 curl -X PUT \
 -H "Content-Type: application/json" \
--H "x-api-key: $JAVELIN_API_KEY" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -d '{
         "name": "openai",
         "type": "closedsource",
@@ -23,7 +23,7 @@ curl -X PUT \
             "deployment_name": ""
         }
 }' \
-"https://api-dev.javelin.live/v1/admin/providers/openai"
+"https://your-api-domain.com/v1/admin/providers/openai"
 `}
 </CodeBlock>
 
@@ -37,7 +37,7 @@ curl -X PUT \
   showLineNumbers>
   {`from javelin_sdk import (
     JavelinClient,
-    Provider
+    JavelinConfig
 )
 
 import os
@@ -46,9 +46,11 @@ import os
 javelin_api_key = os.getenv('JAVELIN_API_KEY')
 
 # create javelin client
-client = JavelinClient(base_url="https://api-dev.javelin.live",
-                       javelin_api_key=javelin_api_key,
-) 
+config = JavelinConfig(
+    base_url="https://your-api-domain.com",
+    javelin_api_key=javelin_api_key
+)
+client = JavelinClient(config)
 
 # get the provider (to see what we need to change)
 provider_name = "openai"
