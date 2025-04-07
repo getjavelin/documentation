@@ -30,22 +30,22 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 
 We are always adding support for new models, supported models include those from:  
 
-| Models             | Base URL                                 | Endpoints                                                                  |
+| Models             | Base URL                                 | API Endpoints                                                                  |
 |--------------------|------------------------------------------|----------------------------------------------------------------------------|
 | [Meta Llama](https://llama.meta.com/) | *(Varies by deployment)*  |                                                                        |
-| [Inflection](https://inflection.ai/inflection-2-5) |                                    |                                                  |
-| [Perplexity](https://docs.perplexity.ai/docs/model-cards) |                                |                                               |
-| [AnyScale](https://www.anyscale.com/endpoints) |                                |                                                          |
-| [TogetherAI](https://www.together.ai/) |                                |                                                                  |
+| [Inflection](https://inflection.ai/inflection-2-5) | https://layercake.pubwestus3.inf7ks8.com/external/api/inference                                    | https://developers.inflection.ai/api                                                 |
+| [Perplexity](https://docs.perplexity.ai/docs/model-cards) | https://api.perplexity.ai                               | https://docs.perplexity.ai/api-reference/chat-completions                                              |
+| [AnyScale](https://www.anyscale.com/endpoints) | https://docs.anyscale.com/examples/deploy-ray-serve-llms                               |                                                          |
+| [TogetherAI](https://www.together.ai/) | https://api.together.xyz                               | https://docs.together.ai/reference/                                                                 |
 | **and more...**             |                                    |                                                                         |
 
 ## HuggingFace Integration
 
 HuggingFace offers flexible integration options through their router API. Here's how to configure it:
 
-## Router API Configuration
+### HF Router API Configuration
 
-1. **Finding the Router URL**:
+1. **Finding the HF Router URL**:
    - Visit the model page on HuggingFace (e.g., https://huggingface.co/deepseek-ai/DeepSeek-R1)
    - Click on "Use this model" and select "Inference API"
    - In the curl example, you can find the router URL being used. Here is an example for the DeepSeek-R1 model with nebius provider: [DeepSeek-R1 Router URL](https://huggingface.co/deepseek-ai/DeepSeek-R1?inference_provider=nebius&language=curl&inference_api=true)
