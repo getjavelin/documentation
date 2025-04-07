@@ -41,6 +41,9 @@ module.exports = {
         ]
       },
     ],
+    'Third Party Integrations': [
+      'javelin-core/3rdpartyintegrations',
+    ],
     'Guardrails Processors': [
       'javelin-processors/overview',
       {
