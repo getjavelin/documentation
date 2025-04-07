@@ -20,7 +20,7 @@ module.exports = {
       },
       items: [
         { type: 'doc', docId: 'javelin-core/overview', position: 'left', label: 'Getting Started' },
-        { type: 'doc', docId: 'javelin-processors/overview', position: 'left', label: 'Guardrails' },
+        { type: 'doc', docId: 'javelin-processors/overview', position: 'left', label: 'Security & Guardrails' },
         /*
         { to: 'api', label: 'API Reference', position: 'left' },
         */
