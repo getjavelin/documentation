@@ -21,7 +21,7 @@ This technical architecture document provides a comprehensive overview of the Ja
 
 The Javelin AI Security Platform provides a unified solution for enterprises to securely leverage AI technologies, particularly Large Language Models (LLMs). The platform sits between enterprise applications and various LLM providers, offering centralized management, security, and governance.
 
-![Architecture Overview](diagrams/architecture_overview.png)
+![Architecture Overview](diagrams/architecture_overview_improved.png)
 
 ### Key Architecture Principles
 
@@ -39,7 +39,7 @@ The Javelin AI Security Platform provides a unified solution for enterprises to 
 
 The core of the Javelin platform consists of several key components that work together to provide secure AI capabilities.
 
-![Core Platform Components](diagrams/core_platform_components.png)
+![Core Platform Components](diagrams/core_platform_components_improved.png)
 
 ### Javelin Gateway
 
@@ -78,7 +78,7 @@ The Developer-First AI Toolkit enables developers to:
 
 Javelin provides comprehensive security and guardrails to protect AI interactions and ensure responsible use.
 
-![Security & Guardrails Components](diagrams/security_guardrails_components.png)
+![Security & Guardrails Components](diagrams/security_guardrails_components_improved.png)
 
 ### Guardrails Processors
 
@@ -140,7 +140,7 @@ Additional security features include:
 
 Javelin provides flexible integration options to connect enterprise applications with various LLM providers.
 
-![Integration Components](diagrams/integration_components.png)
+![Integration Components](diagrams/integration_components_improved.png)
 
 ### Enterprise Applications
 
@@ -178,7 +178,7 @@ Javelin integrates with various LLM providers:
 
 Javelin includes operational components for administration, configuration, and monitoring.
 
-![Operational Components](diagrams/operational_components.png)
+![Operational Components](diagrams/operational_components_improved.png)
 
 ### Administration Console
 
