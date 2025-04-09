@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # Getting Gateway
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
