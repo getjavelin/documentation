@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # Deleting Gateway
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

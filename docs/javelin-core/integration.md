@@ -764,10 +764,6 @@ print(f"Invoke Response: {json.dumps(response_body, indent=2)}")
 `}
 </CodeBlock>
 
-Learn more about how to setup Universal Bedrock routes to use this example [here](../javelin-core/administration/createbedrockroutes).
-
-
-
 <CodeBlock
   language="python"
   title="AWS Bedrock Integration Example - LangChain"
@@ -791,9 +787,6 @@ for chunk in stream_generator:
 
 `}
 </CodeBlock>
-
-Learn more about how to setup Universal Bedrock routes to use this example [here](../javelin-core/administration/createbedrockroutes).
-
 
 </TabItem>
 
@@ -952,10 +945,7 @@ for await (const item of apiResponse.body) {
 `}
 </CodeBlock>
 
-Learn more about how to setup Bedrock routes to use these examples [here](../javelin-core/administration/createbedrockroutes).
-
 </TabItem>
-
 
 <TabItem value="js4" label="...">
 

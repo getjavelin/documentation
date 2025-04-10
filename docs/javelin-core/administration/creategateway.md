@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # Creating Gateway
 
 import Tabs from '@theme/Tabs';

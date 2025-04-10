@@ -18,7 +18,7 @@ Real-time notification system that routes critical events and anomalies to your 
 
 ### OpenTelemetry Compliant Tracing
 Built-in distributed tracing capabilities following OpenTelemetry standards, providing end-to-end visibility into request flows across services and compatibility with major observability platforms.
-    - Any standards compliant provider e.g., Datadog, AWS X-Ray etc., 
+    - Any standards compliant [providers](https://opentelemetry.io/ecosystem/)
 
 ### Data Warehouse (Archives)
 Automated archival of historical data to enterprise data warehouse solutions for long-term storage, analytics, and compliance with data retention policies.
