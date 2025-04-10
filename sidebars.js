@@ -3,7 +3,7 @@ module.exports = {
     'Getting Started': [
       'javelin-core/overview',
       'javelin-core/supported-llms',
-      'javelin-core/integration'
+      'javelin-core/integration-new'
     ],
     'Features': [
       {
