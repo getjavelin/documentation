@@ -20,9 +20,7 @@ import CodeBlock from '@theme/CodeBlock';
         "config": {
             "api_base": "https://api.openai.com",
             "api_type": "",
-            "api_version": "v1",
-            "organization": "",
-            "deployment_name": ""
+            "api_version": "v1"
         }
   }' \\
   "https://your-api-domain.com/v1/admin/providers/openai"`}
@@ -64,9 +62,7 @@ provider_data = {
     "config": {
         "api_base": "https://api.openai.com",
         "api_type": "",
-        "api_version": "v1",
-        "organization": "",
-        "deployment_name": ""
+        "api_version": "v1"
     },
 }
 

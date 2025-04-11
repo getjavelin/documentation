@@ -18,9 +18,7 @@ curl -X PUT \
         "config": {
             "api_base": "https://api.openai.com",
             "api_type": "",
-            "api_version": "v1",
-            "organization": "sales",
-            "deployment_name": ""
+            "api_version": "v1"
         }
 }' \
 "https://your-api-domain.com/v1/admin/providers/openai"
@@ -58,7 +56,7 @@ provider = client.get_provider(provider_name)
 
 # make the necessary route changes
 provider.name = "openai"
-provider.type = "closedsource"
+provider.type = "closed"
 provider.enabled = True
 
 # update the provider, for async use \`await client.aupdate_provider(provider)\`

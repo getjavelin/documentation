@@ -187,7 +187,6 @@ Fields:
     organization
     archive
     retries
-    budget
 
 class Model(BaseModel):
 Fields:
