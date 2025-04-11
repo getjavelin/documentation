@@ -104,14 +104,14 @@ client.create_route(route)
 -H "Content-Type: application/json" \\
 -H "x-javelin-apikey: $JAVELIN_API_KEY" \\
 -d '{
-    "name": "azure_gpt35_chat",
+    "name": "test_route_1",
     "type": "chat",
     "enabled": true,
     "models": [ 
         {
             "name": "gpt-3.5-turbo",
-            "provider": "AzureOpenAI",
-            "suffix": "/openai/deployments/gpt35/chat/completions?api-version=2023-09-15-preview",
+            "provider": "OpenAI",
+            "suffix": "/chat/completions",
             "fallback_enabled": false
         }
     ],
@@ -143,7 +143,7 @@ client.create_route(route)
         }
     }
 }' \\
-"https://your-api-domain.com/v1/admin/routes/azure_gpt35_chat"
+"https://your-api-domain.com/v1/admin/routes/test_route_1"
 `}
 </CodeBlock>
 
@@ -156,14 +156,14 @@ client.create_route(route)
 -H "Content-Type: application/json" \\
 -H "x-javelin-apikey: $JAVELIN_API_KEY" \\
 -d '{
-    "name": "azure_gpt35_chat",
+    "name": "test_route_1",
     "type": "chat",
     "enabled": true,
     "models": [ 
         {
             "name": "gpt-3.5-turbo",
-            "provider": "AzureOpenAI",
-            "suffix": "/openai/deployments/gpt35/chat/completions?api-version=2023-09-15-preview",
+            "provider": "OpenAI",
+            "suffix": "/chat/completions",
             "fallback_enabled": false
         }
     ],
@@ -221,7 +221,7 @@ client.create_route(route)
         }
     }
 }' \\
-"https://your-api-domain.com/v1/admin/routes/azure_gpt35_chat"
+"https://your-api-domain.com/v1/admin/routes/test_route_1"
 `}
 </CodeBlock>
 
@@ -234,14 +234,14 @@ client.create_route(route)
 -H "Content-Type: application/json" \\
 -H "x-javelin-apikey: $JAVELIN_API_KEY" \\
 -d '{
-    "name": "azure_gpt35_chat",
+    "name": "test_route_1",
     "type": "chat",
     "enabled": true,
     "models": [ 
         {
             "name": "gpt-3.5-turbo",
-            "provider": "AzureOpenAI",
-            "suffix": "/openai/deployments/gpt35/chat/completions?api-version=2023-09-15-preview",
+            "provider": "OpenAI",
+            "suffix": "/chat/completions",
             "fallback_enabled": false
         }
     ],
@@ -310,7 +310,7 @@ client.create_route(route)
         }
     }
 }' \\
-"https://your-api-domain.com/v1/admin/routes/azure_gpt35_chat"
+"https://your-api-domain.com/v1/admin/routes/test_route_1"
 `}
 </CodeBlock>
 
