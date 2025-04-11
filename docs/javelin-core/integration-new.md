@@ -1038,6 +1038,20 @@ curl -X POST "https://your-javelin-domain.com/v1/chat/completions" \
   -d '{ ... }'
 ```
 
+### Javelin Headers
+
+When integrating with Javelin, you can customize behavior and routing by using the following custom headers in your requests:
+
+| Header | Required | Description |
+|--------|----------|-------------|
+| `X-Javelin-apikey` | ✅ Yes | Your Javelin API key. Used to authenticate requests to the Javelin platform. |
+| `X-Javelin-virtualapikey` | Optional | A **secure placeholder** for provider API keys. Instead of exposing real provider credentials, you can pass a virtual key ID; Javelin will resolve it to the real secret stored in your vault. This adds security, supports credential rotation, and simplifies integration. |
+| `X-Javelin-route` | ✅ Yes (for unified endpoints) | Specifies the Javelin route name to determine model, provider, fallback policies, and guardrails.|
+| `X-Javelin-model` | Optional | Allows overriding the default model at runtime (e.g., gpt-4, claude-3-sonnet) for OpenAI-compatible or Bedrock-like APIs. |
+| `X-Javelin-provider` | Optional | Use this to override or specify a provider URL (e.g., https://api.openai.com/v1). Useful in cases where your route supports multiple backends. |
+
+> ⚠️ Some headers are optional depending on the type of endpoint (OpenAI-compatible, Bedrock, Azure, etc.), but using `X-Javelin-apikey` and `X-Javelin-route` is standard for most integrations.
+
 ## Error Handling
 
 Javelin returns standard HTTP status codes and error messages. Common errors include:
