@@ -1,12 +1,9 @@
 module.exports = {  
   someSidebar: {
     'Getting Started': [
-      'javelin-core/overview'
-    ],
-    'Integrating Applications': [
+      'javelin-core/overview',
       'javelin-core/supported-llms',
-      'javelin-core/integration',
-      'javelin-core/huggingface',
+      'javelin-core/integration-new'
     ],
     'Features': [
       {
@@ -69,6 +66,16 @@ module.exports = {
           'javelin-core/model-scan',
         ]
       },
+      {
+        type: 'category',
+        label: 'Playground',
+        'items': [
+          'javelin-core/playground/playground',
+        ],
+      }
+    ],
+    'Third Party Integrations': [
+      'javelin-core/3rdpartyintegrations',
     ],
     'Guardrails Processors': [
       'javelin-processors/overview',
@@ -132,7 +139,9 @@ module.exports = {
           }
         ]
       },       
+      /*
       'javelin-processors/hallucination',
+      */
       {
         type: 'category',
         label: 'Custom Guardrails',
@@ -140,9 +149,6 @@ module.exports = {
           'javelin-processors/javascript',      
         ]
       },
-    ],  
-    'Playground': [
-      'javelin-core/playground/playground',
     ],
     'Python SDK': [
       'javelin-python/quickstart',
@@ -190,8 +196,7 @@ module.exports = {
           'javelin-core/administration/getroute',
           'javelin-core/administration/listroutes',
           'javelin-core/administration/updateroute',
-          'javelin-core/administration/deleteroute',
-          'javelin-core/administration/createbedrockroutes',
+          'javelin-core/administration/deleteroute'
         ]
       },
       {
@@ -232,7 +237,8 @@ module.exports = {
       'javelin-langchain-python/chain',
     ],
     */
-    'Security': [
+    'Architecture': [
+      'javelin-architecture/javelin-architecture',
       'security'
     ],
     'Changelog': [

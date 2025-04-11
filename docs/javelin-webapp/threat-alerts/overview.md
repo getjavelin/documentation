@@ -12,11 +12,21 @@ requests and security incidents.
 Aggregate key security events into one easy-to-navigate page.
 
 ### Alert Categories 
-- Sensitive Data 
-- Prompt Injections 
-- Jailbreak Attempts 
+- Sensitive Data (Reject, Masked, Replaced, Redacted)
 - Restricted Keywords 
-- Markdown/Code Alerts
+- Prompt Injections 
+- Jailbreak Attempts
+- Sexual Content
+- Profanity
+- Voilence
+- Hate Speech
+- Crime
+- Weapons
+- Markdown/Code
+- Non-Ascii Character
+- Phishing Urls
+- High Entropy
+- Custom Guardrails 
 
 ### Interactive Filters 
 Click on any category metric card to filter the requests that match the metric accordingly.
@@ -48,3 +58,14 @@ helps you focus on the most critical issues first.
 Customize your view with time-based filtering for last 24 hours, 7 days, 30 days or 365 days.
 
 ![Threat Alert Time Filter Image](../../../static/img/threat-alerts/time-filter.png)
+
+### Additional Filters
+You can apply various filters to narrow down threat data:
+
+- **Applications**: Filter threats by **All Applications** or a specific **Application**.
+- **Routes**: Filter by **All Routes** or a specific **Route**.
+- **Model Scans**: Filter **Threat Alerts** based on **Model Scan**.
+
+These filters help you target specific threat data, making it easier to analyze and respond to alerts effectively.
+
+ 

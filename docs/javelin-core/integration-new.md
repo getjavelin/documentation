@@ -1,30 +1,69 @@
----
-draft: true
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
-# Routes & Unified Endpoints
+# Integrating Applications
+## Routes & Unified Endpoints
+## Overview
+Javelin provides a powerful routing system that allows you to seamlessly integrate your LLM applications with various AI providers while adding security, monitoring, and guardrails. This guide explains how to integrate your applications with Javelin and leverage its unified endpoint architecture.
+<img className="img-responsive" src={require('./javelin_integration.png').default} alt="Javelin Integration" />
+## Getting Started with Javelin Integration
 
-Its easy to integrate applications that leverage LLMs with Javelin. We have made it easy to seamlessly connect your applications to route all LLM traffic through Javelin with minimal code changes.
+Integrating your applications with Javelin involves three simple steps:
+
+1. **Configure Javelin Routes**: Set up routes in your Javelin gateway to direct traffic to specific models and providers.
+2. **Update API Endpoints**: Change your application's API endpoints to point to Javelin instead of directly to providers.
+3. **Add Authentication**: Include your Javelin API key alongside your provider API keys.
+
+### Prerequisites
+
+Before you begin integration, ensure you have:
+
+- A Javelin account with API access
+- Your Javelin API key
+- API keys for the LLM providers you plan to use (OpenAI, Azure, etc.)
 
 ## Leveraging the Javelin Platform
 
-The core usage of Javelin is to define routes, and then to define what to do at each route. Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, Gemini etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent.
+The core usage of Javelin is to define routes, and then to define what to do at each route. Rather than having your LLM Applications (like Co-Pilot apps, chatbots, etc.) individually and directly point to the LLM Vendor & Model (like OpenAI, Gemini, etc.), configure the provider/model endpoint to be your Javelin endpoint.
 
-See [Javelin Configuration](routeconfiguration) section, for details on how to setup routes on the gateway to different models and providers. 
+This architecture ensures that all applications that leverage AI Models will route their requests through the Javelin gateway, providing:
 
-See [Python SDK](../javelin-python/quickstart) for details on how you can easily embed this within your AI Apps.
+- Centralized security and access control
+- Consistent monitoring and observability
+- Standardized guardrails and safety measures
+- Simplified provider switching and fallback options
 
-## Unified Endpoints
+Javelin supports all the [latest models and providers](https://docs.getjavelin.io/docs/javelin-core/supported-llms), so you don't have to make any changes to your application or how requests to models are sent.
 
-The **Unified Endpoints** provide a consistent API interface that abstracts the provider-specific details of various AI services. Whether you are interfacing with an OpenAI-compatible service, an Azure OpenAI deployment, or an AWS Bedrock API, these endpoints enable you to use a standardized request/response format. This documentation explains the available endpoints, their purpose, and usage examples.
+See the [Javelin Configuration](https://docs.getjavelin.io/docs/javelin-core/administration/createroute) section for details on how to set up routes on the gateway to different models and providers.
 
-1. **Single Entry Points**: Instead of routing to different URLs for each provider, you call these “unified” endpoints with specific route parameters or path segments (e.g., `/completions`, `/chat/completions`, `/embeddings`, or `/openai/deployments/{deployment}/chat/completions` in the case of Azure).
+For programmatic integration, see the [Python SDK](https://docs.getjavelin.io/docs/javelin-python/quickstart) documentation for details on how you can easily embed Javelin within your AI applications.
 
-2. **Consistent Request/Response Shapes**: All requests follow a uniform structure (for example, a JSON object with a `prompt`, `messages`, or `input` for embeddings). The service then translates it to each provider’s specific API format as needed.
+## Unified Endpoints Architecture
+
+The **Unified Endpoints** provide a consistent API interface that abstracts the provider-specific details of various AI services. This standardization offers several key benefits:
+
+### Key Benefits
+
+1. **Single Entry Points**: Instead of routing to different URLs for each provider, you call standardized "unified" endpoints with specific route parameters or path segments.
+
+2. **Consistent Request/Response Shapes**: All requests follow a uniform structure (for example, a JSON object with a `prompt`, `messages`, or `input` for embeddings). The service then translates it to each provider's specific API format as needed.
+
+3. **Provider Flexibility**: Switch between providers without changing your application code.
+
+4. **Simplified Authentication**: Use a consistent authentication pattern across all providers.
+
+### Endpoint Types Overview
+
+Javelin supports four main types of endpoints:
+
+| Endpoint Type | Description | Use Case |
+|---------------|-------------|----------|
+| OpenAI-Compatible | Standard OpenAI API format | General text generation, chat, and embeddings |
+| Azure OpenAI | Azure-specific deployment model | Enterprise Azure OpenAI deployments |
+| AWS Bedrock | AWS-specific model routing | AWS Bedrock model access |
+| Query | Generic route-based access | Custom routing configurations |
 
 ## Endpoint Breakdown
 
@@ -32,112 +71,130 @@ The **Unified Endpoints** provide a consistent API interface that abstracts the 
 
 These endpoints mirror the standard OpenAI API methods. They allow you to perform common AI tasks such as generating text completions, handling chat-based requests, or producing embeddings.
 
-#### Endpoints
+#### Available Endpoints
 
-- **POST `/completions`**  
-  Request text completions from the provider.  
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/completions` | POST | Request text completions from the provider |
+| `/chat/completions` | POST | Request chat-based completions (ideal for conversational interfaces) |
+| `/embeddings` | POST | Generate embeddings for provided text data |
 
-- **POST `/chat/completions`**  
-  Request chat-based completions (ideal for conversational interfaces).  
+#### Example: Chat Completions
 
-- **POST `/embeddings`**  
-  Generate embeddings for provided text data.  
+```bash
+curl -X POST "https://your-javelin-domain.com/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $YOUR_LLM_API_KEY" \
+  -H "X-Javelin-apikey: $YOUR_JAVELIN_API_KEY" \
+  -H "X-Javelin-route: $JAVELIN_ROUTE_OPENAI_COMPATIBLE" \
+  -d '{
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "Tell me about Javelin."}
+    ],
+    "temperature": 0.7,
+    "max_tokens": 150
+  }'
+```
 
-#### Example Usage
+> **Note**: Replace `your-javelin-domain.com` with your actual Javelin API domain, and insert your actual API keys.
 
-<CodeBlock
-language="python">
-{`
-curl -X POST "https://your-api-domain.com/v1/completions" \
--H "Content-Type: application/json" \
--d '{
-        "prompt": "Once upon a time",
-        "max_tokens": 50
-    }'
-`}
-</CodeBlock>
+#### Provider Compatibility
 
-Replace openai with the appropriate openai API compatible provider name like azure, mistral, deepseek etc. as required.
+You can use these endpoints with any OpenAI-compatible provider by specifying the appropriate model name. Supported providers include:
+
+- OpenAI
+- Azure OpenAI
+- Mistral AI
+- Anthropic (Claude)
+- Cohere
+- DeepSeek
+- And more
 
 ### 2. Azure OpenAI API Endpoints
 
-For providers using Azure’s deployment model, endpoints include an additional parameter for deployment management.
+For providers using Azure's deployment model, endpoints include additional parameters for deployment management.
 
-#### Endpoints
+#### Available Endpoints
 
-- **POST `/openai/deployments/{deployment}/completions`**  
-  Request text completions from the provider.  
-  **Path Parameter:**  
-  - `providername`: The Azure OpenAI provider identifier.
-  - `deployment`: The deployment ID configured in Azure.
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/openai/deployments/{deployment}/completions` | POST | Request text completions from Azure deployment |
+| `/openai/deployments/{deployment}/chat/completions` | POST | Request chat-based completions from Azure deployment |
+| `/openai/deployments/{deployment}/embeddings` | POST | Generate embeddings from Azure deployment |
 
-- **POST `/openai/deployments/{deployment}/chat/completions`**  
-  Request chat-based completions (ideal for conversational interfaces).  
-  **Path Parameter:**  
-  - `providername`: The Azure OpenAI provider identifier.
-  - `deployment`: The deployment ID configured in Azure.
+#### Path Parameters
 
-- **POST `/openai/deployments/{deployment}/embeddings`**  
-  Generate embeddings for provided text data.  
-  **Path Parameter:**  
-  - `providername`: The Azure OpenAI provider identifier.
-  - `deployment`: The deployment ID configured in Azure.
+- `providername`: The Azure OpenAI provider identifier
+- `deployment`: The deployment ID configured in Azure
 
-#### Example Usage
+#### Example: Azure Chat Completions
 
-<CodeBlock
-language="python">
-{`
-curl -X POST "https://your-api-domain.com/v1/openai/deployments/my-deployment/chat/completions" \
--H "Content-Type: application/json" \
--d '{
-        "messages": [
-           {"role": "user", "content": "Tell me a story"}
-        ],
-        "max_tokens": 50
-    }'
-`}
-</CodeBlock>
+```bash
+curl -X POST "https://your-javelin-domain.com/v1/deployments/my-deployment/chat/completions?api-version=2024-02-15-preview" \
+  -H "Content-Type: application/json" \
+  -H "api-key: $YOUR_AZURE_OPENAI_API_KEY" \
+  -H "X-Javelin-apikey: $YOUR_JAVELIN_API_KEY" \
+  -H "X-Javelin-route: $JAVELIN_ROUTE_AZURE_OPENAI" \
+  -d '{
+    "messages": [
+      {"role": "user", "content": "Tell me a story"}
+    ],
+    "max_tokens": 50
+  }'
+```
 
 ### 3. AWS Bedrock API Endpoints
 
 For AWS Bedrock–style providers, the endpoints use a slightly different URL pattern to accommodate model versioning and extended routing.
 
-#### Endpoints
+#### Available Endpoints
 
-- **POST `/model/{routename}/{apivariation}`**  
-  Route requests to a specific model and API variation.
-  **Path Parameter:**  
-  - `routename`: The model or route name (identifies a specific AWS Bedrock model).
-  - `apivariation`:  A parameter to indicate the API variation (Invoke", "Invoke-Stream", "Invoke-With-Response-Stream", "Converse", "Converse-Stream) or version.
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/model/{routename}/{apivariation}` | POST | Route requests to a specific AWS Bedrock model and API variation |
 
-#### Example Usage
+#### Path Parameters
 
-<CodeBlock
-language="python">
-{`
-curl -X POST "https://your-api-domain.com/v1/model/anthropic.claude-3-sonnet-20240229-v1:0/invoke" \
--H "Content-Type: application/json" \
--d '{
-        "input": "What is the capital of France?"
-    }'
-`}
-</CodeBlock>
+- `routename`: The model or route name (identifies a specific AWS Bedrock model)
+- `apivariation`: A parameter to indicate the API variation ("Invoke", "Invoke-Stream", "Invoke-With-Response-Stream", "Converse", "Converse-Stream") or version
+
+#### Example: AWS Bedrock Model Request
+
+```bash
+curl -X POST "https://your-javelin-domain.com/v1/model/anthropic.claude-3-sonnet-20240229-v1:0/invoke" \
+  -H "Content-Type: application/json" \
+  -H "X-Javelin-apikey: $YOUR_JAVELIN_API_KEY" \
+  -H "X-Javelin-route: $JAVELIN_ROUTE_BEDROCK" \
+  -d '{
+    "anthropic_version": "bedrock-2023-05-31",
+    "max_tokens": 100,
+    "messages": [
+      {
+        "content": "What is the capital of France?",
+        "role": "user"
+      }
+    ]
+  }'
+```
 
 ### 4. Query Endpoints
 
 These endpoints allow direct querying of predefined routes, bypassing provider-specific names when a generic and customizable route configuration is desired.
 
-#### Endpoints
+#### Available Endpoints
 
-- **POST `/query/{routename}`**  
-  Execute a query against a specific route.
-  **Path Parameter:**  
-  - `routename`: The route with one or more models based on the configured policies and route configurations and return back a response
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/query/{routename}` | POST | Execute a query against a specific route |
 
-####  Example Usage
+#### Path Parameters
 
-#### REST API
+- `routename`: The route with one or more models based on the configured policies and route configurations
+
+#### Example: Query Route
+
 <Tabs>
 <TabItem value="curl" label="curl">
 
@@ -149,9 +206,9 @@ Once you have created a route, you can query it using the following curl command
   language="bash">
   {`curl 'https://your-api-domain.com/v1/query/your_route_name' \\
   -H 'Content-Type: application/json' \\
-  -H 'Authorization: Bearer YOUR_OPENAI_API_KEY' \\
-  -H 'x-javelin-apikey: YOUR_JAVELIN_API_KEY' \\
-  --data-raw '{
+  -H 'Authorization: Bearer $YOUR_OPENAI_API_KEY' \\
+  -H 'X-Javelin-apikey: $YOUR_JAVELIN_API_KEY' \\
+  -d '{
     "model": "gpt-3.5-turbo",
     "messages": [
       {"role": "user", "content": "SANFRANCISCO is located in?"}
@@ -159,8 +216,6 @@ Once you have created a route, you can query it using the following curl command
     "temperature": 0.8
   }'`}
 </CodeBlock>
-
-Make sure to replace `your_route_name`, `YOUR_OPENAI_API_KEY`, and `YOUR_JAVELIN_API_KEY` with your actual values.
 
 </TabItem>
 <TabItem value="python" label="Python Requests">
@@ -186,7 +241,7 @@ url = f'https://your-api-domain.com/v1/query/{route_name}'
 headers = {
     'Content-Type': 'application/json',
     'Authorization': f'Bearer {openai_api_key}',
-    'x-javelin-apikey': javelin_api_key
+    'X-Javelin-apikey': javelin_api_key
 }
 
 data = {
@@ -205,12 +260,14 @@ else:
     print(f"Error: {response.status_code}, {response.text}")`}
 </CodeBlock>
 
-Make sure to replace `your_route_name` with your actual route name and set the `JAVELIN_API_KEY` and `OPENAI_API_KEY` environment variables.
-
 </TabItem>
 </Tabs>
 
-#### Python
+> **Important**: Make sure to replace `your_route_name`, `YOUR_OPENAI_API_KEY`, and `YOUR_JAVELIN_API_KEY` with your actual values.
+
+## SDK Integration Examples
+
+### Python
 
 <Tabs>
 <TabItem value="py1" label="Javelin SDK">
@@ -339,7 +396,7 @@ import os
 
 # Javelin Headers
 javelin_headers = {
-    "x-javelin-apikey": javelin_api_key  # Javelin API key from admin
+    "X-Javelin-apikey": javelin_api_key  # Javelin API key from admin
 }
 
 # Define the Javelin route as a variable
@@ -417,17 +474,17 @@ route_name = "sampleroute1"
 
 # Define Javelin headers with the API key
 javelin_headers = {
-    "x-javelin-apikey": javelin_api_key  # Javelin API key from admin
+    "X-Javelin-apikey": javelin_api_key  # Javelin API key from admin
 }
 
 llm = ChatOpenAI(
     openai_api_key=openai_api_key,
     openai_api_base="https://your-api-domain.com/v1/openai",
     default_headers={
-        "x-javelin-apikey": javelin_api_key,
-        "x-javelin-route": route_name,
-        "x-javelin-provider": "https://api.openai.com/v1",
-        "x-javelin-model":model_choice
+        "X-Javelin-apikey": javelin_api_key,
+        "X-Javelin-route": route_name,
+        "X-Javelin-provider": "https://api.openai.com/v1",
+        "X-Javelin-model":model_choice
         
     }
 )
@@ -655,7 +712,7 @@ class Javelin(LM):
         self.javelin_headers = {
                     "Content-Type": "application/json",
                     "Authorization": f"Bearer { api_key }",
-                    "x-javelin-apikey": javelin_api_key,
+                    "X-Javelin-apikey": javelin_api_key,
         }
 
         self.history = []
@@ -808,8 +865,7 @@ for chunk in stream_generator:
 </TabItem>
 </Tabs>
 
-
-#### JavaScript/TypeScript
+### JavaScript/TypeScript
 
 <Tabs>
 <TabItem value="js1" label="OpenAI">
@@ -830,7 +886,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   baseURL: "https://your-api-domain.com/v1/query/{your_route_name}",
   defaultHeaders: {
-    "x-javelin-apikey": \`\${process.env.JAVELIN_API_KEY}\`
+    "X-Javelin-apikey": \`\${process.env.JAVELIN_API_KEY}\`
   },
 });
 
@@ -868,7 +924,7 @@ const llm = new ChatOpenAI({
     configuration: {
         basePath: "https://your-api-domain.com/v1/query/{your_route_name}",
         defaultHeaders: {
-          "x-javelin-apikey": \`\${process.env.JAVELIN_API_KEY}\`
+          "X-Javelin-apikey": \`\${process.env.JAVELIN_API_KEY}\`
         },
     },
 });
@@ -893,7 +949,7 @@ main();`}
   {`import { BedrockRuntimeClient, InvokeModelCommand, InvokeModelWithResponseStreamCommand } from "@aws-sdk/client-bedrock-runtime";
 
 const customHeaders = {
-  'x-javelin-apikey': JAVELIN_API_KEY
+  'X-Javelin-apikey': JAVELIN_API_KEY
 };
 
 const client = new BedrockRuntimeClient({
@@ -964,5 +1020,71 @@ We have worked on the integrations. Please contact: support@getjavelin.io if you
 
 </Tabs>
 
+## Authentication
+
+All requests to Javelin endpoints require authentication using:
+
+1. **Javelin API Key**: Passed in the `X-Javelin-apikey` header
+2. **Model Provider API Key**: Passed in the `Authorization` header (**mostly**)
 
 
+Example:
+
+```bash
+curl -X POST "https://your-javelin-domain.com/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_PROVIDER_API_KEY" \
+  -H "X-Javelin-apikey: YOUR_JAVELIN_API_KEY" \
+  -d '{ ... }'
+```
+
+## Error Handling
+
+Javelin returns standard HTTP status codes and error messages. Common errors include:
+
+| Status Code | Description | Common Causes |
+|-------------|-------------|--------------|
+| 400 | Bad Request | Invalid request format or parameters |
+| 401 | Unauthorized | Missing or invalid API keys |
+| 404 | Not Found | Endpoint or route doesn't exist |
+| 429 | Too Many Requests | Rate limit exceeded |
+| 500 | Internal Server Error | Server-side issue |
+
+Example error response:
+
+```json
+{
+  "error": {
+    "code": "401",
+    "message": "Invalid request: model parameter is required"
+  }
+}
+```
+
+## Best Practices
+
+1. **Use Environment Variables**: Store API keys in environment variables, not in code.
+2. **Implement Retry Logic**: Add retry mechanisms for transient errors.
+3. **Set Timeouts**: Configure appropriate timeouts for your application needs.
+4. **Monitor Usage**: Use Javelin's monitoring features to track usage and costs.
+5. **Test Thoroughly**: Test your integration with different providers and models.
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Authentication Errors**
+   - Verify both provider and Javelin API keys are correct
+   - Check that keys are passed in the correct headers
+
+2. **Endpoint Not Found**
+   - Confirm the endpoint URL is correct
+   - Verify the route exists in your Javelin configuration
+
+3. **Request Format Errors**
+   - Ensure your JSON payload matches the expected format
+   - Check for required fields specific to the model you're using
+
+4. **Rate Limiting**
+   - Implement exponential backoff for retries
+   - Consider adjusting your request patterns
