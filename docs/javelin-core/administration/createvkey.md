@@ -18,7 +18,6 @@ curl -X POST \
         "provider_name": "openai",
         "header_key": "Authorization",
         "query_param_key": "",
-        "group": "demo",
         "enabled": true
 }' \
 "https://your-api-domain.com/v1/admin/providers/openai/keyvault/openai-vkey1"
@@ -58,7 +57,6 @@ secret_data = {
   "provider_name": "openai", # Change this to your provider name (e.g., 'anthropic', 'mistral')
   "header_key": "Authorization",
   "query_param_key": "",
-  "group": "demo",
   "enabled": True,
 }
 

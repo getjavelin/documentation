@@ -65,7 +65,7 @@ curl -X POST \
                 {"name": "US_PASSPORT"},
                 {"name": "CREDIT_CARD_NUMBER"}
             ],
-            "likelihood": "Likely",
+            "likelihood": "Possible",  // likelihood can be set to: VeryUnlikely, Unlikely, Possible, Likely or VeryLikely 
             "transformation": {
                 "method": "Inspect" // method can be set to: inspect, mask, redact, or replace.
             },

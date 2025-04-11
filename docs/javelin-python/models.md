@@ -73,7 +73,7 @@
 - `type`: The type `chat`, `completions`, `embeddings` of this route.
 - `enabled`: Enable/Disable this route.
 - `models`: Associated models for processing or handling requests on this route.
-- `config`: [Configuration](./models.md#routeconfig) settings, like rate limits, archive, budget associated with this route.
+- `config`: [Configuration](./models.md#routeconfig) settings, like rate limits and archive.
 
 ---
 
@@ -87,7 +87,6 @@
 - `retries`: Number of times the request should be retried in case of failures.
 - `archive`: Boolean indicating whether route data should be archived.
 - `retention`: Data retention period.
-- `budget`: Monetary or computational [budget](./models.md#budget) allocated for the operations of this route.
 - `dlp`: [DLP](./models.md#dlp) configuration.
 
 ---
@@ -99,16 +98,6 @@
 **Fields**:
 
 - `routes`: List of [route](./models.md#route) objects.
-
-### `budget`
-
-**Fields**:
-
-- `enabled`: Enable/Disable Data Loss Prevention(DLP).
-- `annual`: Annual budget limit.
-- `monthly`: Monthly budget limit.
-- `weekly`: Weekly budget limit.
-- `currency`: Currency for the budget.
 
 ---
 
