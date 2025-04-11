@@ -67,7 +67,7 @@ curl -X POST \
             ],
             "likelihood": "Likely",
             "transformation": {
-                "method": "Inspect"
+                "method": "Inspect" // method can be set to: inspect, mask, redact, or replace.
             },
             "notify": true,
             "reject": false
@@ -158,7 +158,7 @@ template_data = {
             ],
             "likelihood": "Likely",
             "transformation": {
-                "method": "Inspect"
+                "method": "Inspect" // method can be set to: inspect, mask, redact, or replace.
             },
             "notify": True,
             "reject": False

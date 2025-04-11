@@ -15,9 +15,7 @@ When represented as json, the provider object has the following structure:
     "config": {
         "api_base": "https://api.openai.com",
         "api_type": "",
-        "api_version": "v1",
-        "organization": "",
-        "deployment_name": ""
+        "api_version": "v1"
     }
   }`}
 </CodeBlock>
@@ -37,5 +35,4 @@ These configuration settings are all defined per `provider`, they are not global
 | `api_base`          | The foundational URL where all API requests are directed. It acts as the root from which endpoint paths are extended. For example, if you're integrating with a weather data API, you might have a base URL like `https://api.weather.com/v1`. This URL is crucial as it forms the starting point for all API calls, ensuring they are directed to the correct server and service. | 
 | `api_type`          | This field categorizes the API according to its protocol or design philosophy, such as REST, SOAP, GraphQL, etc. The type of API can influence how requests are made, the structure of the requests, and how responses are handled. Understanding the API type is essential for correctly utilizing its capabilities and for implementing the appropriate request and response handling mechanisms in your application. | 
 | `api_version`       | APIs often evolve, leading to different versions that might introduce new features, improvements, or deprecations of old features. This field specifies the version of the API you're targeting, which is crucial for ensuring compatibility and understanding the specific functionalities available to you. API versions are often indicated in the URL path (e.g., /v1) but can also be specified in headers or request parameters.                                           | 
-| `organization`      | This field is particularly important for APIs that require subscription or are offered as part of enterprise solutions. It could represent the account or organization ID under which the API is registered. This information can be used for access control, billing, and tracking API usage, ensuring that requests are authenticated and authorized according to the organization's policies. | 
-| `deployment_name`   | In scenarios where an API is deployed across different environments (development, testing, production) or configurations, this field specifies the name of the particular deployment you are interacting with. It helps in managing different stages of development and deployment cycles, allowing for targeted API calls to the appropriate environment. This is particularly useful for testing new features or updates in a controlled manner before they are rolled out to the production environment. | 
+
