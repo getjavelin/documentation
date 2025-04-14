@@ -444,7 +444,7 @@ for chunk in stream:
 
 </TabItem>
 
-<TabItem value="py9" label="Anthropic">
+<TabItem value="py4" label="Anthropic">
 
 <CodeBlock
   language="shell">
@@ -518,7 +518,7 @@ except Exception as e:
 
 </TabItem>
 
-<TabItem value="py4" label="LangChain">
+<TabItem value="py5" label="LangChain">
 
 <CodeBlock
   language="shell">
@@ -591,7 +591,7 @@ if __name__ == "__main__":
 
 </TabItem>
 
-<TabItem value="py7" label="OpenAI-Compatible Query Example">
+<TabItem value="py8" label="OpenAI-Compatible Query Example">
 <CodeBlock
   language="python"
   title="OpenAI-Compatible Model Adapters Example"
@@ -740,7 +740,7 @@ except Exception as e:
 </TabItem>
 
 
-<TabItem value="py5" label="DSPy">
+<TabItem value="py6" label="DSPy">
 
 **Introduction:** [DSPy: Goodbye Prompting, Hello Programming!](https://towardsdatascience.com/intro-to-dspy-goodbye-prompting-hello-programming-4ca1c6ce3eb9)  
 **Documentation:** [DSPy Docs](https://dspy-docs.vercel.app/)
@@ -833,7 +833,7 @@ print(response)`}
 
 </TabItem>
 
-<TabItem value="py6" label="Bedrock">
+<TabItem value="py7" label="Bedrock">
 
 <CodeBlock
   language="shell">
@@ -926,7 +926,7 @@ for chunk in stream_generator:
 
 </TabItem>
 
-<TabItem value="py8" label="...">
+<TabItem value="py9" label="...">
 
 - [LlamaIndex](https://docs.llamaindex.ai/)
 
