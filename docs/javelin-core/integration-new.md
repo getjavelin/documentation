@@ -444,7 +444,7 @@ for chunk in stream:
 
 </TabItem>
 
-<TabItem value="py5" label="Anthropic">
+<TabItem value="py9" label="Anthropic">
 
 <CodeBlock
   language="shell">
