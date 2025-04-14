@@ -16,7 +16,6 @@ curl -X PUT \
         "api_key": "openai-vkey1",
         "api_key_secret_name": "new name for your secret",
         "api_key_secret_key": "new key",
-        "group": "",
         "enabled": true,
         "organization": ""
 }' \
