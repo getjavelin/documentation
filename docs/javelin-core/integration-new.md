@@ -928,7 +928,7 @@ for chunk in stream_generator:
 
 <TabItem value="py8" label="...">
 
-- [LlamaIndex](https://docs.llamaindex.ai/en/stable/module_guides/models/llms/)
+- [LlamaIndex](https://docs.llamaindex.ai/)
 
 - [DataStax RAGStack](https://docs.datastax.com/en/ragstack/docs/index.html)
 
