@@ -188,7 +188,7 @@ curl -X POST \
         "name": "RedactPII",
         "description": "Redact sensitive data",
         "enabled": true,
-        "type": "inspect",
+        "type": "de-identify",
         "models": [
             {
                 "name": "Sensitive Data Protection",
@@ -215,7 +215,7 @@ curl -X POST \
             "reject": false
         }
 }' \
-"https://your-api-domain.com/v1/admin/processors/dp/templates/inspect"
+"https://your-api-domain.com/v1/admin/processors/dp/templates/RedactPII"
 `}
 </CodeBlock>
 
@@ -233,7 +233,7 @@ curl -X POST \
         "name": "MaskPII",
         "description": "Mask sensitive data",
         "enabled": true,
-        "type": "inspect",
+        "type": "de-identify",
         "models": [
             {
                 "name": "Sensitive Data Protection",
@@ -262,7 +262,7 @@ curl -X POST \
             "reject": false
         }
 }' \
-"https://your-api-domain.com/v1/admin/processors/dp/templates/inspect"
+"https://your-api-domain.com/v1/admin/processors/dp/templates/MaskPII"
 `}
 </CodeBlock>
 
@@ -280,7 +280,7 @@ curl -X POST \
         "name": "ReplacePII",
         "description": "Replace sensitive data",
         "enabled": true,
-        "type": "inspect",
+        "type": "de-identify",
         "models": [
             {
                 "name": "Sensitive Data Protection",
@@ -316,7 +316,7 @@ curl -X POST \
             "reject": false
         }
 }' \
-"https://your-api-domain.com/v1/admin/processors/dp/templates/inspect"
+"https://your-api-domain.com/v1/admin/processors/dp/templates/ReplacePII"
 `}
 </CodeBlock>
 
