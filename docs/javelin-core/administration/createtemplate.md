@@ -4,7 +4,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
-<TabItem value="shell" label="Using the API:">
+<TabItem value="shell" label="Using cURL">
 
 <CodeBlock
   language="python">
@@ -26,7 +26,8 @@ curl -X POST \
             }
         ],
         "config": {
-            "infoTypes": [
+            // list of all available infotypes
+            "infoTypes": [ 
                 {"name": "MAC_ADDRESS_LOCAL"},
                 {"name": "EMAIL_ADDRESS"},
                 {"name": "STREET_ADDRESS"},
@@ -79,7 +80,7 @@ curl -X POST \
 
 </TabItem>
 
-<TabItem value="py" label="In Python:">
+<TabItem value="py" label="Using python SDK">
 
 <CodeBlock
   language="python"
@@ -172,6 +173,152 @@ client.create_template(template)
 `}
 </CodeBlock>
 
+
+</TabItem>
+
+<TabItem value="redact" label="Template with Redact Method">
+
+<CodeBlock
+  language="python">
+  {`
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
+-d '{
+        "name": "RedactPII",
+        "description": "Redact sensitive data",
+        "enabled": true,
+        "type": "inspect",
+        "models": [
+            {
+                "name": "Sensitive Data Protection",
+                "provider": "Google Cloud",
+                "suffix": "",
+                "weight": 0
+            }
+        ],
+        "config": {
+            "infoTypes": [
+                {"name": "EMAIL_ADDRESS"},
+                {"name": "PHONE_NUMBER"},
+                {"name": "PERSON_NAME"},
+                {"name": "US_SOCIAL_SECURITY_NUMBER"},
+                {"name": "CREDIT_CARD_NUMBER"},
+                {"name": "STREET_ADDRESS"},
+                {"name": "US_PASSPORT"}
+            ],
+            "likelihood": "Possible",
+            "transformation": {
+                "method": "Redact" 
+            },
+            "notify": true,
+            "reject": false
+        }
+}' \
+"https://your-api-domain.com/v1/admin/processors/dp/templates/inspect"
+`}
+</CodeBlock>
+
+</TabItem>
+
+<TabItem value="mask" label="Template with Mask Method">
+
+<CodeBlock
+  language="python">
+  {`
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
+-d '{
+        "name": "MaskPII",
+        "description": "Mask sensitive data",
+        "enabled": true,
+        "type": "inspect",
+        "models": [
+            {
+                "name": "Sensitive Data Protection",
+                "provider": "Google Cloud",
+                "suffix": "",
+                "weight": 0
+            }
+        ],
+        "config": {
+            "infoTypes": [
+                {"name": "EMAIL_ADDRESS"},
+                {"name": "PHONE_NUMBER"},
+                {"name": "PERSON_NAME"},
+                {"name": "US_SOCIAL_SECURITY_NUMBER"},
+                {"name": "CREDIT_CARD_NUMBER"},
+                {"name": "PASSWORD"},
+                {"name": "ENCRYPTION_KEY"}
+            ],
+            "likelihood": "Possible",
+            "transformation": {
+                "method": "Mask",
+                "maskingCharacter": "*",
+                "numberToMask": 0
+            },
+            "notify": true,
+            "reject": false
+        }
+}' \
+"https://your-api-domain.com/v1/admin/processors/dp/templates/inspect"
+`}
+</CodeBlock>
+
+</TabItem>
+
+<TabItem value="replace" label="Template with Replace Method">
+
+<CodeBlock
+  language="python">
+  {`
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \
+-d '{
+        "name": "ReplacePII",
+        "description": "Replace sensitive data",
+        "enabled": true,
+        "type": "inspect",
+        "models": [
+            {
+                "name": "Sensitive Data Protection",
+                "provider": "Google Cloud",
+                "suffix": "",
+                "weight": 0
+            }
+        ],
+        "config": {
+            "infoTypes": [
+                {"name": "EMAIL_ADDRESS"},
+                {"name": "PHONE_NUMBER"},
+                {"name": "PERSON_NAME"},
+                {"name": "US_SOCIAL_SECURITY_NUMBER"},
+                {"name": "CREDIT_CARD_NUMBER"},
+                {"name": "PASSWORD"},
+                {"name": "STREET_ADDRESS"}
+            ],
+            "likelihood": "Possible",
+            "transformation": {
+                "method": "Replace",
+                "replacementConfig": {
+                    "EMAIL_ADDRESS": "[EMAIL]",
+                    "PHONE_NUMBER": "[PHONE]",
+                    "PERSON_NAME": "[NAME]",
+                    "US_SOCIAL_SECURITY_NUMBER": "[SSN]",
+                    "CREDIT_CARD_NUMBER": "[CREDIT_CARD]",
+                    "PASSWORD": "[PASSWORD]",
+                    "STREET_ADDRESS": "[ADDRESS]"
+                }
+            },
+            "notify": true,
+            "reject": false
+        }
+}' \
+"https://your-api-domain.com/v1/admin/processors/dp/templates/inspect"
+`}
+</CodeBlock>
 
 </TabItem>
 
