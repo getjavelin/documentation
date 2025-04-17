@@ -322,4 +322,52 @@ curl -X POST \
 
 </TabItem>
 
+<TabItem value="regex" label="Template with Custom Regex">
+
+<CodeBlock
+  language="python">
+  {`
+curl -X POST \\
+-H "Content-Type: application/json" \\
+-H "x-javelin-apikey: $JAVELIN_API_KEY" \\
+-d '{
+    "name": "CustomRegexTemplate",
+    "description": "Detect sensitive data with custom regex and reserved keywords",
+    "enabled": true,
+    "type": "inspect", // or de-identify if transformation method is set to Mask / Replace / Redact
+    "models": [
+        {
+            "name": "Sensitive Data Protection",
+            "provider": "Google Cloud",
+            "suffix": ""
+        }
+    ],
+    "config": {
+        "notify": true,
+        "reject": false,
+        "infoTypes": [
+            {
+                "name": "OPENAI_API_KEY",
+                "regex": "sk-[a-zA-Z0-9]{48}"
+            },
+            {
+                "name": "RESERVED_KEYWORD",
+                "dictionary": {
+                    "wordList": ["confidential", "secret", "private", "classified", "restricted"]
+                }
+            }
+        ],
+        "likelihood": "Possible",
+        "rejectPrompt": "Unable to complete request, data protection policy has detected sensitive data leakage or enterprise violations in prompt",
+        "transformation": {
+            "method": "Inspect"
+        }
+    }
+}' \\
+"https://your-api-domain.com/v1/admin/processors/dp/templates/inspect"
+`}
+</CodeBlock>
+
+</TabItem>
+
 </Tabs>
