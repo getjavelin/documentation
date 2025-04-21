@@ -14,14 +14,6 @@ When represented as json, the template object has the following structure:
     "description": "Template for Inspecting PII data",
     "type": "this could be \`inspect\`, \`de-identify\` etc.,",
     "enabled": true,
-    "models": [ 
-      {
-        "name": "name of the model to use, like LlamaGuard",
-        "provider": "name of the provider - Google Sensitive Protection, Meta etc.",
-        "suffix": "",
-        "weight": 0
-      } 
-    ],
     "config": {
       "infoTypes": [{"name": "PASSWORD"}, {"name": "ENCRYPTION_KEY"}],
       "likelihood": "Likely"
@@ -39,13 +31,6 @@ These configuration settings are all defined per `template`, they are not global
 | `description` | Contain a brief but comprehensive description of the template, including its intended use case, primary features, and any unique characteristics | 
 | `type` | Specifies the operational purpose of the template within the gateway's data protection framework. The type can be either `inspect`, indicating the template is designed to identify and report sensitive information without altering the data, or `de-identify`, which means the template is configured to remove, mask, or replace sensitive information to protect privacy. This distinction helps in selecting the appropriate template based on the data handling requirements of a specific task or workflow. | 
 | `enabled`| This field indicates whether the template is currently enabled and should be considered active for use. It typically accepts a boolean value: true for enabled, indicating the template and its configurations are in use, or false for disabled, meaning the template is not in use and should be ignored by any processes or applications relying on these configurations. | 
-
-### Model 
-| Field | Description | 
-| --------------- | --------------- | 
-| `name`     | Specifies the name of the model to be utilized for a given task or operation. This name should uniquely identify the model within the system, facilitating easy selection and ensuring that the correct model is applied to the appropriate data processing scenario. The name aids in managing multiple models within the system, enabling users to quickly deploy, evaluate, or update models as needed based on their specific requirements or objectives. | 
-| `provider` | Number of provider, `google`, `meta`, `huggingface` etc., | 
-| `suffix`   | Customize model URL endpoint, useful for custom models on huggingface| 
 
 ### Config
 | Field | Description | 

@@ -17,16 +17,7 @@ curl -X POST \
         "description": "Inspect sensitive data",
         "enabled": true,
         "type": "inspect",
-        "models": [
-            {
-                "name": "Sensitive Data Protection",
-                "provider": "Google Cloud",
-                "suffix": "",
-                "weight": 0
-            }
-        ],
         "config": {
-            // list of all available infotypes
             "infoTypes": [ 
                 {"name": "MAC_ADDRESS_LOCAL"},
                 {"name": "EMAIL_ADDRESS"},
@@ -66,9 +57,9 @@ curl -X POST \
                 {"name": "US_PASSPORT"},
                 {"name": "CREDIT_CARD_NUMBER"}
             ],
-            "likelihood": "Possible",  // likelihood can be set to: VeryUnlikely, Unlikely, Possible, Likely or VeryLikely 
+            "likelihood": "Possible",
             "transformation": {
-                "method": "Inspect" // method can be set to: inspect, mask, redact, or replace.
+                "method": "Inspect"
             },
             "notify": true,
             "reject": false
@@ -109,14 +100,6 @@ template_data = {
         "description": "Inspect sensitive data",
         "enabled": True,
         "type": "inspect",
-        "models": [
-            {
-                "name": "Sensitive Data Protection",
-                "provider": "Google Cloud",
-                "suffix": "",
-                "weight": 0
-            }
-        ],
         "config": {
             "infoTypes": [
                 {"name": "MAC_ADDRESS_LOCAL"},
@@ -189,14 +172,6 @@ curl -X POST \
         "description": "Redact sensitive data",
         "enabled": true,
         "type": "de-identify",
-        "models": [
-            {
-                "name": "Sensitive Data Protection",
-                "provider": "Google Cloud",
-                "suffix": "",
-                "weight": 0
-            }
-        ],
         "config": {
             "infoTypes": [
                 {"name": "EMAIL_ADDRESS"},
@@ -234,14 +209,6 @@ curl -X POST \
         "description": "Mask sensitive data",
         "enabled": true,
         "type": "de-identify",
-        "models": [
-            {
-                "name": "Sensitive Data Protection",
-                "provider": "Google Cloud",
-                "suffix": "",
-                "weight": 0
-            }
-        ],
         "config": {
             "infoTypes": [
                 {"name": "EMAIL_ADDRESS"},
@@ -281,14 +248,6 @@ curl -X POST \
         "description": "Replace sensitive data",
         "enabled": true,
         "type": "de-identify",
-        "models": [
-            {
-                "name": "Sensitive Data Protection",
-                "provider": "Google Cloud",
-                "suffix": "",
-                "weight": 0
-            }
-        ],
         "config": {
             "infoTypes": [
                 {"name": "EMAIL_ADDRESS"},
@@ -334,14 +293,7 @@ curl -X POST \\
     "name": "CustomRegexTemplate",
     "description": "Detect sensitive data with custom regex and reserved keywords",
     "enabled": true,
-    "type": "inspect", // or de-identify if transformation method is set to Mask / Replace / Redact
-    "models": [
-        {
-            "name": "Sensitive Data Protection",
-            "provider": "Google Cloud",
-            "suffix": ""
-        }
-    ],
+    "type": "inspect",
     "config": {
         "notify": true,
         "reject": false,

@@ -16,6 +16,7 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 | [Cohere](https://docs.cohere.com/docs/compatibility-api) | `https://api.cohere.ai/compatibility/v1` | - `/chat/completions`<br/>- `/embeddings`<br/> |
 | [Nous Research](https://portal.nousresearch.com/api-docs) | `https://inference-api.nousresearch.com/v1` | - `/completions`<br/>- `/chat/completions`<br/>    |
 | [DeepSeek](https://api-docs.deepseek.com/) | `https://api.deepseek.com` | - `/chat/completions`<br/>    |
+| [xAI](https://docs.x.ai/docs/overview) | `https://api.x.ai/v1` | - `/completions`<br/>- `/chat/completions`<br/>    |
 
 ## Other Supported Models
 
