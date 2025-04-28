@@ -37,6 +37,7 @@ jobs:
     uses: getjavelin/javelin-workflow/.github/workflows/workflow-cicd-env.yml@main
     with:
       PIPELINE_ROLE: ${{ needs.reusable-vars.outputs.PIPELINE_ROLE }}
+      INPUT_SVC_NAME: ${{ needs.reusable-vars.outputs.SVC_NAME }}
     secrets:
       DEVOPS_GITHUB_TOKEN: ${{ secrets.DEVOPS_GITHUB_TOKEN }}
 
@@ -274,6 +275,7 @@ jobs:
 
   reusable-workflow-notify:
     needs:
+      - reusable-vars
       - reusable-workflow-env
       - javelin-deploy
     permissions:
@@ -284,6 +286,7 @@ jobs:
     uses: getjavelin/javelin-workflow/.github/workflows/workflow-cicd-notify.yml@main
     with:
       DEPLOY_ENV: "${{ needs.reusable-workflow-env.outputs.environment_string }}"
+      SVC_NAME: ${{ needs.reusable-vars.outputs.SVC_NAME }}
       JOB_STATUS: ${{ needs.javelin-deploy.result }}
       JOB_STATUS_MARK: ":x:"
       COMMIT_AUTHOR: ${{ github.event.commits[0].author.name }}
