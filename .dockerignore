@@ -1,0 +1,17 @@
+.dockerignore
+.git
+.github
+.chglog
+.gitignore
+**Dockerfile**
+docker-compose.yaml
+*.sw[op]
+*.log
+.DS_Store
+.env*
+.vscode
+gha-creds-*.json
+e2e
+test
+tests
+playwright.config.ts

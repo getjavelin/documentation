@@ -1,0 +1,11 @@
+FROM node:20.0.0-alpine3.17
+LABEL maintainer="Akhil Raj"
+
+WORKDIR /app
+COPY . .
+RUN apk add curl bash tini
+
+EXPOSE 3000
+
+CMD [ "yarn", "start" ]
+ENTRYPOINT [ "tini", "--" ]
