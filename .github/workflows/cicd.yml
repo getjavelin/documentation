@@ -77,7 +77,7 @@ jobs:
       - name: Build Code
         shell: bash
         run: |-
-          yarn
+          yarn install
 
       - name: Extract Docker Metadata
         id: meta

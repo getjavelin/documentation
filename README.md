@@ -6,13 +6,13 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 ### Installation
 
 ```
-$ yarn
+$ yarn install
 ```
 
 ### Local Development
 
 ```
-$ yarn start
+$ yarn start --host 0.0.0.0
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
