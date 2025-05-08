@@ -46,8 +46,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/getjavelin/documentation/tree/main/',
-          routeBasePath: '/',
-        },
+          routeBasePath: '/', // Set to '/' to make documentation the root
         blog: false,
         pages: false,
         theme: {
