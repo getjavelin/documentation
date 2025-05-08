@@ -1,0 +1,24 @@
+name: PR Merge Check - Javelin Documentation
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - edited
+      - reopened
+    branches:
+      - "main"
+  merge_group:
+    types:
+      - checks_requested
+
+jobs:
+  reusable-workflow:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    uses: getjavelin/javelin-workflow/.github/workflows/workflow-pr-check.yml@main
+    secrets:
+      DEVOPS_GITHUB_TOKEN: ${{ secrets.DEVOPS_GITHUB_TOKEN }}
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

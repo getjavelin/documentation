@@ -1,3 +1,7 @@
+---
+slug: /
+---
+
 # Introduction
 
 Welcome to Javelin, a cutting-edge AI production platform designed for LLM-forward Enterprises. It enables enterprises to leverage AI technology securely and reliably.
