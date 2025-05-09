@@ -63,7 +63,7 @@ module.exports = {
           route: '/api',
           spec: 'api/openapi.yaml',
         }],
-      }
+      },
     ],
-  ]
+  ],
 };
