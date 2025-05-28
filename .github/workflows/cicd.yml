@@ -143,7 +143,7 @@ jobs:
     secrets:
       DEVOPS_PKG_TOKEN: ${{ secrets.DEVOPS_PKG_TOKEN }}
 
-  javelin-deploy:
+  javelin-deploy-aws:
     needs:
       - reusable-vars
       - reusable-workflow-env
@@ -158,7 +158,7 @@ jobs:
       RELEASE_MODE: ${{ needs.reusable-workflow-env.outputs.release_mode }}
     strategy:
       matrix:
-        environment: ${{ fromJSON(needs.reusable-workflow-env.outputs.environment) }}
+        environment: ${{ fromJSON(needs.reusable-workflow-env.outputs.environment_aws) }}
     steps:
       - name: DevOps Repository Checkout
         uses: actions/checkout@v4
@@ -171,27 +171,24 @@ jobs:
           path: ${{ env.DEVOPS_REPO }}
 
       - name: Setting up Deploy Env
-        id: deploy_env_setup
-        shell: bash
-        run: |-
-          echo "deploy_env=${{ matrix.environment }}" >> ${GITHUB_OUTPUT}
-          echo "cicd_role=javelin-${{ matrix.environment }}-cicd-github-action" >> ${GITHUB_OUTPUT}
-          echo "cicd_secret=javelin-${{ matrix.environment }}-cicd" >> ${GITHUB_OUTPUT}
-          echo "cicd_secret_manual=javelin-${{ matrix.environment }}-cicd-manual" >> ${GITHUB_OUTPUT}
+        id: env_auth
+        uses: getjavelin/javelin-workflow/.github/actions/env-auth@main
+        with:
+          DEPLOY_ENV: "${{ matrix.environment }}"
 
       - name: Cloud Config
         id: cloud_config
         uses: getjavelin/javelin-workflow/.github/actions/cloud-config@main
         with:
           CLOUD_PROVIDER: "aws"
-          DEPLOY_ENV: ${{ steps.deploy_env_setup.outputs.deploy_env }}
+          DEPLOY_ENV: ${{ steps.env_auth.outputs.deploy_env }}
           SVC_NAME: ${{ env.SVC_NAME }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: "arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/${{ steps.deploy_env_setup.outputs.cicd_role }}"
-          role-session-name: ${{ steps.deploy_env_setup.outputs.cicd_role }}
+          role-to-assume: "arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/${{ steps.env_auth.outputs.cicd_role }}"
+          role-session-name: ${{ steps.env_auth.outputs.cicd_role }}
           audience: sts.amazonaws.com
           aws-region: ${{ steps.cloud_config.outputs.deploy_region }}
 
@@ -199,13 +196,13 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
-            ${{ steps.deploy_env_setup.outputs.cicd_secret }}
+            ${{ steps.env_auth.outputs.cicd_secret }}
           parse-json-secrets: true
 
       - name: Setting up CICD Secret
         id: set_cicd_secret
         env:
-          CICD_SECRET_NAME: ${{ steps.deploy_env_setup.outputs.cicd_secret }}
+          CICD_SECRET_NAME: ${{ steps.env_auth.outputs.cicd_secret }}
         shell: bash
         run: |-
           echo "k8s_cluster_name=$(echo ${{ env.CICD_SECRET_NAME }}_k8s_cluster_name | sed 's|-|_|g' | tr '[:lower:]' '[:upper:]')" >> ${GITHUB_OUTPUT}
@@ -217,13 +214,13 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
-            ${{ steps.deploy_env_setup.outputs.cicd_secret_manual }}
+            ${{ steps.env_auth.outputs.cicd_secret_manual }}
           parse-json-secrets: true
 
       - name: Setting up CICD Manual Secret
         id: set_cicd_manual_secret
         env:
-          CICD_SECRET_MANUAL_NAME: ${{ steps.deploy_env_setup.outputs.cicd_secret_manual }}
+          CICD_SECRET_MANUAL_NAME: ${{ steps.env_auth.outputs.cicd_secret_manual }}
         shell: bash
         run: |-
           echo "helm_chart=$(echo ${{ env.CICD_SECRET_MANUAL_NAME }}_helm_chart | sed 's|-|_|g' | tr '[:lower:]' '[:upper:]')" >> ${GITHUB_OUTPUT}
@@ -233,7 +230,7 @@ jobs:
       - name: Setting up Helm Value Files
         env:
           DOCKER_IMAGE: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
-          DEPLOY_ENV: ${{ steps.deploy_env_setup.outputs.deploy_env }}
+          DEPLOY_ENV: ${{ steps.env_auth.outputs.deploy_env }}
           K8S_CLUSTER_NAME: $${{ steps.set_cicd_secret.outputs.k8s_cluster_name }}
           PUBLIC_SUBNET_IDS: $${{ steps.set_cicd_secret.outputs.public_subnet_ids }}
           ALB_SECURITY_GROUP_IDS: $${{ steps.set_cicd_secret.outputs.alb_security_group_ids }}
@@ -265,7 +262,7 @@ jobs:
         with:
           K8S_CLUSTER_TYPE: "eks"
           AWS_ACCOUNT_ID: ${{ vars.AWS_ACCOUNT_ID }}
-          CICD_ROLE: ${{ steps.deploy_env_setup.outputs.cicd_role }}
+          CICD_ROLE: ${{ steps.env_auth.outputs.cicd_role }}
           HELM_CHART: $${{ steps.set_cicd_manual_secret.outputs.helm_chart }}
           K8S_CLUSTER_NAME: $${{ steps.set_cicd_secret.outputs.k8s_cluster_name }}
           K8S_NAMESPACE: $${{ steps.set_cicd_secret.outputs.service_namespace }}
@@ -277,17 +274,17 @@ jobs:
     needs:
       - reusable-vars
       - reusable-workflow-env
-      - javelin-deploy
+      - javelin-deploy-aws
     permissions:
       contents: 'read'
       id-token: 'write'
     if: |
-      always() && (needs.javelin-deploy.result != 'success') 
+      always() && (needs.javelin-deploy-aws.result != 'success') 
     uses: getjavelin/javelin-workflow/.github/workflows/workflow-cicd-notify.yml@main
     with:
-      DEPLOY_ENV: "${{ needs.reusable-workflow-env.outputs.environment_string }}"
+      DEPLOY_ENV: "${{ needs.reusable-workflow-env.outputs.environment_aws_string }}"
       SVC_NAME: ${{ needs.reusable-vars.outputs.SVC_NAME }}
-      JOB_STATUS: ${{ needs.javelin-deploy.result }}
+      JOB_STATUS: ${{ needs.javelin-deploy-aws.result }}
       JOB_STATUS_MARK: ":x:"
       COMMIT_AUTHOR: ${{ github.event.commits[0].author.name }}
       COMMIT_SHA: ${{ needs.reusable-workflow-env.outputs.short_sha }}
