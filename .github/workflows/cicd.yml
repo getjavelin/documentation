@@ -275,15 +275,13 @@ jobs:
     needs:
       - reusable-vars
       - reusable-workflow-env
+      - javelin-build
+      - reusable-workflow-manifest
       - javelin-deploy-aws
     permissions:
       contents: 'read'
       id-token: 'write'
-    if: >
-        always() &&
-        (
-          (needs.javelin-deploy-aws.result != 'success' && needs.javelin-deploy-aws.result != 'skipped')
-        )
+    if: failure()
     uses: getjavelin/javelin-workflow/.github/workflows/workflow-cicd-notify.yml@main
     with:
       DEPLOY_ENV: "${{ needs.reusable-workflow-env.outputs.environment_aws_string }}"
