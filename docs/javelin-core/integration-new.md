@@ -132,7 +132,7 @@ For providers using Azure's deployment model, endpoints include additional param
 #### Example: Azure Chat Completions
 
 ```bash
-curl -X POST "https://your-javelin-domain.com/v1/deployments/my-deployment/chat/completions?api-version=2024-02-15-preview" \
+curl -X POST "https://your-javelin-domain.com/v1/openai/deployments/my-deployment/chat/completions?api-version=2024-02-15-preview" \
   -H "Content-Type: application/json" \
   -H "api-key: $YOUR_AZURE_OPENAI_API_KEY" \
   -H "X-Javelin-apikey: $YOUR_JAVELIN_API_KEY" \
