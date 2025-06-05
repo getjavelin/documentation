@@ -22,6 +22,7 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 
 | Models             | Base URL                                 | Endpoints                                            |
 |--------------------|------------------------------------------|----------------------------------------------------------------------------|
+| [Anthropic Claude](https://docs.anthropic.com/claude/docs/models-overview) | `https://api.anthropic.com/v1` | - `/complete`<br/>- `/messages`<br/> |
 | [Amazon Bedrock](https://aws.amazon.com/bedrock) | `https://bedrock.<region>.amazonaws.com` | - `/model/{modelId}/invoke`<br/>- `/model/{modelId}/invoke-with-response-stream`<br/>- `/model/{modelId}/converse`<br/>- `/model/{modelId}/converse-stream`<br/> |
 | [Hugging Face](https://huggingface.co/models) | `https://api-inference.huggingface.co` |  See [HuggingFace Integration](#huggingface-integration) for detailed configuration |
 | [NVIDIA AI Foundation Models](https://build.nvidia.com/explore/discover) | *(Varies by service)* | [NVIDIA AI Endpoints](https://www.nvidia.com/en-us/ai-data-science/foundation-models/)  |
