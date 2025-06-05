@@ -153,11 +153,11 @@ For AWS Bedrock–style providers, the endpoints use a slightly different URL pa
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/model/{routename}/{apivariation}` | POST | Route requests to a specific AWS Bedrock model and API variation |
+| `/model/{model-id}/{apivariation}` | POST | Route requests to a specific AWS Bedrock model and API variation |
 
 #### Path Parameters
 
-- `routename`: The model or route name (identifies a specific AWS Bedrock model)
+- `model-id`: The model-id (identifies a specific AWS Bedrock model).
 - `apivariation`: A parameter to indicate the API variation ("Invoke", "Invoke-Stream", "Invoke-With-Response-Stream", "Converse", "Converse-Stream") or version
 
 #### Example: AWS Bedrock Model Request
