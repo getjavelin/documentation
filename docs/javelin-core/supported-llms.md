@@ -8,7 +8,7 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 
 | Models             | Base URL                                 | Endpoints                                             |
 |--------------------|------------------------------------------|----------------------------------------------------------------------------|
-| [OpenAI](https://platform.openai.com/docs/models) | `https://api.openai.com/v1` | - `/completions`<br/>- `/chat/completions`<br/>- `/embeddings`<br/>- `/images/generations`<br/> - `/images/edits`<br/> |
+| [OpenAI](https://platform.openai.com/docs/models) | `https://api.openai.com/v1` | - `/completions`<br/>- `/chat/completions`<br/>- `/embeddings`<br/> |
 | [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models) | `https://<your-resource-name>.openai.azure.com` | - `/openai/deployments/{deployment-name}/completions`<br/>- `/openai/deployments/{deployment-name}/chat/completions`<br/>- `/openai/deployments/{deployment-name}/embeddings` |
 | [Google Gemini](https://ai.google.dev/models) | `https://generativelanguage.googleapis.com/v1beta/openai` | - `/chat/completions` |
 | [Anthropic](https://docs.anthropic.com/en/docs/about-claude/models/all-models) | `https://api.anthropic.com/v1` | - `/chat/completions`<br/> |
@@ -22,8 +22,8 @@ Our platform's adaptability allows users to leverage the unique strengths of eac
 
 | Models             | Base URL                                 | Endpoints                                            |
 |--------------------|------------------------------------------|----------------------------------------------------------------------------|
-| [Anthropic Claude](https://docs.anthropic.com/claude/docs/models-overview) | `https://api.anthropic.com/v1` | - `/complete`<br/>- `/messages`<br/> |
 | [Amazon Bedrock](https://aws.amazon.com/bedrock) | `https://bedrock.<region>.amazonaws.com` | - `/model/{modelId}/invoke`<br/>- `/model/{modelId}/invoke-with-response-stream`<br/>- `/model/{modelId}/converse`<br/>- `/model/{modelId}/converse-stream`<br/> |
+| [Anthropic Claude](https://docs.anthropic.com/claude/docs/models-overview) | `https://api.anthropic.com/v1` | - `/complete`<br/>- `/messages`<br/> |
 | [Hugging Face](https://huggingface.co/models) | `https://api-inference.huggingface.co` |  See [HuggingFace Integration](#huggingface-integration) for detailed configuration |
 | [NVIDIA AI Foundation Models](https://build.nvidia.com/explore/discover) | *(Varies by service)* | [NVIDIA AI Endpoints](https://www.nvidia.com/en-us/ai-data-science/foundation-models/)  |
 
