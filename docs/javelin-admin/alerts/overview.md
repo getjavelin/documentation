@@ -116,7 +116,7 @@ curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<a
 --header 'x-javelin-apikey: <your-javelin-api-key>' \
 --header 'Content-Type: application/json' \
 --data '{
-    ...your_existing_config
+    ...your_existing_config,
    "trigger_condition": {
     "threats": ["prompt_injection_detected", "jailbreak_detected"],
     "route_names": ["openai_gpt4_chat", "anthropic_claude"],
