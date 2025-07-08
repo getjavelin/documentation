@@ -13,8 +13,8 @@ Secure storage and management of sensitive credentials through integration with 
 
 ### Threat Alerts
 Real-time notification system that routes critical events and anomalies to your team's preferred communication and monitoring platforms, ensuring rapid response to potential issues.
-    - Slack
-    - Splunk
+    - [Slack](/docs/javelin-admin/alerts/overview.md#slack-alert-integration)
+    - [Splunk](/docs/javelin-admin/alerts/overview.md#splunk-alert-integration)
 
 ### OpenTelemetry Compliant Tracing
 Built-in distributed tracing capabilities following OpenTelemetry standards, providing end-to-end visibility into request flows across services and compatibility with major observability platforms.

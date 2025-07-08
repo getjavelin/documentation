@@ -2,50 +2,119 @@
 
 ## Slack Alert Integration
 
-Slack alerting in Javelin requires a webhook for sending messages to a Slack channel.
+To enable Slack alerting in Javelin, you'll need to configure a Slack webhook to allow Javelin to send messages to your Slack channel.
 
-### Steps to Create a Slack Webhook
+:::tip Need help creating a Slack webhook?
+Refer to the [Slack Webhook Setup Guide](/docs/javelin-admin/alerts/slack/overview.md) for step-by-step instructions.
+:::
 
-1. **Go to Slack API Portal:** Visit [Slack API](https://api.slack.com/apps) and sign in.
-2. **Create a New App:** Click on "Create New App" and choose "From scratch."
-3. **Select Features:** Under "Add features and functionality," click on "Incoming Webhooks."
-4. **Activate Incoming Webhooks:** Toggle the switch to "On."
-5. **Create a Webhook URL:** Scroll down to "Webhook URLs for Your Workspace" and click "Add New Webhook to Workspace."
-6. **Choose a Channel:** Select the Slack channel where alerts should be sent.
-7. **Copy the Webhook URL:** After authorization, copy the generated webhook URL.
-8. **Use in Javelin:** Provide this webhook URL as a parameter in Javelin's Slack alert configuration.
+#### 1. **Navigate to the Integrations Page**
+
+From the side navigation, select `Integrations`.
+
+![Integration Page Image](../../../static/img/alerts/integration-page.png)
+
+#### 2. **Configure the Slack Integration**
+
+Click on the Slack integration card and provide the required details, such as the webhook URL.
+
+![Slack Config Page Image](../../../static/img/alerts/slack-page.png)
+
+#### 3. **Enable Slack in Threat Alerts**
+
+To start receiving alerts in Slack:
+ - Go to the `Threat Alerts` page.
+ - Click `Manage Notification` for your desired gateway.
+ - Enable `Slack` to send alerts for that gateway.
+
+![Threat Alert Overview Image](../../../static/img/alerts/save-page-slack.png)
 
 ## Splunk Alert Integration
 
-Splunk alerting in Javelin requires the HTTP Event Collector (HEC) with a base URL, a token, and a payload containing `event` and `sourcetype` (which can have a manual value).
+To enable Splunk alerting in Javelin, you must configure the HTTP Event Collector (HEC) in Splunk. You'll need the following:
+ - Base URL of your HEC endpoint
+ - Authentication token
+ - A payload including required fields like `event` and `sourcetype`
 
-### Steps to Create an HTTP Event Collector (HEC) in Splunk
+:::tip Need help setting up HEC in Splunk?
+Refer to the [Splunk HEC Setup Guide](/docs/javelin-admin/alerts/splunk/overview.md) for detailed instructions.
+:::
 
-1. **Log in to Splunk:** Sign in to your Splunk instance.
-2. **Navigate to HEC Settings:**
-    - Go to "Settings" > "Data Inputs."
-    - Click on "HTTP Event Collector."
-3. **Create a New Token:**
-    - Click on "New Token."
-    - Provide a name for the token.
-4. **Select Input Settings:**
-    - Choose the allowed index where the events should be stored.
-    - Set "Sourcetype" (can be set to "manual").
-5. **Review and Submit:** Complete the setup and copy the generated token.
-6. **Find Base URL:** The base URL follows the format: `https://<splunk-instance>:8088`.
-7. **Use in Javelin:**
-    - Provide the base URL and token in Javelin’s Splunk alert configuration.
-    - Ensure the `payload` contains `event` and `sourcetype` fields.
+#### 1. **Visit the Integrations Page:**
 
-This setup enables Javelin to send alerts to both Slack and Splunk effectively.
+In the left-hand navigation panel, click on `Integrations`.
 
-# Configuring Alerts in Javelin
+![Integration Page Image](../../../static/img/alerts/integration-page.png)
 
-## Steps to Configure an Alert
+#### 2. **Select the Splunk integration**
 
-To configure an alert in the Javelin application, follow these steps:
+Click on the Splunk integration card and fill in the required fields: Base URL, Token, and Sourcetype.
 
-### 1. Create a New Alert
+:::note
+Ensure that the sourcetype value matches the one configured in your Splunk HEC setup.
+:::
+
+![Splunk Config Page Image](../../../static/img/alerts/splunk-page.png)
+
+#### 3. **Move to Threat-Alert Page:**
+
+- Navigate to the `Threat Alerts` section.
+- Click `Manage Notification` for your chosen gateway
+- Enable `Splunk` as the alert destination.
+
+![Threat Alert Overview Image](../../../static/img/alerts/save-page.png)
+
+<!-- This setup enables Javelin to send alerts to both Slack and Splunk effectively. -->
+
+## Advanced Configuration for Alert in Javelin
+
+By default, alerts in Javelin are generated per gateway. However, for more granular control over when alerts should be triggered, Javelin also supports advanced configurations via the `trigger_condition` field in the alert integration configuration.
+
+### 🛠️ Supported `trigger_condition` Fields
+
+The following fields are supported for fine-tuned alerting:
+
+| Field          | Type  | Description                                                                                                            |
+| -------------- | ----- | ---------------------------------------------------------------------------------------------------------------------- |
+| `threats`      | array | Specify one or more threat types (e.g., `["prompt_injection_detected", "jailbreak_detected"]`) to trigger alerts only for those threats. |
+| `route_names`       | array | Specify one or more route names to restrict alerting to specific routes.                                               |
+| `gateway_ids`     | array | Specify one or more gateway IDs. This is the default behavior in the UI.                                               |
+| `application_ids` | array | Specify one or more application IDs to limit alerts to specific applications.                                          |
+
+<!-- Click here to get list of [threats] -->
+Click [here](/docs/javelin-admin/threats/overview.md) to view the full list of supported threat types that can be used in the `trigger_condition.threats` array.
+
+### How to Configure
+
+To configure alerts using these fields, perform an update call on the alert configuration, passing the desired `trigger_condition` in the request body. Example:
+
+```json
+
+curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<alert-id>' \
+--header 'x-api-key: <your-javelin-api-key>' \
+--header 'Content-Type: application/json' \
+--data '{
+    ... your_existing_config
+   "trigger_condition": {
+    "threats": ["prompt_injection_detected", "jailbreak_detected"],
+    "route_names": ["openai_gpt4_chat", "anthropic_claude"],
+    "gateway_ids": ["gwy1"],
+    "application_ids": ["app_xyz"]
+  }
+}'
+
+```
+
+:::note 
+1. All fields in `trigger_condition` are optional and can be used independently or in combination.
+2. All fields accept arrays, allowing for multiple values per field.
+:::
+
+<!-- ## Steps to Configure an Alert -->
+
+<!-- To configure an alert in the Javelin application, follow these steps: -->
+
+<!-- ### 1. Create a New Alert
 
 Perform a **POST** request to:
 
@@ -116,4 +185,4 @@ with the full alert configuration including any updated fields.
 
 Ensure you send the complete payload, not just the modified fields.
 
-This allows Javelin to properly store and apply the updated alert settings.
+This allows Javelin to properly store and apply the updated alert settings. -->
