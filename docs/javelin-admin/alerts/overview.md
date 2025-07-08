@@ -92,7 +92,8 @@ Click [here](/docs/javelin-admin/threats/overview.md) to view the full list of s
 
 ### How to Configure
 
-To configure alerts using these fields, perform an update call on the alert configuration, passing the desired `trigger_condition` in the request body.
+<!-- To configure alerts using these fields, perform an update call on the alert configuration, passing the desired `trigger_condition` in the request body. -->
+To apply trigger_condition filters, you must perform the following operation, passing the desired `trigger_condition` in request body.
 
 #### 1. Fetch Integration Details (GET Request)
 
