@@ -66,7 +66,7 @@ Ensure that the sourcetype value matches the one configured in your Splunk HEC s
 
 <!-- This setup enables Javelin to send alerts to both Slack and Splunk effectively. -->
 
-## Advance Configuration for Alert in Javelin
+## Advanced Configuration for Alert in Javelin
 
 By default, alerts in Javelin are generated per gateway. However, for more granular control over when alerts should be triggered, Javelin also supports advanced configurations via the `trigger_condition` field in the alert integration configuration.
 
