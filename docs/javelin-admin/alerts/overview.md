@@ -48,7 +48,9 @@ In the left-hand navigation panel, click on `Integrations`.
 
 #### 2. **Select the Splunk integration**
 
-Click on the Splunk integration card and fill in the required fields: Base URL, Token, and Sourcetype.
+Click on the Splunk integration card and complete the required fields: Endpoint, Token, Event, and Sourcetype.
+
+The Event field can be set to any descriptive value, such as `Javelin Trigger`.
 
 :::note
 Ensure that the sourcetype value matches the one configured in your Splunk HEC setup.
@@ -68,6 +70,10 @@ Ensure that the sourcetype value matches the one configured in your Splunk HEC s
 
 ## Advanced Configuration for Alert in Javelin
 
+:::note
+This feature is currently not supported on the web application. Please use the API directly to access this functionality.
+:::
+
 By default, alerts in Javelin are generated per gateway. However, for more granular control over when alerts should be triggered, Javelin also supports advanced configurations via the `trigger_condition` field in the alert integration configuration.
 
 ### 🛠️ Supported `trigger_condition` Fields
@@ -86,15 +92,31 @@ Click [here](/docs/javelin-admin/threats/overview.md) to view the full list of s
 
 ### How to Configure
 
-To configure alerts using these fields, perform an update call on the alert configuration, passing the desired `trigger_condition` in the request body. Example:
+To configure alerts using these fields, perform an update call on the alert configuration, passing the desired `trigger_condition` in the request body.
+
+#### 1. Fetch Integration Details (GET Request)
+
+Retrieve the integration configuration for which you want to add a trigger specification. Note the `alert-id` from the response.
 
 ```json
+curl --location '<your_domain_url>/v1/admin/integrations/config' \
+--header 'x-javelin-apikey: <your-javelin-api-key>'
+```
 
+#### 2. Update Integration with Trigger Condition (PUT Request)
+
+Use the `alert-id` obtained from the GET call and the full existing JSON configuration. Add or modify the `trigger_condition` field as needed.
+
+:::note
+Ensure you copy the full existing config and only append the `trigger_condition` block as required.
+:::
+
+```json
 curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<alert-id>' \
---header 'x-api-key: <your-javelin-api-key>' \
+--header 'x-javelin-apikey: <your-javelin-api-key>' \
 --header 'Content-Type: application/json' \
 --data '{
-    ... your_existing_config
+    ...your_existing_config
    "trigger_condition": {
     "threats": ["prompt_injection_detected", "jailbreak_detected"],
     "route_names": ["openai_gpt4_chat", "anthropic_claude"],
@@ -107,8 +129,32 @@ curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<a
 
 :::note 
 1. All fields in `trigger_condition` are optional and can be used independently or in combination.
-2. All fields accept arrays, allowing for multiple values per field.
 :::
+
+### Example Alert Configuration (Splunk)
+
+```json
+{
+    "name": "Splunk alert",
+    "receiver_type": "splunk",
+    "enabled": true,
+    "configuration": {
+        "token": "<token>",
+        "payload": {
+            "event": "Javelin trigger",
+            "sourcetype": "<sourcetype>"
+        },
+        "endpoint": "https://<splunk_url>:<port>/services/collector/raw"
+    },
+    "trigger_condition": {
+        "threats": [
+            "prompt_injection_detected",
+            "sensitive_data_replaced"
+        ]
+    },
+    "severity": "high"
+}
+```
 
 <!-- ## Steps to Configure an Alert -->
 
@@ -145,31 +191,6 @@ with the following JSON body:
         4. **route_names**: Can contain a list of route names to trigger alerts when specific routes are accessed.
         5. **threats**: Can contain a list of threats; the alert is triggered when any of these threats are detected.
 - **severity**: Defines the severity level of the alert (`low`, `medium`, `high`).
-
-### Example Alert Configuration (Splunk)
-
-```json
-{
-    "name": "Splunk alert",
-    "receiver_type": "splunk",
-    "enabled": true,
-    "configuration": {
-        "token": "<token>",
-        "payload": {
-            "event": "Javelin trigger",
-            "sourcetype": "<sourcetype>"
-        },
-        "endpoint": "https://<splunk_url>:<port>/services/collector/raw"
-    },
-    "trigger_condition": {
-        "threats": [
-            "prompt_injection_detected",
-            "sensitive_data_replaced"
-        ]
-    },
-    "severity": "high"
-}
-```
 
 ---
 
