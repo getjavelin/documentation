@@ -140,7 +140,7 @@ curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<a
     "Gateway ID": "<your-gateway-id>",
     "Severity": "<your-severity>",
     "Route Name": "<your-route-name>",
-    "Application ID": "your-app-id",
+    "Application ID": "<your-app-id>",
     "Threat ID": "<your-threat-id>",
     "Alert ID": "<your-alert-id>",
     "Detected Threats": [
