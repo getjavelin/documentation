@@ -142,7 +142,7 @@ curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<a
     "Route Name": "<your-route-name>",
     "Application ID": "your-app-id",
     "Threat ID": "<your-threat-id>",
-    "Alert ID": "<your-threat-id>",
+    "Alert ID": "<your-alert-id>",
     "Detected Threats": [
         "Sensitive Data: Yes",
         "Restricted Keywords: Yes",
