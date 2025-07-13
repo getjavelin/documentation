@@ -165,6 +165,7 @@ module.exports = {
         ]
       },
     ],
+    /*
     'API Reference': [
       {
         type: 'category',
@@ -224,6 +225,7 @@ module.exports = {
         ]
       },
     ],
+    */
     'Resources': [
       'security',
       'changelog',
