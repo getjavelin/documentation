@@ -70,6 +70,7 @@ module.exports = {
                 content: 'Complete documentation for implementing secure, reliable AI solutions with Javelin.',
             },
         },
+
     ],
 
     themeConfig: {
@@ -258,12 +259,7 @@ module.exports = {
                     ignorePatterns: ['/tags/**'],
                     filename: 'sitemap.xml',
                 },
-                /*
-                gtag: {
-                    trackingID: 'G-XXXXXXXXXX', // Replace with your actual Google Analytics ID
-                    anonymizeIP: true,
-                },
-                */
+                // PostHog analytics will be added via head tags
             },
         ],
         [
@@ -307,5 +303,6 @@ module.exports = {
     // Client modules for additional functionality
     clientModules: [
         require.resolve('./src/clientModules/copyCodeButton.js'),
+        require.resolve('./src/clientModules/posthog.js'),
     ],
 };
