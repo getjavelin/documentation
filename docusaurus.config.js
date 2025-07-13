@@ -195,7 +195,7 @@ module.exports = {
                         },
                         {
                             label: 'Contact',
-                            href: 'https://getjavelin.com/contact',
+                            href: 'https://www.getjavelin.com/get-in-touch',
                         },
                         {
                             label: 'Security',
