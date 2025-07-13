@@ -132,28 +132,28 @@ curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<a
 1. All fields in `trigger_condition` are optional and can be used independently or in combination.
 :::
 
-### Example Alert Configuration (Splunk)
+### Example Event Payload (Splunk)
 
 ```json
 {
-    "name": "Splunk alert",
-    "receiver_type": "splunk",
-    "enabled": true,
-    "configuration": {
-        "token": "<token>",
-        "payload": {
-            "event": "Javelin trigger",
-            "sourcetype": "<sourcetype>"
-        },
-        "endpoint": "https://<splunk_url>:<port>/services/collector/raw"
-    },
-    "trigger_condition": {
-        "threats": [
-            "prompt_injection_detected",
-            "sensitive_data_replaced"
-        ]
-    },
-    "severity": "high"
+    "Account ID": "<your-account-id>",
+    "Gateway ID": "<your-gateway-id>",
+    "Severity": "<your-severity>",
+    "Route Name": "<your-route-name>",
+    "Application ID": "<your-app-id>",
+    "Threat ID": "<your-threat-id>",
+    "Alert ID": "<your-alert-id>",
+    "Detected Threats": [
+        "Sensitive Data: Yes",
+        "Restricted Keywords: Yes",
+        "Regex Matches: [^.h.$]",
+        "Data Blocked: Yes",
+        "Sensitive Data Masked: Yes",
+        "Prompt Injection: Yes",
+        "Entropy Score: 0.93"
+    ],
+    "event": "<your-event-name>",
+    "sourcetype": "<your-sourcetype>"
 }
 ```
 
