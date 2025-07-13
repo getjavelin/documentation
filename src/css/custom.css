@@ -17,6 +17,19 @@
   --ifm-font-family-base: "Neue Montreal", sans-serif;
 }
 
+/* Dark mode theme adjustments */
+html[data-theme='dark'] {
+  --ifm-color-primary: #4fd1c7;
+  --ifm-color-primary-dark: #2bc4b9;
+  --ifm-color-primary-darker: #26b8ad;
+  --ifm-color-primary-darkest: #1f968e;
+  --ifm-color-primary-light: #71ded5;
+  --ifm-color-primary-lighter: #7de0d8;
+  --ifm-color-primary-lightest: #9fe7e0;
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-navbar-link-hover-color: var(--ifm-color-primary-light);
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
@@ -116,6 +129,15 @@ html[data-theme='dark'] .menu__link:hover {
 
 html[data-theme='dark'] .navbar {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Fix navbar links visibility in dark mode */
+html[data-theme='dark'] .navbar__item .navbar__link {
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+html[data-theme='dark'] .navbar__item .navbar__link:hover {
+  color: var(--ifm-navbar-link-hover-color) !important;
 }
 
 /* Better search styling */
