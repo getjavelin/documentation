@@ -237,8 +237,8 @@ module.exports = {
                     sidebarPath: require.resolve('./sidebars.js'),
                     editUrl: 'https://github.com/getjavelin/documentation/tree/main/',
                     routeBasePath: '/',
-                    showLastUpdateAuthor: true,
-                    showLastUpdateTime: true,
+                    showLastUpdateAuthor: false,
+                    showLastUpdateTime: false,
                     // Add edit links
                     editCurrentVersion: true,
                 },
