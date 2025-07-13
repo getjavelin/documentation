@@ -5,7 +5,7 @@ module.exports = {
     tagline: 'Enterprise AI Platform for Rapid, Responsible AI Adoption',
     url: 'https://getjavelin.com',
     baseUrl: '/',
-    onBrokenLinks: 'warn',
+    onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
     organizationName: 'getjavelin',
@@ -173,10 +173,12 @@ module.exports = {
                             label: 'GitHub',
                             href: 'https://github.com/getjavelin',
                         },
+                        /*
                         {
                             label: 'Discord',
                             href: 'https://discord.gg/your-discord-server',
                         },
+                        */
                         {
                             label: 'Twitter',
                             href: 'https://twitter.com/getjavelin',
@@ -256,10 +258,12 @@ module.exports = {
                     ignorePatterns: ['/tags/**'],
                     filename: 'sitemap.xml',
                 },
+                /*
                 gtag: {
                     trackingID: 'G-XXXXXXXXXX', // Replace with your actual Google Analytics ID
                     anonymizeIP: true,
                 },
+                */
             },
         ],
         [
