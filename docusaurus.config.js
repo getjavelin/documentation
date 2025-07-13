@@ -115,11 +115,13 @@ module.exports = {
                     position: 'left',
                     label: 'Security & Guardrails'
                 },
+                /*
                 {
                     to: 'api',
                     label: 'API Reference',
                     position: 'left'
                 },
+                */
                 {
                     type: 'doc',
                     docId: 'javelin-python/python-quickstart',
@@ -156,10 +158,12 @@ module.exports = {
                             label: 'Python SDK',
                             to: '/javelin-python/python-quickstart',
                         },
+                        /*
                         {
                             label: 'API Reference',
                             to: '/api',
                         },
+                        */
                     ],
                 },
                 {
