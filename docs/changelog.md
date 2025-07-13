@@ -7,23 +7,92 @@ sidebar_label: Changelog
 
 # Changelog
 
-## January 2025
+## January 2025 (v2.0.26)
 
-### Application Enhancements
+### 🔧 Core Platform Improvements
 
-Introduced the concept of applications, allowing for structured app versioning and schema improvements. Added support for querying traces by trace ID, improving observability.
+**Performance & Reliability**
+- Fixed deadlock issues in processor execution flow with enhanced debugging capabilities
+- Improved core logging messages for better observability and troubleshooting
+- Enhanced universal endpoint functionality for improved API handling
+- Optimized model endpoint URL population in request chain processing
 
-### Security & Compliance
+**Security & Data Protection**
+- Fixed entropy value handling in security filters (corrected boolean type issue)
+- Enhanced DLP processor accuracy to reduce false positives
+- Improved invisible character detection in prompt analysis
+- Updated CORS headers to use standardized `x-javelin-apikey` instead of `x-api-key`
 
-Introduced a new Threats table for storing security-related trace records. Improved KeyVault transaction handling and validation for better security.Implemented security enhancements to prevent CORS-related vulnerabilities.
+### 🌐 Web Application & UI Enhancements
 
-### Performance & Infrastructure
+**User Experience Improvements**
+- Enhanced report header sections with improved app endpoint field placement
+- Fixed category display issues in reports when data is not present
+- Improved fallback options handling and selection
+- Fixed RedTeam UI JavaScript exceptions and UX issues
 
-System Performance Metrics, Added avg_model_latency to system performance tracking. Enhanced Pub/Sub Handling, Reimplemented pub/sub for better Redis handling under load. Database Performance, Optimized query performance and improved indexing across key tables.
+**Provider & Route Management**
+- Fixed provider edit issues for Azure OpenAI and AWS configurations
+- Resolved Amazon route creation issues with model name handling
+- Enhanced duplicate checking for processor reference keys
+- Improved suffix placeholder handling and general UI fixes
 
-### DevOps & CI/CD
+### 📊 Admin & Management Features
 
-Pipeline Enhancements, Improved CI/CD pipeline, including better PR status tracking and linting. Automated changelog updates as part of the release process. Integrated Trivy scans into the build pipeline for improved security monitoring.
+**Enhanced Administration**
+- Added pagination support for better data navigation
+- Improved "Created by" fields and key handling mechanisms
+- Fixed API endpoint trailing slash issues
+- Enhanced admin logging for better system monitoring
+
+### 🐍 Python SDK Updates
+
+**Developer Experience**
+- Updated route models for improved API compatibility
+- Enhanced universal endpoint scripts and functionality
+- Added image generation support for unified endpoints
+- Improved README documentation and setup instructions
+
+### 🔒 Data Loss Prevention (DLP)
+
+**Security Enhancements**
+- Format preservation improvements and code standardization
+- Enhanced request handling and dependency updates
+- Improved security token handling for AWS Bedrock integration
+- Upgraded urllib3 and requests dependencies for security patches
+
+### 📈 Model Specifications
+
+**Compatibility Updates**
+- Updated to ModelSpec v1.0.46 with latest model definitions
+- Enhanced model compatibility across multiple AI providers
+- Improved model endpoint configurations and validation
+
+### 🐛 Bug Fixes & Issues Resolved
+
+**Core Platform**
+- **#1236**: Fixed incorrect entropy_key value type (boolean instead of number)
+- **#1218**: Resolved invisible character detection in prompt analysis
+- **#1216**: Addressed DLP processor false positive detections
+- **#1214**: Fixed null model endpoint URL in Chronicle and Traces
+- **#1213**: Corrected entropy threshold blocking logic in route configuration
+- **#1212**: Resolved AWS Bedrock Titan "invalid security token" errors
+
+**Web Application**
+- Fixed category display issues in reports interface
+- Resolved RedTeam JavaScript exceptions and modal close actions
+- Fixed provider configuration saving for Azure OpenAI and AWS
+
+**Admin Platform**
+- Enhanced pagination and data navigation
+- Improved API endpoint handling and logging
+
+### 🚀 DevOps & Infrastructure
+
+**Continuous Integration**
+- Enhanced CI/CD pipeline with automated changelog generation
+- Improved patch management and deployment processes
+- Enhanced dependency management and security scanning
 
 ## December 2024
 
