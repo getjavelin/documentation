@@ -143,3 +143,33 @@ html[data-theme='dark'] .navbar {
   color: var(--ifm-color-primary-light);
 }
 
+/* Optimized logo styles for different screen densities */
+.navbar__brand img {
+  height: 32px;
+  width: 120px;
+  object-fit: contain;
+}
+
+/* High-DPI (Retina) logo support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .navbar__brand img[src*="javelinlogoblack-120x32.png"] {
+    content: url("/img/javelinlogoblack-240x64.png");
+    height: 32px;
+    width: 120px;
+  }
+  
+  .navbar__brand img[src*="javelinlogowhite-120x32.png"] {
+    content: url("/img/javelinlogowhite-240x64.png");
+    height: 32px;
+    width: 120px;
+  }
+}
+
+/* Mobile responsive logo */
+@media (max-width: 768px) {
+  .navbar__brand img {
+    height: 28px;
+    width: 105px;
+  }
+}
+

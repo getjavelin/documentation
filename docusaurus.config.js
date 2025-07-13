@@ -95,8 +95,8 @@ module.exports = {
             hideOnScroll: true,
             logo: {
                 alt: 'Javelin Logo',
-                src: 'img/javelinlogoblack.png',
-                srcDark: 'img/javelinlogowhite.png',
+                src: 'img/javelinlogoblack-120x32.png',
+                srcDark: 'img/javelinlogowhite-120x32.png',
                 href: '/',
                 target: '_self',
                 width: 120,
