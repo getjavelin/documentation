@@ -1,3 +1,10 @@
+---
+id: security
+title: Security Architecture
+description: Comprehensive overview of Javelin's security measures including SOC 2 Type II certification, ISO 27001, data encryption, access controls, and compliance features
+sidebar_label: Security
+---
+
 # Security Architecture
 
 At Javelin, security is a top priority. We are committed to protecting your data through robust security measures and ongoing improvements. Our security practices include the following:

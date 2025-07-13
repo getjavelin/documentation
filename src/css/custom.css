@@ -28,13 +28,118 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.code-block .copy-button {
-  color: red !important;
-  background-color: red !important;
-  margin : 100px;
+/* Copy code button styles */
+.copy-code-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--ifm-color-emphasis-200);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  z-index: 1;
+}
+
+pre:hover .copy-code-button {
+  opacity: 1;
+}
+
+.copy-code-button:hover {
+  background: var(--ifm-color-emphasis-300);
+}
+
+html[data-theme='dark'] .copy-code-button {
+  background: var(--ifm-color-emphasis-800);
+  border-color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-color-content);
+}
+
+html[data-theme='dark'] .copy-code-button:hover {
+  background: var(--ifm-color-emphasis-700);
 }
 
 .body {
   font-family: "Neue Montreal", sans-serif;
+}
+
+/* Enhanced announcement bar */
+div[class*="announcementBar"] {
+  font-weight: 500;
+}
+
+/* Improved table styles */
+table {
+  font-size: 14px;
+}
+
+table th {
+  background-color: var(--ifm-color-emphasis-100);
+  font-weight: 600;
+}
+
+html[data-theme='dark'] table th {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+/* Better code block styling */
+pre {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='dark'] pre {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Improved sidebar styling */
+.menu__link {
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.menu__link:hover {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+html[data-theme='dark'] .menu__link:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+/* Enhanced navbar */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='dark'] .navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Better search styling */
+.DocSearch-Button {
+  border-radius: 8px;
+}
+
+/* Improved pagination */
+.pagination-nav__link {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.pagination-nav__link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced footer */
+.footer__link-item {
+  transition: color 0.2s ease;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-light);
 }
 

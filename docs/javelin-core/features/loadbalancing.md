@@ -1,5 +1,6 @@
 # Load Balancing
-Organizations have several use cases that drive their load balancing needs. 
+
+Load balancing in Javelin distributes traffic across multiple AI models and providers to optimize performance, cost, and reliability. This feature allows you to implement sophisticated traffic shaping strategies, set up fallback mechanisms, and distribute load across multiple API credentials. You'll learn to configure load balancing for traffic optimization, cost management, and high availability scenarios. 
 
 ## Use Cases
 

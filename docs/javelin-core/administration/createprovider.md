@@ -1,5 +1,7 @@
 # Creating Provider
 
+Providers in Javelin represent the external AI services and models that your routes connect to, such as OpenAI, Anthropic, or local models. This guide walks you through creating and configuring providers to establish connections with your preferred AI services. You'll learn how to set up provider credentials, API endpoints, and configuration parameters to integrate with various model providers.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';

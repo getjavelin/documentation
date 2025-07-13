@@ -1,3 +1,10 @@
+---
+id: supported-llms
+title: Supported Language Models
+description: Complete list of supported LLM providers including OpenAI, Azure OpenAI, Anthropic, Mistral, Cohere, Amazon Bedrock, HuggingFace, and more
+sidebar_label: Supported LLMs
+---
+
 # Supported Language Models
 
 Javelin is committed to integrating and supporting the most popular models in the industry. From the groundbreaking innovations of OpenAI and Gemini to the dynamic platforms like HuggingFace and Anthropic, Javelin ensures seamless interfacing with these models.

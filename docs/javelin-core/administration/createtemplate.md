@@ -1,13 +1,25 @@
-# Creating Template
+---
+id: createtemplate
+title: Creating Templates
+description: Learn how to create data protection templates using the Javelin API
+sidebar_label: Create Template
+---
+
+# Creating Templates
+
+Templates in Javelin define data protection rules that can be reused across multiple routes and policies. They specify which types of sensitive information to detect and how to handle them when found. You can create templates with different transformation methods including inspect, redact, mask, and replace to implement comprehensive data protection strategies.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
+
+## Inspect Template
 
 <Tabs>
 <TabItem value="shell" label="Using cURL">
 
 <CodeBlock
-  language="python">
+  language="bash">
   {`
 curl -X POST \
 -H "Content-Type: application/json" \
@@ -142,7 +154,7 @@ template_data = {
             ],
             "likelihood": "Likely",
             "transformation": {
-                "method": "Inspect" // method can be set to: inspect, mask, redact, or replace.
+                "method": "Inspect"
             },
             "notify": True,
             "reject": False
@@ -158,11 +170,15 @@ client.create_template(template)
 
 
 </TabItem>
+</Tabs>
 
+## Redact Template
+
+<Tabs>
 <TabItem value="redact" label="Template with Redact Method">
 
 <CodeBlock
-  language="python">
+  language="bash">
   {`
 curl -X POST \
 -H "Content-Type: application/json" \
@@ -195,11 +211,15 @@ curl -X POST \
 </CodeBlock>
 
 </TabItem>
+</Tabs>
 
+## Mask Template
+
+<Tabs>
 <TabItem value="mask" label="Template with Mask Method">
 
 <CodeBlock
-  language="python">
+  language="bash">
   {`
 curl -X POST \
 -H "Content-Type: application/json" \
@@ -234,11 +254,15 @@ curl -X POST \
 </CodeBlock>
 
 </TabItem>
+</Tabs>
 
+## Replace Template
+
+<Tabs>
 <TabItem value="replace" label="Template with Replace Method">
 
 <CodeBlock
-  language="python">
+  language="bash">
   {`
 curl -X POST \
 -H "Content-Type: application/json" \
@@ -280,11 +304,15 @@ curl -X POST \
 </CodeBlock>
 
 </TabItem>
+</Tabs>
 
+## Custom Regex Template
+
+<Tabs>
 <TabItem value="regex" label="Template with Custom Regex">
 
 <CodeBlock
-  language="python">
+  language="bash">
   {`
 curl -X POST \\
 -H "Content-Type: application/json" \\

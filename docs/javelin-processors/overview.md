@@ -1,3 +1,10 @@
+---
+id: processors-overview
+title: Javelin Processors Overview
+description: Learn about Javelin's processor framework, including synchronous and asynchronous execution modes, processor chains, and DAG structures for customizable processing
+sidebar_label: Processors Overview
+---
+
 # Overview
 
 Javelin's core foundation is built around the notion of bounded functional units. Each function within the platform is encapsulated into independent processing units, referred to as `Processors`. 

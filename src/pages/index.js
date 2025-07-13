@@ -23,7 +23,7 @@ function HomepageHeader() {
           <span className="highlight-text">Enterprise AI Platform</span> for rapid, responsible LLM use.
         </p>
         <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs/javelin-core/overview">
+          <Link className="button button--secondary button--lg" to="/javelin-core/integration-new">
             Get started 🚀
           </Link>
         </div>

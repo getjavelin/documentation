@@ -1,89 +1,41 @@
 module.exports = {  
-  someSidebar: {
+  docsSidebar: {
     'Getting Started': [
       'javelin-core/overview',
       'javelin-core/supported-llms',
       'javelin-core/integration-new'
     ],
-    'Features': [
+    'Core Concepts': [
+      'javelin-architecture/javelin-architecture',
       {
         type: 'category',
-        label: 'Threat Alerts',
+        label: 'Gateways',
         items: [
-          'javelin-webapp/threat-alerts/overview'
+          'javelin-core/gatewayconfiguration',
         ]
       },
       {
         type: 'category',
-        label: 'Alerts',
+        label: 'Routes',
         items: [
-          'javelin-admin/alerts/overview'
+          'javelin-core/route-configuration',
         ]
       },
       {
         type: 'category',
-        label: 'Fallback Routing',
+        label: 'Providers',
         items: [
-          'javelin-core/fallbackrouting/overview',
+          'javelin-core/providerconfiguration',
         ]
       },
-      {
-        type: 'category',
-        label: 'Secrets Vault',
-        items: [
-          'javelin-core/secretsvault/overview',
-          'javelin-core/secretsvault/virtualkeys',
-        ]
-      },
-      {
-        type: 'category',
-        label: 'Model Reliability',
-        items: [
-          'javelin-core/features/retries',
-          'javelin-core/features/ratelimits',
-          'javelin-core/features/loadbalancing',
-          'javelin-core/features/caching',
-        ]
-      },      
-      {
-        type: 'category',
-        label: 'Model Routing',
-        items: [
-          'javelin-core/features/automaticllm',
-        ]
-      },                  
-      {
-        type: 'category',
-        label: 'Compliance',
-        items: [
-          'javelin-core/features/auditarchive',      
-        ]
-      },
-      {
-        type: 'category',
-        label: 'Model Scan',
-        items: [
-          'javelin-core/model-scan',
-        ]
-      },
-      {
-        type: 'category',
-        label: 'Playground',
-        'items': [
-          'javelin-core/playground/playground',
-        ],
-      }
     ],
-    'Third Party Integrations': [
-      'javelin-core/3rdpartyintegrations',
-    ],
-    'Guardrails Processors': [
-      'javelin-processors/overview',
+    'Security & Guardrails': [
+      'javelin-processors/processors-overview',
       {
         type: 'category',
         label: 'Prompt Injection & Jailbreak Detection',
         items: [
-          'javelin-processors/promptinjection',
+          'javelin-processors/prompt-injection',
           'javelin-processors/promptinjectionusage',
         ]
       },
@@ -93,9 +45,10 @@ module.exports = {
         items: [
           'javelin-processors/privacyredaction',
           'javelin-processors/infotypes',
+          'javelin-processors/infotypes-reference',
           {
             type: 'category',
-            label: 'Usage',
+            label: 'Usage Examples',
             items: [
               'javelin-processors/piiphi',
               'javelin-processors/secretsandcredentials',
@@ -129,7 +82,7 @@ module.exports = {
           'javelin-processors/malware',
           {
             type: 'category',
-            label: 'Usage',
+            label: 'Usage Examples',
             items: [
               'javelin-processors/codedetectionusage',
               'javelin-processors/garbagedetectionusage',
@@ -139,9 +92,6 @@ module.exports = {
           }
         ]
       },       
-      /*
-      'javelin-processors/hallucination',
-      */
       {
         type: 'category',
         label: 'Custom Guardrails',
@@ -150,8 +100,54 @@ module.exports = {
         ]
       },
     ],
+    'Features': [
+      {
+        type: 'category',
+        label: 'Model Reliability',
+        items: [
+          'javelin-core/features/retries',
+          'javelin-core/features/ratelimits',
+          'javelin-core/features/loadbalancing',
+          'javelin-core/features/caching',
+        ]
+      },      
+      {
+        type: 'category',
+        label: 'Model Routing',
+        items: [
+          'javelin-core/features/automaticllm',
+          'javelin-core/fallbackrouting/overview',
+        ]
+      },                  
+      {
+        type: 'category',
+        label: 'Secrets Vault',
+        items: [
+          'javelin-core/secretsvault/overview',
+          'javelin-core/secretsvault/virtualkeys',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Compliance & Monitoring',
+        items: [
+          'javelin-core/features/auditarchive',
+          'javelin-webapp/threat-alerts/overview',
+          'javelin-admin/alerts/overview',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Developer Tools',
+        items: [
+          'javelin-core/model-scan',
+          'javelin-core/playground/playground',
+        ]
+      },
+      'javelin-core/3rdpartyintegrations',
+    ],
     'Python SDK': [
-      'javelin-python/quickstart',
+      'javelin-python/python-quickstart',
       {
         type: 'category',
         label: 'API Reference',
@@ -161,12 +157,19 @@ module.exports = {
           'javelin-python/exceptions'
         ]
       },
-      /*
       {
         type: 'category',
-        label: 'Setting Up Gateways',
+        label: 'CLI Reference',
         items: [
-          'javelin-core/gatewayconfiguration',
+          'javelin-python/cli'
+        ]
+      },
+    ],
+    'API Reference': [
+      {
+        type: 'category',
+        label: 'Gateway Management',
+        items: [
           'javelin-core/administration/creategateway',
           'javelin-core/administration/getgateway',
           'javelin-core/administration/listgateways',
@@ -174,12 +177,10 @@ module.exports = {
           'javelin-core/administration/deletegateway',
         ]
       },
-      */
       {
         type: 'category',
-        label: 'Setting Up Providers',
+        label: 'Provider Management',
         items: [
-          'javelin-core/providerconfiguration',
           'javelin-core/administration/createprovider',
           'javelin-core/administration/getprovider',
           'javelin-core/administration/listproviders',
@@ -189,10 +190,9 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'Setting Up Routes',
+        label: 'Route Management',
         items: [
-          'javelin-core/routeconfiguration',
-          'javelin-core/administration/createroute',
+          'javelin-core/administration/create-route',
           'javelin-core/administration/getroute',
           'javelin-core/administration/listroutes',
           'javelin-core/administration/updateroute',
@@ -201,7 +201,7 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'Setting Up Secrets',
+        label: 'Secrets Management',
         items: [
           'javelin-core/secretsconfiguration',
           'javelin-core/administration/createvkey',
@@ -213,7 +213,7 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'Setting Up Data Protection',
+        label: 'Data Protection Templates',
         items: [
           'javelin-core/dataprotectionconfiguration',
           'javelin-core/administration/createtemplate',
@@ -223,26 +223,11 @@ module.exports = {
           'javelin-core/administration/deletetemplate',
         ]
       },
-      {
-        type: 'category',
-        label: 'CLI Reference',
-        items: [
-          'javelin-python/cli'
-        ]
-      },
     ],
-    /*
-    'LangChain': [
-      'javelin-langchain-python/quickstart',
-      'javelin-langchain-python/chain',
-    ],
-    */
-    'Architecture': [
-      'javelin-architecture/javelin-architecture',
-      'security'
-    ],
-    'Changelog': [
-      'changelog'
+    'Resources': [
+      'security',
+      'changelog',
+      'contributing/style-guide'
     ],
   },
 };

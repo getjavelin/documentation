@@ -1,4 +1,8 @@
 ---
+id: overview
+title: Introduction to Javelin
+description: Comprehensive overview of Javelin, a cutting-edge AI production platform designed for LLM-forward enterprises with centralized guardrails and distributed team controls
+sidebar_label: Overview
 slug: /
 ---
 

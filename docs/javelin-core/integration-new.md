@@ -1,3 +1,10 @@
+---
+id: integration-new
+title: Integrating Applications
+description: Complete guide to integrating your LLM applications with Javelin's unified endpoints architecture for secure and monitored AI interactions
+sidebar_label: Integration Guide
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
@@ -198,7 +205,7 @@ These endpoints allow direct querying of predefined routes, bypassing provider-s
 <Tabs>
 <TabItem value="curl" label="curl">
 
-First, create a route as shown in the [Create Route](../javelin-core/administration/createroute) section.
+First, create a route as shown in the [Create Route](/javelin-core/administration/create-route) section.
 
 Once you have created a route, you can query it using the following curl command:
 
@@ -220,7 +227,7 @@ Once you have created a route, you can query it using the following curl command
 </TabItem>
 <TabItem value="python" label="Python Requests">
 
-First, create a route as shown in the [Create Route](../javelin-core/administration/createroute) section.
+First, create a route as shown in the [Create Route](/javelin-core/administration/create-route) section.
 
 Once you have created a route, you can query it using Python requests:
 

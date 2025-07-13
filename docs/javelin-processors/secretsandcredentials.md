@@ -1,6 +1,6 @@
 # Detect Secrets & Sensitive Credentials
 
-To configure Javelin's Secrets & Credentials matching, you need to define actions to be taken upon match with  configured security infotypes. By customizing these settings, you can tailor the processor to your application's specific requirements and threat landscape.
+Secrets and credentials detection in Javelin automatically identifies and protects sensitive authentication information like API keys, passwords, tokens, and cloud credentials in your AI interactions. This processor scans requests and responses for exposed secrets that could compromise your infrastructure security. You'll learn to configure detection rules, response actions, and security infotypes to prevent accidental exposure of sensitive credentials through AI applications.
 
 ## Configuration Options
 

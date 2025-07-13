@@ -1,4 +1,7 @@
 # Listing Routes
+
+Viewing your configured routes helps you understand your current setup and manage your Javelin deployment effectively. This guide shows you how to retrieve and examine all routes in your gateway using both API calls and the Python SDK. You'll learn to list routes to audit configurations, troubleshoot issues, and manage your routing infrastructure.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';

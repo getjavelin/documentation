@@ -1,3 +1,10 @@
+---
+id: custom-processors
+title: Extension Guardrails
+description: Learn how to build custom extension guardrails using GRPC interfaces in Go, Python, and TypeScript
+sidebar_label: Custom Processors
+---
+
 # Extension Guardrails
 
 import CodeBlock from '@theme/CodeBlock';

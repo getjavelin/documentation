@@ -1,9 +1,17 @@
-# Integration Overview
+---
+id: route-configuration
+title: Route Configuration
+description: Comprehensive guide to configuring Javelin routes including models, providers, rate limits, and advanced settings
+sidebar_label: Route Configuration
+---
+
+# Route Configuration
+
+Routes are the core component of Javelin that define how incoming requests are processed, which models they connect to, and what policies are applied. This comprehensive guide covers all route configuration options including models, providers, rate limits, cost guardrails, security policies, and advanced traffic shaping. You'll learn to configure sophisticated routing logic that balances performance, cost, and security for your AI applications.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-
-Javelin offers a variety of configuration options to setup policies, cost guardrails and traffic shaping. You can easily connect your applications to route all LLM traffic through Javelin. 
+import CodeBlock from '@theme/CodeBlock'; 
 
 # Route Object
 When represented as json, the route object has the following structure:
@@ -37,7 +45,7 @@ These configuration settings are all defined per `route`, they are not global an
 | `type`    | Indicates the specific functionality of the LLM endpoint that the route targets. The options include: | 
 |           | - **chat**: Routes targeting this type are designed to handle interactive, conversational queries, utilizing the LLM's capabilities to generate responses in a chat-like format. This is typically used for building chatbots or conversational agents. |
 |           | - **completions**: This type is aimed at generating text completions or responses based on prompts provided in the requests. It's suitable for applications requiring content generation, creative writing assistance, code generation, etc. |
-|           | 	- **embeddings**: Routes of this type are focused on generating numerical representations (embeddings) of the input text, which can be used for tasks such as semantic similarity comparison, clustering, or search applications. |
+|           |     - **embeddings**: Routes of this type are focused on generating numerical representations (embeddings) of the input text, which can be used for tasks such as semantic similarity comparison, clustering, or search applications. |
 
 ### Model 
 | Field | Description | 
@@ -49,7 +57,7 @@ These configuration settings are all defined per `route`, they are not global an
 ### Config
 | Field | Description | 
 | --------------- | --------------- | 
-| `rate_limit` | 	Specifies the maximum number of requests per second (RPS) that can be sent through this route. Setting a rate limit is crucial for preventing overloading the LLM provider's API, which can lead to request denials or additional charges. It ensures that your application stays within the operational limits of the LLM service and maintains a good standing with the provider. | 
+| `rate_limit` |     Specifies the maximum number of requests per second (RPS) that can be sent through this route. Setting a rate limit is crucial for preventing overloading the LLM provider's API, which can lead to request denials or additional charges. It ensures that your application stays within the operational limits of the LLM service and maintains a good standing with the provider. | 
 | `archive`    | A boolean setting (true or false) that determines whether interactions (both requests to and responses from) with the LLMs should be archived. Enabling this feature (true) is important for record-keeping, compliance, and analysis purposes. It allows organizations to review historical data for insights, audit interactions for compliance with regulations, or debug issues. | 
 | `retries`    | Indicates the number of retry attempts the gateway will make in the event of receiving a 503 (Service Unavailable) response from the LLM. This is critical for enhancing the reliability of the service, ensuring that temporary issues with the LLM provider do not immediately result in failures for end-users. By automatically retrying, the system can often overcome transient issues without manual intervention. | 
 

@@ -1,9 +1,10 @@
-# Integration Overview
+# Provider Configuration
+
+Providers represent the external AI services and models that power your Javelin routes, including both open source and closed source Large Language Models (LLMs). This guide covers all provider configuration options including API credentials, endpoints, model specifications, and connection settings. You'll learn to configure providers for various AI services like OpenAI, Anthropic, local models, and custom endpoints to build a robust multi-provider infrastructure.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-
-Javelin offers configuration options to setup "open" and closed soure Large Language Models(LLMs) Providers. You can easily connect your applications to route all LLM traffic through Javelin. 
+import CodeBlock from '@theme/CodeBlock'; 
 
 # Provider Object
 When represented as json, the provider object has the following structure:

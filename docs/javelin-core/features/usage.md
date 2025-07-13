@@ -1,1 +1,3 @@
 # Usage
+
+Usage tracking in Javelin provides comprehensive analytics and monitoring for your AI infrastructure, giving you insights into request volumes, costs, performance metrics, and user patterns. This feature helps you understand how your AI applications are being used and optimize resource allocation. You'll learn to configure usage reporting, set up alerts, and analyze metrics to make data-driven decisions about your AI deployment.

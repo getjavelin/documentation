@@ -1,0 +1,8 @@
+node_modules/
+.docusaurus/
+build/
+.git/
+CHANGELOG.md
+**/node_modules/**
+**/.docusaurus/**
+**/build/**

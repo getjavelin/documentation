@@ -1,3 +1,10 @@
+---
+id: changelog
+title: Changelog
+description: Complete changelog of Javelin platform updates, new features, security enhancements, and performance improvements
+sidebar_label: Changelog
+---
+
 # Changelog
 
 ## January 2025

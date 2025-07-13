@@ -1,4 +1,7 @@
 # Listing Providers
+
+Viewing your configured providers helps you understand which AI services are available and manage your model integrations effectively. This guide shows you how to retrieve and examine all providers in your gateway using both API calls and the Python SDK. You'll learn to list providers to audit connections, troubleshoot integration issues, and manage your AI service portfolio.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
