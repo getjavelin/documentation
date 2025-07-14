@@ -1,4 +1,4 @@
-# Overview
+# Threat Alerts
 The **Threat Alert Page** provides a comprehensive overview of security threats identified during interactions with Language Models. It focuses on detecting and analyzing vulnerabilities such as **prompt injections**, **jailbreak attempts**, **code/markdown content**, **restricted keywords**, and exposures of sensitive data, including **PII**, **PHI**, and **regex-based patterns**. This page enables users to efficiently evaluate risks across different threat categories and take necessary actions to safeguard their systems and sensitive information.
 
 ## Key Features

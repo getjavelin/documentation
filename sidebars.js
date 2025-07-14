@@ -108,7 +108,9 @@ module.exports = {
           'javelin-core/features/retries',
           'javelin-core/features/ratelimits',
           'javelin-core/features/loadbalancing',
+          /*
           'javelin-core/features/caching',
+          */
         ]
       },      
       {
