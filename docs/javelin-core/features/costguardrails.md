@@ -1,1 +1,3 @@
 # Cost Guardrails
+
+Cost guardrails in Javelin help you control and monitor AI spending by setting budgets and limits on your routes and models. This feature prevents unexpected cost overruns and enables automatic failover to more cost-effective alternatives when budgets are exceeded. You'll learn to configure spending limits, cost tracking, and budget-based routing policies to maintain predictable AI infrastructure costs.

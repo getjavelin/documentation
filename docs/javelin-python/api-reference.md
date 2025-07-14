@@ -1,3 +1,10 @@
+---
+id: python-api-reference
+title: Python SDK API Reference
+description: Complete API reference for the Javelin Python SDK including synchronous and asynchronous methods
+sidebar_label: API Reference
+---
+
 # API Reference
 ## Overview
 This API allows users to manage and query routes. Below you'll find both synchronous and asynchronous methods detailed separately.

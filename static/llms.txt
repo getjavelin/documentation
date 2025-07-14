@@ -1,0 +1,62 @@
+# Javelin Documentation
+
+> Javelin is a cutting-edge AI production platform designed for LLM-forward enterprises that need centralized guardrails with distributed team controls. This documentation covers the complete API, Python SDK, security processors, and enterprise features for implementing secure, reliable AI solutions.
+
+Javelin provides enterprise-grade AI infrastructure with comprehensive security guardrails, intelligent routing, cost management, and compliance features. The platform supports all major LLM providers and offers both cloud and on-premises deployment options.
+
+This documentation is built with Docusaurus and organized into user journey-based sections: Getting Started, Core Concepts, Security & Guardrails, Features, Python SDK, and Resources. Each section contains both conceptual explanations and practical implementation guides.
+
+## Getting Started
+
+- [Overview](https://docs.getjavelin.io/javelin-core/overview): Introduction to Javelin platform and core concepts
+- [Supported LLMs](https://docs.getjavelin.io/javelin-core/supported-llms): Complete list of supported language model providers
+- [Integration Guide](https://docs.getjavelin.io/javelin-core/integration-new): Step-by-step integration instructions for applications
+
+## Core Architecture
+
+- [Platform Architecture](https://docs.getjavelin.io/javelin-architecture/javelin-architecture): Detailed system architecture and component overview
+- [Gateway Configuration](https://docs.getjavelin.io/javelin-core/gatewayconfiguration): Environment setup and gateway management
+- [Route Configuration](https://docs.getjavelin.io/javelin-core/route-configuration): Request routing and traffic management
+- [Provider Configuration](https://docs.getjavelin.io/javelin-core/providerconfiguration): AI service provider setup and management
+
+## Security & Guardrails
+
+- [Processors Overview](https://docs.getjavelin.io/javelin-processors/processors-overview): Introduction to security processor framework
+- [Prompt Injection Detection](https://docs.getjavelin.io/javelin-processors/prompt-injection): Advanced prompt injection and jailbreak protection
+- [Sensitive Data Protection](https://docs.getjavelin.io/javelin-processors/privacyredaction): PII/PHI detection, redaction, and masking capabilities
+- [InfoTypes Reference](https://docs.getjavelin.io/javelin-processors/infotypes-reference): Complete list of detectable sensitive data types
+- [Trust & Safety](https://docs.getjavelin.io/javelin-processors/trustsafety): Content moderation and safety filtering
+- [Custom Guardrails](https://docs.getjavelin.io/javelin-processors/javascript): Building custom security processors
+
+## Enterprise Features
+
+- [Load Balancing](https://docs.getjavelin.io/javelin-core/features/loadbalancing): Traffic distribution and optimization strategies
+- [Automatic LLM Selection](https://docs.getjavelin.io/javelin-core/features/automaticllm): Intelligent model routing based on performance and cost
+- [Secrets Vault](https://docs.getjavelin.io/javelin-core/secretsvault/overview): HSM-based credential management
+- [Audit & Compliance](https://docs.getjavelin.io/javelin-core/features/auditarchive): Comprehensive audit trails and compliance reporting
+- [Cost Management](https://docs.getjavelin.io/javelin-core/features/costguardrails): Budget controls and cost optimization
+
+## Python SDK
+
+- [Python Quickstart](https://docs.getjavelin.io/javelin-python/python-quickstart): Getting started with the Python SDK
+- [Client API Reference](https://docs.getjavelin.io/javelin-python/javelinclient): Complete JavelinClient documentation
+- [Models Reference](https://docs.getjavelin.io/javelin-python/models): Data models and type definitions
+- [CLI Reference](https://docs.getjavelin.io/javelin-python/cli): Command-line interface documentation
+
+## Configuration Examples
+
+- [Creating Templates](https://docs.getjavelin.io/javelin-core/administration/createtemplate): Data protection template creation with multiple transformation methods
+- [Data Protection Setup](https://docs.getjavelin.io/javelin-core/dataprotectionconfiguration): Comprehensive data protection configuration guide
+- [Route Creation](https://docs.getjavelin.io/javelin-core/administration/create-route): Step-by-step route configuration
+
+## Development & Contributing
+
+- [Style Guide](https://docs.getjavelin.io/contributing/style-guide): Documentation standards and contribution guidelines
+- [Security Architecture](https://docs.getjavelin.io/security): Platform security model and best practices
+- [Changelog](https://docs.getjavelin.io/changelog): Latest platform updates and feature releases
+
+## Optional
+
+- [Third Party Integrations](https://docs.getjavelin.io/javelin-core/3rdpartyintegrations): External service integrations
+- [Playground](https://docs.getjavelin.io/javelin-core/playground/playground): Interactive testing environment
+- [Threat Alerts](https://docs.getjavelin.io/javelin-webapp/threat-alerts/overview): Security monitoring and alerting

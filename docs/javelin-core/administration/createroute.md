@@ -1,3 +1,10 @@
+---
+id: create-route
+title: Creating Route
+description: Step-by-step guide to creating routes with safety configurations, DLP, content filtering, and security settings
+sidebar_label: Create Route
+---
+
 # Creating Route
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -5,7 +12,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 # Creating Route
 
-This guide explains how to create routes with different safety configurations.
+Routes in Javelin define how incoming requests are processed and which providers handle them. This guide shows you how to create and configure routes to control request routing, apply security policies, and manage fallback behaviors. You'll learn to set up routes with safety configurations, data loss prevention (DLP), content filtering, and other security settings.
 
 <Tabs>
 <TabItem value="curl" label="Using cURL">

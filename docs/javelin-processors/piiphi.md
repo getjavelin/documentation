@@ -1,6 +1,6 @@
 # PII/PHI Detection
 
-To configure Javelin's PII/PHI detection, you need to define actions to be taken upon match with  configured PII/PHI infotypes. By customizing these settings, you can tailor the processor to your application's specific requirements and threat landscape.
+PII/PHI detection in Javelin automatically identifies and protects personally identifiable information (PII) and protected health information (PHI) in your AI interactions. This processor scans incoming requests and outgoing responses for sensitive data types like names, social security numbers, credit cards, and medical information. You'll learn to configure detection rules, transformation actions, and information types to ensure compliance with privacy regulations like GDPR and HIPAA.
 
 ## Configuration Options
 

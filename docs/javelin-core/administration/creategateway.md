@@ -4,6 +4,8 @@ draft: true
 
 # Creating Gateway
 
+Gateways in Javelin serve as the entry points for organizing and managing your routes, providers, and configurations within specific environments or business units. This guide shows you how to create and configure gateways to establish isolated environments for different teams or use cases. You'll learn to set up gateway configurations, namespaces, and access controls to organize your Javelin deployment effectively.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';

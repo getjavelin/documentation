@@ -1,3 +1,10 @@
+---
+id: prompt-injection
+title: Prompt Injection Detection
+description: Learn about prompt injection attacks and how Javelin's processor detects and prevents malicious input manipulation
+sidebar_label: Prompt Injection
+---
+
 # Overview
 
 Prompt injection is a sophisticated technique where malicious users craft inputs to manipulate the behavior of Large Language Models (LLMs) like GPT-3 or GPT-4, potentially causing them to generate undesired, biased, or harmful outputs. This manipulation poses significant security and ethical risks, particularly in open-ended applications where users have the freedom to input arbitrary text. To mitigate these risks, it's crucial to employ robust detection and prevention strategies.

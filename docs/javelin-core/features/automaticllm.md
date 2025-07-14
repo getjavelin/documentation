@@ -1,11 +1,6 @@
 # Automatic & Intelligent LLM Selection
-The digital landscape is vast and varied, necessitating AI solutions that can efficiently cater to diverse needs. 
 
-With the extensive range of Large Language Models (LLMs) available, the question often arises: 
-
-**Which model is best for a particular task?** 
-
-Javelin provides an answer by automating this choice, ensuring optimal performance based on the desired parameters.
+Automatic LLM selection in Javelin intelligently chooses the most appropriate AI model for each request based on your specified criteria like cost, accuracy, or speed. This feature eliminates the complexity of manually selecting models by analyzing task requirements and dynamically routing requests to optimal providers. You'll learn to configure selection policies, set performance priorities, and leverage intelligent routing to maximize efficiency across diverse AI workloads.
 
 ## Dynamic Model Allocation
 

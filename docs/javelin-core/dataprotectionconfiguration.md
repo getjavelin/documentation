@@ -1,9 +1,10 @@
-# Integration Overview
+# Data Protection Configuration
+
+Data protection templates in Javelin define how sensitive information is detected, analyzed, and transformed to ensure privacy and compliance. This guide covers all template configuration options for protecting personally identifiable information (PII), credentials, and other sensitive data types. You'll learn to configure inspection rules, transformation methods like redaction and masking, and likelihood thresholds to implement comprehensive data protection strategies across your AI applications.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-
-Javelin provides a flexible framework for managing sensitive data. Its configuration options cater to a wide range of data privacy needs, from simple inspections to more complex data transformation tasks. 
+import CodeBlock from '@theme/CodeBlock'; 
 
 # Template Object
 When represented as json, the template object has the following structure:

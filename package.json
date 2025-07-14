@@ -11,7 +11,8 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "lint:docs": "markdownlint \"docs/**/*.md\" \"docs/**/*.mdx\" \"*.md\""
   },
   "dependencies": {
     "@docusaurus/core": "^3.4.0",
@@ -58,6 +59,8 @@
     "@babel/helper-plugin-utils": "^7.24.8",
     "@docusaurus/core": "latest",
     "@docusaurus/preset-classic": "latest",
-    "gh-pages": "^6.0.0"
+    "gh-pages": "^6.0.0",
+    "markdownlint-cli": "^0.39.0",
+    "remark-lint": "^10.0.0"
   }
 }
