@@ -91,7 +91,7 @@ module.exports = {
             ]
           }
         ]
-      },       
+      },      
       {
         type: 'category',
         label: 'Custom Guardrails',
@@ -100,6 +100,42 @@ module.exports = {
         ]
       },
     ],
+    'Javelin RedTeam': [
+      'javelin-redteam/overview',
+      'javelin-redteam/quickstart',
+      'javelin-redteam/configuration',
+      'javelin-redteam/architecture',
+      {
+        type: 'category',
+        label: 'Categories',
+        items: [
+          'javelin-redteam/categories/overview',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Engines',
+        items: [
+          'javelin-redteam/engines/overview',
+          'javelin-redteam/engines/single-turn',
+          'javelin-redteam/engines/multi-turn',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'API Reference',
+        items: [
+          'javelin-redteam/api/endpoints',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Guides',
+        items: [
+          'javelin-redteam/guides/getting-started',
+        ]
+      }
+    ],    
     'Features': [
       {
         type: 'category',
