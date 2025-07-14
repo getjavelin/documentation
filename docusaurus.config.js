@@ -24,7 +24,7 @@ module.exports = {
         // Prepare for Docusaurus v4 features
         experimental_storage: {
             type: 'localStorage',
-            namespace: false,
+            namespace: true, // Use safe namespacing to avoid localStorage key collisions
         },
     },
 
