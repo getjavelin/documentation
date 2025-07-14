@@ -15,8 +15,6 @@
     "lint:docs": "markdownlint \"docs/**/*.md\" \"docs/**/*.mdx\" \"*.md\""
   },
   "dependencies": {
-    "@docusaurus/core": "^3.4.0",
-    "@docusaurus/preset-classic": "^3.4.0",
     "@mdx-js/react": "^3.0.0",
     "@svgr/webpack": "^5.5.0",
     "braces": "^3.0.3",
@@ -57,8 +55,9 @@
   },
   "devDependencies": {
     "@babel/helper-plugin-utils": "^7.24.8",
-    "@docusaurus/core": "latest",
-    "@docusaurus/preset-classic": "latest",
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/faster": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
     "gh-pages": "^6.0.0",
     "markdownlint-cli": "^0.39.0",
     "remark-lint": "^10.0.0"

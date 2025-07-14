@@ -12,6 +12,22 @@ module.exports = {
     projectName: 'documentation',
     trailingSlash: false,
 
+    // Docusaurus 3.8 Performance Features & Future Flags
+    future: {
+        experimental_faster: {
+            swcJsLoader: true,
+            swcJsMinimizer: true,
+            swcHtmlMinimizer: true,
+            lightningCssMinimizer: true,
+            // rspackBundler: true, // Disabled due to compatibility issues
+        },
+        // Prepare for Docusaurus v4 features
+        experimental_storage: {
+            type: 'localStorage',
+            namespace: true, // Use safe namespacing to avoid localStorage key collisions
+        },
+    },
+
     // SEO and Meta tags
     headTags: [
         {
