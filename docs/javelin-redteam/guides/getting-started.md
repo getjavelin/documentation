@@ -6,28 +6,15 @@ This guide will walk you through running your first security assessment with Jav
 
 Before starting, ensure you have:
 
-- **Access to Javelin RedTeam**: API credentials or local installation
-- **Target Application**: HTTP endpoint, model API, or test application
-- **API Keys**: For AI model providers (OpenAI, XAI, Hugging Face)
-- **Basic Knowledge**: Understanding of AI security concepts (optional but helpful)
+- **Access to Javelin RedTeam**: Login credentials to access Javelin Redteam interface from the UI.
+- **Target Application**: HTTP endpoint, model API, or test application to test the application. Javelin-Redteam includes reference lab applications for conducting sample assessments. 
 
-## Step 1: Environment Setup
 
-```bash
-# Set your API credentials
-export JAVELIN_API_TOKEN="your_api_token"
-export JAVELIN_API_URL="https://your-javelin-api.com"
-
-# Optional: Set model provider keys for enhanced testing
-export OPENAI_API_KEY="your_openai_key"
-export XAI_API_KEY="your_xai_key"
-```
-
-## Step 2: Prepare Your Target Application
+## Step 1: Prepare Your Target Application
 
 ### Test Application Setup
 
-Javelin Redteam already includes sample LLM backed apps for running redteam scans. Currently supported ones are:
+Javelin Redteam already includes sample LLM backed lab apps for running redteam scans. Currently supported ones are:
 
 #### Lab1
 
@@ -51,6 +38,7 @@ Endpoint Specification:
 | `/v1/redteam/lab1/health` | GET | Health check for lab availability | None | Status object |
 | `/v1/redteam/lab1/lab-instructions` | GET | Returns lab objectives and description | None | Instructions object |
 
+For demonstration purposes, this lab uses ```gpt-3.5-turbo``` model.
 
 ### Target Application Requirements
 
@@ -60,7 +48,11 @@ Your target application should:
 - **Be accessible** from the red team environment
 - **Have appropriate permissions** for security testing
 
-## Step 3: Create Your First Scan Configuration
+## Step 2: Register the target application
+
+Register the target application on 
+
+## Step 2: Create Your First Scan Configuration
 
 ### Basic Configuration
 

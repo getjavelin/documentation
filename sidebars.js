@@ -102,7 +102,6 @@ module.exports = {
     ],
     'Javelin RedTeam': [
       'javelin-redteam/overview',
-      'javelin-redteam/quickstart',
       'javelin-redteam/configuration',
       'javelin-redteam/architecture',
       {

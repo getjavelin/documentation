@@ -1,10 +1,6 @@
 # Engines Overview
 
-Engines are the core attack enhancement techniques in Javelin RedTeam that transform basic prompts into sophisticated adversarial inputs. Each engine implements specific attack methodologies derived from cutting-edge research papers and real-world attack patterns to thoroughly test AI application security.
-
-## What are Engines?
-
-Engines take a base prompt and apply various transformation techniques to create more sophisticated attacks that can bypass safety measures, reveal sensitive information, or exploit vulnerabilities. They serve as the "attack amplification" layer in the red teaming pipeline.
+Engines are the core attack enhancement techniques in Javelin RedTeam that transform basic prompts into sophisticated adversarial inputs. Each engine implements specific attack methodologies derived from cutting-edge research papers and real-world attack patterns to thoroughly test AI application security.They serve as the "attack amplification" layer in the red teaming pipeline.
 
 ### Base Prompt Transformation Flow
 

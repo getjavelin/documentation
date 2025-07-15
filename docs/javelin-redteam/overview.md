@@ -2,13 +2,9 @@
 slug: /javelin-redteam
 ---
 
-# Javelin RedTeam
+# Javelin RedTeam Overview
 
-Javelin RedTeam is a cutting-edge AI security platform designed to proactively identify and assess vulnerabilities in LLM-based applications through automated red teaming. Built with modular agents and powered by state-of-the-art adversarial techniques, it provides comprehensive security assessments before deployment.
-
-## What is Javelin RedTeam?
-
-Javelin RedTeam is a suite of modular agents built with [smolagents](https://github.com/huggingface/smolagents) that work together to generate and execute attacks on target applications, evaluate vulnerabilities, and provide detailed security reports. It implements cutting-edge research from academic papers and real-world attack patterns to thoroughly test your AI applications.
+Javelin RedTeam is a cutting-edge AI security platform designed to proactively identify and assess vulnerabilities in LLM-based applications through automated red teaming. Built with modular agents and powered by state-of-the-art adversarial techniques, it provides comprehensive security assessments for your application.
 
 ## Key Features
 
@@ -16,18 +12,10 @@ Javelin RedTeam is a suite of modular agents built with [smolagents](https://git
 Generate attacks to discover vulnerabilities in target applications automatically using AI-driven attack generation and execution.
 
 ### 🔧 **Modular Agent Architecture**
-- **Agent Smith**: Main orchestrator that coordinates all other agents
-- **Generator Agent**: Creates sophisticated attack prompts using various enhancement techniques
-- **Attack Executor**: Sends attacks to target applications and collects responses
-- **Attack Evaluator**: Analyzes responses for potential vulnerabilities using LLM judges
-- **Reporter**: Generates comprehensive vulnerability assessment reports
+A suite of agents working together to conduct comprehensive security assessments.
 
 ### 🚀 **Multiple AI Engines**
-Support for various sophisticated attack enhancement engines:
-
-- **Single-Turn Engines**: 10 specialized engines for single-interaction attacks
-- **Multi-Turn Engines**: Advanced conversational attack patterns (coming soon)
-- **Dynamic Engine Selection**: Automatic engine optimization based on target and vulnerability type
+Support for various sophisticated attack enhancement engines based on published research and established techniques.
 
 ### 🏗️ **Production-Ready API**
 FastAPI server with Redis-backed queue system for asynchronous red-teaming operations, enabling scalable and distributed testing workflows.
@@ -48,7 +36,7 @@ Identify vulnerabilities before they make it to production through systematic ad
 Implements state-of-the-art adversarial techniques from leading research institutions including Microsoft, Meta, and academic publications.
 
 ### **Comprehensive Coverage**
-Tests across 15+ vulnerability categories and 80+ specific vulnerability types covering:
+Tests across 15 vulnerability categories and 80+ specific vulnerability types covering:
 - Data Privacy & PII Leakage
 - Prompt Injection & Jailbreaks  
 - Bias & Toxicity
@@ -72,19 +60,19 @@ Test any target through:
 
 Javelin RedTeam follows a systematic approach to red teaming:
 
-1. **Planning**: The Planner Agent generates a detailed attack strategy based on target application and selected vulnerability categories
+1. **Planning**: The Planner Agent generates a detailed attack strategy based on target application and selected vulnerability categories.
 
-2. **Attack Generation**: Base attack prompts are retrieved from vector databases and enhanced using various engines (prompt injection, mathematical obfuscation, adversarial techniques, etc.)
+2. **Attack Generation**: Base attack prompts are retrieved from vector databases and enhanced using various engines. (prompt injection, mathematical obfuscation, adversarial techniques, etc.)
 
-3. **Execution**: Attack prompts are sent to target applications through configurable interfaces
+3. **Execution**: Attack prompts are sent to target applications through configurable interfaces.
 
-4. **Evaluation**: Responses are analyzed by LLM judges to identify potential vulnerabilities and security issues
+4. **Evaluation**: Responses are analyzed by LLM judges to identify potential vulnerabilities and security issues.
 
-5. **Reporting**: Comprehensive reports are generated with findings, severity levels, and remediation guidance
+5. **Reporting**: Comprehensive reports are generated with findings, severity levels, and remediation guidance.
 
 ## Vulnerability Taxonomy
 
-Javelin RedTeam uses a comprehensive vulnerability taxonomy
+Javelin RedTeam uses a comprehensive vulnerability taxonomy with 15 categories covering all major security domains:
 
 ### **Core Categories**
 - **Data Privacy**: PII leakage, prompt disclosure
@@ -106,6 +94,8 @@ Complete coverage of OWASP LLM security categories with dynamic attack generatio
 - **misinformation**
 - **unbounded_consumption**
 
+For detailed information about each category, see our [Categories Guide](categories/overview).
+
 ## Attack Enhancement Engines
 
 Javelin RedTeam uses sophisticated engines to transform base prompts into advanced attacks:
@@ -124,9 +114,9 @@ Advanced conversational attack patterns for sustained vulnerability exploitation
 
 ## Getting Started
 
-Ready to secure your AI applications? Start with our [Getting Started Guide](./guides/getting-started) to run your first red team assessment, or explore our [Configuration Guide](./configuration) for advanced setup options.
+Ready to secure your AI applications? Start with our [Getting Started Guide](guides/getting-started) to run your first red team assessment, or explore our [Configuration Guide](configuration) for advanced setup options.
 
-For production deployments, see our [Architecture Guide](./architecture) and [API Reference](./api/endpoints).
+For production deployments, see our [Architecture Guide](architecture) and [API Reference](api/endpoints).
 
 ## Support & Community
 
