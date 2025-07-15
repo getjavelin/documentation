@@ -54,15 +54,15 @@ Register the target application on Javelin gateway as mentioned in the [creating
 
 ## Step 2: Create Your First Scan Configuration
 
-![](/img/redteam/CreateRedteamAssessment.png)
+![Create Redteam Assessment Button](/img/redteam/CreateRedteamAssessment.png)
 
 After creating the application, you can click on the application and select `Redteam Assessments` tab from the resulting menu, and click on `Create New Assessment`
 
-![](/img/redteam/RedteamConfigSettings.png)
+![Redteam Configuration Settings Form](/img/redteam/RedteamConfigSettings.png)
 
 Then, select configuration settings for the scan and click `NEXT`. All the fields and their description is explained in the table below:
 
-![](/img/redteam/ScanType.png)
+![Scan Type Selection Screen](/img/redteam/ScanType.png)
 
 Then select the scan type you want to run. Scan type determines the choice of subset of categories for which the scan will be run. If you want to choose amongst all the 15 available categories, go for a `custom` scan.
 
@@ -70,21 +70,21 @@ Then select the scan type you want to run. Scan type determines the choice of su
 For details about what is a category and what all categories are available, together with further explanation about each, see our [taxonomy guide](/docs/javelin-redteam/categories/overview.md)
 :::
 
-![](/img/redteam/ChooseCategory1.png)
+![Category Selection Screen Part 1](/img/redteam/ChooseCategory1.png)
 
 
 Then select the categories that you want to run the scan for.
 
 ## Step 4: Run Your First Scan
 
-![](/img/redteam/ChooseCategory2.png)
+![Category Selection Screen Part 2](/img/redteam/ChooseCategory2.png)
 
 Lastly, click `RUN SCAN` to start running the assessment.
 
 
 ## Step 5: Monitor Scan Progress
 
-![](/img/redteam/MonitorScan.png)
+![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
 
 After that the scan will get `queued` for execution.
 We will get back the list of assessments screen and once it starts executing, the status will change to `running`.
@@ -108,11 +108,11 @@ The scan `completed` state means the execution of scan was successful. It could 
 
 ## Step 6: Analyze Your Results
 
-![](/img/redteam/CompletedScan.png)
+![Completed Scan Results View](/img/redteam/CompletedScan.png)
 
 Once the scan is complete, we can click on "View" under `Actions` to view detailed report of the scan run.
 
-![](/img/redteam/ScanReport.png)
+![Detailed Scan Report Dashboard](/img/redteam/ScanReport.png)
 
 :::note
 For Intepreting the report and taking remediation actions, please check the [Understanding redteam report guide](/docs/javelin-redteam/guides/understanding-reports.md)

@@ -4,7 +4,7 @@ Engines are the core attack enhancement techniques in Javelin RedTeam that trans
 
 ### Attack Generation in Javelin-Redteam
 
-![](/img/redteam/AttackGeneration.png)
+![Attack Generation Flow Diagram](/img/redteam/AttackGeneration.png)
 
 To generate attacks, javelin-redteam follows the below algorithm
 

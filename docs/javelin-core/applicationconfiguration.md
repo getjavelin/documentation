@@ -48,25 +48,25 @@ Applications are registered through the Javelin API or web interface. Here's the
 
 To register a new app:
 
-![](/img/application/CreateNewApp.png)
-
 1. Go to "Applications" section. Click "Create New Application"
 
-![](/img/application/AddApplication.png)
- 
+   ![Create New Application Button](/img/application/CreateNewApp.png)
+
 2. Fill in application details:
    - Name: my-chatbot-app
    - Select Type of App: Assisstant, Agent or Custom
    - Description: Customer service chatbot application
    - Endpoint: ```http://javelin-redteam-lab1:8002/v1/redteam/lab1/chat```
 
-![](/img/application/APIRequestSection.png)
+   ![Add Application Form](/img/application/AddApplication.png)
 
 3. Fill in API Request details
 
-:::note
-API request details are required for some features like [javelin-redteam](/docs/javelin-redteam/overview.md), but are not mandatory for registering an app
-:::
+   ![API Request Configuration Section](/img/application/APIRequestSection.png)
+
+   :::note
+   API request details are required for some features like [javelin-redteam](/docs/javelin-redteam/overview.md), but are not mandatory for registering an app
+   :::
 
 4. Click on "SAVE"
 
