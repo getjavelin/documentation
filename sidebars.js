@@ -16,16 +16,23 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'Routes',
+        label: 'Providers',
         items: [
-          'javelin-core/route-configuration',
+          'javelin-core/providerconfiguration',
         ]
       },
       {
         type: 'category',
-        label: 'Providers',
+        label: 'Applications',
         items: [
-          'javelin-core/providerconfiguration',
+          'javelin-core/applicationconfiguration',
+        ]
+      },        
+      {
+        type: 'category',
+        label: 'Routes',
+        items: [
+          'javelin-core/route-configuration',
         ]
       },
     ],
@@ -91,7 +98,7 @@ module.exports = {
             ]
           }
         ]
-      },       
+      },      
       {
         type: 'category',
         label: 'Custom Guardrails',
@@ -100,6 +107,35 @@ module.exports = {
         ]
       },
     ],
+    'Javelin RedTeam': [
+      'javelin-redteam/overview',
+      'javelin-redteam/configuration',
+      'javelin-redteam/architecture',
+      {
+        type: 'category',
+        label: 'Categories',
+        items: [
+          'javelin-redteam/categories/overview',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Engines',
+        items: [
+          'javelin-redteam/engines/overview',
+          'javelin-redteam/engines/single-turn',
+          'javelin-redteam/engines/multi-turn',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Guides',
+        items: [
+          'javelin-redteam/guides/getting-started',
+          'javelin-redteam/guides/understanding-reports',
+        ]
+      }
+    ],    
     'Features': [
       {
         type: 'category',
