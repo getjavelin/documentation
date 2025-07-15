@@ -1,4 +1,4 @@
-# Getting Started with Javelin RedTeam
+# Getting Started
 
 This guide will walk you through running your first security assessment with Javelin RedTeam, from initial setup to analyzing results. By the end of this guide, you'll have conducted a comprehensive red team evaluation of an AI application and understand how to interpret the findings.
 
@@ -9,8 +9,15 @@ Before starting, ensure you have:
 - **Access to Javelin RedTeam**: Login credentials to access Javelin Redteam interface from the UI.
 - **Target Application**: HTTP endpoint, model API, or test application to test the application. Javelin-Redteam includes reference lab applications for conducting sample assessments. 
 
-
 ## Step 1: Prepare Your Target Application
+
+### Target Application Requirements
+
+Your target application should:
+- **Accept HTTP requests** with JSON payloads
+- **Return responses** in a consistent format
+- **Be accessible** from the red team environment
+- **Have appropriate permissions** for security testing
 
 ### Test Application Setup
 
@@ -40,201 +47,88 @@ Endpoint Specification:
 
 For demonstration purposes, this lab uses ```gpt-3.5-turbo``` model.
 
-### Target Application Requirements
-
-Your target application should:
-- **Accept HTTP requests** with JSON payloads
-- **Return responses** in a consistent format
-- **Be accessible** from the red team environment
-- **Have appropriate permissions** for security testing
 
 ## Step 2: Register the target application
 
-Register the target application on 
+Register the target application on Javelin gateway as mentioned in the [creating application guide](/docs/javelin-core/applicationconfiguration.md)
 
 ## Step 2: Create Your First Scan Configuration
 
-### Basic Configuration
+![](/img/redteam/CreateRedteamAssessment.png)
 
-Create a configuration file `my-first-scan.yaml`:
+After creating the application, you can click on the application and select `Redteam Assessments` tab from the resulting menu, and click on `Create New Assessment`
 
-```yaml
-app_config:
-  name: "My First Red Team Scan"
-  description: "A customer service chatbot that helps users with account inquiries and product information"
-  endpoint: "http://localhost:5000/chat"
-  method: "POST"
-  headers:
-    Content-Type: "application/json"
-  payload_template:
-    query: "{{query}}"
-    user_id: "redteam_user"
+![](/img/redteam/RedteamConfigSettings.png)
 
-scan_config:
-  parameters:
-    maxScenarios: 5          # Start small for your first scan
-    timeout: 3               # 3-minute timeout
-    concurrency: 1           # Single-threaded execution
-    strictnessLevel: "medium" # Balanced evaluation
-    analysisModel: "gpt-4"   # LLM judge for evaluation
-    reportFormat: "markdown"
-    categories:
-      - "data_privacy"       # Test for data leakage
-      - "security"          # Test for security vulnerabilities
-```
+Then, select configuration settings for the scan and click `NEXT`. All the fields and their description is explained in the table below:
 
-### Advanced Configuration (Optional)
+![](/img/redteam/ScanType.png)
 
-For more comprehensive testing:
+Then select the scan type you want to run. Scan type determines the choice of subset of categories for which the scan will be run. If you want to choose amongst all the 15 available categories, go for a `custom` scan.
 
-```yaml
-app_config:
-  name: "Comprehensive Security Assessment"
-  description: "Enterprise RAG-based customer service system with access to customer data, product information, and internal documentation"
-  endpoint: "https://api.yourcompany.com/chat"
-  method: "POST"
-  headers:
-    Content-Type: "application/json"
-    Authorization: "Bearer ${TARGET_API_TOKEN}"
-  payload_template:
-    query: "{{query}}"
-    session_id: "redteam_session"
-    context: "customer_service"
+:::tip
+For details about what is a category and what all categories are available, together with further explanation about each, see our [taxonomy guide](/docs/javelin-redteam/categories/overview.md)
+:::
 
-scan_config:
-  parameters:
-    maxScenarios: 10
-    timeout: 5
-    concurrency: 2
-    strictnessLevel: "high"
-    analysisModel: "gpt-4"
-    reportFormat: "markdown"
-    categories:
-      - "data_privacy"
-      - "responsible_ai"
-      - "security"
-      - "prompt_injection"
-      - "sensitive_information_disclosure"
-```
+![](/img/redteam/ChooseCategory1.png)
+
+
+Then select the categories that you want to run the scan for.
 
 ## Step 4: Run Your First Scan
 
-### Using the API
+![](/img/redteam/ChooseCategory2.png)
 
-```bash
-# Trigger the scan
-curl -X POST "${JAVELIN_API_URL}/v1/redteam/scan" \
-  -H "Authorization: Bearer ${JAVELIN_API_TOKEN}" \
-  -H "Content-Type: application/json" \
-  -d @my-first-scan.yaml
+Lastly, click `RUN SCAN` to start running the assessment.
 
-# Response will include a run_id
-{
-  "run_id": "scan_abc123",
-  "status": "queued",
-  "message": "Scan successfully queued for execution",
-  "estimated_duration": "3-5 minutes"
-}
-```
-
-### Using Local Installation
-
-```bash
-# Run the scan using CLI
-javelin-redteam agent-smith --config my-first-scan.yaml
-
-# Or run the API server locally
-javelin-api &
-curl -X POST "http://localhost:8001/v1/redteam/scan" \
-  -H "Content-Type: application/json" \
-  -d @my-first-scan.yaml
-```
 
 ## Step 5: Monitor Scan Progress
 
-### Check Scan Status
+![](/img/redteam/MonitorScan.png)
 
-```bash
-# Monitor progress
-curl -X GET "${JAVELIN_API_URL}/v1/redteam/scan/scan_abc123/status" \
-  -H "Authorization: Bearer ${JAVELIN_API_TOKEN}"
+After that the scan will get `queued` for execution.
+We will get back the list of assessments screen and once it starts executing, the status will change to `running`.
+Every scan run will be assigned a unique id to track the data and report for that run.
 
-# Response shows progress
-{
-  "run_id": "scan_abc123",
-  "status": "running",
-  "progress": {
-    "completed_tests": 7,
-    "total_tests": 10,
-    "current_category": "security",
-    "percentage": 70
-  },
-  "estimated_completion": "2024-01-15T10:30:00Z"
-}
-```
+Depending on the number of test cases, the scan can take from a few minutes to a few hours to run. This would be good time to grab some coffee!
 
-### Status Indicators
+Following are the status indicator values that one might encounter:
 
-- **`queued`**: Scan is waiting to be processed
-- **`initializing`**: Scan is being prepared
-- **`running`**: Scan is actively executing tests
-- **`completed`**: Scan finished successfully
-- **`failed`**: Scan encountered an error
-- **`cancelled`**: Scan was cancelled
+|Status|Description|
+|------|-----------|
+|`queued`|Scan is waiting to be processed in queue|
+|`running`|Scan has started running|
+|`completed`|Scan finished successfully|
+|`failed`|Scan encountered an error|
+|`cancelled`|Scan was cancelled/stopped while running|
+
+:::note
+The scan `completed` state means the execution of scan was successful. It could still have failing tests which means vulnerabilities were detected.
+:::
 
 ## Step 6: Analyze Your Results
 
-### Retrieve the Report
+![](/img/redteam/CompletedScan.png)
 
-Once the scan is complete:
+Once the scan is complete, we can click on "View" under `Actions` to view detailed report of the scan run.
 
-```bash
-# Get the full report
-curl -X GET "${JAVELIN_API_URL}/v1/redteam/scan/scan_abc123/report" \
-  -H "Authorization: Bearer ${JAVELIN_API_TOKEN}" \
-  > security-report.json
+![](/img/redteam/ScanReport.png)
 
-# Or get markdown format
-curl -X GET "${JAVELIN_API_URL}/v1/redteam/scan/scan_abc123/report?format=markdown" \
-  -H "Authorization: Bearer ${JAVELIN_API_TOKEN}" \
-  > security-report.md
-```
-
-### Understanding Your Report
-
-Your security report will include several key sections:
-
-
-## Step 7: Interpret and Act on Findings
-
-### Risk Prioritization
-
-1. **Critical Issues**: Address immediately
-   - System compromise, data breaches
-   - Take system offline if necessary
-
-2. **High Issues**: Address within 24-48 hours
-   - Privacy violations, security vulnerabilities
-   - Implement temporary mitigations
-
-3. **Medium Issues**: Address within 1-2 weeks
-   - Brand reputation, compliance issues
-   - Plan systematic remediation
-
-4. **Low Issues**: Address in next development cycle
-   - Minor usability or performance issues
+:::note
+For Intepreting the report and taking remediation actions, please check the [Understanding redteam report guide](/docs/javelin-redteam/guides/understanding-reports.md)
+:::
 
 
 ## Troubleshooting Common Issues
 
+(coming soon)
 
 ## Support and Resources
 
 ### Documentation
-- [Configuration Guide](../configuration): Detailed configuration options
-- [Categories Guide](../categories/overview): Understanding vulnerability categories
-- [Engines Guide](../engines/overview): Attack enhancement techniques
-- [API Reference](../api/endpoints): Complete API documentation
+- [Configuration Guide](/docs/javelin-redteam//configuration.md): Detailed configuration options
+- [Categories Guide](/docs/javelin-redteam/categories/overview.md): Understanding vulnerability categories
+- [Engines Guide](/docs/javelin-redteam/engines/overview.md): Attack enhancement techniques
 
 ### Community and Support
 - **GitHub Issues**: Report bugs and request features

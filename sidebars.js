@@ -16,16 +16,23 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'Routes',
+        label: 'Providers',
         items: [
-          'javelin-core/route-configuration',
+          'javelin-core/providerconfiguration',
         ]
       },
       {
         type: 'category',
-        label: 'Providers',
+        label: 'Applications',
         items: [
-          'javelin-core/providerconfiguration',
+          'javelin-core/applicationconfiguration',
+        ]
+      },        
+      {
+        type: 'category',
+        label: 'Routes',
+        items: [
+          'javelin-core/route-configuration',
         ]
       },
     ],
@@ -122,16 +129,10 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'API Reference',
-        items: [
-          'javelin-redteam/api/endpoints',
-        ]
-      },
-      {
-        type: 'category',
         label: 'Guides',
         items: [
           'javelin-redteam/guides/getting-started',
+          'javelin-redteam/guides/understanding-reports',
         ]
       }
     ],    
