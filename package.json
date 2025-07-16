@@ -36,7 +36,7 @@
     "userland": "^0.4.1",
     "ws": "^8.17.1"
   },
-  "overrides": {
+  "resolutions": {
     "braces": "^3.0.3",
     "ws": "^8.17.1",
     "express": "^4.19.2",
