@@ -54,7 +54,7 @@ To register a new app:
 
 2. Fill in application details:
    - Name: my-chatbot-app
-   - Select Type of App: Assisstant, Agent or Custom
+   - Select Type of App: Assistant, Agent or Custom
    - Description: Customer service chatbot application
    - Endpoint: ```http://javelin-redteam-lab1:8002/v1/redteam/lab1/chat```
 
@@ -77,7 +77,7 @@ To register a new app:
 | Field | Description | Required |
 |-------|-------------|----------|
 | `name` | Unique identifier for your application within Javelin ecosystem | ✅ |
-| `type` | Application type: `Assisstant`, `Agent`, `Custom`| ✅ |
+| `type` | Application type: `Assistant`, `Agent`, `Custom`| ✅ |
 | `description` | Human-readable description of the application's purpose | ✅ |
 
 ### API Request Fields
