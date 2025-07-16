@@ -91,5 +91,5 @@ To register a new app:
 
 After registering your application, create routes to connect it with your configured providers.
 
-For detailed route configuration options, see our [Route Configuration Guide](/docs/javelin-core/routeconfiguration).
+For detailed route configuration options, see our [Route Configuration Guide](/docs/javelin-core/routeconfiguration.md).
 

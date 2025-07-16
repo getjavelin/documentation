@@ -105,7 +105,7 @@ Complete coverage of OWASP LLM security categories with dynamic attack generatio
 - **unbounded_consumption**
 
 :::note
-For detailed information about each category, see our [Categories Guide](categories/overview).
+For detailed information about each category, see our [Categories Guide](/docs/javelin-redteam/categories/overview.md).
 :::
 
 ## Attack Enhancement Engines
