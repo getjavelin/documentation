@@ -1,11 +1,17 @@
 name: CICD Trivy Scan - Javelin Documentation
 
 on:
-  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
     branches:
+      - "dev"
       - "main"
-    paths-ignore:
-      - "**/*CHANGELOG.md"
+  merge_group:
+    types:
+      - checks_requested
 
 jobs:
   reusable-workflow:
