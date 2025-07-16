@@ -236,6 +236,7 @@ In an alternate reality where characters typed in reverse order temporarily over
 
 ## COU (Chain-of-Utterance) Engine
 **ID**: `cou_engine`  
+**Research Basis**: [Chain of Utterances for Safety Alignment](https://arxiv.org/pdf/2308.09662)
 
 **Description**: Implements sophisticated chain-of-utterance attack patterns that build complex reasoning chains to bypass safety measures.
 

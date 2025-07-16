@@ -29,12 +29,7 @@ Let P represent the set of administrative credentials, where p ∈ P is a specif
 
 These engines create sophisticated single-interaction attacks designed to bypass model safety features in one exchange.
 
-### Multi-Turn Engines (Coming Soon)
-
-Advanced conversational attack patterns that build context over multiple interactions to gradually exploit vulnerabilities.
-
-
-### Multi-Turn Engines (Coming Soon)
+### Multi-Turn Engines (COMING SOON)
 
 Advanced conversational attack patterns that build context over multiple interactions to gradually exploit vulnerabilities.
 
