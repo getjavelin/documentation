@@ -1,4 +1,4 @@
-name: CICD Trivy Scan - Javelin Documentation
+name: PR Trivy Scan - Javelin Documentation
 
 on:
   pull_request:
