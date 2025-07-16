@@ -138,32 +138,44 @@ module.exports = {
           'javelin-admin/alerts/overview',
         ]
       },
+      'javelin-core/3rdpartyintegrations',
+    ],
+    'Developer Toolkit': [
       {
         type: 'category',
-        label: 'Developer Tools',
+        label: 'Model Scan',
         items: [
           'javelin-core/model-scan',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Model Playground',
+        items: [
           'javelin-core/playground/playground',
         ]
       },
-      'javelin-core/3rdpartyintegrations',
-    ],
-    'Python SDK': [
-      'javelin-python/python-quickstart',
       {
         type: 'category',
-        label: 'API Reference',
+        label: 'Python SDK',
         items: [
-          'javelin-python/models',
-          'javelin-python/javelinclient',
-          'javelin-python/exceptions'
-        ]
-      },
-      {
-        type: 'category',
-        label: 'CLI Reference',
-        items: [
-          'javelin-python/cli'
+          'javelin-python/python-quickstart',
+          {
+            type: 'category',
+            label: 'API Reference',
+            items: [
+              'javelin-python/models',
+              'javelin-python/javelinclient',
+              'javelin-python/exceptions'
+            ]
+          },
+          {
+            type: 'category',
+            label: 'CLI Reference',
+            items: [
+              'javelin-python/cli'
+            ]
+          },
         ]
       },
     ],
