@@ -63,10 +63,10 @@ Categories can specify engine preferences through hints:
 ```yaml
 categories:
   security:
-    engine_hints: ["prompt_injection", "adversarial", "bon", "direct_llm", "hidden_layer", "rot13", "math_engine", "base64", "cou_engine"]
+    engine_hints: ["prompt_injection", "adversarial", "bon"]
   
   prompt_injection:
-    engine_hints: ["prompt_injection", "adversarial", "bon", "hidden_layer", "rot13", "math_engine", "base64", "gray_box", "cou_engine"]
+    engine_hints: ["prompt_injection", "adversarial", "bon", "hidden_layer", "math_engine", "gray_box", "cou_engine"]
 ```
 
 ### Configuration-Based Selection
