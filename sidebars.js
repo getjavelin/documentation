@@ -1,8 +1,5 @@
 module.exports = {  
   docsSidebar: {
-    'Getting Started': [
-      'javelin-core/overview',
-    ],
     'Core Concepts': [
       'javelin-architecture/javelin-architecture',
       {
@@ -24,6 +21,45 @@ module.exports = {
         label: 'Providers',
         items: [
           'javelin-core/providerconfiguration',
+        ]
+      },
+    ],
+    'Features': [
+      {
+        type: 'category',
+        label: 'Model Reliability',
+        items: [
+          'javelin-core/features/retries',
+          'javelin-core/features/ratelimits',
+          'javelin-core/features/loadbalancing',
+          /*
+          'javelin-core/features/caching',
+          */
+        ]
+      },      
+      {
+        type: 'category',
+        label: 'Model Routing',
+        items: [
+          'javelin-core/fallbackrouting/overview',
+          'javelin-core/features/automaticllm',
+        ]
+      },                  
+      {
+        type: 'category',
+        label: 'Secrets Vault',
+        items: [
+          'javelin-core/secretsvault/overview',
+          'javelin-core/secretsvault/virtualkeys',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Compliance & Monitoring',
+        items: [
+          'javelin-core/features/auditarchive',
+          'javelin-webapp/threat-alerts/overview',
+          'javelin-admin/alerts/overview',
         ]
       },
     ],
@@ -98,48 +134,9 @@ module.exports = {
         ]
       },
     ],
-    'Features': [
-      {
-        type: 'category',
-        label: 'Model Reliability',
-        items: [
-          'javelin-core/features/retries',
-          'javelin-core/features/ratelimits',
-          'javelin-core/features/loadbalancing',
-          /*
-          'javelin-core/features/caching',
-          */
-        ]
-      },      
-      {
-        type: 'category',
-        label: 'Model Routing',
-        items: [
-          'javelin-core/fallbackrouting/overview',
-          'javelin-core/features/automaticllm',
-        ]
-      },                  
-      {
-        type: 'category',
-        label: 'Secrets Vault',
-        items: [
-          'javelin-core/secretsvault/overview',
-          'javelin-core/secretsvault/virtualkeys',
-        ]
-      },
-      {
-        type: 'category',
-        label: 'Compliance & Monitoring',
-        items: [
-          'javelin-core/features/auditarchive',
-          'javelin-webapp/threat-alerts/overview',
-          'javelin-admin/alerts/overview',
-        ]
-      },
-    ],
     'Developer Toolkit': [
-      'javelin-core/supported-llms',
       'javelin-core/integration-new',
+      'javelin-core/supported-llms',
       'javelin-core/model-scan',
       'javelin-core/playground/playground',
       'javelin-core/3rdpartyintegrations',
