@@ -134,6 +134,73 @@ module.exports = {
         ]
       },
     ],
+    'Javelin RedTeam': [
+      'javelin-redteam/overview',
+      'javelin-redteam/configuration',
+      'javelin-redteam/architecture',
+      {
+        type: 'category',
+        label: 'Categories',
+        items: [
+          'javelin-redteam/categories/overview',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Engines',
+        items: [
+          'javelin-redteam/engines/overview',
+          'javelin-redteam/engines/single-turn',
+          'javelin-redteam/engines/multi-turn',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Guides',
+        items: [
+          'javelin-redteam/guides/getting-started',
+          'javelin-redteam/guides/understanding-reports',
+        ]
+      }
+    ],    
+    'Features': [
+      {
+        type: 'category',
+        label: 'Model Reliability',
+        items: [
+          'javelin-core/features/retries',
+          'javelin-core/features/ratelimits',
+          'javelin-core/features/loadbalancing',
+          /*
+          'javelin-core/features/caching',
+          */
+        ]
+      },      
+      {
+        type: 'category',
+        label: 'Model Routing',
+        items: [
+          'javelin-core/features/automaticllm',
+          'javelin-core/fallbackrouting/overview',
+        ]
+      },                  
+      {
+        type: 'category',
+        label: 'Secrets Vault',
+        items: [
+          'javelin-core/secretsvault/overview',
+          'javelin-core/secretsvault/virtualkeys',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Compliance & Monitoring',
+        items: [
+          'javelin-core/features/auditarchive',
+          'javelin-webapp/threat-alerts/overview',
+          'javelin-admin/alerts/overview',
+        ]
+      },
     'Developer Toolkit': [
       'javelin-core/integration-new',
       'javelin-core/supported-llms',
