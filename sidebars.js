@@ -2,8 +2,6 @@ module.exports = {
   docsSidebar: {
     'Getting Started': [
       'javelin-core/overview',
-      'javelin-core/supported-llms',
-      'javelin-core/integration-new'
     ],
     'Core Concepts': [
       'javelin-architecture/javelin-architecture',
@@ -117,8 +115,8 @@ module.exports = {
         type: 'category',
         label: 'Model Routing',
         items: [
-          'javelin-core/features/automaticllm',
           'javelin-core/fallbackrouting/overview',
+          'javelin-core/features/automaticllm',
         ]
       },                  
       {
@@ -138,23 +136,13 @@ module.exports = {
           'javelin-admin/alerts/overview',
         ]
       },
-      'javelin-core/3rdpartyintegrations',
     ],
     'Developer Toolkit': [
-      {
-        type: 'category',
-        label: 'Model Scan',
-        items: [
-          'javelin-core/model-scan',
-        ]
-      },
-      {
-        type: 'category',
-        label: 'Model Playground',
-        items: [
-          'javelin-core/playground/playground',
-        ]
-      },
+      'javelin-core/supported-llms',
+      'javelin-core/integration-new',
+      'javelin-core/model-scan',
+      'javelin-core/playground/playground',
+      'javelin-core/3rdpartyintegrations',
       {
         type: 'category',
         label: 'Python SDK',
