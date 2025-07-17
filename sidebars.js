@@ -201,6 +201,7 @@ module.exports = {
           'javelin-admin/alerts/overview',
         ]
       },
+    ],
     'Developer Toolkit': [
       'javelin-core/integration-new',
       'javelin-core/supported-llms',
