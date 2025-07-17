@@ -1,10 +1,5 @@
 module.exports = {  
   docsSidebar: {
-    'Getting Started': [
-      'javelin-core/overview',
-      'javelin-core/supported-llms',
-      'javelin-core/integration-new'
-    ],
     'Core Concepts': [
       'javelin-architecture/javelin-architecture',
       {
@@ -16,23 +11,55 @@ module.exports = {
       },
       {
         type: 'category',
+        label: 'Routes',
+        items: [
+          'javelin-core/route-configuration',
+        ]
+      },
+      {
+        type: 'category',
         label: 'Providers',
         items: [
           'javelin-core/providerconfiguration',
         ]
       },
+    ],
+    'Features': [
       {
         type: 'category',
-        label: 'Applications',
+        label: 'Model Reliability',
         items: [
-          'javelin-core/applicationconfiguration',
+          'javelin-core/features/retries',
+          'javelin-core/features/ratelimits',
+          'javelin-core/features/loadbalancing',
+          /*
+          'javelin-core/features/caching',
+          */
         ]
-      },        
+      },      
       {
         type: 'category',
-        label: 'Routes',
+        label: 'Model Routing',
         items: [
-          'javelin-core/route-configuration',
+          'javelin-core/fallbackrouting/overview',
+          'javelin-core/features/automaticllm',
+        ]
+      },                  
+      {
+        type: 'category',
+        label: 'Secrets Vault',
+        items: [
+          'javelin-core/secretsvault/overview',
+          'javelin-core/secretsvault/virtualkeys',
+        ]
+      },
+      {
+        type: 'category',
+        label: 'Compliance & Monitoring',
+        items: [
+          'javelin-core/features/auditarchive',
+          'javelin-webapp/threat-alerts/overview',
+          'javelin-admin/alerts/overview',
         ]
       },
     ],
@@ -98,7 +125,7 @@ module.exports = {
             ]
           }
         ]
-      },      
+      },       
       {
         type: 'category',
         label: 'Custom Guardrails',
@@ -174,32 +201,33 @@ module.exports = {
           'javelin-admin/alerts/overview',
         ]
       },
-      {
-        type: 'category',
-        label: 'Developer Tools',
-        items: [
-          'javelin-core/model-scan',
-          'javelin-core/playground/playground',
-        ]
-      },
+    'Developer Toolkit': [
+      'javelin-core/integration-new',
+      'javelin-core/supported-llms',
+      'javelin-core/model-scan',
+      'javelin-core/playground/playground',
       'javelin-core/3rdpartyintegrations',
-    ],
-    'Python SDK': [
-      'javelin-python/python-quickstart',
       {
         type: 'category',
-        label: 'API Reference',
+        label: 'Python SDK',
         items: [
-          'javelin-python/models',
-          'javelin-python/javelinclient',
-          'javelin-python/exceptions'
-        ]
-      },
-      {
-        type: 'category',
-        label: 'CLI Reference',
-        items: [
-          'javelin-python/cli'
+          'javelin-python/python-quickstart',
+          {
+            type: 'category',
+            label: 'API Reference',
+            items: [
+              'javelin-python/models',
+              'javelin-python/javelinclient',
+              'javelin-python/exceptions'
+            ]
+          },
+          {
+            type: 'category',
+            label: 'CLI Reference',
+            items: [
+              'javelin-python/cli'
+            ]
+          },
         ]
       },
     ],
