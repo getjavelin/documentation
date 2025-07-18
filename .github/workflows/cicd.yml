@@ -190,7 +190,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: "arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/${{ steps.env_auth.outputs.cicd_role }}"
+          role-to-assume: "arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ steps.env_auth.outputs.cicd_role }}"
           role-session-name: ${{ steps.env_auth.outputs.cicd_role }}
           audience: sts.amazonaws.com
           aws-region: ${{ steps.cloud_config.outputs.deploy_region }}
@@ -264,7 +264,7 @@ jobs:
         uses: getjavelin/javelin-workflow/.github/actions/k8s-deploy@main
         with:
           K8S_CLUSTER_TYPE: "eks"
-          AWS_ACCOUNT_ID: ${{ vars.AWS_ACCOUNT_ID }}
+          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
           CICD_ROLE: ${{ steps.env_auth.outputs.cicd_role }}
           HELM_CHART: $${{ steps.set_cicd_manual_secret.outputs.helm_chart }}
           K8S_CLUSTER_NAME: $${{ steps.set_cicd_secret.outputs.k8s_cluster_name }}
