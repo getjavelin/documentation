@@ -13,7 +13,7 @@ import CodeBlock from '@theme/CodeBlock';
 ## Routes & Unified Endpoints
 ## Overview
 Javelin provides a powerful routing system that allows you to seamlessly integrate your LLM applications with various AI providers while adding security, monitoring, and guardrails. This guide explains how to integrate your applications with Javelin and leverage its unified endpoint architecture.
-<img className="img-responsive" src={require('./javelin_integration.png').default} alt="Javelin Integration" />
+<img className="img-responsive" src={require('@site/static/img/core/javelin_integration_new.png').default} alt="Javelin Integration" />
 ## Getting Started with Javelin Integration
 
 Integrating your applications with Javelin involves three simple steps:
