@@ -101,7 +101,7 @@ Retrieve the integration configuration for which you want to add a trigger speci
 
 ```json
 curl --location '<your_domain_url>/v1/admin/integrations/config' \
---header 'x-javelin-apikey: <your-javelin-api-key>'
+--header 'x-javelin-apikey: <javelin-api-key>'
 ```
 
 #### 2. Update Integration with Trigger Condition (PUT Request)
@@ -114,7 +114,7 @@ Ensure you copy the full existing config and only append the `trigger_condition`
 
 ```json
 curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<alert-id>' \
---header 'x-javelin-apikey: <your-javelin-api-key>' \
+--header 'x-javelin-apikey: <javelin-api-key>' \
 --header 'Content-Type: application/json' \
 --data '{
     ...your_existing_config,
@@ -136,13 +136,13 @@ curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<a
 
 ```json
 {
-    "Account ID": "<your-account-id>",
-    "Gateway ID": "<your-gateway-id>",
-    "Severity": "<your-severity>",
-    "Route Name": "<your-route-name>",
-    "Application ID": "<your-app-id>",
-    "Threat ID": "<your-threat-id>",
-    "Alert ID": "<your-alert-id>",
+    "Account ID": "<account-id>",
+    "Gateway ID": "<gateway-id>",
+    "Severity": "<severity>",
+    "Route Name": "<route-name>",
+    "Application ID": "<app-id>",
+    "Threat ID": "<threat-id>",
+    "Alert ID": "<alert-id>",
     "Detected Threats": [
         "Sensitive Data: Yes",
         "Restricted Keywords: Yes",
@@ -152,8 +152,8 @@ curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<a
         "Prompt Injection: Yes",
         "Entropy Score: 0.93"
     ],
-    "event": "<your-event-name>",
-    "sourcetype": "<your-sourcetype>"
+    "event": "<event-name>",
+    "sourcetype": "<sourcetype>"
 }
 ```
 
@@ -166,7 +166,7 @@ curl --location --request PUT '<your_domain_url>/v1/admin/integrations/config/<a
 Perform a **POST** request to:
 
 ```
-https://your-api-domain.com/v1/admin/alerts/config
+https://api-domain.com/v1/admin/alerts/config
 ```
 
 with the following JSON body:
@@ -200,7 +200,7 @@ with the following JSON body:
 To update an alert configuration, perform a **PUT** request to:
 
 ```
-https://your-api-domain.com/v1/admin/alerts/config/<alert_id>
+https://api-domain.com/v1/admin/alerts/config/<alert_id>
 ```
 
 with the full alert configuration including any updated fields.
