@@ -8,13 +8,17 @@ on:
       - reopened
     branches:
       - "main"
+    # paths:
+    #   - '**/*.md'
+    #   - '**/*.mdx'
+    #   - 'docs/**'
+    #   - '.markdownlint.json'
   merge_group:
     types:
       - checks_requested
 
 env:
-  NODE_VER: 20
-  LINT_REPORT_FILE: "lint-report"
+  NODE_VER: 18
   PR_CHECK_PREFIX: "feat:|fix:|devops:|Merge|Revert|build\\(deps\\)|\\[Snyk\\]|Bump"
 
 jobs:
@@ -48,6 +52,28 @@ jobs:
             exit 1
           fi
 
+  javelin-markdown-lint-check:
+    permissions:
+      contents: 'read'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node Version
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VER }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run markdownlint
+        run: npm run lint:docs
+
   javelin-lint-check:
     permissions:
       contents: 'read'
@@ -64,16 +90,43 @@ jobs:
           node-version: ${{ env.NODE_VER }}
           cache: "npm"
 
-      - name: JavaScript Lint Check
-        shell: bash
-        run: |-
-          npm install
-          npm run lint
-          npm run prettier
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Upload Lint Report
-        uses: actions/upload-artifact@v4
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v1
         with:
-          name: ${{ env.LINT_REPORT_FILE }}
-          path: ${{ env.LINT_REPORT_FILE }}.json
-          retention-days: 1
+          args: --verbose --no-progress --exclude-all-private --exclude-mail --accept 200,204,301,302,403,429,999 'docs/**/*.md' 'docs/**/*.mdx'
+          fail: false
+
+  javelin-front-matter-check:
+    permissions:
+      contents: 'read'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node Version
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VER }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check front matter consistency
+        run: |
+          echo "Checking front matter consistency..."
+          find docs -name "*.md" -o -name "*.mdx" | while read file; do
+            if head -n 1 "$file" | grep -q "^---$"; then
+              if ! head -n 20 "$file" | tail -n +2 | grep -q "^---$"; then
+                echo "Error: $file has opening front matter delimiter but no closing delimiter"
+                exit 1
+              fi
+            fi
+          done
+          echo "Front matter validation passed"
