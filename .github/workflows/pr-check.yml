@@ -5,20 +5,128 @@ on:
     types:
       - opened
       - synchronize
-      - edited
       - reopened
     branches:
       - "main"
+    # paths:
+    #   - '**/*.md'
+    #   - '**/*.mdx'
+    #   - 'docs/**'
+    #   - '.markdownlint.json'
   merge_group:
     types:
       - checks_requested
 
+env:
+  NODE_VER: 18
+  PR_CHECK_PREFIX: "feat:|fix:|devops:|Merge|Revert|build\\(deps\\)|\\[Snyk\\]|Bump"
+
 jobs:
-  reusable-workflow:
+  javelin-commit-check:
     permissions:
       contents: 'read'
-      id-token: 'write'
-    uses: getjavelin/javelin-workflow/.github/workflows/workflow-pr-check.yml@main
-    secrets:
-      DEVOPS_GITHUB_TOKEN: ${{ secrets.DEVOPS_GITHUB_TOKEN }}
-      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Get the last commit message
+        id: commit_message
+        run: |
+          COMMIT_MESSAGE=$(git show -s --format=%s)
+          echo "message=${COMMIT_MESSAGE}" >> ${GITHUB_OUTPUT}
+
+      - name: Commit Message Check
+        shell: bash
+        env:
+          COMMIT_MESSAGE: "${{ steps.commit_message.outputs.message }}"
+        run: |-
+          CLEAN_COMMIT_MESSAGE=$(echo '${{ env.COMMIT_MESSAGE }}' | sed "s|\"||g")
+          if [[ "${CLEAN_COMMIT_MESSAGE}" =~ ^(${{ env.PR_CHECK_PREFIX }}) ]]; then
+            echo "Commit message is valid....!"
+          else
+            echo "Commit message does not contain required keywords....!"
+            exit 1
+          fi
+
+  javelin-markdown-lint-check:
+    permissions:
+      contents: 'read'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node Version
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VER }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run markdownlint
+        run: npm run lint:docs
+
+  javelin-lint-check:
+    permissions:
+      contents: 'read'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node Version
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VER }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress --exclude-all-private --exclude-mail --accept 200,204,301,302,403,429,999 'docs/**/*.md' 'docs/**/*.mdx'
+          fail: false
+
+  javelin-front-matter-check:
+    permissions:
+      contents: 'read'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node Version
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VER }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check front matter consistency
+        run: |
+          echo "Checking front matter consistency..."
+          find docs -name "*.md" -o -name "*.mdx" | while read file; do
+            if head -n 1 "$file" | grep -q "^---$"; then
+              if ! head -n 20 "$file" | tail -n +2 | grep -q "^---$"; then
+                echo "Error: $file has opening front matter delimiter but no closing delimiter"
+                exit 1
+              fi
+            fi
+          done
+          echo "Front matter validation passed"
