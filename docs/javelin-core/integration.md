@@ -149,8 +149,8 @@ Once you have created a route, you can query it using the following curl command
   language="bash">
   {`curl 'https://your-api-domain.com/v1/query/your_route_name' \\
   -H 'Content-Type: application/json' \\
-  -H 'Authorization: Bearer YOUR_OPENAI_API_KEY' \\
-  -H 'x-javelin-apikey: YOUR_JAVELIN_API_KEY' \\
+  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \\
   --data-raw '{
     "model": "gpt-3.5-turbo",
     "messages": [
@@ -160,7 +160,7 @@ Once you have created a route, you can query it using the following curl command
   }'`}
 </CodeBlock>
 
-Make sure to replace `your_route_name`, `YOUR_OPENAI_API_KEY`, and `YOUR_JAVELIN_API_KEY` with your actual values.
+Make sure to replace `your_route_name`, `OPENAI_API_KEY`, and `JAVELIN_API_KEY` with your actual values.
 
 </TabItem>
 <TabItem value="python" label="Python Requests">

@@ -91,8 +91,8 @@ These endpoints mirror the standard OpenAI API methods. They allow you to perfor
 ```bash
 curl -X POST "https://your-javelin-domain.com/v1/chat/completions" \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $YOUR_LLM_API_KEY" \
-  -H "X-Javelin-apikey: $YOUR_JAVELIN_API_KEY" \
+  -H "Authorization: Bearer $LLM_API_KEY" \
+  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \
   -H "X-Javelin-route: $JAVELIN_ROUTE_OPENAI_COMPATIBLE" \
   -d '{
     "model": "gpt-3.5-turbo",
@@ -141,8 +141,8 @@ For providers using Azure's deployment model, endpoints include additional param
 ```bash
 curl -X POST "https://your-javelin-domain.com/v1/openai/deployments/my-deployment/chat/completions?api-version=2024-02-15-preview" \
   -H "Content-Type: application/json" \
-  -H "api-key: $YOUR_AZURE_OPENAI_API_KEY" \
-  -H "X-Javelin-apikey: $YOUR_JAVELIN_API_KEY" \
+  -H "api-key: $AZURE_OPENAI_API_KEY" \
+  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \
   -H "X-Javelin-route: $JAVELIN_ROUTE_AZURE_OPENAI" \
   -d '{
     "messages": [
@@ -172,7 +172,7 @@ For AWS Bedrock–style providers, the endpoints use a slightly different URL pa
 ```bash
 curl -X POST "https://your-javelin-domain.com/v1/model/anthropic.claude-3-sonnet-20240229-v1:0/invoke" \
   -H "Content-Type: application/json" \
-  -H "X-Javelin-apikey: $YOUR_JAVELIN_API_KEY" \
+  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \
   -H "X-Javelin-route: $JAVELIN_ROUTE_BEDROCK" \
   -d '{
     "anthropic_version": "bedrock-2023-05-31",
@@ -213,8 +213,8 @@ Once you have created a route, you can query it using the following curl command
   language="bash">
   {`curl 'https://your-api-domain.com/v1/query/your_route_name' \\
   -H 'Content-Type: application/json' \\
-  -H 'Authorization: Bearer $YOUR_OPENAI_API_KEY' \\
-  -H 'X-Javelin-apikey: $YOUR_JAVELIN_API_KEY' \\
+  -H "Authorization: Bearer $OPENAI_API_KEY" \\
+  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \\
   -d '{
     "model": "gpt-3.5-turbo",
     "messages": [
@@ -270,7 +270,7 @@ else:
 </TabItem>
 </Tabs>
 
-> **Important**: Make sure to replace `your_route_name`, `YOUR_OPENAI_API_KEY`, and `YOUR_JAVELIN_API_KEY` with your actual values.
+> **Important**: Make sure to replace `your_route_name`, `OPENAI_API_KEY`, and `JAVELIN_API_KEY` with your actual values.
 
 ## SDK Integration Examples
 
@@ -1123,8 +1123,8 @@ Example:
 ```bash
 curl -X POST "https://your-javelin-domain.com/v1/chat/completions" \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_PROVIDER_API_KEY" \
-  -H "X-Javelin-apikey: YOUR_JAVELIN_API_KEY" \
+  -H "Authorization: Bearer $PROVIDER_API_KEY" \
+  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \
   -d '{ ... }'
 ```
 
