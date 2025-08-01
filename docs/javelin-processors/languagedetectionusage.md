@@ -1,10 +1,11 @@
 # Language Detection
 
-To configure Javelin's Language Detection capabilities, you will need to enable the `lang_detector_processor`.
+To configure Javelin's Language Detection capabilities, you will need to enable the `lang_detector` processor.
 
 ## Configuration Options
 
-Make sure to add the `lang_detector_processor` in the Javelin Response Chain under Processors (Gateway level). You can also enable the processor at the Route level under the Route configuration.
+Make sure to add the `lang_detector` processor in the Javelin Request or Response Chain under Processors (Gateway level). You can also enable the processor at the Route level under the Route configuration.
+
 
 ### Settings
 
