@@ -33,7 +33,7 @@ Unexpected internal issues that **should not** be exposed to users:
 
 ## 🔄 Automatic Fallback to Proxy Mode
 
-When a recoverable internal error is detected, Javelin will now **automatically fallback to proxy mode**—allowing the request to pass through transparently instead of returning a 5xx error.
+When a recoverable internal error is detected, Javelin will **automatically fallback to proxy mode**—allowing the request to pass through transparently instead of returning a 5xx error.
 
 ### ✅ Benefits:
 - Increased system resilience

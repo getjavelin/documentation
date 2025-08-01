@@ -15,7 +15,7 @@ Guardrail processing can fail due to several reasons:
     - The route or service backing the guardrail is not registered or unavailable
     - There’s a DNS resolution failure, network partition, or missing internal service dependency
 
-These failures are **classified with error codes like `GUARDRAIL_CONFIGURATION`, `GUARDRAIL_ENDPOINT_UNREACHABLE`, etc.** and are now:
+These failures are **classified with error codes like `GUARDRAIL_CONFIGURATION`, `GUARDRAIL_ENDPOINT_UNREACHABLE`, etc.** and are:
 - Logged in the trace metadata for full visibility
 - Accessible from the **Threat Alerts → Requests With Guardrail Failure** dashboard
 - Useful for debugging misrouted or unresponsive services during guardrail evaluation
@@ -83,7 +83,7 @@ Each error is emitted with a metric key (e.g., `guardrail_error_configuration_in
 
 ## 🧭 Where to Find These Failures
 
-You can now **view all Guardrail-related failures** in a centralized location:
+You can **view all Guardrail-related failures** in a centralized location:
 - **Threat Alerts → Requests With Guardrail Failure**
 
 This enables your security teams to:
@@ -101,7 +101,7 @@ More detail for Guardrail failure in Traces attributes:
 
 ## 🔍 Trace-Level Insight for Each Failure
 
-Guardrail failures are now also surfaced directly within the **Attributes section** on the **Traces / Threat Page**.  
+Guardrail failures are also surfaced directly within the **Attributes section** on the **Traces / Threat Page**.  
 You’ll see detailed failure metadata, such as:
 - The name of the failing guardrail processor
 - The reason for failure (e.g., config issue, timeout, internal error)
