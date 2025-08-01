@@ -15,7 +15,7 @@ Guardrail processing can fail due to several reasons:
     - The route or service backing the guardrail is not registered or unavailable
     - There’s a DNS resolution failure, network partition, or missing internal service dependency
 
-These failures are **classified as `GUARDRAIL_CONFIGURATION`, `GUARDRAIL_ENDPOINT_UNREACHABLE` and etc.. errors** and are now:
+These failures are **classified with error codes like `GUARDRAIL_CONFIGURATION`, `GUARDRAIL_ENDPOINT_UNREACHABLE`, etc.** and are now:
 - Logged in the trace metadata for full visibility
 - Accessible from the **Threat Alerts → Requests With Guardrail Failure** dashboard
 - Useful for debugging misrouted or unresponsive services during guardrail evaluation
@@ -115,7 +115,7 @@ Example:
 "guardrail_error": {
         "endpoint": "https://guard-language.local.javelin.live",
         "error_reason": "HTTP request failed: Post \"https://guard-language.local.javelin.live/v1/internal/guard-language-detect/predict\": dial tcp: lookup guard-language.local.javelin.live on 172.20.0.10:53: no such host",
-        "error_type": "GUARDRAIL_CONFIGURATION",
+        "error_type": "GUARDRAIL_ENDPOINT_UNREACHABLE",
         "failure": true,
         "processor": "lang_detector",
         "retry_attempts": 0,
