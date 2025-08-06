@@ -63,6 +63,7 @@ Look for common themes across vulnerabilities:
 - **System prompt weaknesses**: Consistent prompt injection suggests prompt engineering needs improvement
 
 ### 3. Follow Remediation Guidance
+![Mitigation Advice Example](../../../static/img/redteam/ReportMitigationAdvice.png)
 Each vulnerability in the report includes specific remediation steps:
 
 **Review the remediation section** for each finding to understand:
@@ -70,7 +71,5 @@ Each vulnerability in the report includes specific remediation steps:
 - Which security controls to implement
 - How to test that the fix is effective
 - Best practices for preventing similar issues
-
-![Mitigation Advice Example](../../../static/img/redteam/ReportMitigationAdvice.png)
 
 **Prioritize fixes** based on severity and business impact, then implement the recommended remediation steps for each vulnerability found.
