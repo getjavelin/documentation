@@ -12,12 +12,14 @@ Identifies and flags garbage and non-ASCII characters from the input data, ensur
 
 ### Language Detection
 
-Detects the language of the input text, enabling language-specific processing and filtering.
+Identifies and handles content not in the primary supported language(s). This allows application policy to be localized to support regional languages or disallow non-english interactions. When the lang_detector processor is added to your request chain, Javelin will identify the language of the request prompt. If the prompt is written in a language other than English, and your policy is configured to restrict non-English content, the request will be automatically blocked.
+
 
 ### Code/Markdown Detection
 
 Identifies code snippets and markdown content in the input data, allowing for specialized processing and validation.
 
-### Malware Detection
+### Invisible Character Detection
 
-Detects malware signatures and patterns in the input data, preventing malicious content from being processed.
+ Detects hidden or obfuscated text often used in adversarial prompt injections or evasion attempts. Always enabled by default. You can configure it to block requests if any violations are detected. If your request prompt or the model’s response contains invisible or non-printable characters, Javelin will automatically detect and block the request to prevent potential abuse or evasion tactics.
+

@@ -32,6 +32,9 @@ module.exports = {
           'javelin-core/features/retries',
           'javelin-core/features/ratelimits',
           'javelin-core/features/loadbalancing',
+          'javelin-core/features/javelinproxy',
+          'javelin-core/features/guardrailbypass',
+
           /*
           'javelin-core/features/caching',
           */
@@ -171,6 +174,9 @@ module.exports = {
           'javelin-core/features/retries',
           'javelin-core/features/ratelimits',
           'javelin-core/features/loadbalancing',
+          'javelin-core/features/javelinproxy',
+          'javelin-core/features/guardrailbypass',
+
           /*
           'javelin-core/features/caching',
           */
