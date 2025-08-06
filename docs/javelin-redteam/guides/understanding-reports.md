@@ -46,6 +46,7 @@ Each vulnerability includes:
 
 
 ## How to Use Scan Results for Improvement
+![Scan Report Overview](../../../static/img/redteam/ScanReport.png)
 
 ### 1. Prioritize by Severity and Impact
 Start with Critical and High severity findings:
@@ -55,6 +56,7 @@ Start with Critical and High severity findings:
 - **Low priority**: Minor issues for future improvement
 
 ### 2. Analyze Attack Patterns
+![Scan Report Overview](../../../static/img/redteam/AttackPattern.png)
 Look for common themes across vulnerabilities:
 - **Input validation gaps**: Multiple injection attacks suggest weak input handling
 - **Output filtering issues**: Repeated content problems indicate inadequate output validation
@@ -68,5 +70,7 @@ Each vulnerability in the report includes specific remediation steps:
 - Which security controls to implement
 - How to test that the fix is effective
 - Best practices for preventing similar issues
+
+![Mitigation Advice Example](../../../static/img/redteam/ReportMitigationAdvice.png)
 
 **Prioritize fixes** based on severity and business impact, then implement the recommended remediation steps for each vulnerability found.
