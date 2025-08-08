@@ -9,6 +9,15 @@ module.exports = {
           'javelin-core/gatewayconfiguration',
         ]
       },
+       {
+        type: 'category',
+        label: 'Applications',
+        items: [
+          'javelin-core/application-overview',
+          'javelin-core/application-configuration',
+          'javelin-core/application-policy-configuration',
+        ]
+      },
       {
         type: 'category',
         label: 'Routes',
