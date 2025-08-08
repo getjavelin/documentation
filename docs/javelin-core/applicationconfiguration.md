@@ -1,95 +1,37 @@
+---
+id: application-configuration
+title: Application Configuration
+description: Comprehensive guide to configuring Javelin Application with policy
+sidebar_label: Configuration
+---
+
 # Application Configuration
 
-Applications in Javelin represent your AI-powered services and systems that connect to the Javelin Gateway. After setting up your gateway and configuring providers, the next step is registering and configuring your applications to leverage Javelin's security, routing, and management capabilities.
+Applications in Javelin define how requests are scoped, authorized, and governed. Each application is integrated with your route infrastructure and can include advanced policy configurations.
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock'; 
+![Add Application Form](/img/application/addApplication.png)
 
-## Prerequisites
+## Application Payload Example
 
-Before registering an application, ensure you have:
-- ✅ **Gateway Created**: Your Javelin Gateway is running and accessible
-- ✅ **Provider Configured**: At least one AI provider (OpenAI, Anthropic, etc.) is set up
-- ✅ **Authentication**: Valid API credentials for Javelin Gateway access
+```yaml
+app_config:
+  name: "demo-app"           # Unique name for your application
+  description: "This is a demo app"  # (Optional) Purpose or details
+  type: "Assistant"          # One of: Assistant, Agent, Custom
+  is_active: true            # Enable or disable the application
+```
 
-## Register Your Application
+## Field Descriptions
 
-### Create Application Configuration
+| Name          | Type     | Required | Default   | Description                                                                                      |
+|---------------|----------|----------|-----------|--------------------------------------------------------------------------------------------------|
+| `name`        | string   | Yes      | —         | Unique identifier for the application.                                                           |
+| `description` | string   | No       | —         | Human-readable description of the application’s purpose.                                         |
+| `type`        | string   | Yes      | —         | Defines the behavior: Assistant, Agent, or Custom (see below).                                   |
+| `is_active`   | boolean  | No       | true      | Indicates whether the application is enabled and can receive requests.                           |
 
-Applications are registered through the Javelin API or web interface. Here's the basic application structure:
+### Type Field Options
 
-<CodeBlock
-  language="json">
-  {`{
-    "name": "my-chatbot-app",
-    "description": "Customer service chatbot application",
-    "type": "custom",
-    "endpoint": "http://javelin-redteam-lab1:8002/v1/redteam/lab1/chat",
-    "config": {
-      "red_team": {
-        "method": "POST",
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "payload_template": {
-          "query": "{{query}}",
-        },
-        "request_json": {
-          "sample": { "query": "get_product_info(product)" }
-        },
-        "response_json": {
-          "sample": { "response": "umbrella: Sturdy umbrella" }
-        }
-      }
-    }
-  }`}
-</CodeBlock>
-
-To register a new app:
-
-1. Go to "Applications" section. Click "Create New Application"
-
-   ![Create New Application Button](/img/application/CreateNewApp.png)
-
-2. Fill in application details:
-   - Name: my-chatbot-app
-   - Select Type of App: Assistant, Agent or Custom
-   - Description: Customer service chatbot application
-   - Endpoint: ```http://javelin-redteam-lab1:8002/v1/redteam/lab1/chat```
-
-   ![Add Application Form](/img/application/AddApplication.png)
-
-3. Fill in API Request details
-
-   ![API Request Configuration Section](/img/application/APIRequestSection.png)
-
-   :::note
-   API request details are required for some features like [javelin-redteam](/docs/javelin-redteam/overview.md), but are not mandatory for registering an app
-   :::
-
-4. Click on "SAVE"
-
-## Configuration details
-
-### Application Fields
-
-| Field | Description | Required |
-|-------|-------------|----------|
-| `name` | Unique identifier for your application within Javelin ecosystem | ✅ |
-| `type` | Application type: `Assistant`, `Agent`, `Custom`| ✅ |
-| `description` | Human-readable description of the application's purpose | ✅ |
-
-### API Request Fields
-
-| Field | Description | Default |
-|-------|-------------|---------|
-| `URL` | Your application's API endpoint that will be called (or scanned) | Required |
-| `Headers` | Headers that need to be sent along with the request | ```{ "Content-Type":"application/json"}``` |
-| `Payload Template` | A template specifying the payload structure when calling the API endpoint specified in URL. Usually there would be a ```{{query}}``` placeholder text where the LLM prompt would be inserted | ```{ "query": "{{query}}", "session_token": "user" }``` |
-
-
-After registering your application, create routes to connect it with your configured providers.
-
-For detailed route configuration options, see our [Route Configuration Guide](/docs/javelin-core/routeconfiguration.md).
-
+- **Assistant**: Standard LLM assistant behavior.
+- **Agent**: Multi-step agent with planning or tool use.
+- **Custom**: User-defined logic or integration.
