@@ -54,9 +54,9 @@ This ensures application-level policy overrides route-level policies, enforcing 
 
 ## Policy Precedence
 
-- If the **route policy is disabled**, the application policy is enforced.
-- If the **route policy is enabled**, the route policy is enforced.
-- This ensures that route-specific requirements can override application-wide defaults when needed, but application-level guardrails are always in place if no route policy is active.
+- If a **route policy is enabled**, it takes precedence and is enforced.
+- If a **route policy is disabled or not defined**, the application-level policy is enforced.
+- This ensures that route-specific requirements can override application-wide defaults, while still providing a baseline of protection at the application level when no route-specific policy is active.
 
 
 ### `content_types` Rules
