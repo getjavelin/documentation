@@ -47,7 +47,7 @@ policy:
 | `checkphish`       | object  | No       | —        | Identifies and blocks phishing attempts by detecting suspicious or malicious URLs within prompts or outputs.                        |
 | `security_filters` | object  | No       | —        | Detects and blocks potentially unsafe input patterns such as code blocks, non-ASCII payloads, or invisible characters that could impact model behavior or system integrity. |
 
-:::Note
+:::note
 The top-level `enabled: true` field is **always set to true** for application-level policies.  
 This ensures application-level policy overrides route-level policies, enforcing guardrails regardless of individual route settings.
 :::
