@@ -2,7 +2,7 @@
 id: provider-usage-guide
 title: Provider Guide
 description: Manage AI model providers and understand their integration in Javelin.
-sidebar_label: Provider Guide
+sidebar_label: Guides
 ---
 
 # Provider Guide

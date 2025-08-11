@@ -15,7 +15,7 @@ This guide walks you through using **Custom Routes** and **Unified Routes** in J
 ### 1. Create a Provider
 
 Before using any route, you must set up a provider.  
-Refer to the [Provider Guide](./provider-overview.md) to get started.
+Refer to the [Provider Guide](./provider-overview) to get started.
 
 
 ### 2. Add Secrets and Create Virtual Keys
@@ -46,9 +46,9 @@ To create a secret:
 After saving the secret:
 
 - You'll see the **Virtual Key (v-key)** in the secrets list.
-- Copy the v-key using the **copy** button.
+- Copy the Virtual Key using the **copy** button.
 
-You can use this v-key in your custom routes or test playgrounds to refer to the provider key indirectly, adding an extra layer of security.
+You can use this Virtual Key in header **x-javelin-virtualapikey** when requesting your custom routes or test playgrounds to refer to the provider key indirectly, adding an extra layer of security and abstraction.
 
 ![Copy Virtaul Key](/img/route/copySecretsVKey.png)
 
@@ -75,7 +75,7 @@ This key is required in request headers to:
 Unified Routes are flexible, abstracted endpoints that can handle various model types (chat, completion, embedding) using a single route. They are ideal for simplified integrations and internal A/B testing.
 
 :::note 
-When you create a provider, Javelin automatically provisions a **reserved unified route** for that provider. These are system-managed and help you get started instantly without any manual setup.
+When you create a provider, Javelin automatically provisions a **Reserved unified route** for that provider. These are system-managed and help you get started instantly without any manual setup.
 :::
 
 
@@ -212,10 +212,10 @@ Once executed, open **Chronicles** to view:
 
 | Feature | Unified Route | Custom Route |
 |--------|----------------|----------------|
-| **Auto Provisioned** | ✅ | ❌ |
+| **System Generated** | ✅ | ❌ |
 | **Requires Setup** | ❌ | ✅ |
 | **Playground Support** | ❌ | ✅ |
-| **Flexible Format** | Limited | Full control |
+| **Flexible Format** | Dynamic  | Limited to a Model |
 | **Ideal For** | Fast integration, multiple models | Deep customization, enterprise workflows |
 | **Chronicles Support** | ✅ | ✅ |
 

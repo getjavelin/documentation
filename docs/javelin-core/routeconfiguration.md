@@ -96,6 +96,7 @@ Both **Unified Routes** and **Custom Routes** share the following configuration 
 
 - **Settings Config**: Controls system-level behavior like `rate_limit` and `retries`.
 - **Team Config**: Includes organizational metadata like `owner` and `organization`.
+- **Policy Config**: Same as Policy configuration under Applications, but specific to a route.
 
 These shared configs ensure consistent management across all route types.
 
@@ -129,7 +130,9 @@ Policy configuration allows you to enforce content safety, privacy, compliance, 
 ![Policy Configuration](/img/route/routePolicy.png)
 
 :::note
+Policy tab under routes is only accessible to **Super Admin** users.
+
 The “Override Application Policies” toggle allows you to enforce custom policy rules at the route level. When enabled, the route will use its own policy settings instead of inheriting them from the application configuration. 
 :::
 
-To learn more about configuring policies in detail, see [Policy Configuration](/docs/policy-configuration).
+To learn more about configuring policies in detail, see [Policy Configuration](./application-policy-configuration).

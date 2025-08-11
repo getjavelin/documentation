@@ -36,5 +36,5 @@ provider:
 | `api_base`     | string | Yes      | —       | Base URL for API requests (e.g., `https://api.openai.com`).                                  |
 
 :::note 
-Each provider object is independently defined and referenced within your route configuration. This allows full flexibility in supporting different providers across different routes.
+Each provider object is independently defined and referenced within each route's configuration. This allows full flexibility in supporting different providers across different routes.
 :::
