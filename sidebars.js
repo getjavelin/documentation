@@ -21,18 +21,22 @@ module.exports = {
       },
       {
         type: 'category',
-        label: 'Routes',
+        label: 'Providers',
         items: [
-          'javelin-core/route-configuration',
+          'javelin-core/provider-overview',
+          'javelin-core/provider-configuration',
+          'javelin-core/provider-usage-guide'
         ]
       },
       {
         type: 'category',
-        label: 'Providers',
+        label: 'Routes',
         items: [
-          'javelin-core/providerconfiguration',
+          'javelin-core/route-overview',
+          'javelin-core/route-configuration',
+           'javelin-core/route-usage-guide',
         ]
-      },
+      }
     ],
     'Features': [
       {
