@@ -16,6 +16,7 @@ module.exports = {
           'javelin-core/application-overview',
           'javelin-core/application-configuration',
           'javelin-core/application-policy-configuration',
+           'javelin-core/application-usage-guides',
         ]
       },
       {
