@@ -22,19 +22,19 @@ This guide explains how to create and manage Applications in Javelin, generate a
 
 ![Application Details Tab](/img/application/addApplication.png)
 
-Once saved:
+Once Application is created:
 - A **Developer Key** is automatically generated.
-- The full key is shown only once, right after creation. Copy it immediately, as later you’ll only see a masked version.
-- This key must be passed in the `X-Javelin-Apikey` header for any route request.
+- This is a one time visible key, right after creation. Immediately copy and store it somewhere safe, as later you’ll only see a masked version of it.
+- This key needs to be passed in the `X-Javelin-Apikey` header for any route request.
 
 ![Application Details Tab](/img/application/developerKeyModal.png)
 
 ## Developer Tab
 
 The **Developer** tab allows you to:
-- View all keys for the application.
+- View all keys of the application.
 - Generate new keys by clicking **Add Key**.
-- Copy new keys immediately after creation.
+- Delete any API key in-case it is compromised.
 
 **Usage:**  
 For any request made through a route, include your Application API key in the header:
@@ -85,6 +85,6 @@ This key authorizes requests and ensures activity is logged under your applicati
 ![Chronicles Tab](/img/application/appChronicles.png)
 
 
-:::note
-Your Application API key is sensitive. Treat it like a password — never expose it in public repositories or client-side code.
+:::tip
+Keep your Application API key safe. Do not expose it to repositories or include it in browser-delivered code. Use secure platforms to share it with the others.
 :::
