@@ -59,6 +59,7 @@ This key authorizes requests and ensures activity is logged under your applicati
 
 - Displays any red team security assessments performed against this application.
 - Allows tracking of vulnerabilities, model behavior checks, and evaluation results.
+- For complete overview, see [Javelin RedTeam](../javelin-redteam).
 
 ![Redteam Assessment Tab](/img/application/redteamTab.png)
 
