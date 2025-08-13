@@ -47,6 +47,7 @@ Advanced conversational attack patterns that build context over multiple interac
 | Gray Box | Single-Turn | Leverages partial system knowledge to craft targeted, architecture-aware attacks | |
 | COU (Chain-of-Utterance) | Single-Turn | Builds complex reasoning chains to gradually bypass safety measures | [Chain of Utterances](https://arxiv.org/pdf/2308.09662) |
 | ASCII Art | Single-Turn | Masks malicious words and converts them to ASCII art to bypass content filters | [ArtPrompt: ASCII Art-based Jailbreak Attacks](https://aclanthology.org/2024.acl-long.809.pdf) |
+| TIP (Task-in-Prompt) | Single-Turn | Embeds harmful requests within legitimate sequence-to-sequence tasks like cipher decoding and riddles | [The TIP of the Iceberg: Task-in-Prompt Adversarial Attacks](https://aclanthology.org/2025.acl-long.334.pdf) |
 | Direct LLM | Single-Turn | Uses secondary LLM with sophisticated prompt engineering for stealth enhancement | |
 
 ## Engine Selection Strategy
@@ -116,6 +117,7 @@ class EngineFactory:
         "gray_box": GrayBoxEngine,
         "cou_engine": COUEngine,
         "ascii_art": ASCIIArtEngine,
+        "tip": TIPEngine,
     }
 ```
 
@@ -126,6 +128,7 @@ class EngineFactory:
 | ROT13 | Very Fast | None | Low |
 | Base64 | Very Fast | None | Low |
 | ASCII Art | Very Fast | None | Low |
+| TIP | Very Fast | None | Medium |
 | Adversarial | Fast | Low | Medium |
 | BoN | Medium | Medium | Medium |
 | Direct LLM | Slow | High | Medium |

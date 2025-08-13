@@ -120,6 +120,8 @@ Javelin RedTeam uses sophisticated engines to transform base prompts into advanc
 - **BoN (Best-of-N)**: Multiple variations with selection
 - **ROT13/Base64**: Encoding-based obfuscation
 - **Direct LLM**: AI-powered prompt enhancement
+- **Ascii Art**: Converting the prompt to Ascii Art
+- **Task-in_Prompt**: Encoding the injection as a task/puzzle in a prompt
 
 ### **Multi-Turn Engines** (Coming Soon)
 Advanced conversational attack patterns for sustained vulnerability exploitation.
