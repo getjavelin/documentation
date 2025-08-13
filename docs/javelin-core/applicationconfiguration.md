@@ -9,7 +9,7 @@ sidebar_label: Configuration
 
 Applications in Javelin define how requests are scoped, authorized, and governed. Each application is integrated with your route infrastructure and can include advanced policy configurations.
 
-![Add Application Form](/img/application/addApplication.png)
+![Add Application Form](/img/application/AddApplication.png)
 
 ## Application Payload Example
 
