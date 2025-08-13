@@ -20,7 +20,7 @@ This guide explains how to create and manage Applications in Javelin, generate a
    - **Description** – A human-readable purpose for your application.
 5. Click **Save**.
 
-![Application Details Tab](/img/application/imgaddApplication.png)
+![Application Details Tab](/img/application/addApplication.png)
 
 Once Application is created:  
 - A **Developer Key** is automatically generated.
