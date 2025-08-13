@@ -20,9 +20,9 @@ This guide explains how to create and manage Applications in Javelin, generate a
    - **Description** – A human-readable purpose for your application.
 5. Click **Save**.
 
-![Application Details Tab](/img/application/AddApplication.png)
+![Application Details Tab](/img/application/imgaddApplication.png)
 
-Once Application is created:
+Once Application is created:  
 - A **Developer Key** is automatically generated.
 - This is a one time visible key, right after creation. Immediately copy and store it somewhere safe, as later you’ll only see a masked version of it.
 - This key needs to be passed in the `X-Javelin-Apikey` header for any route request.
