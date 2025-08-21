@@ -27,6 +27,8 @@ Standalone guardrails respect application-specific policies when available:
 
 ## 1. Prompt Injection Detection Processor
 
+This processor detects both prompt injection attempts and jailbreaks.
+
 ```bash
 curl -X POST "https://your-javelin-host/v1/guardrail/promptinjectiondetection/apply" \
  -H "Content-Type: application/json" \
