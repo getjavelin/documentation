@@ -37,6 +37,16 @@ module.exports = {
            'javelin-core/route-usage-guide',
         ]
       }
+      ,
+      {
+        type: 'category',
+        label: 'MCP',
+        items: [
+          'javelin-core/mcp-overview',
+          'javelin-core/mcp-configuration',
+          'javelin-core/mcp-usage-guides',
+        ]
+      }
     ],
     'Features': [
       {
