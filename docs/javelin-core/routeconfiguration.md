@@ -2,63 +2,137 @@
 id: route-configuration
 title: Route Configuration
 description: Comprehensive guide to configuring Javelin routes including models, providers, rate limits, and advanced settings
-sidebar_label: Route Configuration
+sidebar_label: Configuration
 ---
 
 # Route Configuration
 
-Routes are the core component of Javelin that define how incoming requests are processed, which models they connect to, and what policies are applied. This comprehensive guide covers all route configuration options including models, providers, rate limits, cost guardrails, security policies, and advanced traffic shaping. You'll learn to configure sophisticated routing logic that balances performance, cost, and security for your AI applications.
+Routes are the core component of Javelin that define how incoming requests are processed, which models they connect to, and what policies are applied. This guide explains the two route types — Unified and Custom — and how to configure each, including advanced settings like rate limits, retries, and team ownership.
+
+
+## Unified Route
+
+Unified routes offer a simplified interface that dynamically handles various model types through a single logical endpoint. Ideal for centralized model management and A/B testing.
+
+![Route Configuration](/img/route/addUnifiedRoute.png)
+
+### Example: Unified Route (cURL)
+
+```bash
+curl -X POST "https://api-dev.javelin.live/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \
+  -H "X-Javelin-route: demo-unified-route" \
+  -d '{
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "Tell me about Javelin."}
+    ],
+    "temperature": 0.7,
+    "max_tokens": 150
+  }'
+```
+
+#### Fields
+
+| name   | type   | required | default | description                                                                 |
+|--------|--------|----------|---------|-----------------------------------------------------------------------------|
+| name   | string | yes      | —       | Unique identifier for the route. Used to reference the unified endpoint.   |
+
+:::note
+All other configuration is automatically managed behind the scenes.
+:::
+
+## Custom Route
+
+Custom routes allow detailed control over model selection, request handling, and routing logic. Use these for specialized applications, custom models, or fine-tuned behaviors.
+
+![Route Configuration](/img/route/addRoute.png)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock'; 
 
-# Route Object
-When represented as json, the route object has the following structure:
-<CodeBlock
-  language="python">
-  {`{
-    "name": "name of the route",
-    "type": "this could be \`chat\`, \`completions\`, \`embeddings\` etc.,",
-    "models": [ 
-      {
-        "name": "name of the model to use, like text-davinci-003",
-        "provider": "name of the llm provider - openai",
-        "suffix": "/chat/completions"
-      } 
-    ],
-    "config": {
-      "rate_limit": 3,
-      "archive": true,
-      "retries": 3
-    }
-  }`}
-</CodeBlock>
+### Route Configuration Structure
+
+```yaml
+name: demo-route
+type: chat
+models:
+  - name: gpt-3.5-turbo
+    provider: openai
+    suffix: /chat/completions
+config:
+  rate_limit: 5
+  retries: 2
+  organization: acme-corp
+  owner: jane.doe@example.com
+  policy: 
+    enabled: true  # Enforces route-level policies instead of application defaults
+    ...
+enabled: true
+```
+
+#### Fields
+
+| name   | type   | required | default | description                                                                 |
+|--------|--------|----------|---------|-----------------------------------------------------------------------------|
+| name   | string | yes      | —       | Unique name identifying the route.                                          |
+| type   | string | yes      | —       | Defines the route's purpose: `chat`, `completions`, `embeddings`, etc.       |
+
+### Models
+
+| name     | type   | required | default | description                                                                 |
+|----------|--------|----------|---------|-----------------------------------------------------------------------------|
+| name     | string | yes      | —       | Name of the model to be used (e.g., `gpt-3.5-turbo`).                               |
+| provider | string | yes      | —       | LLM provider name (e.g., `openai`, `anthropic`, `cohere`).                 |
+| suffix   | string | no       | —       | Optional suffix for specific endpoint customization.                        |
+
+## Shared Configuration
+
+Both **Unified Routes** and **Custom Routes** share the following configuration sections:
+
+- **Settings Config**: Controls system-level behavior like `rate_limit` and `retries`.
+- **Team Config**: Includes organizational metadata like `owner` and `organization`.
+- **Policy Config**: Same as Policy configuration under Applications, but specific to a route.
+
+These shared configs ensure consistent management across all route types.
+
+### Settings Config
+
+These define operational controls like throughput and retry behavior.
+
+![Settings Configuration](/img/route/settingsConfig.png)
+
+| name        | type    | required | default | description                                                                 |
+|-------------|---------|----------|---------|-----------------------------------------------------------------------------|
+| rate_limit  | number  | no       | 0       | Max requests per second allowed through the route.                          |
+| retries     | number  | no       | 1       | Number of retry attempts if the provider fails (e.g., returns 503).        |
 
 
-## Route Fields
-These configuration settings are all defined per `route`, they are not global and are applied individually on each route. 
+### Team Config
 
-| Field | Description | 
-| --------------- | --------------- | 
-| `name`    | This field specifies the unique identifier or name for the route within the gateway. It is used to direct requests to the correct endpoint or service, facilitating organized management and routing of API calls. The name should be descriptive enough to indicate its purpose or the nature of the requests it handles, such as forwarding queries to the LLM for processing. | 
-| `type`    | Indicates the specific functionality of the LLM endpoint that the route targets. The options include: | 
-|           | - **chat**: Routes targeting this type are designed to handle interactive, conversational queries, utilizing the LLM's capabilities to generate responses in a chat-like format. This is typically used for building chatbots or conversational agents. |
-|           | - **completions**: This type is aimed at generating text completions or responses based on prompts provided in the requests. It's suitable for applications requiring content generation, creative writing assistance, code generation, etc. |
-|           |     - **embeddings**: Routes of this type are focused on generating numerical representations (embeddings) of the input text, which can be used for tasks such as semantic similarity comparison, clustering, or search applications. |
+These values define ownership and access attribution for auditing and visibility.
 
-### Model 
-| Field | Description | 
-| --------------- | --------------- | 
-| `name`     | Specifies the identifier or name of the model you intend to use for your application. This name is critical for ensuring that requests are routed to the correct model, particularly when a gateway or service offers access to multiple models. It should match the model name as defined by the LLM provider. | 
-| `provider` | Identifies the LLM provider. This field allows you to specify the source of the LLM, such as `openai` for models like GPT-3, `cohere`, `anthropic`, or `huggingface`. Each provider has its own set of models, capabilities, and API structures, so specifying the provider is crucial for correctly interfacing with their service. | 
-| `suffix`   | This field is particularly useful when working with customizable or specific versions of models, especially on platforms like Hugging Face. It allows you to append a custom path or identifier to the model URL endpoint, enabling access to custom or fine-tuned models that may not be directly available through the standard API endpoints. This customization can be crucial for applications requiring highly specialized model behavior or training on specific datasets. | 
+![Team Configuration](/img/route/teamConfig.png)
 
-### Config
-| Field | Description | 
-| --------------- | --------------- | 
-| `rate_limit` |     Specifies the maximum number of requests per second (RPS) that can be sent through this route. Setting a rate limit is crucial for preventing overloading the LLM provider's API, which can lead to request denials or additional charges. It ensures that your application stays within the operational limits of the LLM service and maintains a good standing with the provider. | 
-| `archive`    | A boolean setting (true or false) that determines whether interactions (both requests to and responses from) with the LLMs should be archived. Enabling this feature (true) is important for record-keeping, compliance, and analysis purposes. It allows organizations to review historical data for insights, audit interactions for compliance with regulations, or debug issues. | 
-| `retries`    | Indicates the number of retry attempts the gateway will make in the event of receiving a 503 (Service Unavailable) response from the LLM. This is critical for enhancing the reliability of the service, ensuring that temporary issues with the LLM provider do not immediately result in failures for end-users. By automatically retrying, the system can often overcome transient issues without manual intervention. | 
+| name          | type   | required | default | description                                                                 |
+|---------------|--------|----------|---------|-----------------------------------------------------------------------------|
+| owner         | string | no       | —       | Email or identifier for the route owner.                                    |
+| organization  | string | no       | —       | Organization that owns or manages the route.                                |
 
+### Policy Config
 
+Policy configuration allows you to enforce content safety, privacy, compliance, and moderation behaviors at the route level. These policies are available for both Unified and Custom routes and are applied during request processing.
+
+![Policy Configuration](/img/route/routePolicy.png)
+
+:::note
+Policy tab under routes is only accessible to **Super Admin** users.
+
+The “Override Application Policies” toggle allows you to enforce custom policy rules at the route level. When enabled, the route will use its own policy settings instead of inheriting them from the application configuration. 
+:::
+
+To learn more about configuring policies in detail, see [Policy Configuration](./application-policy-configuration).

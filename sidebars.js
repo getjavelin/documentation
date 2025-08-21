@@ -9,20 +9,34 @@ module.exports = {
           'javelin-core/gatewayconfiguration',
         ]
       },
-      {
+       {
         type: 'category',
-        label: 'Routes',
+        label: 'Applications',
         items: [
-          'javelin-core/route-configuration',
+          'javelin-core/application-overview',
+          'javelin-core/application-configuration',
+          'javelin-core/application-policy-configuration',
+           'javelin-core/application-usage-guides',
         ]
       },
       {
         type: 'category',
         label: 'Providers',
         items: [
-          'javelin-core/providerconfiguration',
+          'javelin-core/provider-overview',
+          'javelin-core/provider-configuration',
+          'javelin-core/provider-usage-guide'
         ]
       },
+      {
+        type: 'category',
+        label: 'Routes',
+        items: [
+          'javelin-core/route-overview',
+          'javelin-core/route-configuration',
+           'javelin-core/route-usage-guide',
+        ]
+      }
     ],
     'Features': [
       {
@@ -32,6 +46,9 @@ module.exports = {
           'javelin-core/features/retries',
           'javelin-core/features/ratelimits',
           'javelin-core/features/loadbalancing',
+          'javelin-core/features/javelinproxy',
+          'javelin-core/features/guardrailbypass',
+
           /*
           'javelin-core/features/caching',
           */
@@ -172,6 +189,9 @@ module.exports = {
           'javelin-core/features/retries',
           'javelin-core/features/ratelimits',
           'javelin-core/features/loadbalancing',
+          'javelin-core/features/javelinproxy',
+          'javelin-core/features/guardrailbypass',
+
           /*
           'javelin-core/features/caching',
           */

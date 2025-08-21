@@ -9,7 +9,7 @@ Note: Infotype matching is enabled by default at the Gateway level.
 
 ### Settings
 
-Data protection settings allow for creating standalone strategies that include Infotype matching. If you configure the strategy to `mask`, `redact`, `replace` or `inspect` the request, the processor will log the attempt or reject the request based on whether the input is flagged as a potential infotype match. You can customize these settings based on your application's security requirements.
+Data protection settings allow for creating standalone strategies that include Infotype matching. If you configure the strategy to `mask`, `redact`, `replace`, `inspect` or `anonymization` the request, the processor will log the attempt or reject the request based on whether the input is flagged as a potential infotype match. You can customize these settings based on your application's security requirements.
 
 The following security, secrets & credentials infotypes are supported:
 AUTH_TOKEN  
@@ -48,6 +48,8 @@ The strategy actions are as follows:
 `redact` - redacts the matched infotype in the request with ""  
 `replace` - replaces the matched infotype in the request with "[Restricted]" for matches  
 `inspect` - inspects the matched infotype in the request and logs the attempt. The `inspect` strategy also allows for a Reject action that will reject the request with a 403 Forbidden if a restricted keyword is detected.  
+`anonymization` - Transforms the matched infotype while preserving its original format and structure. This approach maintains critical semantic and grammatical cues, allowing downstream systems including LLMs to function accurately without exposing sensitive information.
+
 
 ### Processor Telemetry
 

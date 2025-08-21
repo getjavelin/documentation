@@ -9,4 +9,4 @@ Instead of relying solely on raw JSON or API tools, the Playground offers a clea
 - Customize language model parameters such as `temperature`, `logprobs`, `max_tokens`, etc.
 - View model latency and content safety filter results
 
-![Model Playground Example](./Model%20Playground.png)
+![Model Playground Example](../../../static/img/route/playground.png)

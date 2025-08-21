@@ -9,13 +9,15 @@ Note: Keyword detection is enabled by default at the Gateway level.
 
 ### Settings
 
-Data protection settings allow for creating standalone strategies that include Reserved Keywords. If you configure the strategy to `mask`, `redact`, `replace` or `inspect` the request, the processor will log the attempt or reject the request based on whether the input is flagged as a potential restricted keyword. You can customize these settings based on your application's security requirements.
+Data protection settings allow for creating standalone strategies that include Reserved Keywords. If you configure the strategy to `mask`, `redact`, `replace`, `inspect` or `anonymization` the request, the processor will log the attempt or reject the request based on whether the input is flagged as a potential restricted keyword. You can customize these settings based on your application's security requirements.
 
 The strategy actions are as follows:  
 `mask` - masks the restricted keyword in the request with "#"  
 `redact` - redacts the restricted keyword in the request with ""  
 `replace` - replaces the restricted keyword in the request with "TYPE" for instance [EMAIL], [PHONE], [CREDIT_CARD]  
 `inspect` - inspects the restricted keyword in the request and logs the attempt. The `inspect` strategy also allows for a Reject action that will reject the request with a 403 Forbidden if a restricted keyword is detected.  
+`anonymization` - Transforms the matched infotype while preserving its original format and structure. This approach maintains critical semantic and grammatical cues, allowing downstream systems including LLMs to function accurately without exposing sensitive information.
+
 
 ### Processor Telemetry
 
