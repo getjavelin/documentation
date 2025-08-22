@@ -1,5 +1,5 @@
 ---
-id: mcp-guides
+id: mcp-usage-guides
 title: MCP Guides
 sidebar_label: MCP Guides
 description: Comprehensive guide for Javelin MCP Registries
@@ -21,7 +21,7 @@ This guide explains how to create and manage MCP Registries in Javelin, configur
    - **Authorization Token** – The credential used to authenticate requests to the MCP server. This ensures secure communication and validates that your gateway is permitted to access the server.  
 4. Click **Save** to create the registry.  
 
-<!-- ![MCP Registry Details Tab](/img/mcp/mcpDetails.png) -->
+![MCP Registry Details Tab](/img/mcp/registerMCP.png)
 
 ## Tools Tab
 
@@ -36,6 +36,8 @@ The results are displayed directly in this tab, showing potential **security vul
 
 This ensures that every tool made available through MCP is continuously assessed for risk, giving developers and admins clear visibility into **tool security posture** before use.  
 
+![MCP Registry Tools Tab](/img/mcp/mcpTools.png)
+![MCP Registry Tools Rampart Scan](/img/mcp/mcpRampartScan.png)
 
 ## Policy Tab
 
@@ -50,7 +52,7 @@ These registry-level guardrails are enforced **after a tool response is received
 
 For a detailed breakdown of policy fields and configurations, see the [MCP Configuration Guide](./mcp-configuration).  
 
-<!-- ![Policy Tab](/img/mcp/mcpPolicy.png) -->
+![MCP Registry Policy Tab](/img/mcp/mcpPolicy.png)
 
 ## Details Tab
 
@@ -69,6 +71,7 @@ It includes:
 
 This tab serves as the foundation for connecting Javelin to your MCP server, ensuring all requests are routed securely.  
 
+![MCP Registry Details Tab](/img/mcp/mcpDetails.png)
 
 
 ## Developer Key Requirement

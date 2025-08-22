@@ -39,8 +39,8 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   AI Model     │    │   Javelin       │    │   MCP Server    │
-│   (LLM)        │◄──►│   Gateway       │◄──►│   (External)    │
+│   AI Model      │    │     Javelin      │    │   MCP Server    │
+│   (LLM)         │◄──►│     Gateway      │◄──►│   (External)    │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
                               │
                               ▼
