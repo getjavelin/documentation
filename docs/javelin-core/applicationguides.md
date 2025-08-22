@@ -49,7 +49,7 @@ This key authorizes requests and ensures activity is logged under your applicati
 ## Application Graph Tab
 
 - Displays all LLM models accessed via this application's key.
-- Shows **model name**, **number of requests**, and **Last Used** in a graph format.
+- Shows **model name**, **number of requests**, and **last used** in a graph format.
 - Helps you analyze usage patterns and identify high-traffic models.
 
 ![Application Graph Tab](/img/application/appGraph.png)

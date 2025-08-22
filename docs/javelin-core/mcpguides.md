@@ -73,6 +73,13 @@ This tab serves as the foundation for connecting Javelin to your MCP server, ens
 
 ![MCP Registry Details Tab](/img/mcp/mcpDetails.png)
 
+## Application Graph Tab
+
+- Displays all MCP tools accessed via this application's key.
+- Shows **tool name**, **MCP server**, **number of requests**, and **last used** in a graph format.
+- Helps you analyze MCP tool usage patterns and identify high-traffic integrations.
+
+![Application Graph Tab](/img/mcp/mcpGraph.png)
 
 ## Developer Key Requirement
 
