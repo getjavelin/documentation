@@ -150,6 +150,7 @@ module.exports = {
           'javelin-processors/javascript',      
         ]
       },
+      'javelin-processors/standalone-guardrails',
     ],
     'Javelin RedTeam': [
       'javelin-redteam/overview',
