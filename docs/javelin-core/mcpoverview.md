@@ -18,18 +18,15 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 
 ### **1. Enhanced AI Capabilities**
 - **Tool Integration** – Connect AI to APIs, databases, and enterprise services.  
-- **Real-Time Access** – Fetch current data from live sources.  
-- **Function Calling** – Execute structured operations via tools.  
-- **Multi-Modal Support** – Handle different data types and content formats.  
+- **Controlled Access** – Enable/disable specific tools per MCP server, ensuring only approved tools are usable
+- **Application-Centric Usage** – All MCP interactions are tied to the Application that invoked them, keeping usage, logs, and policies scoped to the right context.
 
 ### **2. Enterprise Security**
-- **Centralized Control** – Manage all MCP servers through Javelin Gateway.  
-- **Policy Enforcement** – Apply filters (e.g., prompt safety, DLP, language detection).  
+- **Policy Enforcement** – Apply filters (e.g., prompt safety, DLP).  
 - **Audit Trail** – Every request and tool invocation is logged.  
 - **Rampart Scan** – Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **Rampart vulnerability scan** to detect security risks in that tool.  
 
 ### **3. Operational Efficiency**
-- **Standardized Interface** – Consistent API for all MCP tools.  
 - **Simple Management** – Easy setup of servers and tool configs.  
 - **Monitoring & Analytics** – Usage tracking, vulnerability status, and performance insights.  
 
@@ -77,7 +74,6 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 ### **Security Policies**
 - **Prompt Safety** – Defend against jailbreaks or injection attempts.  
 - **Data Loss Prevention (DLP)** – Prevent sensitive data leakage.  
-- **Content Filtering & Language Detection** – Apply guardrails across requests.  
 
 
 ## Use Cases
