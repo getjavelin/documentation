@@ -18,10 +18,15 @@ This guide explains how to create and manage MCP Registries in Javelin, configur
    - **Name** – Unique identifier for your MCP server (e.g., `github`).  
    - **URL** – Base URL for the MCP server.  
    - **Description** – A human-readable description for the MCP registry.  
-   - **Authorization Token** – The credential used to authenticate requests to the MCP server. This ensures secure communication and validates that your gateway is permitted to access the server.  
+   - **Authorization Token** – The credential used to authenticate requests to the MCP server.
 4. Click **Save** to create the registry.  
 
 ![MCP Registry Details Tab](/img/mcp/registerMCP.png)
+
+Once an MCP Registry is created, it will appear in the **MCP Registries list**.  
+From here, selecting a registry takes you to its dedicated page where you can configure and manage it further. 
+
+![MCP Registry List](/img/mcp/mcpList.png)
 
 ## Tools Tab
 
@@ -99,7 +104,7 @@ curl --location 'https://api-dev.javelin.live/v1/responses' \
 --header 'Authorization: Bearer {{OPENAI_SECRET_KEY}}' \
 --header 'X-Javelin-apikey: {{APPLICATION_DEVELOPER_KEY}}' \
 --data '{
-      "input": "What transport protocols are supported in the 2025-03-26 version of the MCP spec?",
+      "input": "List all the tools of this MCP",
       "model": "gpt-4.1",
       "tools": [
         {
@@ -134,6 +139,4 @@ You will be able to see:
 
 This ensures that all MCP-related activity is **auditable under the Application** whose key was used.  
 
-There will always be **separate Chronicles entries**:  
-- One for the **model query**.  
-- Another for the **MCP tool invocation**.  
+![Application Chronicles Tab](/img/mcp/mcpChronicles.png)

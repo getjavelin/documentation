@@ -20,10 +20,10 @@ Each registry includes connection details, authentication credentials, and basel
 
 ```yaml
 mcp_registry:
-  name: "github"                                # Unique server key
-  description: "GitHub MCP server"              # Optional description
+  name: "deepwiki"                                # Unique server key
+  description: "Deepwiki MCP server"              # Optional description
   type: "streamable-http"                       # MCP server transport/type
-  endpoint: "https://api.githubcopilot.com/mcp" # MCP server endpoint URL
+  endpoint: "https://mcp.deepwiki.com/mcp" # MCP server endpoint URL
   is_active: true                               # Enable/disable the registry
   config:
     authorization_token: "<SECRET_TOKEN>"       # Token used by MCP server
@@ -50,7 +50,7 @@ Before configuring MCP, ensure you have:
 
 | Name                                 | Type     | Required | Default | Description |
 |--------------------------------------|----------|----------|---------|-------------|
-| `name`                               | string   | Yes      | —       | Unique key for this MCP server (e.g., `github`). |
+| `name`                               | string   | Yes      | —       | Unique key for this MCP server (e.g., `deepwiki`). |
 | `description`                        | string   | No       | —       | Human-readable description. |
 | `type`                               | string   | Yes      | —       | MCP server type/transport (e.g., `streamable-http`). |
 | `endpoint`                           | string   | Yes      | —       | Base URL for the MCP server. |

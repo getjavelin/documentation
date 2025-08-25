@@ -58,10 +58,9 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 ### Data Flow
 1. Request initiated by AI (e.g., call to an external tool).  
 2. Javelin applies **policy filters**.  
-3. Tool is selected from MCP registry.  
-4. Javelin runs **Rampart Scan check** if tool status is updated.  
-5. Request executed on MCP server.  
-6. Response returned, filtered, and logged.  
+3. Tool is selected from MCP registry.    
+4. Request executed on MCP server.  
+5. Response returned, filtered, and logged.  
 
 ## Supported MCP Features
 
@@ -69,7 +68,6 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 - **Registration** – Add new MCP servers.  
 - **Configuration** – Define endpoints, tokens, and tool details.  
 - **Tool Status & Vulnerabilities** – Enable/disable tools and review Rampart scan results.  
-- **Monitoring** – Usage metrics and performance logs.  
 
 ### **Security Policies**
 - **Prompt Safety** – Defend against jailbreaks or injection attempts.  
@@ -93,13 +91,3 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 - Market research with real-time feeds.  
 - Scientific data exploration.  
 - Financial and healthcare AI integrations.  
-
-## Getting Started with MCP in Javelin
-
-1. Navigate to the **MCP Registry** page in your gateway.  
-2. **Register an MCP server** (name, endpoint, description, authorization token).  
-3. Configure **policies** to enforce safety and compliance.  
-4. **Enable tools** for your MCP server. Rampart will automatically scan for vulnerabilities.  
-5. Test tool integration with an AI model.  
-
-For step-by-step setup instructions, see the [MCP Configuration Guide](/javelin-core/mcp-configuration).  
