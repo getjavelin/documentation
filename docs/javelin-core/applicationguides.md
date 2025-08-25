@@ -5,7 +5,7 @@ description: Comprehensive guide for Javelin Application
 sidebar_label: Guides
 ---
 
-# Application Guide
+# Application Guides
 
 This guide explains how to create and manage Applications in Javelin, generate and use API keys, apply application-level policies, review request logs in Chronicles.
 

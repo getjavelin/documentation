@@ -5,7 +5,7 @@ description: Step-by-step guide for configuring, testing, and using custom and u
 sidebar_label: Guides
 ---
 
-# Route Usage Guide
+# Route Guides
 
 This guide walks you through using **Custom Routes** and **Unified Routes** in Javelin. It covers prerequisites, how to create secrets, use `virtual keys` (v-keys) for enhanced security, retrieve the Javelin API key, and inspect requests via Chronicles.
 

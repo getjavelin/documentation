@@ -11,7 +11,7 @@ description:
 
 ## Overview
 
-In Javelin, **MCP registries** define how your gateway connects to external [Model Context Protocol (MCP)] servers and exposes their tools to applications.  
+In Javelin, **MCP registries** define how your gateway connects to external [Model Context Protocol (MCP)](mcp-overview) servers and exposes their tools to applications.  
 Each registry includes connection details, authentication credentials, and baseline policy controls. You can also selectively enable tools on a per-registry basis to safely extend application capabilities.
 
 ![Register MCP](/img/mcp/registerMCP.png)
@@ -36,15 +36,6 @@ mcp_registry:
       content_types: []
       reject_prompt: ""
 ```
-
-<!-- ## Prerequisites
-
-Before configuring MCP, ensure you have:
-
-- **Javelin Gateway Access**: Access to a Javelin gateway instance
-- **MCP Feature Flag**: MCP feature enabled for your organization
-- **Admin Permissions**: Ability to configure MCP servers and policies
-- **MCP Server Details**: Information about the MCP server you want to connect -->
 
 ## Field Descriptions
 
@@ -80,5 +71,5 @@ tool:
 
 ## Policy Precedence
 
-- If a request uses a gateway key (X-Javelin-Key), the MCP registry policy is applied.
-- If a request uses an application key (X-Javelin-Key), the application policy is applied.
+- If a request uses a gateway key (X-Javelin-Apikey), the MCP registry policy is applied.
+- If a request uses an application key (X-Javelin-APikey), the application policy is applied.

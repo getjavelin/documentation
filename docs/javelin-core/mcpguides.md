@@ -5,7 +5,7 @@ sidebar_label: MCP Guides
 description: Comprehensive guide for Javelin MCP Registries
 ---
 
-# MCP Guide
+# MCP Guides
 
 This guide explains how to create and manage MCP Registries in Javelin, configure policies, enable/disable tools, and integrate them with your Applications.
 
@@ -14,11 +14,7 @@ This guide explains how to create and manage MCP Registries in Javelin, configur
 
 1. Navigate to the **MCP Registries** page within your gateway.  
 2. Click **Add MCP Registry** button.  
-3. Enter the following details in the **Details** tab:  
-   - **Name** – Unique identifier for your MCP server (e.g., `github`).  
-   - **URL** – Base URL for the MCP server.  
-   - **Description** – A human-readable description for the MCP registry.  
-   - **Authorization Token** – The credential used to authenticate requests to the MCP server.
+3. In the **Details** tab, fill in the required fields (see [Details Tab](#details-tab) for a complete description of each field).
 4. Click **Save** to create the registry.  
 
 ![MCP Registry Details Tab](/img/mcp/registerMCP.png)
@@ -125,7 +121,7 @@ curl --location 'https://api-dev.javelin.live/v1/responses' \
 - **Authorization: Bearer OPENAI_SECRET_KEY** → Authenticates with the OpenAI LLM provider.  
 - **X-Javelin-apikey: APPLICATION_DEVELOPER_KEY** → Authenticates the request in Javelin and logs it under the Application.  
 - **tools block** → Connects the LLM to the MCP server (here: `deepwiki`).  
-
+  - **Authorization (inside tools block): Bearer APPLICATION_DEVELOPER_KEY** → Authenticates requests made by the LLM to the MCP server via Javelin Gateway. This ensures the MCP tool invocation is also tracked under the same Application’s Chronicles.  
 
 ## Chronicles for MCP Requests
 

@@ -5,7 +5,7 @@ description: Manage AI model providers and understand their integration in Javel
 sidebar_label: Guides
 ---
 
-# Provider Guide
+# Provider Guides
 
 Providers in Javelin act as the bridge between your application and external Large Language Model (LLM) services like OpenAI, Anthropic, Cohere, etc. By configuring providers, you enable routing requests to specific models, control secrets, and manage access in a modular and secure way. Providers also help standardize interactions across different LLM vendors.
 
