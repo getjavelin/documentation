@@ -22,7 +22,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 - **Application-Centric Usage** – All MCP interactions are tied to the Application that invoked them, keeping usage, logs, and policies scoped to the right context.
 
 ### **2. Enterprise Security**
-- **Policy Enforcement** – Apply filters (e.g., prompt safety, DLP).  
+- **Policy Enforcement** – Apply filters (e.g., Malicious Instruction Injections, Data Protection).  
 - **Audit Trail** – Every request and tool invocation is logged.  
 - **Rampart Scan** – Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **Rampart vulnerability scan** to detect security risks in that tool.  
 
@@ -35,22 +35,25 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 ### Architecture
 
 ```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   AI Model      │    │     Javelin      │    │   MCP Server    │
-│   (LLM)         │◄──►│     Gateway      │◄──►│   (External)    │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                              │
-                              ▼
-                       ┌──────────────────┐
-                       │   MCP Registry   │
-                       │   & Policies     │
-                       └──────────────────┘
+┌─────────────────┐        ┌──────────────────┐        ┌─────────────────┐
+│    LLM Model    │  ───►  │                  │  ───►  │   MCP Server    │
+└─────────────────┘        │                  │        │   (External)    │
+                           │     Javelin      │        └─────────────────┘
+┌─────────────────┐        │                  │
+│  External Apps  │  ◄──►  │                  │
+└─────────────────┘        └──────────────────┘
+                                    │
+                                    ▼
+                           ┌──────────────────┐
+                           │ MCP Registry &   │
+                           │ Policies         │
+                           └──────────────────┘
 ```
 
 
 ### Core Components
 1. **MCP Registry** – Central place to register and configure MCP servers.  
-2. **Policy Engine** – Enforces prompt safety, DLP, and other filters.  
+2. **Policy Engine** – Enforces Malicious Instruction Injections, Data Protection, and other filters.  
 3. **Tool Definitions** – List of tools available per server.  
 4. **Rampart Scan** – Continuous vulnerability assessment for registered tools.  
 5. **Chronicles & Audit** – Request/response logs for compliance.  
@@ -70,8 +73,8 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 - **Tool Status & Vulnerabilities** – Enable/disable tools and review Rampart scan results.  
 
 ### **Security Policies**
-- **Prompt Safety** – Defend against jailbreaks or injection attempts.  
-- **Data Loss Prevention (DLP)** – Prevent sensitive data leakage.  
+- **Malicious Instruction Injections** – Defend against jailbreaks or injection attempts.  
+- **Data Protection** – Prevent sensitive data leakage.  
 
 
 ## Use Cases

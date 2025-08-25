@@ -22,11 +22,11 @@ Each registry includes connection details, authentication credentials, and basel
 mcp_registry:
   name: "deepwiki"                                # Unique server key
   description: "Deepwiki MCP server"              # Optional description
-  type: "streamable-http"                       # MCP server transport/type
-  endpoint: "https://mcp.deepwiki.com/mcp" # MCP server endpoint URL
-  is_active: true                               # Enable/disable the registry
+  type: "streamable-http"                         # MCP server transport/type
+  endpoint: "https://mcp.deepwiki.com/mcp"        # MCP server endpoint URL
+  is_active: true                                 # Enable/disable the registry
   config:
-    authorization_token: "<SECRET_TOKEN>"       # Token used by MCP server
+    authorization_token: "<SECRET_TOKEN>"         # Optional. Token used by MCP server, if needed
   policy:
     dlp:
       enabled: false
@@ -46,7 +46,7 @@ mcp_registry:
 | `type`                               | string   | Yes      | —       | MCP server type/transport (e.g., `streamable-http`). |
 | `endpoint`                           | string   | Yes      | —       | Base URL for the MCP server. |
 | `is_active`                          | boolean  | No       | true    | Whether the MCP registry is enabled. |
-| `config.authorization_token`         | string   | Yes      | —       | Credential used to authenticate with the MCP server. |
+| `config.authorization_token`         | string   | No       | —       | Optional. Credential used to authenticate with the MCP server, if needed. |
 
 
 ## Policy Fields
@@ -72,4 +72,4 @@ tool:
 ## Policy Precedence
 
 - If a request uses a gateway key (X-Javelin-Apikey), the MCP registry policy is applied.
-- If a request uses an application key (X-Javelin-APikey), the application policy is applied.
+- If a request uses an application key (X-Javelin-Apikey), the application policy is applied.

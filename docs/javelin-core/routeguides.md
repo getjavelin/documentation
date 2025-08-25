@@ -96,7 +96,7 @@ When you create a provider, Javelin automatically provisions a **Reserved unifie
 curl -X POST "https://api-dev.javelin.live/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \
+  -H "X-Javelin-Apikey: $JAVELIN_API_KEY" \
   -H "X-Javelin-route: my-openai-route" \
   -d '{
     "model": "gpt-3.5-turbo",
@@ -188,7 +188,7 @@ Use this in your API client or codebase.
 curl 'https://api-dev.javelin.live/v1/query/gpt-35-route' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'content-type: application/json' \
-  -H 'x-javelin-apikey: $JAVELIN_API_KEY' \
+  -H 'x-javelin-Apikey: $JAVELIN_API_KEY' \
   --data-raw '{
     "max_tokens":100,
     "messages":[

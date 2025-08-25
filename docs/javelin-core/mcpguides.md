@@ -46,8 +46,8 @@ The **Policy** tab displays all **MCP Registry-level policies** currently applie
 
 Policies ensure safer usage of MCP tools by applying filters such as:  
 
-- **Prompt Safety** – Defends against prompt injection or jailbreak attempts.  
-- **DLP (Data Loss Prevention)** – Prevents exposure of sensitive data like PII, credentials, or secrets.  
+- **Malicious Instruction Injections** – Defends against prompt injection or jailbreak attempts.  
+- **Data Protection** – Prevents exposure of sensitive data like PII, credentials, or secrets.  
 
 These registry-level guardrails are enforced **after a tool response is received** when requests are made using an **application key**.  
 
@@ -98,9 +98,9 @@ Below is an example `curl` request:
 curl --location 'https://api-dev.javelin.live/v1/responses' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {{OPENAI_SECRET_KEY}}' \
---header 'X-Javelin-apikey: {{APPLICATION_DEVELOPER_KEY}}' \
+--header 'X-Javelin-Apikey: {{APPLICATION_DEVELOPER_KEY}}' \
 --data '{
-      "input": "List all the tools of this MCP",
+      "input": "List all tools which are supported in the 2025-03-26 version of the MCP spec.",
       "model": "gpt-4.1",
       "tools": [
         {
@@ -119,7 +119,7 @@ curl --location 'https://api-dev.javelin.live/v1/responses' \
 ## Explanation
 
 - **Authorization: Bearer OPENAI_SECRET_KEY** → Authenticates with the OpenAI LLM provider.  
-- **X-Javelin-apikey: APPLICATION_DEVELOPER_KEY** → Authenticates the request in Javelin and logs it under the Application.  
+- **X-Javelin-Apikey: APPLICATION_DEVELOPER_KEY** → Authenticates the request in Javelin and logs it under the Application.  
 - **tools block** → Connects the LLM to the MCP server (here: `deepwiki`).  
   - **Authorization (inside tools block): Bearer APPLICATION_DEVELOPER_KEY** → Authenticates requests made by the LLM to the MCP server via Javelin Gateway. This ensures the MCP tool invocation is also tracked under the same Application’s Chronicles.  
 

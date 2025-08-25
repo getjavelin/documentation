@@ -29,7 +29,7 @@ You’ll find a ready-to-use curl command on the **Details** tab of each provide
 curl -X POST "https://api-dev.javelin.live/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \
+  -H "X-Javelin-Apikey: $JAVELIN_API_KEY" \
   -H "X-Javelin-route: openai" \
   -d '{
     "model": "gpt-3.5-turbo",

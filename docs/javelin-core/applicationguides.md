@@ -48,11 +48,24 @@ This key authorizes requests and ensures activity is logged under your applicati
 
 ## Application Graph Tab
 
-- Displays all LLM models accessed via this application's key.
-- Shows **model name**, **number of requests**, and **last used** in a graph format.
-- Helps you analyze usage patterns and identify high-traffic models.
+The **Application Graph tab** provides a visual overview of how your Application Key is being used across both **LLM models** and **MCP registries**.
 
-![Application Graph Tab](/img/application/appGraph.png)
+- On the **left side** of the graph, all **MCP registries** are displayed, showing which tools have been invoked through them.  
+  - Each registry expands to show the **tools** invoked under it (with tool names visible).  
+- On the **right side**, all **LLM models** accessed with this application key are shown.  
+- For each model or MCP registry, you can see:
+  - **Name** (model name or MCP server label)  
+  - **Number of requests**  
+  - **Last used timestamp**  
+
+This dual view helps you:  
+- Track usage of **MCP tools** and **LLM models**.  
+- Identify which models or registries generate the most activity.  
+- Analyze traffic distribution across models and MCP servers.  
+
+For more details on how MCP works in Javelin, see the [MCP Overview](/javelin-core/mcp-overview).  
+
+![Application Graph Tab](/img/application/appGraph_1.png)
 
 
 ## Redteam Assessment Tab
