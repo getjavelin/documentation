@@ -30,7 +30,7 @@ Standalone guardrails respect application-specific policies when available:
 This processor detects both prompt injection attempts and jailbreaks.
 
 ```bash
-curl -X POST "https://your-javelin-host/v1/guardrail/promptinjectiondetection/apply" \
+curl -X POST "https://your-javelin-domain.com/v1/guardrail/promptinjectiondetection/apply" \
  -H "Content-Type: application/json" \
  -H "x-javelin-apikey: YOUR_API_KEY" \
  -H "x-javelin-application: your-app-name-with-policies-enabled" \
@@ -68,7 +68,7 @@ curl -X POST "https://your-javelin-host/v1/guardrail/promptinjectiondetection/ap
 ## 2. Trust & Safety Processor
 
 ```bash
-curl -X POST "https://your-javelin-host/v1/guardrail/trustsafety/apply" \
+curl -X POST "https://your-javelin-domain.com/v1/guardrail/trustsafety/apply" \
  -H "Content-Type: application/json" \
  -H "x-javelin-apikey: YOUR_API_KEY" \
  -H "x-javelin-application: your-app-name-with-policies-enabled" \
@@ -114,7 +114,7 @@ curl -X POST "https://your-javelin-host/v1/guardrail/trustsafety/apply" \
 ## 3. Language Detector Processor
 
 ```bash
-curl -X POST "https://your-javelin-host/v1/guardrail/lang_detector/apply" \
+curl -X POST "https://your-javelin-domain.com/v1/guardrail/lang_detector/apply" \
  -H "Content-Type: application/json" \
  -H "x-javelin-apikey: YOUR_API_KEY" \
  -H "x-javelin-application: your-app-name-with-policies-enabled" \
