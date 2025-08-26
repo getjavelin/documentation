@@ -116,7 +116,7 @@ module.exports = {
                 srcDark: 'img/javelinlogowhite-120x32.png',
                 href: '/',
                 target: '_self',
-                width: 120,
+                width: 86,
                 height: 32,
             },
             items: [

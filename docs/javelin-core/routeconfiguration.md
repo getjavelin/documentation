@@ -22,7 +22,7 @@ Unified routes offer a simplified interface that dynamically handles various mod
 curl -X POST "https://api-dev.javelin.live/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \
+  -H "X-Javelin-Apikey: $JAVELIN_API_KEY" \
   -H "X-Javelin-route: demo-unified-route" \
   -d '{
     "model": "gpt-3.5-turbo",
