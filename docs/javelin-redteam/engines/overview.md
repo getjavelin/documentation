@@ -48,6 +48,7 @@ Advanced conversational attack patterns that build context over multiple interac
 | COU (Chain-of-Utterance) | Single-Turn | Builds complex reasoning chains to gradually bypass safety measures | [Chain of Utterances](https://arxiv.org/pdf/2308.09662) |
 | ASCII Art | Single-Turn | Masks malicious words and converts them to ASCII art to bypass content filters | [ArtPrompt: ASCII Art-based Jailbreak Attacks](https://aclanthology.org/2024.acl-long.809.pdf) |
 | TIP (Task-in-Prompt) | Single-Turn | Embeds harmful requests within legitimate sequence-to-sequence tasks like cipher decoding and riddles | [The TIP of the Iceberg: Task-in-Prompt Adversarial Attacks](https://aclanthology.org/2025.acl-long.334.pdf) |
+| FlipAttack | Single-Turn | Exploits LLMs' left-to-right processing by flipping text and adding noise, then guiding models to decode and execute | [FlipAttack: Jailbreak LLMs via Flipping](https://arxiv.org/html/2410.02832v1) |
 | Direct LLM | Single-Turn | Uses secondary LLM with sophisticated prompt engineering for stealth enhancement | |
 
 ## Engine Selection Strategy
@@ -118,6 +119,7 @@ class EngineFactory:
         "cou_engine": COUEngine,
         "ascii_art": ASCIIArtEngine,
         "tip": TIPEngine,
+        "flip_attack": FlipAttackEngine,
     }
 ```
 
@@ -129,6 +131,7 @@ class EngineFactory:
 | Base64 | Very Fast | None | Low |
 | ASCII Art | Very Fast | None | Low |
 | TIP | Very Fast | None | Medium |
+| FlipAttack | Very Fast | None | Medium |
 | Adversarial | Fast | Low | Medium |
 | BoN | Medium | Medium | Medium |
 | Direct LLM | Slow | High | Medium |
