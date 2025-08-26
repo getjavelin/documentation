@@ -5,7 +5,7 @@ description: Manage AI model providers and understand their integration in Javel
 sidebar_label: Guides
 ---
 
-# Provider Guide
+# Provider Guides
 
 Providers in Javelin act as the bridge between your application and external Large Language Model (LLM) services like OpenAI, Anthropic, Cohere, etc. By configuring providers, you enable routing requests to specific models, control secrets, and manage access in a modular and secure way. Providers also help standardize interactions across different LLM vendors.
 
@@ -29,7 +29,7 @@ You’ll find a ready-to-use curl command on the **Details** tab of each provide
 curl -X POST "https://api-dev.javelin.live/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "X-Javelin-apikey: $JAVELIN_API_KEY" \
+  -H "X-Javelin-Apikey: $JAVELIN_API_KEY" \
   -H "X-Javelin-route: openai" \
   -d '{
     "model": "gpt-3.5-turbo",

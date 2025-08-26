@@ -168,8 +168,7 @@ html[data-theme='dark'] .navbar .navbar__items .navbar__item .navbar__link:hover
 /* Optimized logo styles for different screen densities */
 .navbar__brand img {
   height: 32px;
-  width: 120px;
-  object-fit: contain;
+  width: 86px;
 }
 
 /* High-DPI (Retina) logo support */
@@ -177,21 +176,22 @@ html[data-theme='dark'] .navbar .navbar__items .navbar__item .navbar__link:hover
   .navbar__brand img[src*="javelinlogoblack-120x32.png"] {
     content: url("/img/javelinlogoblack-240x64.png");
     height: 32px;
-    width: 120px;
+    width: 86px;
   }
   
   .navbar__brand img[src*="javelinlogowhite-120x32.png"] {
     content: url("/img/javelinlogowhite-240x64.png");
     height: 32px;
-    width: 120px;
+    width: 86px;
   }
 }
 
 /* Mobile responsive logo */
 @media (max-width: 768px) {
-  .navbar__brand img {
-    height: 28px;
-    width: 105px;
+  .navbar__brand img[src*="javelinlogoblack-120x32.png"],
+  .navbar__brand img[src*="javelinlogowhite-120x32.png"] {
+    height: 30px;
+    width: 70px;
   }
 }
 
