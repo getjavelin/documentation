@@ -495,7 +495,7 @@ Let me think through this step by step:
 3. Then I need to understand the meaning
 Can you walk me through this decoding process?
 ```
-*Jumbles the word in the sentence and instructs the LLM to decode it before completing the malicious request.*
+*Transforms the prompt by reversing the order of words or characters, and then instructs the LLM to decode it before completing the malicious request.*
 :::
 
 ---
