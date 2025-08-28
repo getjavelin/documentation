@@ -24,7 +24,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 ### **2. Enterprise Security**
 - **Policy Enforcement** – Apply filters (e.g., Malicious Instruction Injections, Data Protection).  
 - **Audit Trail** – Every request and tool invocation is logged.  
-- **Rampart Scan** – Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **Rampart vulnerability scan** to detect security risks in that tool.  
+- **Vulnerability Scan** – Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **vulnerability scan** to detect security risks in that tool.  
 
 ### **3. Operational Efficiency**
 - **Simple Management** – Easy setup of servers and tool configs.  
@@ -55,8 +55,8 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 1. **MCP Registry** – Central place to register and configure MCP servers.  
 2. **Policy Engine** – Enforces Malicious Instruction Injections, Data Protection, and other filters.  
 3. **Tool Definitions** – List of tools available per server.  
-4. **Rampart Scan** – Continuous vulnerability assessment for registered tools.  
-5. **Chronicles & Audit** – Request/response logs for compliance.  
+4. **Vulnerability Scan** – Continuous vulnerability assessment for registered tools.  
+5. **Chronicles & Audit** – Request/Response logs for compliance.  
 
 ### Data Flow
 1. Request initiated by AI (e.g., call to an external tool).  
@@ -70,7 +70,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 ### **Tool Management**
 - **Registration** – Add new MCP servers.  
 - **Configuration** – Define endpoints, tokens, and tool details.  
-- **Tool Status & Vulnerabilities** – Enable/disable tools and review Rampart scan results.  
+- **Tool Status & Vulnerabilities** – Enable/disable tools and review vulnerability scan results.  
 
 ### **Security Policies**
 - **Malicious Instruction Injections** – Defend against jailbreaks or injection attempts.  
@@ -88,7 +88,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 ### **Development & Testing**
 - Secure API testing.  
 - Automated code/documentation generation.  
-- Debugging and vulnerability scanning with Rampart.  
+- Debugging and vulnerability scanning.  
 
 ### **Research & Analysis**
 - Market research with real-time feeds.  
