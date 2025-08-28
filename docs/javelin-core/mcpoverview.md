@@ -24,7 +24,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 ### **2. Enterprise Security**
 - **Policy Enforcement** – Apply filters (e.g., Malicious Instruction Injections, Data Protection).  
 - **Audit Trail** – Every request and tool invocation is logged.  
-- **Vulnerability Scan** – Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a scan to detect security risks in that tool.  
+- **Vulnerability Scan** – Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **vulnerability scan** to detect security risks in that tool.  
 
 ### **3. Operational Efficiency**
 - **Simple Management** – Easy setup of servers and tool configs.  
