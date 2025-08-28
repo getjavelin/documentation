@@ -32,7 +32,7 @@ The **Tools** tab allows you to:
 - Enable or disable individual tools for controlled access.  
 - See **Vulnerability scan results** for each tool.  
 
-Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **Vulnerability scan** on that tool.  
+Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **vulnerability scan** on that tool.  
 The results are displayed directly in this tab, showing potential **security vulnerabilities**.  
 
 This ensures that every tool made available through MCP is continuously assessed for risk, giving developers and admins clear visibility into **tool security posture** before use.  
