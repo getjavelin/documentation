@@ -88,7 +88,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 ### **Development & Testing**
 - Secure API testing.  
 - Automated code/documentation generation.  
-- Debugging and Vulnerability scanning.  
+- Debugging and vulnerability scanning.  
 
 ### **Research & Analysis**
 - Market research with real-time feeds.  
