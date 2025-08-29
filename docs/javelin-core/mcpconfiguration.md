@@ -55,11 +55,11 @@ mcp_registry:
 
 ## Policy Fields
 
-| Name               | Type    | Required | Default  | Description                                                                                                                         |
-|--------------------|---------|----------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `dlp`              | object  | No       | —        | Detects and prevents the exposure of sensitive information such as personally identifiable data, credentials, or confidential terms in model interactions. |
-| `prompt_safety`    | object  | No       | —        | Protects against manipulation attempts like prompt injections or jailbreaks that try to bypass model restrictions or redirect behavior. |
-| `indirect_prompt_safety`    | object  | No       | —        | Detects and blocks common security threats in MCP tool usage, such as command injection, path traversal, secrets leakage, and SQL injection. |
+| Name                     | Type   | Required | Default | Description                                                                                                                         |
+|--------------------------|--------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `dlp`                    | object | No       | —       | Detects and prevents the exposure of sensitive information such as personally identifiable data, credentials, or confidential terms in model interactions. |
+| `prompt_safety`          | object | No       | —       | Protects against manipulation attempts like prompt injections or jailbreaks that try to bypass model restrictions or redirect behavior. |
+| `indirect_prompt_safety` | object | No       | —       | Detects and blocks common security threats in MCP tool usage, such as command injection, path traversal, secrets leakage, and SQL injection. |
 
 ## Tool Enable/Disable Payload
 
