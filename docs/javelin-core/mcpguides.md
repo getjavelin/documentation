@@ -30,15 +30,15 @@ The **Tools** tab allows you to:
 
 - View all tools exposed by the registered MCP server.  
 - Enable or disable individual tools for controlled access.  
-- See **Rampart vulnerability scan results** for each tool.  
+- See **Vulnerability scan results** for each tool.  
 
-Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **Rampart scan** on that tool.  
+Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **vulnerability scan** on that tool.  
 The results are displayed directly in this tab, showing potential **security vulnerabilities**.  
 
 This ensures that every tool made available through MCP is continuously assessed for risk, giving developers and admins clear visibility into **tool security posture** before use.  
 
 ![MCP Registry Tools Tab](/img/mcp/mcpTools.png)
-![MCP Registry Tools Rampart Scan](/img/mcp/mcpRampartScan.png)
+![MCP Registry Tools Vulnerability Scan](/img/mcp/mcpVulnerabilityScan.png)
 
 ## Policy Tab
 
