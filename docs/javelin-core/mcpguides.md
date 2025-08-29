@@ -48,6 +48,7 @@ Policies ensure safer usage of MCP tools by applying filters such as:
 
 - **Malicious Instruction Injections** – Defends against prompt injection or jailbreak attempts.  
 - **Data Protection** – Prevents exposure of sensitive data like PII, credentials, or secrets.  
+- **Security Filters** – Defends against MCP tool vulnerabilities such as command injection, path traversal, secrets leakage, and SQL injection.
 
 These registry-level guardrails are enforced **after a tool response is received** when requests are made using an **application key**.  
 

@@ -24,9 +24,16 @@ Aggregate key security events into one easy-to-navigate page.
 - Weapons
 - Markdown/Code
 - Non-Ascii Character
+- Invisible Characters
 - Phishing Urls
+- Non-English Language
 - High Entropy
 - Custom Guardrails 
+- Requests With Guardrail Failure
+- Command Injection
+- SQL Injection
+- Path Traversal
+- Secrets Leakage
 
 ### Interactive Filters 
 Click on any category metric card to filter the requests that match the metric accordingly.
