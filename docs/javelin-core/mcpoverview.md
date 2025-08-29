@@ -53,7 +53,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 
 ### Core Components
 1. **MCP Registry** – Central place to register and configure MCP servers.  
-2. **Policy Engine** – Enforces Malicious Instruction Injections, Data Protection, Security Filters and other filters.  
+2. **Policy Engine** – Enforces Malicious Instruction Injections, Data Protection, Security Filters, and other filters.  
 3. **Tool Definitions** – List of tools available per server.  
 4. **Vulnerability Scan** – Continuous vulnerability assessment for registered tools.  
 5. **Chronicles & Audit** – Request/Response logs for compliance.  
