@@ -49,10 +49,37 @@ For demonstration purposes, this lab uses ```gpt-3.5-turbo``` model.
 
 
 ## Step 2: Register the target application
+To register a target application on the Javelin Gateway, follow the steps below:
 
-Register the target application on Javelin gateway as mentioned in the [creating application guide](/docs/javelin-core/applicationconfiguration.md)
+### 1. Create the Application
 
-## Step 2: Create Your First Scan Configuration
+First, register your target application as described in the [Creating Application Guide](/docs/javelin-core/applicationconfiguration.md).
+
+### 2. Configure API Request
+
+In the **API Request** section of the application configuration details tab, provide the following details:
+
+- **URL**  
+  Enter the target application's URL prepared in Step 1.
+
+- **Headers**  
+  Specify any headers that need to be passed to your target application.  
+  For example, authentication tokens, `Content-Type`, or any custom headers required.
+
+- **Payload Template**  
+  Provide a JSON schema representing the payload structure expected by the target application.
+
+  > **Note:** Use `{{query}}` as a placeholder for dynamic values. This will be replaced at runtime during the actual application call.
+
+![Create Redteam Assessment Button](/img/application/APIRequestSection.png)
+
+
+### 3. Save the Application
+
+After completing the above configurations, click **Save** to register the application with the Javelin Gateway.
+
+
+## Step 3: Create Your First Scan Configuration
 
 ![Create Redteam Assessment Button](/img/redteam/CreateRedteamAssessment.png)
 
