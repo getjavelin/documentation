@@ -193,6 +193,37 @@ For guidance on interpreting the scan results and taking remediation steps, refe
 
 ---
 
+## How to Cancel a Scan
+
+To cancel a running scan, click on the **Abort** button available in the **Actions** column of the scan table.
+
+![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
+
+A confirmation dialog will appear. Click **Yes** to confirm and abort the scan.
+
+![RedTeam Scan Abort Confirmation](/img/redteam/AbortRedteamScan.png)
+
+---
+
+## Understanding Failed Scans
+
+If a scan fails for any reason, an **error code** will be displayed in the **Actions** column of the scan table.
+
+- You can **hover** over the error icon to view a quick description.
+![Hover on Exit Code](/img/redteam/HoverExitCode.png)
+
+- Alternatively, click on **Report** to open the detailed scan report view.
+
+In the report view, you'll find:
+
+- Scan configuration details
+- Error code
+- Full error description
+
+![Failed Scan Report](/img/redteam/FailedScanReport.png)
+
+---
+
 ## Troubleshooting Common Issues
 
 (coming soon)
