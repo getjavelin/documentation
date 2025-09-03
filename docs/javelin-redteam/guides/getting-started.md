@@ -50,7 +50,7 @@ For demonstration purposes, this lab uses ```gpt-3.5-turbo``` model.
 
 ## Step 2: Register the target application
 
-Register the target application on Javelin gateway as mentioned in the [creating application guide](/docs/javelin-core/applicationconfiguration.md)
+Register the target application on Javelin gateway as mentioned in the [creating application guide](../../javelin-core/applicationconfiguration)
 
 ## Step 2: Create Your First Scan Configuration
 
@@ -67,7 +67,7 @@ Then, select configuration settings for the scan and click `NEXT`. All the field
 Then select the scan type you want to run. Scan type determines the choice of subset of categories for which the scan will be run. If you want to choose amongst all the 15 available categories, go for a `custom` scan.
 
 :::tip
-For details about what is a category and what all categories are available, together with further explanation about each, see our [taxonomy guide](/docs/javelin-redteam/categories/overview.md)
+For details about what is a category and what all categories are available, together with further explanation about each, see our [taxonomy guide](../categories/overview)
 :::
 
 ![Category Selection Screen Part 1](/img/redteam/ChooseCategory1.png)
@@ -115,7 +115,7 @@ Once the scan is complete, we can click on "View" under `Actions` to view detail
 ![Detailed Scan Report Dashboard](/img/redteam/ScanReport.png)
 
 :::note
-For Intepreting the report and taking remediation actions, please check the [Understanding redteam report guide](/docs/javelin-redteam/guides/understanding-reports.md)
+For Intepreting the report and taking remediation actions, please check the [Understanding redteam report guide](understanding-reports)
 :::
 
 
@@ -126,9 +126,9 @@ For Intepreting the report and taking remediation actions, please check the [Und
 ## Support and Resources
 
 ### Documentation
-- [Configuration Guide](/docs/javelin-redteam//configuration.md): Detailed configuration options
-- [Categories Guide](/docs/javelin-redteam/categories/overview.md): Understanding vulnerability categories
-- [Engines Guide](/docs/javelin-redteam/engines/overview.md): Attack enhancement techniques
+- [Configuration Guide](../configuration): Detailed configuration options
+- [Categories Guide](../categories/overview): Understanding vulnerability categories
+- [Engines Guide](../engines/overview): Attack enhancement techniques
 
 ### Community and Support
 - **GitHub Issues**: Report bugs and request features

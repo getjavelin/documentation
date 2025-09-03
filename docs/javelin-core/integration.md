@@ -141,7 +141,7 @@ These endpoints allow direct querying of predefined routes, bypassing provider-s
 <Tabs>
 <TabItem value="curl" label="curl">
 
-First, create a route as shown in the [Create Route](/javelin-core/administration/create-route) section.
+First, create a route as shown in the [Create Route](administration/create-route) section.
 
 Once you have created a route, you can query it using the following curl command:
 
@@ -165,7 +165,7 @@ Make sure to replace `your_route_name`, `OPENAI_API_KEY`, and `JAVELIN_API_KEY` 
 </TabItem>
 <TabItem value="python" label="Python Requests">
 
-First, create a route as shown in the [Create Route](/javelin-core/administration/create-route) section.
+First, create a route as shown in the [Create Route](administration/create-route) section.
 
 Once you have created a route, you can query it using Python requests:
 
@@ -963,6 +963,5 @@ We have worked on the integrations. Please contact: support@getjavelin.io if you
 </TabItem>
 
 </Tabs>
-
 
 

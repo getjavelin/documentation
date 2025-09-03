@@ -76,4 +76,4 @@ Each rule object can include:
 | `probability_threshold` | float  | Yes      | Thresholds: 0.25, 0.5, 0.75. For `checkphish`, values are 0 or 1. Omit the rule if threshold is 0. |
 
 
-For detailed explanations of each policy and processor, see [Processors Overview](/javelin-processors/processors-overview).
+For detailed explanations of each policy and processor, see [Processors Overview](../javelin-processors/processors-overview).

@@ -146,7 +146,7 @@ The central coordinator managing the entire red teaming workflow:
 ## Attack Generation
 
 :::note
-Please see the [engine overview](/docs/javelin-redteam/engines/overview.md) section for details regarding Attack Generation in Javelin-Redteam
+Please see the [engine overview](engines/overview) section for details regarding Attack Generation in Javelin-Redteam
 :::
 
 ## Vector Database Integration
