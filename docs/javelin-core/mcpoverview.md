@@ -22,7 +22,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 - **Application-Centric Usage** – All MCP interactions are tied to the Application that invoked them, keeping usage, logs, and policies scoped to the right context.
 
 ### **2. Enterprise Security**
-- **Policy Enforcement** – Apply filters (e.g., Malicious Instruction Injections, Data Protection).  
+- **Policy Enforcement** – Apply filters (e.g., Malicious Instruction Injections, Data Protection, Security Filters).  
 - **Audit Trail** – Every request and tool invocation is logged.  
 - **Vulnerability Scan** – Whenever you **enable/disable a tool** or open the **Tools tab**, Javelin automatically runs a **vulnerability scan** to detect security risks in that tool.  
 
@@ -53,7 +53,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 
 ### Core Components
 1. **MCP Registry** – Central place to register and configure MCP servers.  
-2. **Policy Engine** – Enforces Malicious Instruction Injections, Data Protection, and other filters.  
+2. **Policy Engine** – Enforces Malicious Instruction Injections, Data Protection, Security Filters, and other filters.  
 3. **Tool Definitions** – List of tools available per server.  
 4. **Vulnerability Scan** – Continuous vulnerability assessment for registered tools.  
 5. **Chronicles & Audit** – Request/Response logs for compliance.  
@@ -75,6 +75,7 @@ Within Javelin, MCP acts as a **bridge between LLMs and external systems**, enab
 ### **Security Policies**
 - **Malicious Instruction Injections** – Defend against jailbreaks or injection attempts.  
 - **Data Protection** – Prevent sensitive data leakage.  
+- **Security Filters** – Protect against MCP Tool security vulnerabilities. 
 
 
 ## Use Cases
