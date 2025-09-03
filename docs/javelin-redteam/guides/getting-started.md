@@ -53,7 +53,7 @@ To register a target application on the Javelin Gateway, follow the steps below:
 
 ### 1. Create the Application
 
-First, register your target application as described in the [Creating Application Guide](../../javelin-core/applicationconfiguration).
+First, register your target application as described in the [Creating Application Guide](../../javelin-core/application-configuration).
 
 ### 2. Configure API Request
 
