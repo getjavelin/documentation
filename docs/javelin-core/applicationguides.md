@@ -18,6 +18,9 @@ This guide explains how to create and manage Applications in Javelin, generate a
    - **Name** – Unique identifier for your application.
    - **Type** – Application type (Assistant, Agent, Custom).
    - **Description** – A human-readable purpose for your application.
+   - **API Request** – This configuration is used for RedTeam Scans. For detailed setup instructions, refer to the [RedTeam Guide](/javelin-redteam/guides/getting-started#step-1-prepare-your-target-application).  
+  *Note: You can create the application without this information initially, but it must be updated before running a RedTeam Scan.*
+
 5. Click **Save**.
 
 ![Application Details Tab](/img/application/addApplication.png)

@@ -49,75 +49,180 @@ For demonstration purposes, this lab uses ```gpt-3.5-turbo``` model.
 
 
 ## Step 2: Register the target application
+To register a target application on the Javelin Gateway, follow the steps below:
 
-Register the target application on Javelin gateway as mentioned in the [creating application guide](../../javelin-core/applicationconfiguration)
+### 1. Create the Application
 
-## Step 2: Create Your First Scan Configuration
+First, register your target application as described in the [Creating Application Guide](../../javelin-core/applicationconfiguration).
+
+### 2. Configure API Request
+
+In the **API Request** section of the application configuration details tab, provide the following details:
+
+- **URL**  
+  Enter the target application's URL prepared in Step 1.
+
+- **Headers**  
+  Specify any headers that need to be passed to your target application.  
+  For example, authentication tokens, `Content-Type`, or any custom headers required.
+
+- **Payload Template**  
+  Provide a JSON schema representing the payload structure expected by the target application.
+
+  > **Note:** Use `{{query}}` as a placeholder for dynamic values. This will be replaced at runtime during the actual application call.
+
+![Create Redteam Assessment Button](/img/application/APIRequestSection.png)
+
+
+### 3. Save the Application
+
+After completing the above configurations, click **Save** to register the application with the Javelin Gateway.
+
+## Step 3: Create Your First Scan Configuration
+
+### 1. Navigate to Redteam Assessments
+
+After creating your application, click on it to open the application overview. From the top menu, select the **Redteam Assessments** tab and then click on **Create New Assessment**.
 
 ![Create Redteam Assessment Button](/img/redteam/CreateRedteamAssessment.png)
 
-After creating the application, you can click on the application and select `Redteam Assessments` tab from the resulting menu, and click on `Create New Assessment`
+---
+
+### 2. Configure Scan Settings
+
+You will be presented with a configuration form where you need to define the scan parameters. After filling in the necessary details, click **Next**.
 
 ![Redteam Configuration Settings Form](/img/redteam/RedteamConfigSettings.png)
 
-Then, select configuration settings for the scan and click `NEXT`. All the fields and their description is explained in the table below:
+#### Configuration Fields
+
+The following table outlines each configurable field in this step, along with its description and constraints:
+
+| Field                    | Description                                                                 | Type         | Constraints / Notes                         |
+|--------------------------|-----------------------------------------------------------------------------|--------------|----------------------------------------------|
+| **Max Duration**         | Maximum allowed time (in minutes) for the scan. Once this duration is reached, scan will be forcefully timed out. | Integer      | Range: `3` to `300`                          |
+| **Concurrency**          | Displays how many test cases can run in parallel. This field is read-only and currently set to 1. | Integer (Read-only) | Currently fixed at `1`                       |
+| **Test Cases per Category** | Maximum number of test cases to run for each selected category.             | Integer      | Maximum allowed: `500`                       |
+| **Strictness Level**     | Determines the sensitivity of test rules.                                   | String (Fixed) | Default: `High`; Not configurable            |
+
+---
+
+### 3. Select Scan Type
+
+Choose the type of scan you want to execute.
 
 ![Scan Type Selection Screen](/img/redteam/ScanType.png)
 
-Then select the scan type you want to run. Scan type determines the choice of subset of categories for which the scan will be run. If you want to choose amongst all the 15 available categories, go for a `custom` scan.
+- **Scan Type** determines the subset of categories used during the scan.
+- To manually select from all **15 available categories**, choose the **Custom** option.
 
 :::tip
-For details about what is a category and what all categories are available, together with further explanation about each, see our [taxonomy guide](../categories/overview)
+For more information about scan categories, their purposes, and definitions, refer to our [Taxonomy Guide](../categories/overview).
 :::
+
+---
+
+### 4. Engine Overview
+
+You will now see the **Engines** screen, which displays the backend scanning engines Javelin selects based on your application's context.
+
+![Engines Screen](/img/redteam/Engines.png)
+
+- This is an informational screen only; no action is required.
+- Click **Next** to proceed.
+
+---
+
+### 5. Choose Scan Categories
+
+Select the categories you want the scan to cover.
 
 ![Category Selection Screen Part 1](/img/redteam/ChooseCategory1.png)
 
+Use this screen to fine-tune the assessment scope based on your risk profile or application characteristics.
 
-Then select the categories that you want to run the scan for.
+---
 
 ## Step 4: Run Your First Scan
 
+Once you’ve selected the categories, click **RUN SCAN** to initiate the assessment.
+
 ![Category Selection Screen Part 2](/img/redteam/ChooseCategory2.png)
 
-Lastly, click `RUN SCAN` to start running the assessment.
-
+---
 
 ## Step 5: Monitor Scan Progress
 
+Once the scan is initiated, it will enter the **queued** state.
+
 ![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
 
-After that the scan will get `queued` for execution.
-We will get back the list of assessments screen and once it starts executing, the status will change to `running`.
-Every scan run will be assigned a unique id to track the data and report for that run.
+- You'll be redirected to the **Assessments List** view.
+- The status of the scan will transition from `queued` → `running` → `completed` or `failed`, depending on the outcome.
+- Each scan run is assigned a unique Scan ID for tracking and reporting purposes.
 
-Depending on the number of test cases, the scan can take from a few minutes to a few hours to run. This would be good time to grab some coffee!
+### Scan Status Indicators
 
-Following are the status indicator values that one might encounter:
-
-|Status|Description|
-|------|-----------|
-|`queued`|Scan is waiting to be processed in queue|
-|`running`|Scan has started running|
-|`completed`|Scan finished successfully|
-|`failed`|Scan encountered an error|
-|`cancelled`|Scan was cancelled/stopped while running|
+| Status      | Description                                      |
+|-------------|--------------------------------------------------|
+| `queued`    | Scan is waiting in the queue to be processed.    |
+| `running`   | Scan is currently in progress.                   |
+| `completed` | Scan completed successfully.                     |
+| `failed`    | Scan encountered an error during execution.      |
+| `cancelled` | Scan was manually cancelled during execution.    |
 
 :::note
-The scan `completed` state means the execution of scan was successful. It could still have failing tests which means vulnerabilities were detected.
+A `completed` status only indicates that the scan ran to completion. It **does not** imply a vulnerability-free result—vulnerabilities may still be present.
 :::
+
+---
 
 ## Step 6: Analyze Your Results
 
+After completion, locate your scan in the assessment list and click on **Report** under the `Actions` column (or click anywhere on the row) to view detailed results.
+
 ![Completed Scan Results View](/img/redteam/CompletedScan.png)
 
-Once the scan is complete, we can click on "View" under `Actions` to view detailed report of the scan run.
+This will open the comprehensive scan report:
 
 ![Detailed Scan Report Dashboard](/img/redteam/ScanReport.png)
 
 :::note
-For Intepreting the report and taking remediation actions, please check the [Understanding redteam report guide](understanding-reports)
+For guidance on interpreting the scan results and taking remediation steps, refer to our [Understanding Redteam Report Guide](understanding-reports).
 :::
 
+---
+
+## How to Cancel a Scan
+
+To cancel a running scan, click on the **Abort** button available in the **Actions** column of the scan table.
+
+![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
+
+A confirmation dialog will appear. Click **Yes** to confirm and abort the scan.
+
+![RedTeam Scan Abort Confirmation](/img/redteam/AbortRedteamScan.png)
+
+---
+
+## Understanding Failed Scans
+
+If a scan fails for any reason, an **error code** will be displayed in the **Actions** column of the scan table.
+
+- You can **hover** over the error icon to view a quick description.
+![Hover on Exit Code](/img/redteam/HoverExitCode.png)
+
+- Alternatively, click on **Report** to open the detailed scan report view.
+
+In the report view, you'll find:
+
+- Scan configuration details
+- Error code
+- Full error description
+
+![Failed Scan Report](/img/redteam/FailedScanReport.png)
+
+---
 
 ## Troubleshooting Common Issues
 
