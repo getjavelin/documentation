@@ -173,7 +173,7 @@ module.exports = {
                         },
                         {
                             label: 'Python SDK',
-                            to: '/javelin-python/python-quickstart',
+                            to: '/javelin-python/quickstart',
                         },
                         /*
                         {

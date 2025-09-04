@@ -117,7 +117,7 @@ Choose the type of scan you want to execute.
 - To manually select from all **15 available categories**, choose the **Custom** option.
 
 :::tip
-For more information about scan categories, their purposes, and definitions, refer to our [Taxonomy Guide](../categories/overview).
+For more information about scan categories, their purposes, and definitions, refer to our [Taxonomy Guide](/javelin-redteam/categories/overview).
 :::
 
 ---
@@ -231,9 +231,9 @@ In the report view, you'll find:
 ## Support and Resources
 
 ### Documentation
-- [Configuration Guide](../configuration): Detailed configuration options
-- [Categories Guide](../categories/overview): Understanding vulnerability categories
-- [Engines Guide](../engines/overview): Attack enhancement techniques
+- [Configuration Guide](/javelin-redteam/configuration): Detailed configuration options
+- [Categories Guide](/javelin-redteam/categories/overview): Understanding vulnerability categories
+- [Engines Guide](/javelin-redteam/engines/overview): Attack enhancement techniques
 
 ### Community and Support
 - **GitHub Issues**: Report bugs and request features

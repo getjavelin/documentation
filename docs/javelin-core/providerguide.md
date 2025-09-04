@@ -61,7 +61,7 @@ Replace `$OPENAI_API_KEY` and `$JAVELIN_API_KEY` with actual values. To learn ho
 
 - Like any other unified route, reserved route is also configurable, For more information visit [Unified Route Configuration](./route-configuration#unified-route).
 
-:::Note
+:::note
 Reserved routes are named after the provider (e.g., `openai`, `anthropic`) and are pre-configured with default model settings.
 :::
 
@@ -75,4 +75,4 @@ Reserved routes are named after the provider (e.g., `openai`, `anthropic`) and a
 
 You can define your own routes with custom behavior for more advanced or proprietary use cases.
 
-For a complete guide on Unified and Custom Routes, creating secrets, and using Playground, visit our [guide](./route-usage-guide) on route.
+For a complete guide on Unified and Custom Routes, creating secrets, and using Playground, visit our [guide](/javelin-core/route-usage-guide) on route.

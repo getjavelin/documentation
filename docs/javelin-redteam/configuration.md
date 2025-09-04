@@ -65,7 +65,7 @@ app_config:
 | `timeout` | integer | 1-300 | Maximum scan duration in minutes |
 | `concurrency` | integer | 1-10 | Parallel test execution count |
 | `reportFormat` | string | markdown, json, pdf, html | Output format |
-| `categories`| list | [15 vulnerability categories](./categories/overview#hierarchical-structure) | List of vulnerability categories to test (e.g., data_privacy, security, responsible_ai, prompt_injection) |
+| `categories`| list | [15 vulnerability categories](/javelin-redteam/categories/overview#hierarchical-structure) | List of vulnerability categories to test (e.g., data_privacy, security, responsible_ai, prompt_injection) |
 
 ### Category Selection
 
