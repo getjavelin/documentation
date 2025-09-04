@@ -105,7 +105,7 @@ Complete coverage of OWASP LLM security categories with dynamic attack generatio
 - **unbounded_consumption**
 
 :::note
-For detailed information about each category, see our [Categories Guide](categories/overview).
+For detailed information about each category, see our [Categories Guide](/javelin-redteam/categories/overview).
 :::
 
 ## Attack Enhancement Engines
@@ -127,15 +127,15 @@ Javelin RedTeam uses sophisticated engines to transform base prompts into advanc
 Advanced conversational attack patterns for sustained vulnerability exploitation.
 
 :::note
-For details about the engine module and the supported engines, please see [engines overview](engines/overview)
+For details about the engine module and the supported engines, please see [engines overview](/javelin-redteam/engines/overview)
 :::
 
 ## Getting Started
 
-Ready to secure your AI applications? Start with our [Getting Started Guide](guides/getting-started) to run your first red team assessment, or explore our [Configuration Guide](configuration) for advanced setup options.
+Ready to secure your AI applications? Start with our [Getting Started Guide](/javelin-redteam/guides/getting-started) to run your first red team assessment, or explore our [Configuration Guide](/javelin-redteam/configuration) for advanced setup options.
 
 :::tip
-For production deployments, see our [Architecture Guide](architecture).
+For production deployments, see our [Architecture Guide](/javelin-redteam/architecture).
 :::
 
 ## Support & Community

@@ -3,6 +3,7 @@ id: python-quickstart
 title: Python SDK Quickstart Guide
 description: Get started with the Javelin Python SDK including installation, setup, provider configuration, route creation, and safety features
 sidebar_label: Python Quickstart
+slug: /javelin-python/quickstart
 ---
 
 import CodeBlock from '@theme/CodeBlock';
