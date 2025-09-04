@@ -97,7 +97,7 @@ jobs:
         run: npm ci
 
       - name: Check internal links
-        uses: lycheeverse/lychee-action@v1
+        uses: lycheeverse/lychee-action@v2.0.2
         with:
           args: >-
             --verbose --no-progress --exclude-all-private --exclude-mail
@@ -105,6 +105,14 @@ jobs:
             --exclude 'https://your-api-domain.com'
             --exclude 'https://your-javelin-domain.com'
             --exclude 'https://api-domain.com'
+            --exclude 'https://layercake.pubwestus3.inf7ks8.com'
+            --exclude 'https://developers.inflection.ai'
+            --exclude 'https://api.perplexity.ai'
+            --exclude 'https://api.openai.com'
+            --exclude 'https://api.anthropic.com'
+            --exclude 'https://javelinpreview.openai.azure.com'
+            --exclude 'https://chat.xwang.dev'
+            --exclude 'https://chat.vercel.ai'
             'docs/**/*.md' 'docs/**/*.mdx'
           fail: false
 

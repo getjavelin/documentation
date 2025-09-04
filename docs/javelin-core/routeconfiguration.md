@@ -135,4 +135,4 @@ Policy tab under routes is only accessible to **Super Admin** users.
 The “Override Application Policies” toggle allows you to enforce custom policy rules at the route level. When enabled, the route will use its own policy settings instead of inheriting them from the application configuration. 
 :::
 
-To learn more about configuring policies in detail, see [Policy Configuration](./application-policy-configuration).
+To learn more about configuring policies in detail, see [Policy Configuration](./applicationpolicy.md).

@@ -53,7 +53,7 @@ export JAVELIN_API_KEY=your_api_key`}
 
 - **Update a gateway**:  
   <CodeBlock language="shell">
-  {`javelin gateway update --name "example_gateway" --type "production" --config '{"buid": "new_buid", "base_url": "https://api.newexample.com"}'`}
+  {`javelin gateway update --name "example_gateway" --type "production" --config '{"buid": "new_buid", "base_url": "https://your-api-domain.com"}'`}
   </CodeBlock>
 
 - **Delete a gateway**:  

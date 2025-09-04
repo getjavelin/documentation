@@ -155,6 +155,6 @@ This research foundation ensures that Javelin RedTeam tests against current and 
 
 ## Next Steps
 
-- Explore [Single-Turn Engines](single-turn) for detailed implementation information
-- Learn about [Multi-Turn Engines](multi-turn) for conversational attack patterns
+- Explore [Single-Turn Engines](single-turn.md) for detailed implementation information
+- Learn about [Multi-Turn Engines](multi-turn.md) for conversational attack patterns
 - Review [Categories](/javelin-redteam/categories/overview) to understand how engines integrate with vulnerability categories

@@ -48,7 +48,7 @@ curl -X POST "https://api-dev.javelin.live/v1/chat/completions" \
 :::
 
 :::note
-Replace `$OPENAI_API_KEY` and `$JAVELIN_API_KEY` with actual values. To learn how to generate secrets and retrieve your API keys, see the [Route Guide](./route-usage-guide).
+Replace `$OPENAI_API_KEY` and `$JAVELIN_API_KEY` with actual values. To learn how to generate secrets and retrieve your API keys, see the [Route Guide](./routeguides.md).
 :::
 
 ### 2. **Unified Routes**
@@ -59,7 +59,7 @@ Replace `$OPENAI_API_KEY` and `$JAVELIN_API_KEY` with actual values. To learn ho
 
 - Now each provider comes with an out-of-the-box, system generated unified route, this is referred to as **"Reserved"** route.
 
-- Like any other unified route, reserved route is also configurable, For more information visit [Unified Route Configuration](./route-configuration#unified-route).
+- Like any other unified route, reserved route is also configurable, For more information visit [Unified Route Configuration](/javelin-core/route-configuration#unified-route).
 
 :::note
 Reserved routes are named after the provider (e.g., `openai`, `anthropic`) and are pre-configured with default model settings.
@@ -75,4 +75,4 @@ Reserved routes are named after the provider (e.g., `openai`, `anthropic`) and a
 
 You can define your own routes with custom behavior for more advanced or proprietary use cases.
 
-For a complete guide on Unified and Custom Routes, creating secrets, and using Playground, visit our [guide](/javelin-core/route-usage-guide) on route.
+For a complete guide on Unified and Custom Routes, creating secrets, and using Playground, visit our [guide](/javelin-core/routeguides.md) on route.
