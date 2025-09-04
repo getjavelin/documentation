@@ -4,7 +4,7 @@ module.exports = {
       'javelin-architecture/javelin-architecture',
       {
         type: 'category',
-        label: 'Gateways',
+        label: 'AI Gateways',
         items: [
           'javelin-core/gatewayconfiguration',
         ]
@@ -40,11 +40,17 @@ module.exports = {
       ,
       {
         type: 'category',
-        label: 'MCP',
+        label: 'Agents',
         items: [
-          'javelin-core/mcp-overview',
-          'javelin-core/mcp-configuration',
-          'javelin-core/mcp-usage-guides',
+          {
+            type: 'category',
+            label: 'MCP',
+            items: [
+              'javelin-core/mcp-overview',
+              'javelin-core/mcp-configuration',
+              'javelin-core/mcp-usage-guides',
+            ]
+          }
         ]
       }
     ],
