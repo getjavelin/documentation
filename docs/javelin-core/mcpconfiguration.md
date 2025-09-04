@@ -1,7 +1,7 @@
 ---
 id: mcp-configuration
 title: MCP Configuration Guide
-sidebar_label: MCP Configuration
+sidebar_label: Configuration
 description:
   Learn how to configure and manage MCP servers, tools, and security policies in
   the Javelin application.
