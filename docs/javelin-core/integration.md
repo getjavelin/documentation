@@ -14,7 +14,7 @@ Its easy to integrate applications that leverage LLMs with Javelin. We have made
 
 The core usage of Javelin is to define routes, and then to define what to do at each route. Rather than having your LLM Applications (like Co-Pilot apps etc.,) individually & directly point to the LLM Vendor & Model (like OpenAI, Gemini etc.,), configure the provider/model endpoint to be your Javelin endpoint. This ensures that all applications that leverage AI Models will route their requests through the gateway. Javelin supports all the [latest models and providers](supported-llms.md), so you don't have to make any changes to your application or how requests to models are sent.
 
-See [Javelin Configuration](routeconfiguration) section, for details on how to setup routes on the gateway to different models and providers. 
+See [Javelin Configuration](routeconfiguration.md) section, for details on how to setup routes on the gateway to different models and providers. 
 
 See [Python SDK](../javelin-python/quickstart.md) for details on how you can easily embed this within your AI Apps.
 
@@ -797,11 +797,11 @@ for chunk in stream_generator:
 
 <TabItem value="py8" label="...">
 
-- [LlamaIndex](https://www.llamaindex.ai/open-source)
+- [LlamaIndex](https://docs.llamaindex.ai/)
 
 - [DataStax RAGStack](https://docs.datastax.com/en/ragstack/docs/index.html)
 
-- [Instructor, Generating Structure from LLMs](https://jxnl.github.io/instructor/)
+- [Instructor, Generating Structure from LLMs](https://python.useinstructor.com/)
 
 - [Microsoft Prompt flow](https://microsoft.github.io/promptflow/index.html#)
 
@@ -963,4 +963,3 @@ We have worked on the integrations. Please contact: support@getjavelin.io if you
 </TabItem>
 
 </Tabs>
-
