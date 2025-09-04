@@ -9,7 +9,7 @@
     - Provide a name for the token.
 4. **Select Input Settings:**
     - Choose the allowed index where the events should be stored.
-    - Set "Sourcetype" (can be set to "manual").
+    - Set "Sourcetype" (can be set to "Automatic").
 5. **Review and Submit:** Complete the setup and copy the generated token.
 6. **Find Base URL:** The base URL follows the format: `https://<splunk-instance>:8088`.
 7. **Use in Javelin:**
