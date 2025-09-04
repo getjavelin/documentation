@@ -1,3 +1,7 @@
+---
+sidebar_label: Configuration
+---
+
 # Gateway Configuration
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

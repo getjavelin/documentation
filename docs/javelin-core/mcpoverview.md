@@ -1,7 +1,7 @@
 ---
 id: mcp-overview
 title: MCP (Model Context Protocol) Overview
-sidebar_label: MCP Overview
+sidebar_label: Overview
 description:
   Learn how Javelin integrates with the Model Context Protocol (MCP) to enable secure, policy-enforced AI tool usage with built-in vulnerability scanning.
 ---

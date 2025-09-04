@@ -1,7 +1,7 @@
 ---
 id: mcp-usage-guides
 title: MCP Guides
-sidebar_label: MCP Guides
+sidebar_label: Guides
 description: Comprehensive guide for Javelin MCP Registries
 ---
 
