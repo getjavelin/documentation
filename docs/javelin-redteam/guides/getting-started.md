@@ -53,7 +53,7 @@ To register a target application on the Javelin Gateway, follow the steps below:
 
 ### 1. Create the Application
 
-First, register your target application as described in the [Creating Application Guide](../../javelin-core/application-configuration).
+First, register your target application as described in the [Creating Application Guide](../../javelin-core/applicationconfiguration.md).
 
 ### 2. Configure API Request
 
@@ -188,7 +188,7 @@ This will open the comprehensive scan report:
 ![Detailed Scan Report Dashboard](/img/redteam/ScanReport.png)
 
 :::note
-For guidance on interpreting the scan results and taking remediation steps, refer to our [Understanding Redteam Report Guide](understanding-reports).
+For guidance on interpreting the scan results and taking remediation steps, refer to our [Understanding Redteam Report Guide](understanding-reports.md).
 :::
 
 ---

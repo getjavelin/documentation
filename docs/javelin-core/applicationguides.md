@@ -66,7 +66,7 @@ This dual view helps you:
 - Identify which models or registries generate the most activity.  
 - Analyze traffic distribution across models and MCP servers.  
 
-For more details on how MCP works in Javelin, see the [MCP Overview](mcp-overview).  
+For more details on how MCP works in Javelin, see the [MCP Overview](mcpoverview.md).  
 
 ![Application Graph Tab](/img/application/appGraph_1.png)
 
@@ -84,7 +84,7 @@ For more details on how MCP works in Javelin, see the [MCP Overview](mcp-overvie
 
 - Displays all **Application-level policies** currently applied to this application.
 - Policies help safeguard your LLM usage by applying filters such as **content filtering**, **prompt injection detection**, **language detection**, and other guardrail mechanisms.
-- For a complete breakdown of available policies and configuration options, see the [Policy Configuration Guide](./application-policy-configuration).
+- For a complete breakdown of available policies and configuration options, see the [Policy Configuration Guide](./applicationpolicy.md).
 
 ![Policy Tab](/img/application/policyTab.png)
 

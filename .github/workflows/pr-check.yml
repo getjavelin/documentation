@@ -108,6 +108,11 @@ jobs:
             --exclude 'https://layercake.pubwestus3.inf7ks8.com'
             --exclude 'https://developers.inflection.ai'
             --exclude 'https://api.perplexity.ai'
+            --exclude 'https://api.openai.com'
+            --exclude 'https://api.anthropic.com'
+            --exclude 'https://javelinpreview.openai.azure.com'
+            --exclude 'https://chat.xwang.dev'
+            --exclude 'https://chat.vercel.ai'
             'docs/**/*.md' 'docs/**/*.mdx'
           fail: false
 

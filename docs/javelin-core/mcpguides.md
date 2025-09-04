@@ -52,7 +52,7 @@ Policies ensure safer usage of MCP tools by applying filters such as:
 
 These registry-level guardrails are enforced **after a tool response is received** when requests are made using an **application key**.  
 
-For a detailed breakdown of policy fields and configurations, see the [MCP Configuration Guide](./mcp-configuration).  
+For a detailed breakdown of policy fields and configurations, see the [MCP Configuration Guide](./mcpconfiguration.md).  
 
 ![MCP Registry Policy Tab](/img/mcp/mcpPolicy.png)
 
@@ -87,7 +87,7 @@ This tab serves as the foundation for connecting Javelin to your MCP server, ens
 
 To interact with MCP servers via Javelin, you need an **Application Developer Key**.  
 - This key is passed in the `X-Javelin-Apikey` header when making requests.  
-- To learn how to create an Application and generate Developer keys, see the [Application Guide](./application-usage-guides).  
+- To learn how to create an Application and generate Developer keys, see the [Application Guide](./applicationguides.md).  
 
 
 ## Hitting an MCP Server (Example: DeepWiki)

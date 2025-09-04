@@ -11,7 +11,7 @@ description:
 
 ## Overview
 
-In Javelin, **MCP registries** define how your gateway connects to external [Model Context Protocol (MCP)](mcp-overview) servers and exposes their tools to applications.  
+In Javelin, **MCP registries** define how your gateway connects to external [Model Context Protocol (MCP)](mcpoverview.md) servers and exposes their tools to applications.  
 Each registry includes connection details, authentication credentials, and baseline policy controls. You can also selectively enable tools on a per-registry basis to safely extend application capabilities.
 
 ![Register MCP](/img/mcp/registerMCP.png)
