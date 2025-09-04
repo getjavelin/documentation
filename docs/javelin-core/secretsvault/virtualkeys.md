@@ -19,4 +19,4 @@ The Javelin Console provides a user-friendly interface to manage virtual keys, a
 
 Virtual keys can be used in conjunction with the Javelin Python SDK to seamlessly route LLM traffic through the gateway. This approach ensures that all requests to LLM providers are routed through the gateway, providing a centralized point for managing and securing LLM traffic.
 
-For more information on using virtual keys, refer to the [Javelin Secrets Vault documentation](../secretsvault/overview).
+For more information on using virtual keys, refer to the [Javelin Secrets Vault documentation](/javelin-core/secretsvault/overview).

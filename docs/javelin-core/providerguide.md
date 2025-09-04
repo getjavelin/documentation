@@ -59,7 +59,7 @@ Replace `$OPENAI_API_KEY` and `$JAVELIN_API_KEY` with actual values. To learn ho
 
 - Now each provider comes with an out-of-the-box, system generated unified route, this is referred to as **"Reserved"** route.
 
-- Like any other unified route, reserved route is also configurable, For more information visit [Unified Route Configuration](./route-configuration#unified-route).
+- Like any other unified route, reserved route is also configurable, For more information visit [Unified Route Configuration](/javelin-core/route-configuration#unified-route).
 
 :::note
 Reserved routes are named after the provider (e.g., `openai`, `anthropic`) and are pre-configured with default model settings.
