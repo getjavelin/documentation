@@ -235,7 +235,7 @@ Use relative paths for internal documentation links:
 
 ```markdown
 [Python SDK Quickstart](../javelin-python/quickstart)
-[Processor Overview](../javelin-processors/processors-overview)
+[Processor Overview](../javelin-processors/overview.md)
 ```
 
 ### External Links

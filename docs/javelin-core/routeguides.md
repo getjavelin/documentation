@@ -15,7 +15,7 @@ This guide walks you through using **Custom Routes** and **Unified Routes** in J
 ### 1. Create a Provider
 
 Before using any route, you must set up a provider.  
-Refer to the [Provider Guide](./provider-overview) to get started.
+Refer to the [Provider Guide](./provideroverview.md) to get started.
 
 
 ### 2. Add Secrets and Create Virtual Keys
@@ -218,4 +218,3 @@ Once executed, open **Chronicles** to view:
 | **Flexible Format** | Dynamic  | Limited to a Model |
 | **Ideal For** | Fast integration, multiple models | Deep customization, enterprise workflows |
 | **Chronicles Support** | ✅ | ✅ |
-
