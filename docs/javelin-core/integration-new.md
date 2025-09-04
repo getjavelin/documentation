@@ -41,11 +41,11 @@ This architecture ensures that all applications that leverage AI Models will rou
 - Standardized guardrails and safety measures
 - Simplified provider switching and fallback options
 
-Javelin supports all the [latest models and providers](https://docs.getjavelin.io/docs/javelin-core/supported-llms), so you don't have to make any changes to your application or how requests to models are sent.
+Javelin supports all the [latest models and providers](supported-llms), so you don't have to make any changes to your application or how requests to models are sent.
 
-See the [Javelin Configuration](https://docs.getjavelin.io/docs/javelin-core/administration/createroute) section for details on how to set up routes on the gateway to different models and providers.
+See the [Javelin Configuration](administration/create-route) section for details on how to set up routes on the gateway to different models and providers.
 
-For programmatic integration, see the [Python SDK](https://docs.getjavelin.io/docs/javelin-python/quickstart) documentation for details on how you can easily embed Javelin within your AI applications.
+For programmatic integration, see the [Python SDK](../javelin-python/quickstart) documentation for details on how you can easily embed Javelin within your AI applications.
 
 ## Unified Endpoints Architecture
 
@@ -205,7 +205,7 @@ These endpoints allow direct querying of predefined routes, bypassing provider-s
 <Tabs>
 <TabItem value="curl" label="curl">
 
-First, create a route as shown in the [Create Route](/javelin-core/administration/create-route) section.
+First, create a route as shown in the [Create Route](administration/create-route) section.
 
 Once you have created a route, you can query it using the following curl command:
 
@@ -227,7 +227,7 @@ Once you have created a route, you can query it using the following curl command
 </TabItem>
 <TabItem value="python" label="Python Requests">
 
-First, create a route as shown in the [Create Route](/javelin-core/administration/create-route) section.
+First, create a route as shown in the [Create Route](administration/create-route) section.
 
 Once you have created a route, you can query it using Python requests:
 

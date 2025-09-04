@@ -138,6 +138,6 @@ Example of custom InfoTypes:
 
 ## Related Documentation
 
-- [Data Protection Templates](/javelin-core/administration/createtemplate)
+- [Data Protection Templates](../javelin-core/administration/createtemplate)
 - [Sensitive Data Protection Overview](./privacyredaction.md)
 - [InfoTypes Configuration](./infotypes.md)

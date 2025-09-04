@@ -66,7 +66,7 @@ This dual view helps you:
 - Identify which models or registries generate the most activity.  
 - Analyze traffic distribution across models and MCP servers.  
 
-For more details on how MCP works in Javelin, see the [MCP Overview](/javelin-core/mcp-overview).  
+For more details on how MCP works in Javelin, see the [MCP Overview](mcp-overview).  
 
 ![Application Graph Tab](/img/application/appGraph_1.png)
 
