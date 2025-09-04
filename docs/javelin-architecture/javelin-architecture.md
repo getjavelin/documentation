@@ -1,4 +1,4 @@
-# Technical Architecture
+# Platform Architecture
 
 ## Executive Summary
 

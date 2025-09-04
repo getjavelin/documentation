@@ -1,4 +1,8 @@
-# Filters
+---
+sidebar_label: Security Filters
+---
+
+# Security Filters
 
 Security filters are a critical component of the Javelin platform, providing a robust mechanism for enforcing security policies and protecting sensitive data. These filters are designed to intercept, analyze incoming and outgoing data streams, ensuring that only authorized and secure information is exchanged between the platform and external systems.
 

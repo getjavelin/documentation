@@ -2,7 +2,7 @@
 id: provider-overview
 title: Provider Overview
 description: Overview of Javelin Providers and their role in the AI infrastructure
-sidebar_label: Overview
+sidebar_label: Provider Overview
 ---
 
 # Provider Overview

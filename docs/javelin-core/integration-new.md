@@ -2,7 +2,7 @@
 id: integration-new
 title: Integrating Applications
 description: Complete guide to integrating your LLM applications with Javelin's unified endpoints architecture for secure and monitored AI interactions
-sidebar_label: Integration Guide
+sidebar_label: Integration
 ---
 
 import Tabs from '@theme/Tabs';

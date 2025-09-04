@@ -2,7 +2,7 @@
 id: route-overview
 title: Route Overview
 description: Overview of Javelin Routes and their role in request processing
-sidebar_label: Overview
+sidebar_label: Route Overview
 ---
 
 # Route Overview

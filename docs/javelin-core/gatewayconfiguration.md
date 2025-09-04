@@ -1,5 +1,5 @@
 ---
-sidebar_label: Configuration
+sidebar_label: Gateway Configuration
 ---
 
 # Gateway Configuration

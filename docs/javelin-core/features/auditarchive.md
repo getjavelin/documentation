@@ -1,4 +1,4 @@
-# Archiving
+# Audit Archive
 
 Javelin provides organizations with state-of-the-art archiving capabilities, catering to diverse requirements ranging from compliance to model optimization.
 Note: Archiving incurs separate storage costs

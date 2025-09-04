@@ -1,6 +1,4 @@
-# Super Resilience Proxy
-
-## Overview: Always Proxy on Recoverable Internal Errors
+# Javelin Proxy
 
 Javelin introduces **Super Resilience Proxy**, a robust error-handling capability designed to improve system availability and gracefully degrade when internal components fail. By distinguishing between *acceptable failure states* and *recoverable internal errors*, Javelin ensures that end-user experience is protected even in the face of unexpected faults.
 

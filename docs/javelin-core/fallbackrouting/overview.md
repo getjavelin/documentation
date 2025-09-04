@@ -1,4 +1,4 @@
-# Overview
+# Fallback Routing
 
 ## Introduction
 Fallback routing is a mechanism designed to provide resilience in model invocation workflows. When invoking Large Language Models(LLM), the primary model may occasionally fail or return an undesired status code. Fallback routing ensures that if a primary model fails or returns one of the predefined status codes, a backup or secondary model is triggered to continue the operation seamlessly. This helps to improve the robustness of the system, providing redundancy without manual intervention.
