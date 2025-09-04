@@ -35,6 +35,7 @@ module.exports = {
           'javelin-core/route-overview',
           'javelin-core/route-configuration',
            'javelin-core/route-usage-guide',
+          'javelin-core/administration/create-route',
         ]
       }
       ,
