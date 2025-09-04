@@ -75,4 +75,4 @@ Reserved routes are named after the provider (e.g., `openai`, `anthropic`) and a
 
 You can define your own routes with custom behavior for more advanced or proprietary use cases.
 
-For a complete guide on Unified and Custom Routes, creating secrets, and using Playground, visit our [guide](./route-usage-guide) on route.
+For a complete guide on Unified and Custom Routes, creating secrets, and using Playground, visit our [guide](/javelin-core/route-usage-guide) on route.
