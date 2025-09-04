@@ -53,7 +53,7 @@ To register a target application on the Javelin Gateway, follow the steps below:
 
 ### 1. Create the Application
 
-First, register your target application as described in the [Creating Application Guide](/docs/javelin-core/applicationconfiguration.md).
+First, register your target application as described in the [Creating Application Guide](../../javelin-core/application-configuration).
 
 ### 2. Configure API Request
 
@@ -117,7 +117,7 @@ Choose the type of scan you want to execute.
 - To manually select from all **15 available categories**, choose the **Custom** option.
 
 :::tip
-For more information about scan categories, their purposes, and definitions, refer to our [Taxonomy Guide](/docs/javelin-redteam/categories/overview.md).
+For more information about scan categories, their purposes, and definitions, refer to our [Taxonomy Guide](../categories/overview).
 :::
 
 ---
@@ -188,7 +188,7 @@ This will open the comprehensive scan report:
 ![Detailed Scan Report Dashboard](/img/redteam/ScanReport.png)
 
 :::note
-For guidance on interpreting the scan results and taking remediation steps, refer to our [Understanding Redteam Report Guide](/docs/javelin-redteam/guides/understanding-reports.md).
+For guidance on interpreting the scan results and taking remediation steps, refer to our [Understanding Redteam Report Guide](understanding-reports).
 :::
 
 ---
@@ -231,9 +231,9 @@ In the report view, you'll find:
 ## Support and Resources
 
 ### Documentation
-- [Configuration Guide](/docs/javelin-redteam//configuration.md): Detailed configuration options
-- [Categories Guide](/docs/javelin-redteam/categories/overview.md): Understanding vulnerability categories
-- [Engines Guide](/docs/javelin-redteam/engines/overview.md): Attack enhancement techniques
+- [Configuration Guide](../configuration): Detailed configuration options
+- [Categories Guide](../categories/overview): Understanding vulnerability categories
+- [Engines Guide](../engines/overview): Attack enhancement techniques
 
 ### Community and Support
 - **GitHub Issues**: Report bugs and request features

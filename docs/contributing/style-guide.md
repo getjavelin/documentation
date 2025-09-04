@@ -234,8 +234,8 @@ Use consistent placeholder formats:
 Use relative paths for internal documentation links:
 
 ```markdown
-[Python SDK Quickstart](../javelin-python/quickstart.md)
-[Processor Overview](/javelin-processors/processors-overview)
+[Python SDK Quickstart](../javelin-python/quickstart)
+[Processor Overview](../javelin-processors/processors-overview)
 ```
 
 ### External Links
@@ -249,7 +249,7 @@ Use relative paths for internal documentation links:
 Link to specific files or sections when referencing code:
 
 ```markdown
-See the [route configuration example](../javelin-python/quickstart.md#creating-a-route) for details.
+See the [route configuration example](../javelin-python/quickstart#creating-a-route) for details.
 ```
 
 ## File Naming Conventions

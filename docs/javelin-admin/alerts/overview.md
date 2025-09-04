@@ -5,7 +5,7 @@
 To enable Slack alerting in Javelin, you'll need to configure a Slack webhook to allow Javelin to send messages to your Slack channel.
 
 :::tip Need help creating a Slack webhook?
-Refer to the [Slack Webhook Setup Guide](/docs/javelin-admin/alerts/slack/overview.md) for step-by-step instructions.
+Refer to the [Slack Webhook Setup Guide](slack/overview) for step-by-step instructions.
 :::
 
 #### 1. **Navigate to the Integrations Page**
@@ -37,7 +37,7 @@ To enable Splunk alerting in Javelin, you must configure the HTTP Event Collecto
  - A payload including required fields like `event` and `sourcetype`
 
 :::tip Need help setting up HEC in Splunk?
-Refer to the [Splunk HEC Setup Guide](/docs/javelin-admin/alerts/splunk/overview.md) for detailed instructions.
+Refer to the [Splunk HEC Setup Guide](splunk/overview) for detailed instructions.
 :::
 
 #### 1. **Visit the Integrations Page:**
@@ -88,7 +88,7 @@ The following fields are supported for fine-tuned alerting:
 | `application_ids` | array | Specify one or more application IDs to limit alerts to specific applications.                                          |
 
 <!-- Click here to get list of [threats] -->
-Click [here](/docs/javelin-admin/threats/overview.md) to view the full list of supported threat types that can be used in the `trigger_condition.threats` array.
+Click [here](../threats/overview) to view the full list of supported threat types that can be used in the `trigger_condition.threats` array.
 
 ### How to Configure
 
