@@ -50,7 +50,7 @@ In the left-hand navigation panel, click on `Integrations`.
 
 Click on the Splunk Integration card and fill in the following required fields: Endpoint, Token, Event, and Sourcetype.
 
- - Endpoint URL: `https://<mysplunkserver.example.com>:<port>/services/collector/raw`
+ - Endpoint: `https://<mysplunkserver.example.com>:<port>/services/collector/raw`
 (By default, the port is 8088.)
  - Token: Your splunk token generated after configuring HEC.
  - Event: You may set this to any descriptive value, for example: Javelin Trigger.
