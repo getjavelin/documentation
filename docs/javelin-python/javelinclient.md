@@ -1,6 +1,6 @@
 import CodeBlock from '@theme/CodeBlock';
 
-# JavelinClient
+# Javelin Client
 
 JavelinClient class is designed to support both synchronous and asynchronous context managers. This means you can use the JavelinClient within a with statement to ensure resources are properly managed.  
 

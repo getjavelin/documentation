@@ -2,7 +2,7 @@
 id: application-overview
 title: Application Overview
 description: Overview of Javelin Application and how it interacts with routes and providers
-sidebar_label: Overview
+sidebar_label: Application Overview
 ---
 
 # Application Overview

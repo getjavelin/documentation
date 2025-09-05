@@ -1,3 +1,7 @@
+---
+sidebar_label: Regex Filter
+---
+
 # Regex Matching 
 
 To configure Javelin's Regex processing, you need to define actions to be taken upon match with a configured regex pattern. By customizing these settings, you can tailor the processor to your application's specific requirements and threat landscape.

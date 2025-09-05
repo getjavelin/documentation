@@ -1,6 +1,6 @@
 import CodeBlock from '@theme/CodeBlock';
 
-# Quickstart Guide
+# CLI
 
 ## Introduction
 

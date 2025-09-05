@@ -1,6 +1,6 @@
-# Guardrail Failure Intelligence
+# Guardrail Bypass
 
-## Overview - Automatic Detection of Broken or Misconfigured Guardrails
+## Automatic Detection of Broken or Misconfigured Guardrails
 
 Javelin automatically tracks and surfaces **requests that fail due to Guardrail misconfigurations or enforcement errors**, helping security and platform teams proactively address policy blind spots.
 
