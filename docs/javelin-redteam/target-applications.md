@@ -65,7 +65,7 @@ This lab exposes five functions that the LLM can call, creating opportunities fo
 | `/v1/redteam/lab1/chat-bedrock` | POST | Chat endpoint that uses Bedrock models |
 | `/v1/redteam/lab1/health` | GET | Health check for lab availability |
 | `/v1/redteam/lab1/lab-instructions` | GET | Returns lab objectives and description with all endpoints |
-| `/v1/redteam/lab1/authenticated-chat` | POST | Chat endpoint that required authentication and uses OpenAI models |
+| `/v1/redteam/lab1/authenticated-chat` | POST | Chat endpoint that requires authentication and uses OpenAI models |
 
 #### Technical Details
 
@@ -87,66 +87,7 @@ This lab exposes five functions that the LLM can call, creating opportunities fo
 }
 ```
 
-## Registering Target Applications
-
-### Step 1: Create the Application
-
-First, register your target application as described in the [Creating Application Guide](../javelin-core/applicationconfiguration.md).
-
-### Step 2: Configure API Request
-
-In the **API Request** section of the application configuration details tab, provide the following details:
-
-#### URL Configuration
-- **URL**: Enter the target application's URL
-- **Method**: Specify HTTP method (GET/POST)
-- **Endpoint**: Complete endpoint path
-
-#### Headers Configuration
-Specify any headers that need to be passed to your target application:
-- Authentication tokens
-- Content-Type headers
-- Custom headers required by your application
-
-Example headers:
-```json
-{
-  "Content-Type": "application/json",
-  "Authorization": "Bearer your-api-token",
-  "X-API-Key": "your-api-key"
-}
-```
-
-#### Payload Template
-Provide a JSON schema representing the payload structure expected by the target application.
-
-**Important**: Use `{{query}}` as a placeholder for dynamic values. This will be replaced at runtime during the actual application call.
-
-Example payload template:
-```json
-{
-  "query": "{{query}}",
-}
-```
-
-:::note
-Javelin-Redteam can automatically detect template fields and populate the target prompt into appropriate fields
-It will look for the following fields and fill the first one it finds in the payload
-["prompt", "query", "user_input", "request"]
-:::
-
-![API Request Configuration](/img/application/APIRequestSection.png)
-
-### Step 3: Save the Application
-
-After completing the above configurations, click **Save** to register the application with the Javelin Gateway.
-
-The app is now ready to scan using javelin-redteam.
-
-
 ## Next Steps
-
-After configuring your target application:
 
 1. **Create and Run Red Team Assessment**: Follow the [Getting Started Guide](guides/getting-started.md)
 2. **Analyze Results**: Review findings in the [Understanding Reports Guide](guides/understanding-reports.md)

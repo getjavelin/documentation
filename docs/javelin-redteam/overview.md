@@ -19,8 +19,14 @@ A suite of agents working together to conduct comprehensive security assessments
 ### 🚀 **Multiple AI Engines**
 Support for various sophisticated attack enhancement engines based on published research and established techniques.
 
+### 📚 **Extensive Test Case Library**
+Access to 60,000+ pre-generated test cases covering all vulnerability categories, dynamically enhanced at runtime using our sophisticated engine suite.
+
 ### 🏗️ **Production-Ready API**
 FastAPI server with Redis-backed queue system for asynchronous red-teaming operations, enabling scalable and distributed testing workflows.
+
+### 📈 Real-Time Monitoring & Progress Tracking
+Live scan monitoring with detailed progress indicators, status updates, and the ability to cancel running scans with comprehensive error reporting.
 
 ### 📊 **Comprehensive Reporting**
 Detailed vulnerability assessment reports with:
@@ -28,6 +34,9 @@ Detailed vulnerability assessment reports with:
 - Attack vectors and examples
 - Remediation recommendations
 - Compliance mapping (OWASP LLM Top 10)
+
+### 🔧 Reference Lab Applications
+Pre-built vulnerable applications (like Lab1 with indirect prompt injection) for learning, testing, and demonstrating attack techniques in safe environments.
 
 ## Why Choose Javelin RedTeam?
 
@@ -72,13 +81,15 @@ Behind the scenes, redteam framework will spin up a suit of agents that exectue 
 
 1. **Planning Agent**: The Planner Agent generates a detailed attack strategy based on target application and selected vulnerability categories.
 
-2. **Attack Generation**: Base attack prompts are retrieved from vector database and enhanced using various engines. (prompt injection, maths engine, adversarial techniques, etc.)
+2. **Recon Agent**: The Reconnaissance Agent performs initial target analysis by probing the application's capabilities, understanding its response patterns, and gathering intelligence about potential attack surfaces. This agent helps identify the most effective attack vectors and informs the subsequent attack generation phase.
 
-3. **Execution**: Attack prompts are sent to target applications through configurable interfaces.
+3. **Attack Generation**: Base attack prompts are retrieved from vector database and enhanced using various engines.
 
-4. **Evaluation**: Responses are analyzed by LLM as judge models to identify potential vulnerabilities and security issues.
+4. **Execution**: Attack prompts are sent to target applications through configurable interfaces.
 
-5. **Reporting**: Comprehensive reports are generated with findings, severity levels, and remediation guidance.
+5. **Evaluation**: Responses are analyzed by LLM as judge models to identify potential vulnerabilities and security issues.
+
+6. **Reporting**: Comprehensive reports are generated with findings, severity levels, and remediation guidance.
 
 ## Vulnerability Taxonomy
 
@@ -91,7 +102,7 @@ Javelin RedTeam uses a comprehensive vulnerability taxonomy with 15 categories c
 - **Brand Image**: Misinformation, competitor mentions
 - **Illegal Risks**: Harmful content, safety violations
 
-### **OWASP LLM Top 10 2025**
+### **[OWASP LLM Top 10 2025](https://genai.owasp.org/llm-top-10/)**
 Complete coverage of OWASP LLM security categories with dynamic attack generation using specialized engines.
 - **prompt_injection**
 - **sensitive_information_disclosure**
@@ -110,21 +121,7 @@ For detailed information about each category, see our [Categories Guide](/javeli
 
 ## Attack Enhancement Engines
 
-Javelin RedTeam uses sophisticated engines to transform base prompts into advanced attacks:
-
-### **Single-Turn Engines**
-- **Prompt Injection**: Hidden instruction injection
-- **Adversarial**: Gradient-based and suffix attacks  
-- **Mathematical**: Abstract problem formulation
-- **Hidden Layer**: Role-playing with obfuscation
-- **BoN (Best-of-N)**: Multiple variations with selection
-- **ROT13/Base64**: Encoding-based obfuscation
-- **Direct LLM**: AI-powered prompt enhancement
-- **Ascii Art**: Converting the prompt to Ascii Art
-- **Task-in_Prompt**: Encoding the injection as a task/puzzle in a prompt
-
-### **Multi-Turn Engines** (Coming Soon)
-Advanced conversational attack patterns for sustained vulnerability exploitation.
+Javelin RedTeam uses sophisticated engines to transform base prompts into advanced attacks. These are categorized into single-turn and multi-turn engines.
 
 :::note
 For details about the engine module and the supported engines, please see [engines overview](/javelin-redteam/engines/overview)

@@ -54,10 +54,11 @@ Start with Critical and High severity findings:
 
 ### 2. Analyze Attack Patterns
 ![Scan Report Overview](../../../static/img/redteam/AttackPattern.png)
-Look for common themes across vulnerabilities:
-- **Input validation gaps**: Multiple injection attacks suggest weak input handling
-- **Output filtering issues**: Repeated content problems indicate inadequate output validation
-- **System prompt weaknesses**: Consistent prompt injection suggests prompt engineering needs improvement
+Review the spider chart visualization to understand vulnerability distribution across categories:
+- **Category Performance**: See which vulnerability categories have the highest failure rates
+- **Pass/Fail Ratios**: Identify categories where your application is most vulnerable
+- **Coverage Analysis**: Understand which security domains need the most attention
+- **Trend Identification**: Look for patterns in failed test cases to identify systemic issues
 
 ### 3. Follow Remediation Guidance
 ![Mitigation Advice Example](../../../static/img/redteam/ReportMitigationAdvice.png)
