@@ -1,5 +1,5 @@
+// Using CommonJS format for now to avoid issues with Docusaurus.
 const path = require('path');
-require('dotenv').config();
 
 module.exports = {
     title: 'Javelin Documentation',
