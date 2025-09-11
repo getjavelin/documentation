@@ -152,8 +152,6 @@ Once you’ve selected the categories, click **RUN SCAN** to initiate the assess
 
 Once the scan is initiated, you'll be redirected to the **Assessments List** view where you can monitor progress.
 
-![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
-
 :::tip
 For detailed information about monitoring scans, cancelling running scans, and handling failed scans, see our [Scan Management Guide](scan-management.md).
 :::
@@ -166,7 +164,7 @@ After completion, locate your scan in the assessment list and click on **Report*
 
 This will open the comprehensive scan report:
 
-![Detailed Scan Report Dashboard](/img/redteam/ScanReport.png)
+![Detailed Scan Report Dashboard](/img/redteam/ScanReportHead.png)
 
 :::note
 For guidance on interpreting the scan results and taking remediation steps, refer to our [Understanding Redteam Report Guide](understanding-reports.md).
