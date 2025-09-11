@@ -8,9 +8,6 @@ sidebar_label: Understanding Reports
 
 This guide helps you interpret Javelin RedTeam assessment reports and take effective action to remediate discovered vulnerabilities. Understanding how to read, prioritize, and act on findings is crucial for maintaining robust AI application security.
 
-:::tip
-You can also download the report PDF from the download button at the top right of the report page
-:::
 
 ## Report Structure Overview
 

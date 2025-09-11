@@ -10,50 +10,8 @@ Before starting, ensure you have:
 - **Target Application**: HTTP endpoint, model API, or test application to test the application. Javelin-Redteam includes reference lab applications for conducting sample assessments. 
 
 ## Step 1: Prepare Your Target Application
+To prepare a target application, [please check target application section](../target-applications.md)
 
-### Target Application Requirements
-
-Your target application should:
-- **Accept HTTP requests** with JSON payloads
-- **Return responses** in a consistent format
-- **Be accessible** from the red team environment
-- **Have appropriate permissions** for security testing
-
-### Test Application Setup
-
-Javelin Redteam already includes sample LLM backed lab apps for running redteam scans. Currently supported ones are:
-
-#### Lab1
-
-Lab1 implements a comprehensive indirect prompt injection testing environment that simulates a product support chatbot with vulnerable function calling capabilities.
-
-The lab exposes five functions that the LLM can call, creating opportunities for indirect prompt injection attacks:
-
-| Function | Parameters | Vulnerability |
-|----------|------------|---------------|
-| `delete_account` | None | Can delete current user account without additional verification |
-| `create_account` | `username`, `email`, `password` | Can create arbitrary accounts |
-| `edit_email` | `new_email` | Can modify user email without verification |
-| `get_product_info` | `product` | Retrieves product reviews that may contain malicious prompts |
-| `add_review` | `product`, `review` | Allows injection of malicious content into review system |
-
-Endpoint Specification:
-
-| Endpoint | Method | Purpose | Request Model | Response Model |
-|----------|---------|---------|---------------|----------------|
-| `/v1/redteam/lab1/chat` | POST | Main chat interface for testing attacks | ChatRequest | ChatResponse |
-| `/v1/redteam/lab1/health` | GET | Health check for lab availability | None | Status object |
-| `/v1/redteam/lab1/lab-instructions` | GET | Returns lab objectives and description | None | Instructions object |
-
-For demonstration purposes, this lab uses ```gpt-3.5-turbo``` model.
-
-
-## Step 2: Register the target application
-To register a target application on the Javelin Gateway, follow the steps below:
-
-### 1. Create the Application
-
-First, register your target application as described in the [Creating Application Guide](../../javelin-core/applicationconfiguration.md).
 
 ### 2. Configure API Request
 
