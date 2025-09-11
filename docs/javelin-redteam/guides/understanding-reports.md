@@ -131,9 +131,8 @@ Review the spider chart visualization to understand vulnerability distribution a
 
 ### 3. Follow Remediation Guidance
 ![Mitigation Advice Example](../../../static/img/redteam/ReportMitigationAdvice.png)
-Each vulnerability in the report includes specific remediation steps:
 
-**Review the remediation section** for each finding to understand:
+**Review the remediation section** for each category, for each finding, to understand:
 - What specific changes are needed to fix the vulnerability
 - Which security controls to implement
 - How to test that the fix is effective
