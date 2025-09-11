@@ -38,7 +38,25 @@ Your target application should meet these basic requirements:
 
 ## Reference Lab Applications
 
-Javelin RedTeam bundles pre-built reference applications for learning and testing purposes. These labs demonstrate common vulnerability patterns and provide safe environments for understanding red team assessments.
+Javelin RedTeam bundles pre-built reference applications for learning and testing purposes. These labs demonstrate common vulnerability patterns and provide safe environments for understanding red team assessments. Currently, we bundle lab1 application for demoing redteam scan capabilities.
+
+:::tip Try Our Interactive Labs
+Experience our lab applications firsthand! Visit our [**DAMN VULNERABLE OWASP LABS**](https://javelin-redteam-labs.onrender.com/) to interact directly with vulnerable applications and test different LLM vulnerabilities including:
+
+- **LLM01: Prompt Injection** - Direct prompt injection attacks
+- **LLM01: Indirect Prompt Injection** - Multi-turn conversation attacks  
+- **LLM02: Sensitive Information Disclosure** - Data leakage vulnerabilities
+- **LLM03: Supply Chain** - Third-party dependency risks
+- **LLM04: Data and Model Poisoning** - Training data manipulation
+- **LLM05: Improper Output Handling** - Response filtering bypass
+- **LLM06: Excessive Agency** - Overprivileged function calling
+- **LLM07: System Prompt Leakage** - Internal prompt exposure
+- **LLM08: Vector and Embedding Weaknesses** - Semantic attack vectors
+- **LLM09: Misinformation** - False information generation
+- **LLM10: Unbounded Consumption** - Resource exhaustion attacks
+
+These interactive labs provide hands-on experience with real vulnerability patterns and help you understand how Javelin RedTeam identifies and exploits these security issues.
+:::
 
 ### Lab1: Indirect Prompt Injection Testing
 
