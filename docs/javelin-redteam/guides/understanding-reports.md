@@ -101,7 +101,7 @@ For each failed test case we display `Mitigation Advice`, which are specific act
 
 
 ## Severity Level Interpretation
-The table below explains the different severity levels assigned to each vulnerabily found.
+The table below explains the different severity levels assigned to each vulnerability found.
 
 | Severity | Score Range | Characteristics | Business Impact | Example Issues |
 |----------|-------------|-----------------|-----------------|----------------|

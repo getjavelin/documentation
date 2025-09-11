@@ -20,7 +20,7 @@ For this demo purposes, we will use `lab1`, (a sample app bundled with redteam) 
 To register a target application on the Javelin Gateway, follow the steps below:
 
 
-### 1. Add  Application
+### 1. Add Application
 
 First, add your target application (lab1 in this case) as described in the [Creating Application Guide](../../javelin-core/applicationconfiguration.md).
 
@@ -68,7 +68,7 @@ It will look for the following fields and fill the first one it finds in the pay
 
 ![API Request Configuration](/img/application/APIRequestSection.png)
 
-### 3: Save the Application
+### 3. Save the Application
 
 After completing the above configurations, click **Save** to register the application with the Javelin Gateway.
 
