@@ -6,6 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useColorMode } from '@docusaurus/theme-common';
 import styles from './index.module.css';
 import HomepageFeatures from '../components/HomepageFeatures';
+import { CustomPostHogProvider } from '../providers/posthog-provider';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -37,11 +38,14 @@ export default function Home() {
   return (
     <Layout
       title={`Javelin | Enterprise AI Platform`}
-      description="Javelin is an Enterprise AI Platform for rapid, responsible LLM use. Dive in to learn more.">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+      description="Javelin is an Enterprise AI Platform for rapid, responsible LLM use. Dive in to learn more."
+    >
+      <CustomPostHogProvider>
+        <HomepageHeader />
+        <main>
+          <HomepageFeatures />
+        </main>
+      </CustomPostHogProvider>
     </Layout>
   );
 }

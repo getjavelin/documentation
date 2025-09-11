@@ -28,6 +28,7 @@
     "file-loader": "^6.2.0",
     "follow-redirects": "^1.15.6",
     "prism-react-renderer": "^1.2.1",
+    "posthog-js": "^1.154.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "redocusaurus": "^2.5.0",

@@ -1,4 +1,5 @@
-import path from 'path';
+// Using CommonJS format for now to avoid issues with Docusaurus.
+const path = require('path');
 
 module.exports = {
     title: 'Javelin Documentation',
@@ -302,6 +303,11 @@ module.exports = {
     // Custom fields for additional configuration
     customFields: {
         // Add any custom fields here if needed in the future
+        posthogHost: "https://us.i.posthog.com",
+        // Write-only API key for posthog.
+        // Write-only means it can only create new events. 
+        // It can't read events or any of your other data stored with PostHog, so it's safe to use in public apps.
+        posthogApiKey: "phc_MrfhixdU9OtKTgbcBTRRvZeBe9Ilt6Bt8ZJQGCl86Vg",
     },
 
     // Markdown configuration
@@ -319,6 +325,5 @@ module.exports = {
     // Client modules for additional functionality
     clientModules: [
         require.resolve('./src/clientModules/copyCodeButton.js'),
-        require.resolve('./src/clientModules/posthog.js'),
     ],
 };
