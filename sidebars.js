@@ -111,6 +111,7 @@ module.exports = {
         label: 'Guides',
         items: [
           'javelin-redteam/guides/getting-started',
+          'javelin-redteam/guides/scan-management',
           'javelin-redteam/guides/understanding-reports',
         ]
       }

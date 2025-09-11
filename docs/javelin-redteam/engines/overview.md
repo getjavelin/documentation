@@ -50,6 +50,7 @@ Advanced conversational attack patterns that build context over multiple interac
 | TIP (Task-in-Prompt) | Single-Turn | Embeds harmful requests within legitimate sequence-to-sequence tasks like cipher decoding and riddles | [The TIP of the Iceberg: Task-in-Prompt Adversarial Attacks](https://aclanthology.org/2025.acl-long.334.pdf) |
 | FlipAttack | Single-Turn | Exploits LLMs' left-to-right processing by flipping text and adding noise, then guiding models to decode and execute | [FlipAttack: Jailbreak LLMs via Flipping](https://arxiv.org/html/2410.02832v1) |
 | Direct LLM | Single-Turn | Uses secondary LLM with sophisticated prompt engineering for stealth enhancement | |
+| | | | |
 | Crescendo | Multi-Turn | Gradually escalates attack intensity through progressive prompt refinement and iterative enhancement | [The Crescendo Multi-Turn LLM Jailbreak Attack](https://arxiv.org/abs/2404.01833) |
 
 

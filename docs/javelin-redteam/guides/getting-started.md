@@ -150,29 +150,13 @@ Once you’ve selected the categories, click **RUN SCAN** to initiate the assess
 
 ## Step 5: Monitor Scan Progress
 
-Once the scan is initiated, it will enter the **queued** state.
+Once the scan is initiated, you'll be redirected to the **Assessments List** view where you can monitor progress.
 
 ![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
 
-- You'll be redirected to the **Assessments List** view.
-- The status of the scan will transition from `queued` → `running` → `completed` or `failed`, depending on the outcome.
-- Each scan run is assigned a unique Scan ID for tracking and reporting purposes.
-
-### Scan Status Indicators
-
-| Status      | Description                                      |
-|-------------|--------------------------------------------------|
-| `queued`    | Scan is waiting in the queue to be processed.    |
-| `running`   | Scan is currently in progress.                   |
-| `completed` | Scan completed successfully.                     |
-| `failed`    | Scan encountered an error during execution.      |
-| `cancelled` | Scan was manually cancelled during execution.    |
-
-:::note
-A `completed` status only indicates that the scan ran to completion. It **does not** imply a vulnerability-free result—vulnerabilities may still be present.
+:::tip
+For detailed information about monitoring scans, cancelling running scans, and handling failed scans, see our [Scan Management Guide](scan-management.md).
 :::
-
----
 
 ## Step 6: Analyze Your Results
 
@@ -190,58 +174,17 @@ For guidance on interpreting the scan results and taking remediation steps, refe
 
 ---
 
-## How to Cancel a Scan
-
-To cancel a running scan, click on the **Abort** button available in the **Actions** column of the scan table.
-
-![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
-
-A confirmation dialog will appear. Click **Yes** to confirm and abort the scan.
-
-![RedTeam Scan Abort Confirmation](/img/redteam/AbortRedteamScan.png)
-
----
-
-## Understanding Failed Scans
-
-If a scan fails for any reason, an **error code** will be displayed in the **Actions** column of the scan table.
-
-- You can **hover** over the error icon to view a quick description.
-
-![Hover on Exit Code](/img/redteam/HoverExitCode.png)
-
-- Alternatively, click on **Report** to open the detailed scan report view.
-
-In the report view, you'll find:
-
-- Scan configuration details
-- Error code
-- Full error description
-
-![Failed Scan Report](/img/redteam/FailedScanReport.png)
-
----
-
-## Troubleshooting Common Issues
-
-(coming soon)
-
 ## Support and Resources
 
 ### Documentation
 - [Configuration Guide](/javelin-redteam/configuration): Detailed configuration options
 - [Categories Guide](/javelin-redteam/categories/overview): Understanding vulnerability categories
 - [Engines Guide](/javelin-redteam/engines/overview): Attack enhancement techniques
-
-### Community and Support
-- **GitHub Issues**: Report bugs and request features
-- **Documentation**: Comprehensive guides and examples
-- **Enterprise Support**: Dedicated support for enterprise customers
+- [Scan Management Guide](/javelin-redteam/scan-management): Monitoring and managing scans
 
 ### Best Practices
 1. **Start Small**: Begin with basic scans before expanding
 2. **Regular Testing**: Integrate into development workflow
 3. **Remediation Focus**: Prioritize fixing found issues
-4. **Continuous Learning**: Stay updated on new vulnerability types
 
 Congratulations! You've completed your first Javelin RedTeam security assessment. Regular red teaming helps ensure your AI applications remain secure as they evolve and face new threats. 

@@ -11,27 +11,97 @@ This guide helps you interpret Javelin RedTeam assessment reports and take effec
 
 ## Report Structure Overview
 
-### Executive Summary
-- **Overall Security Score**: Numerical rating (0-100) indicating application security posture
-- **Total Vulnerabilities Found**: Count by severity level (Critical, High, Medium, Low)
-- **Risk Assessment**: Summary of primary security concerns
-- **Compliance Status**: Alignment with OWASP LLM Top 10 and other frameworks
+![Scan Report Overview](../../../static/img/redteam/ScanReport.png)
 
-### Detailed Findings
-Each vulnerability includes:
-- **Category**: Classification (e.g., Data Privacy, Prompt Injection, Security)
-- **Severity Level**: Critical, High, Medium, or Low
-- **Attack Vector**: Method used to exploit the vulnerability
-- **Evidence**: Actual attack prompts and responses demonstrating the issue
-- **Impact Description**: Potential consequences of exploitation
-- **Remediation Guidance**: Specific steps to address the vulnerability
+### Executive Summary Dashboard
 
-### Assessment Metadata
-- **Scan Configuration**: Categories tested, engines used
-- **Target Application**: Endpoint details and description  
-- **Execution Summary**: Duration, total prompts tested, success rates
+The report opens with a comprehensive dashboard showing high-level scan metrics and key performance indicators:
+
+#### Scan Metadata
+- **App Endpoint**: Target application URL that was tested
+- **Scan ID**: Unique identifier for tracking and reference
+- **Scan Date**: When the assessment was executed
+- **Max Duration**: Configured timeout limit for the scan
+- **User**: Who initiated the scan
+- **Run ID**: Specific execution instance identifier
+- **Duration**: Actual time taken to complete the scan
+- **Max Test Cases per Category**: Configured limit for test cases per vulnerability category
+- **Status**: Final scan status (Completed, Failed, Cancelled)
+- **Categories Tested**: List of all vulnerability categories included in the assessment
+
+#### Key Performance Metrics
+Four summary cards display critical metrics:
+
+| Metric | Description | Visual Indicator |
+|--------|-------------|------------------|
+| **Total Tests Executed** | Complete count of security tests run | Target/concentric circles icon |
+| **Vulnerabilities Found** | Number of failed tests indicating security issues | Red warning triangle |
+| **Success Rate** | Percentage of tests that passed | Progress bar with percentage |
+| **Scan Duration** | Total execution time | Clock icon |
+
+### Vulnerability Analysis Charts
+
+#### Vulnerability Severity Distribution
+A pie chart showing the breakdown of security issues by severity level:
+- **Critical**: High-priority vulnerabilities requiring immediate attention
+- **High**: Significant security issues that need prompt remediation
+- **Medium**: Moderate security concerns for planned fixes
+- **Low**: Minor issues for future improvement
+
+#### Vulnerable Categories Analysis
+A vertical bar chart displaying categories with the highest test failure rates, helping prioritize remediation efforts across different security domains.
+
+### Category Test Results Overview
+
+#### Radar Chart Visualization
+A spider/radar chart provides a comprehensive view of test performance across all vulnerability categories:
+
+- **Green Polygon**: Represents passed tests, showing areas where your application successfully mitigated attacks.
+- **Red Polygon**: Represents failed tests, highlighting vulnerability areas that need attention.
+- **Vulnerability Categories**: Each axis represents a different category from the list of categories selected for the scan.
+
+This visualization helps quickly identify which security domains are strongest and which require immediate attention.
+
+### Detailed Test Results
+
+#### Individual Category Cards
+Each vulnerability category is displayed as a detailed card containing:
+
+- **Category Name & Icon**: Clear identification with visual indicators
+- **Description**: Explanation of the vulnerability type and its implications
+- **Success Rate**: Horizontal progress bar showing pass/fail ratio
+- **Test Results**: "X/Y Succeeded" format showing exact pass/fail counts
+- **Severity Breakdown**: Count of vulnerabilities by severity level (Critical, High, Medium, Low)
+- **Compliance Tags**: OWASP LLM Top 10 and other relevant standards
+- **Show Details**: Expandable section for granular analysis
+
+#### Detailed Test Case Analysis
+When clicking "Show Details" for any category, you gain access to:
+
+##### Test Case Information
+- **Engine ID**: Specific attack engine used (e.g., "Best-of-N Engine", "Crescendo Engine"), if applicable.
+- **Duration**: Individual test case execution time
+- **Turn Count**: Number of conversation turns (1 for single-turn, multiple for multi-turn engines)
+
+
+##### Complete Conversation Log
+- **Security Test Prompt**: Exact attack prompt used in the test
+- **AI System Response**: Full response from the target application
+- **Tool Usage Capture**: Any function calls, API calls, or tool invocations triggered during the test
+- **Multi-turn Conversations**: Complete conversation history for multi-turn attack engines
+
+![Tool Usage Capture Example](/img/redteam/ToolUsage.png)
+*Javelin RedTeam captures detailed tool usage including function calls, API interactions, and system commands triggered during security tests*
+
+##### Security Analysis Summary
+A short explanation, justifying the current evaluation of the response from the application.
+
+##### Mitigation Guidance
+For each failed test case we display `Mitigation Advice`, which are specific actions to address the vulnerability
+
 
 ## Severity Level Interpretation
+The table below explains the different severity levels assigned to each vulnerabily found.
 
 | Severity | Score Range | Characteristics | Business Impact | Example Issues |
 |----------|-------------|-----------------|-----------------|----------------|
@@ -43,7 +113,6 @@ Each vulnerability includes:
 
 
 ## How to Use Scan Results for Improvement
-![Scan Report Overview](../../../static/img/redteam/ScanReport.png)
 
 ### 1. Prioritize by Severity and Impact
 Start with Critical and High severity findings:
