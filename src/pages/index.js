@@ -37,11 +37,14 @@ export default function Home() {
   return (
     <Layout
       title={`Javelin | Enterprise AI Platform`}
-      description="Javelin is an Enterprise AI Platform for rapid, responsible LLM use. Dive in to learn more.">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+      description="Javelin is an Enterprise AI Platform for rapid, responsible LLM use. Dive in to learn more."
+    >
+      <CustomPostHogProvider>
+        <HomepageHeader />
+        <main>
+          <HomepageFeatures />
+        </main>
+      </CustomPostHogProvider>
     </Layout>
   );
 }

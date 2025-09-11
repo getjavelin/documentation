@@ -1,4 +1,7 @@
-import path from 'path';
+const path = require('path');
+require('dotenv').config();
+
+console.log('PostHog env:', process.env.POSTHOG_API_KEY, process.env.REACT_APP_POSTHOG_API_KEY, process.env.POSTHOG_HOST, process.env.REACT_APP_POSTHOG_HOST);
 
 module.exports = {
     title: 'Javelin Documentation',
@@ -302,6 +305,8 @@ module.exports = {
     // Custom fields for additional configuration
     customFields: {
         // Add any custom fields here if needed in the future
+        posthogHost: process.env.POSTHOG_HOST || process.env.REACT_APP_POSTHOG_HOST || 'TEST_HOST',
+        posthogApiKey: process.env.POSTHOG_API_KEY || process.env.REACT_APP_POSTHOG_API_KEY || 'TEST_KEY',
     },
 
     // Markdown configuration
@@ -319,6 +324,6 @@ module.exports = {
     // Client modules for additional functionality
     clientModules: [
         require.resolve('./src/clientModules/copyCodeButton.js'),
-        require.resolve('./src/clientModules/posthog.js'),
+        require.resolve('./src/providers/posthog-provider.jsx'),
     ],
 };
