@@ -6,6 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useColorMode } from '@docusaurus/theme-common';
 import styles from './index.module.css';
 import HomepageFeatures from '../components/HomepageFeatures';
+import { CustomPostHogProvider } from '../providers/posthog-provider';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();

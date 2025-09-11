@@ -1,8 +1,6 @@
 const path = require('path');
 require('dotenv').config();
 
-console.log('PostHog env:', process.env.POSTHOG_API_KEY, process.env.REACT_APP_POSTHOG_API_KEY, process.env.POSTHOG_HOST, process.env.REACT_APP_POSTHOG_HOST);
-
 module.exports = {
     title: 'Javelin Documentation',
     tagline: 'Enterprise AI Platform for Rapid, Responsible AI Adoption',
@@ -305,8 +303,8 @@ module.exports = {
     // Custom fields for additional configuration
     customFields: {
         // Add any custom fields here if needed in the future
-        posthogHost: process.env.POSTHOG_HOST || process.env.REACT_APP_POSTHOG_HOST || 'TEST_HOST',
-        posthogApiKey: process.env.POSTHOG_API_KEY || process.env.REACT_APP_POSTHOG_API_KEY || 'TEST_KEY',
+        posthogHost: process.env.REACT_APP_POSTHOG_HOST,
+        posthogApiKey: process.env.REACT_APP_POSTHOG_API_KEY,
     },
 
     // Markdown configuration
