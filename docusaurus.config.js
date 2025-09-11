@@ -325,6 +325,5 @@ module.exports = {
     // Client modules for additional functionality
     clientModules: [
         require.resolve('./src/clientModules/copyCodeButton.js'),
-        require.resolve('./src/providers/posthog-provider.jsx'),
     ],
 };
