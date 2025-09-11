@@ -5,11 +5,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 export function CustomPostHogProvider({ children }) {
   const { siteConfig } = useDocusaurusContext();
-  const POSTHOG_KEY =
-    siteConfig?.customFields?.posthogApiKey ||
-    process.env.REACT_APP_POSTHOG_API_KEY;
-  const POSTHOG_HOST =
-    siteConfig?.customFields?.posthogHost || process.env.REACT_APP_POSTHOG_HOST;
+  const POSTHOG_KEY = siteConfig?.customFields?.posthogApiKey;
+  const POSTHOG_HOST = siteConfig?.customFields?.posthogHost;
 
   if (typeof window !== "undefined" && POSTHOG_KEY) {
     if (!posthog.___initialized) {

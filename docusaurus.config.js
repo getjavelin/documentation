@@ -303,8 +303,11 @@ module.exports = {
     // Custom fields for additional configuration
     customFields: {
         // Add any custom fields here if needed in the future
-        posthogHost: process.env.REACT_APP_POSTHOG_HOST,
-        posthogApiKey: process.env.REACT_APP_POSTHOG_API_KEY,
+        posthogHost: "https://us.i.posthog.com",
+        // Write-only API key for posthog.
+        // Write-only means it can only create new events. 
+        // It can't read events or any of your other data stored with PostHog, so it's safe to use in public apps.
+        posthogApiKey: "phc_MrfhixdU9OtKTgbcBTRRvZeBe9Ilt6Bt8ZJQGCl86Vg",
     },
 
     // Markdown configuration
