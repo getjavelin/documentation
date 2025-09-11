@@ -207,6 +207,7 @@ A confirmation dialog will appear. Click **Yes** to confirm and abort the scan.
 If a scan fails for any reason, an **error code** will be displayed in the **Actions** column of the scan table.
 
 - You can **hover** over the error icon to view a quick description.
+
 ![Hover on Exit Code](/img/redteam/HoverExitCode.png)
 
 - Alternatively, click on **Report** to open the detailed scan report view.
