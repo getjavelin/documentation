@@ -1,0 +1,52 @@
+name: Deploy GH Pages - Documentation
+
+on:
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - "**/*CHANGELOG.md"
+      - "*CHANGELOG.md"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VER: 20
+
+jobs:
+  deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VER }}
+          cache: "npm"
+
+      - name: Install dependencies and build
+        shell: bash
+        run: |-
+          yarn install
+          yarn build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.DEVOPS_GITHUB_TOKEN }}
+          publish_dir: ./build
