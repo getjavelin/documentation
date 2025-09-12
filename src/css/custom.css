@@ -195,3 +195,20 @@ html[data-theme='dark'] .navbar .navbar__items .navbar__item .navbar__link:hover
   }
 }
 
+/* Uniform image display for documentation */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific styling for redteam screenshots */
+img[src*="redteam/"] {
+  max-width: 800px;
+  width: 100%;
+  display: block;
+  margin: 1rem auto;
+  border: 1px solid #e1e4e8;
+}
+

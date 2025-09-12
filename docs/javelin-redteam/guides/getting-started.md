@@ -9,74 +9,71 @@ Before starting, ensure you have:
 - **Access to Javelin RedTeam**: Login credentials to access Javelin Redteam interface from the UI.
 - **Target Application**: HTTP endpoint, model API, or test application to test the application. Javelin-Redteam includes reference lab applications for conducting sample assessments. 
 
+
 ## Step 1: Prepare Your Target Application
 
-### Target Application Requirements
+To understand more about target application please check [target applications section](../target-applications.md)
+For this demo purposes, we will use `lab1`, (a sample app bundled with redteam) as described in the target applications section that uses openai models.
 
-Your target application should:
-- **Accept HTTP requests** with JSON payloads
-- **Return responses** in a consistent format
-- **Be accessible** from the red team environment
-- **Have appropriate permissions** for security testing
+## Step 2: Register lab1
 
-### Test Application Setup
-
-Javelin Redteam already includes sample LLM backed lab apps for running redteam scans. Currently supported ones are:
-
-#### Lab1
-
-Lab1 implements a comprehensive indirect prompt injection testing environment that simulates a product support chatbot with vulnerable function calling capabilities.
-
-The lab exposes five functions that the LLM can call, creating opportunities for indirect prompt injection attacks:
-
-| Function | Parameters | Vulnerability |
-|----------|------------|---------------|
-| `delete_account` | None | Can delete current user account without additional verification |
-| `create_account` | `username`, `email`, `password` | Can create arbitrary accounts |
-| `edit_email` | `new_email` | Can modify user email without verification |
-| `get_product_info` | `product` | Retrieves product reviews that may contain malicious prompts |
-| `add_review` | `product`, `review` | Allows injection of malicious content into review system |
-
-Endpoint Specification:
-
-| Endpoint | Method | Purpose | Request Model | Response Model |
-|----------|---------|---------|---------------|----------------|
-| `/v1/redteam/lab1/chat` | POST | Main chat interface for testing attacks | ChatRequest | ChatResponse |
-| `/v1/redteam/lab1/health` | GET | Health check for lab availability | None | Status object |
-| `/v1/redteam/lab1/lab-instructions` | GET | Returns lab objectives and description | None | Instructions object |
-
-For demonstration purposes, this lab uses ```gpt-3.5-turbo``` model.
-
-
-## Step 2: Register the target application
 To register a target application on the Javelin Gateway, follow the steps below:
 
-### 1. Create the Application
 
-First, register your target application as described in the [Creating Application Guide](../../javelin-core/applicationconfiguration.md).
+### 1. Add Application
+
+First, add your target application (lab1 in this case) as described in the [Creating Application Guide](../../javelin-core/applicationconfiguration.md).
 
 ### 2. Configure API Request
 
 In the **API Request** section of the application configuration details tab, provide the following details:
 
-- **URL**  
-  Enter the target application's URL prepared in Step 1.
+#### URL Configuration
+- **URL**: Enter the target application's URL
+- **Method**: Specify HTTP method (GET/POST)
+- **Endpoint**: Complete endpoint path
 
-- **Headers**  
-  Specify any headers that need to be passed to your target application.  
-  For example, authentication tokens, `Content-Type`, or any custom headers required.
+#### Headers Configuration
+Specify any headers that need to be passed to your target application:
+- Authentication tokens
+- Content-Type headers
+- Custom headers required by your application
 
-- **Payload Template**  
-  Provide a JSON schema representing the payload structure expected by the target application.
+Example headers:
+```json
+{
+  "Content-Type": "application/json",
+  "Authorization": "Bearer your-api-token",
+  "X-API-Key": "your-api-key"
+}
+```
 
-  > **Note:** Use `{{query}}` as a placeholder for dynamic values. This will be replaced at runtime during the actual application call.
+#### Payload Template
+Provide a JSON schema representing the payload structure expected by the target application.
 
-![Create Redteam Assessment Button](/img/application/APIRequestSection.png)
+**Important**: Use `{{query}}` as a placeholder for dynamic values. This will be replaced at runtime during the actual application call.
 
+Example payload template:
+```json
+{
+  "query": "{{query}}"
+}
+```
+
+:::note
+Javelin-Redteam can automatically detect template fields and populate the target prompt into appropriate fields
+It will look for the following fields and fill the first one it finds in the payload
+["prompt", "query", "user_input", "request"]
+:::
+
+![API Request Configuration](/img/application/APIRequestSection.png)
 
 ### 3. Save the Application
 
 After completing the above configurations, click **Save** to register the application with the Javelin Gateway.
+
+The app is now ready to scan using javelin-redteam.
+
 
 ## Step 3: Create Your First Scan Configuration
 
@@ -100,7 +97,7 @@ The following table outlines each configurable field in this step, along with it
 
 | Field                    | Description                                                                 | Type         | Constraints / Notes                         |
 |--------------------------|-----------------------------------------------------------------------------|--------------|----------------------------------------------|
-| **Max Duration**         | Maximum allowed time (in minutes) for the scan. Once this duration is reached, scan will be forcefully timed out. | Integer      | Range: `3` to `300`                          |
+| **Max Duration**         | Maximum allowed time (in minutes) for the scan. Once this duration is reached, scan will be forcefully timed out. | Integer      | Range: `3` to `750`                          |
 | **Concurrency**          | Displays how many test cases can run in parallel. This field is read-only and currently set to 1. | Integer (Read-only) | Currently fixed at `1`                       |
 | **Test Cases per Category** | Maximum number of test cases to run for each selected category.             | Integer      | Maximum allowed: `500`                       |
 | **Strictness Level**     | Determines the sensitivity of test rules.                                   | String (Fixed) | Default: `High`; Not configurable            |
@@ -153,29 +150,11 @@ Once you’ve selected the categories, click **RUN SCAN** to initiate the assess
 
 ## Step 5: Monitor Scan Progress
 
-Once the scan is initiated, it will enter the **queued** state.
+Once the scan is initiated, you'll be redirected to the **Assessments List** view where you can monitor progress.
 
-![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
-
-- You'll be redirected to the **Assessments List** view.
-- The status of the scan will transition from `queued` → `running` → `completed` or `failed`, depending on the outcome.
-- Each scan run is assigned a unique Scan ID for tracking and reporting purposes.
-
-### Scan Status Indicators
-
-| Status      | Description                                      |
-|-------------|--------------------------------------------------|
-| `queued`    | Scan is waiting in the queue to be processed.    |
-| `running`   | Scan is currently in progress.                   |
-| `completed` | Scan completed successfully.                     |
-| `failed`    | Scan encountered an error during execution.      |
-| `cancelled` | Scan was manually cancelled during execution.    |
-
-:::note
-A `completed` status only indicates that the scan ran to completion. It **does not** imply a vulnerability-free result—vulnerabilities may still be present.
+:::tip
+For detailed information about monitoring scans, cancelling running scans, and handling failed scans, see our [Scan Management Guide](scan-management.md).
 :::
-
----
 
 ## Step 6: Analyze Your Results
 
@@ -185,7 +164,7 @@ After completion, locate your scan in the assessment list and click on **Report*
 
 This will open the comprehensive scan report:
 
-![Detailed Scan Report Dashboard](/img/redteam/ScanReport.png)
+![Detailed Scan Report Dashboard](/img/redteam/ScanReportHead.png)
 
 :::note
 For guidance on interpreting the scan results and taking remediation steps, refer to our [Understanding Redteam Report Guide](understanding-reports.md).
@@ -193,57 +172,17 @@ For guidance on interpreting the scan results and taking remediation steps, refe
 
 ---
 
-## How to Cancel a Scan
-
-To cancel a running scan, click on the **Abort** button available in the **Actions** column of the scan table.
-
-![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
-
-A confirmation dialog will appear. Click **Yes** to confirm and abort the scan.
-
-![RedTeam Scan Abort Confirmation](/img/redteam/AbortRedteamScan.png)
-
----
-
-## Understanding Failed Scans
-
-If a scan fails for any reason, an **error code** will be displayed in the **Actions** column of the scan table.
-
-- You can **hover** over the error icon to view a quick description.
-![Hover on Exit Code](/img/redteam/HoverExitCode.png)
-
-- Alternatively, click on **Report** to open the detailed scan report view.
-
-In the report view, you'll find:
-
-- Scan configuration details
-- Error code
-- Full error description
-
-![Failed Scan Report](/img/redteam/FailedScanReport.png)
-
----
-
-## Troubleshooting Common Issues
-
-(coming soon)
-
 ## Support and Resources
 
 ### Documentation
 - [Configuration Guide](/javelin-redteam/configuration): Detailed configuration options
 - [Categories Guide](/javelin-redteam/categories/overview): Understanding vulnerability categories
 - [Engines Guide](/javelin-redteam/engines/overview): Attack enhancement techniques
-
-### Community and Support
-- **GitHub Issues**: Report bugs and request features
-- **Documentation**: Comprehensive guides and examples
-- **Enterprise Support**: Dedicated support for enterprise customers
+- [Scan Management Guide](/javelin-redteam/scan-management): Monitoring and managing scans
 
 ### Best Practices
 1. **Start Small**: Begin with basic scans before expanding
 2. **Regular Testing**: Integrate into development workflow
 3. **Remediation Focus**: Prioritize fixing found issues
-4. **Continuous Learning**: Stay updated on new vulnerability types
 
 Congratulations! You've completed your first Javelin RedTeam security assessment. Regular red teaming helps ensure your AI applications remain secure as they evolve and face new threats. 

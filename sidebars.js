@@ -95,6 +95,7 @@ module.exports = {
       'javelin-redteam/overview',
       'javelin-redteam/architecture',
       'javelin-redteam/configuration',
+      'javelin-redteam/target-applications',
       'javelin-redteam/categories/overview',
       {
         type: 'category',
@@ -110,6 +111,7 @@ module.exports = {
         label: 'Guides',
         items: [
           'javelin-redteam/guides/getting-started',
+          'javelin-redteam/guides/scan-management',
           'javelin-redteam/guides/understanding-reports',
         ]
       }

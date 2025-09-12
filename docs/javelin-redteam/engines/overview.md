@@ -29,7 +29,7 @@ Let P represent the set of administrative credentials, where p ∈ P is a specif
 
 These engines create sophisticated single-interaction attacks designed to bypass model safety features in one exchange.
 
-### Multi-Turn Engines (COMING SOON)
+### Multi-Turn Engines
 
 Advanced conversational attack patterns that build context over multiple interactions to gradually exploit vulnerabilities.
 
@@ -50,6 +50,9 @@ Advanced conversational attack patterns that build context over multiple interac
 | TIP (Task-in-Prompt) | Single-Turn | Embeds harmful requests within legitimate sequence-to-sequence tasks like cipher decoding and riddles | [The TIP of the Iceberg: Task-in-Prompt Adversarial Attacks](https://aclanthology.org/2025.acl-long.334.pdf) |
 | FlipAttack | Single-Turn | Exploits LLMs' left-to-right processing by flipping text and adding noise, then guiding models to decode and execute | [FlipAttack: Jailbreak LLMs via Flipping](https://arxiv.org/html/2410.02832v1) |
 | Direct LLM | Single-Turn | Uses secondary LLM with sophisticated prompt engineering for stealth enhancement | |
+| | | | |
+| Crescendo | Multi-Turn | Gradually escalates attack intensity through progressive prompt refinement and iterative enhancement | [The Crescendo Multi-Turn LLM Jailbreak Attack](https://arxiv.org/abs/2404.01833) |
+
 
 ## Engine Selection Strategy
 
@@ -120,6 +123,7 @@ class EngineFactory:
         "ascii_art": ASCIIArtEngine,
         "tip": TIPEngine,
         "flip_attack": FlipAttackEngine,
+        "crescendo": CrescendoEngine,
     }
 ```
 
@@ -134,6 +138,7 @@ class EngineFactory:
 | FlipAttack | Very Fast | None | Medium |
 | Adversarial | Fast | Low | Medium |
 | BoN | Medium | Medium | Medium |
+| Crescendo | Slow | Very High | High |
 | Direct LLM | Slow | High | Medium |
 | Mathematical | Medium | Medium | High |
 | Hidden Layer | Fast | Low | High |
