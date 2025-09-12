@@ -8,19 +8,18 @@ on:
       - reopened
     branches:
       - "main"
-    # paths:
-    #   - '**/*.md'
-    #   - '**/*.mdx'
-    #   - 'docs/**'
-    #   - '.markdownlint.json'
   merge_group:
     types:
       - checks_requested
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
 env:
-  NODE_VER: 18
+  NODE_VER: 20
   PR_CHECK_PREFIX: "feat:|fix:|devops:|Merge|Revert|build\\(deps\\)|\\[Snyk\\]|Bump"
-  GH_SEC_REPORT: false
+  GH_SEC_REPORT: true
   TRIVY_SEVERITY: "HIGH,CRITICAL"
   TRIVY_REPORT_FILE: "trivy-scan-result"
 
@@ -72,10 +71,14 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        shell: bash
+        run: |-
+          yarn install
 
       - name: Run markdownlint
-        run: npm run lint:docs
+        shell: bash
+        run: |-
+          npm run lint:docs
 
   javelin-lint-check:
     permissions:
@@ -94,7 +97,9 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        shell: bash
+        run: |-
+          yarn install
 
       - name: Check internal links
         uses: lycheeverse/lychee-action@v2.0.2
@@ -133,7 +138,9 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        shell: bash
+        run: |-
+          yarn install
 
       - name: Check front matter consistency
         run: |
