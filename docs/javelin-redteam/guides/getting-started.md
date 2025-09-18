@@ -81,7 +81,7 @@ The app is now ready to scan using javelin-redteam.
 
 After creating your application, click on it to open the application overview. From the top menu, select the **Redteam Assessments** tab and then click on **Create New Assessment**.
 
-![Create Redteam Assessment Button](/img/redteam/CreateRedteamAssessment.png)
+![Create Redteam Assessment Button](/img/redteam/RedteamAssessmentTab.png)
 
 ---
 
@@ -98,9 +98,9 @@ The following table outlines each configurable field in this step, along with it
 | Field                    | Description                                                                 | Type         | Constraints / Notes                         |
 |--------------------------|-----------------------------------------------------------------------------|--------------|----------------------------------------------|
 | **Max Duration**         | Maximum allowed time (in minutes) for the scan. Once this duration is reached, scan will be forcefully timed out. | Integer      | Range: `3` to `750`                          |
-| **Concurrency**          | Displays how many test cases can run in parallel. This field is read-only and currently set to 1. | Integer (Read-only) | Currently fixed at `1`                       |
 | **Test Cases per Category** | Maximum number of test cases to run for each selected category.             | Integer      | Maximum allowed: `500`                       |
-| **Strictness Level**     | Determines the sensitivity of test rules.                                   | String (Fixed) | Default: `High`; Not configurable            |
+<!-- | **Concurrency**          | Displays how many test cases can run in parallel. This field is read-only and currently set to 1. | Integer (Read-only) | Currently fixed at `1`                       | -->
+<!-- | **Strictness Level**     | Determines the sensitivity of test rules.                                   | String (Fixed) | Default: `High`; Not configurable            | -->
 
 ---
 
@@ -160,7 +160,7 @@ For detailed information about monitoring scans, cancelling running scans, and h
 
 After completion, locate your scan in the assessment list and click on **Report** under the `Actions` column (or click anywhere on the row) to view detailed results.
 
-![Completed Scan Results View](/img/redteam/CompletedScan.png)
+![Completed Scan Results View](/img/redteam/RedteamAssessmentTab.png)
 
 This will open the comprehensive scan report:
 
