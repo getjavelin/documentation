@@ -48,7 +48,7 @@ import CodeBlock from '@theme/CodeBlock';
         with open(file_path, "rb") as f:
             data = f.read()
 
-        return base64.b64encode(data).decode("utf-8"), filename, mime_type
+        return base64.b64encode(data).decode("utf-8")
 
     base64_string = get_base64(FILE_PATH)
 
@@ -61,7 +61,7 @@ import CodeBlock from '@theme/CodeBlock';
                     {"type": "input_text", "text": "What is this file about?"},
                     {
                         "type": "input_file",
-                        "file_data": f"data:{mime_type};base64,{base64_string}",
+                        "file_data": f"data:application/pdf;base64,{base64_string}",
                         "filename": <your-file-name>,
                     },
                 ],
@@ -86,7 +86,7 @@ import CodeBlock from '@theme/CodeBlock';
   <TabItem value="Shell">
     ```bash [Shell]
     curl -X POST "https://api-dev.javelin.live/v1/responses" \
-    -H "Authorization: "Bearer $OPENAI_KEY" \
+    -H "Authorization: Bearer $OPENAI_KEY" \
     -H "x-javelin-apikey: $JAVELIN_API_KEY" \
     -H "x-javelin-route: <your-javelin-unified-route>" \
     -H "Content-Type: application/json" \
@@ -132,7 +132,7 @@ def get_base64(file_path):
     with open(file_path, "rb") as f:
         data = f.read()
 
-    return base64.b64encode(data).decode("utf-8"), filename, mime_type
+    return base64.b64encode(data).decode("utf-8")
 
 base64_string = get_base64(FILE_PATH)
 
@@ -200,18 +200,19 @@ curl -X POST "https://api-dev.javelin.live/v1/openai/responses?api-version=2025-
 
 <details>
 <summary>Amazon Bedrock</summary>
+:::note
+Amazon Bedrock works with both **base64-encoded files** and **raw inline files**.  
+The example below demonstrates usage **without base64 encoding**.
+:::
 <Tabs>
   <TabItem value="Python">
     ```python [Python]
-    import requests, os, base64, mimetypes
+    import requests, os, base64
 
     model_id = "anthropic.claude-3-haiku-20240307-v1:0"
 
-    JAVELIN_AMAZON_API = f"https://api-dev.javelin.live/v1/model/{model_id}/converse"
-
     # Config
-    JAVELIN_OPEN_API = "https://api-dev.javelin.live/v1/responses"
-    OPENAI_KEY = os.getenv("OPEN_API_KEY")
+    JAVELIN_AMAZON_API = f"https://api-dev.javelin.live/v1/model/{model_id}/converse"
     JAVELIN_API_KEY = os.getenv("JAVELIN_API_KEY")
 
     FILE_PATH = "/your/path/to/pdf-file"
@@ -253,7 +254,7 @@ curl -X POST "https://api-dev.javelin.live/v1/openai/responses?api-version=2025-
         "x-javelin-route": "<your-javelin-unified-route>"
     }
 
-    resp = requests.post(JAVELIN_OPEN_API, headers=headers, json=payload)
+    resp = requests.post(JAVELIN_AMAZON_API, headers=headers, json=payload)
     resp.raise_for_status()
     print("\n=== Model Output ===")
     print(resp.json().get("output_text", resp.json()))
@@ -280,7 +281,7 @@ curl -X POST "https://api-dev.javelin.live/v1/openai/responses?api-version=2025-
                             "format": "pdf",
                             "name": "Amazon Nova Service Cards", 
                             "source": {
-                                "bytes": BYTE_STRING_HERE
+                                "bytes": "<BYTES_HERE>"
                         }
                         }
                     }
