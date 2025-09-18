@@ -19,6 +19,7 @@ module.exports = {
       'javelin-core/supported-llms',
       'javelin-core/model-scan',
       'javelin-core/playground/playground',
+      'javelin-core/features/fileinput',
       {
         type: 'category',
         label: 'Secrets Vault',
