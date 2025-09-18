@@ -38,7 +38,7 @@ import CodeBlock from '@theme/CodeBlock';
     ```python [Python]
     import requests, os, base64, mimetypes
     # Config
-    JAVELIN_OPEN_API = "https://api-dev.javelin.live/v1/responses"
+    JAVELIN_OPEN_API = "https://your-api-domain.com/v1/responses"
     OPENAI_KEY = os.getenv("OPENAI_KEY")
     JAVELIN_API_KEY = os.getenv("JAVELIN_API_KEY")
 
@@ -85,7 +85,7 @@ import CodeBlock from '@theme/CodeBlock';
   
   <TabItem value="Shell">
     ```bash [Shell]
-    curl -X POST "https://api-dev.javelin.live/v1/responses" \
+    curl -X POST "https://your-api-domain.com/v1/responses" \
     -H "Authorization: Bearer $OPENAI_KEY" \
     -H "x-javelin-apikey: $JAVELIN_API_KEY" \
     -H "x-javelin-route: <your-javelin-unified-route>" \
@@ -122,7 +122,7 @@ import CodeBlock from '@theme/CodeBlock';
 import requests, os, base64, mimetypes
 
 # Config
-JAVELIN_AZURE_API = "https://api-dev.javelin.live/v1/openai/responses?api-version=2025-04-01-preview"
+JAVELIN_AZURE_API = "https://your-api-domain.com/v1/openai/responses?api-version=2025-04-01-preview"
 AZURE_OPENAI_KEY = os.getenv("AZURE_OPENAI_KEY")
 JAVELIN_API_KEY = os.getenv("JAVELIN_API_KEY")
 
@@ -157,7 +157,7 @@ headers = {
     "Api-Key": f"{AZURE_OPENAI_KEY}",
     "Content-Type": "application/json",
     "x-javelin-apikey": JAVELIN_API_KEY,
-    "x-javelin-route": "<your-javelin-unified-route>",
+    "x-javelin-route": "your-javelin-unified-route",
 }
 
 resp = requests.post(JAVELIN_AZURE_API, headers=headers, json=payload)
@@ -169,7 +169,7 @@ print(resp.json().get("output_text", resp.json()))
 
 <TabItem value="Shell">
 ```bash [Shell]
-curl -X POST "https://api-dev.javelin.live/v1/openai/responses?api-version=2025-04-01-preview" \
+curl -X POST "https://your-api-domain.com/v1/openai/responses?api-version=2025-04-01-preview" \
 -H "Api-Key: $AZURE_OPENAI_KEY" \
 -H "x-javelin-apikey: $JAVELIN_API_KEY" \
 -H "x-javelin-route: <your-javelin-unified-route>" \
@@ -212,7 +212,7 @@ The example below demonstrates usage **without base64 encoding**.
     model_id = "anthropic.claude-3-haiku-20240307-v1:0"
 
     # Config
-    JAVELIN_AMAZON_API = f"https://api-dev.javelin.live/v1/model/{model_id}/converse"
+    JAVELIN_AMAZON_API = f"https://your-api-domain.com/v1/model/{model_id}/converse"
     JAVELIN_API_KEY = os.getenv("JAVELIN_API_KEY")
 
     FILE_PATH = "/your/path/to/pdf-file"
@@ -263,7 +263,7 @@ The example below demonstrates usage **without base64 encoding**.
   
   <TabItem value="Shell">
     ```bash [Shell]
-    curl -X POST "https://api-dev.javelin.live/v1/model/{model_id}/converse" \
+    curl -X POST "https://your-api-domain.com/v1/model/{model_id}/converse" \
     -H "x-javelin-apikey: $JAVELIN_API_KEY" \
     -H "x-javelin-route: <your-javelin-unified-route>" \
     -H "Content-Type: application/json" \
