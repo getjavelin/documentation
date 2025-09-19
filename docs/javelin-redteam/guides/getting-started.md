@@ -99,8 +99,6 @@ The following table outlines each configurable field in this step, along with it
 |--------------------------|-----------------------------------------------------------------------------|--------------|----------------------------------------------|
 | **Max Duration**         | Maximum allowed time (in minutes) for the scan. Once this duration is reached, scan will be forcefully timed out. | Integer      | Range: `3` to `750`                          |
 | **Test Cases per Category** | Maximum number of test cases to run for each selected category.             | Integer      | Maximum allowed: `500`                       |
-<!-- | **Concurrency**          | Displays how many test cases can run in parallel. This field is read-only and currently set to 1. | Integer (Read-only) | Currently fixed at `1`                       | -->
-<!-- | **Strictness Level**     | Determines the sensitivity of test rules.                                   | String (Fixed) | Default: `High`; Not configurable            | -->
 
 ---
 
