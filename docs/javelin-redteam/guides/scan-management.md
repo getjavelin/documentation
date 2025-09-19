@@ -12,7 +12,7 @@ This guide covers how to monitor, manage, and troubleshoot Javelin RedTeam scans
 
 Once a scan is initiated, it will enter the **queued** state and you'll be redirected to the **Assessments List** view.
 
-![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
+![Scan Progress Monitoring Dashboard](/img/redteam/RedteamAssessmentTab.png)
 
 The status of the scan on this screen will transition from `queued` → `running` → `completed` or `failed`.
 
@@ -39,7 +39,7 @@ A `completed` status only indicates that the scan ran to completion. It **does n
 
 To cancel a running scan, click on the **Abort** button available in the **Actions** column of the scan table.
 
-![Scan Progress Monitoring Dashboard](/img/redteam/MonitorScan.png)
+![Scan Progress Monitoring Dashboard](/img/redteam/RedteamAssessmentTab.png)
 
 A confirmation dialog will appear. Click **Yes** to confirm and abort the scan.
 
